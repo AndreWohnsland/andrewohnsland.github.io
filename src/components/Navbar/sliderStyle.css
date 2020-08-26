@@ -62,7 +62,7 @@ input:checked + .slider:before {
 }
 
 .themefont {
-  color: #ecececbb;
+  color: #ececec80;
   margin-bottom: 0;
   align-self: center;
 }

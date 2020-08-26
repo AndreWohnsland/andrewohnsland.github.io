@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
-import { ThemeContext } from '../contexts/ThemeContext';
+import { ThemeContext } from '../../contexts/ThemeContext';
 import './sliderStyle.css';
 
 class ThemeToggle extends Component {
   static contextType = ThemeContext;
   state = {
-    isChecked: false,
+    isChecked: null,
   };
+
+  componentDidMount() {
+    const { getCachedTheme } = this.context;
+    this.setState({ isChecked: getCachedTheme() });
+  }
 
   render() {
     const { isLightTheme } = this.context;
     const toggleCheckboxChange = () => {
+      const { setTheme } = this.context;
+      setTheme(this.state.isChecked);
       this.setState(({ isChecked }) => ({
         isChecked: !isChecked,
       }));
-      const { setTheme } = this.context;
-      setTheme(this.state.isChecked);
+
+      // cacheTheme(this.state.isChecked);
     };
     return (
       <>

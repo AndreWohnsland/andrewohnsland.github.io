@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import tmpData from '../dummydata/tmp';
+import tmpData from '../../dummydata/tmp';
 
 class Project extends Component {
   state = { project: null };

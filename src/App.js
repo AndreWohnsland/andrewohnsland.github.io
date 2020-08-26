@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import NavBar from './components/Navbar';
+import NavBar from './components/Navbar/Navbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
-import Projects from './components/Projects';
-import Project from './components/Project';
+import Projects from './components/Projects/Projects';
+import Project from './components/Projects/Project';
 import tmpData from './dummydata/tmp';
 import Footer from './components/Footer';
 import { ThemeContext } from './contexts/ThemeContext';
+import Blog from './components/Blog/Blog';
 
 class App extends Component {
   static contextType = ThemeContext;
@@ -28,6 +29,7 @@ class App extends Component {
                 <Route exact path='/' component={Home} />
                 <Route path='/about' component={About} />
                 <Route path='/projects' component={() => <Projects projects={this.state.projects} />} />
+                <Route path='/blog' component={Blog} />
                 <Route path='/project/:project_id' component={Project} />
               </Switch>
             </div>

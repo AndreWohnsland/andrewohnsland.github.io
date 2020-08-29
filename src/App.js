@@ -13,6 +13,7 @@ import { ReactQueryDevtools } from 'react-query-devtools';
 import Login from './components/Admin/Login';
 import ProjectEdit from './components/Admin/ProjectEdit';
 import BlogEdit from './components/Admin/BlogEdit';
+import EditComponent from './components/Admin/EditComponent';
 
 class App extends Component {
   static contextType = ThemeContext;
@@ -37,8 +38,8 @@ class App extends Component {
                   <Route path='/blog' component={Blog} />
                   <Route exact path='/project/:project_id' component={Project} />
                   <Route path='/admin/login' component={Login} />
-                  <Route path='/admin/projects' component={ProjectEdit} />
-                  <Route path='/admin/blog' component={BlogEdit} />
+                  <Route path='/admin/projects' component={() => <EditComponent elementType='project' />} />
+                  <Route path='/admin/blog' component={() => <EditComponent elementType='blog' />} />
                 </Switch>
               </div>
             </div>

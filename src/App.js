@@ -9,7 +9,7 @@ import tmpData from './dummydata/tmp';
 import Footer from './components/Footer';
 import { ThemeContext } from './contexts/ThemeContext';
 import Blog from './components/Blog/Blog';
-import { ReactQueryDevtools } from 'react-query-devtools';
+// import { ReactQueryDevtools } from 'react-query-devtools';
 import Login from './components/Admin/Login';
 import EditComponent from './components/Admin/EditComponent';
 

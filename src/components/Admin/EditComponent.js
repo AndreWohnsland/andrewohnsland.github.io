@@ -12,6 +12,7 @@ class EditComponent extends Component {
     description: '',
     text: '',
     link: '',
+    seen: false,
   };
 
   clearState = () => {
@@ -37,8 +38,25 @@ class EditComponent extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
+    if (this.state.elementId) {
+      this.updateExistingElement();
+    } else {
+      this.createNewElement();
+    }
     this.clearState();
-    this.loadProjects();
+    this.loadElements();
+  };
+
+  createNewElement = () => {
+    let link = `http://localhost:5000/api/${this.props.elementType}/add`;
+    console.log(link);
+    axios.post().then((res) => console.log(res));
+  };
+
+  updateExistingElement = () => {
+    let link = `http://localhost:5000/api/${this.props.elementType}/update/${this.state.elementId}`;
+    console.log(link);
+    axios.post(link).then((res) => console.log(res));
   };
 
   handleAnyChange = (e) => {

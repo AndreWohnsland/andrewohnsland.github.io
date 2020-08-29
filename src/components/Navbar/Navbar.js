@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import ThemeToggle from './ThemeToggle';
 
 class NavBar extends Component {
@@ -28,6 +28,14 @@ class NavBar extends Component {
             </Nav>
             <ThemeToggle />
             <Nav>
+              <NavDropdown title='Admin' id='collasible-nav-dropdown'>
+                <LinkContainer to='/admin/projects'>
+                  <NavDropdown.Item>Edit Projects</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/blog'>
+                  <NavDropdown.Item>Edit Blog Article</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
               <Nav.Link href='https://github.com/AndreWohnsland'>My Github</Nav.Link>
             </Nav>
           </Navbar.Collapse>

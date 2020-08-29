@@ -10,6 +10,9 @@ import Footer from './components/Footer';
 import { ThemeContext } from './contexts/ThemeContext';
 import Blog from './components/Blog/Blog';
 import { ReactQueryDevtools } from 'react-query-devtools';
+import Login from './components/Admin/Login';
+import ProjectEdit from './components/Admin/ProjectEdit';
+import BlogEdit from './components/Admin/BlogEdit';
 
 class App extends Component {
   static contextType = ThemeContext;
@@ -33,6 +36,9 @@ class App extends Component {
                   <Route path='/projects' component={Projects} />
                   <Route path='/blog' component={Blog} />
                   <Route exact path='/project/:project_id' component={Project} />
+                  <Route path='/admin/login' component={Login} />
+                  <Route path='/admin/projects' component={ProjectEdit} />
+                  <Route path='/admin/blog' component={BlogEdit} />
                 </Switch>
               </div>
             </div>

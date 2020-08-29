@@ -39,7 +39,7 @@ class App extends Component {
             <Footer />
           </div>
         </BrowserRouter>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </>
     );
   }

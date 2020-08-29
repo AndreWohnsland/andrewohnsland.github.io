@@ -11,8 +11,6 @@ import { ThemeContext } from './contexts/ThemeContext';
 import Blog from './components/Blog/Blog';
 import { ReactQueryDevtools } from 'react-query-devtools';
 import Login from './components/Admin/Login';
-import ProjectEdit from './components/Admin/ProjectEdit';
-import BlogEdit from './components/Admin/BlogEdit';
 import EditComponent from './components/Admin/EditComponent';
 
 class App extends Component {

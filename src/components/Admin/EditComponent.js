@@ -25,7 +25,7 @@ class EditComponent extends Component {
   };
 
   componentDidMount() {
-    this.loadProjects();
+    this.loadElements();
   }
 
   loadElements = () => {

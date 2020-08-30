@@ -3,12 +3,11 @@ import NavBar from './components/Navbar/Navbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
-import Projects from './components/Projects/Projects';
-import Project from './components/Projects/Project';
+import ListView from './components/ListView/ListView';
+import ElementView from './components/ListView/ElementView';
 import tmpData from './dummydata/tmp';
 import Footer from './components/Footer';
 import { ThemeContext } from './contexts/ThemeContext';
-import Blog from './components/Blog/Blog';
 // import { ReactQueryDevtools } from 'react-query-devtools';
 import Login from './components/Admin/Login';
 import EditComponent from './components/Admin/EditComponent';
@@ -32,9 +31,19 @@ class App extends Component {
                 <Switch>
                   <Route exact path='/' component={Home} />
                   <Route path='/about' component={About} />
-                  <Route path='/projects' component={Projects} />
-                  <Route path='/blog' component={Blog} />
-                  <Route exact path='/project/:project_id' component={Project} />
+                  <Route
+                    exact
+                    path='/projects'
+                    component={() => <ListView elementType='project' header='My Projects' />}
+                  />
+                  <Route
+                    exact
+                    path='/project/:_id'
+                    component={(props) => <ElementView {...props} elementType='project' />}
+                  />
+                  <Route exact path='/blog' component={() => <ListView elementType='blog' header="It's Storytime" />} />
+                  <Route exact path='/blog/:_id' component={(props) => <ElementView {...props} elementType='blog' />} />
+
                   <Route path='/admin/login' component={Login} />
                   <Route path='/admin/projects' component={() => <EditComponent elementType='project' />} />
                   <Route path='/admin/blog' component={() => <EditComponent elementType='blog' />} />

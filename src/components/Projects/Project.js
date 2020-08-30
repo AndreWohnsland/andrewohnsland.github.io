@@ -1,37 +1,39 @@
-import React, { Component } from 'react';
-import tmpData from '../../dummydata/tmp';
+import React from 'react';
+import { useQuery } from 'react-query';
 
-class Project extends Component {
-  state = { project: null };
+const Project = (props) => {
+  let id = props.match.params.project_id;
 
-  componentDidMount() {
-    let id = this.props.match.params.project_id;
-    let project = tmpData.find((project) => project.id === parseInt(id));
-    this.setState({
-      project,
-    });
-  }
+  const fetchProject = async () => {
+    const res = await fetch(`http://localhost:5000/api/project/${id}`);
+    return res.json();
+  };
 
-  render() {
-    return this.state.project ? (
-      <>
-        <div className='text-center main-header'>
-          <h1>{this.state.project.title}</h1>
-        </div>
-        <br />
-        <div className='main-text'>
-          <p>{this.state.project.description}</p>
-          <p>
-            Interested? Look into the project at <a href={this.state.project.projectLink}>Github.</a>
-          </p>
-        </div>
-      </>
-    ) : (
+  const { data, status } = useQuery(`project?id=${id}`, fetchProject, { staleTime: 100000, cacheTime: 3600000 });
+
+  return (
+    <>
       <div className='text-center main-header'>
-        <h1>No valid Project id :(</h1>
+        <h1>
+          {status === 'loading' && 'Loading projects ....'}
+          {status === 'error' && 'Error fetching data!'}
+          {status === 'success' && data.title}
+        </h1>
       </div>
-    );
-  }
-}
+      <br />
+      <div className='main-text'>
+        {status === 'error' && 'Probably not a valid id :('}
+        {status === 'success' && (
+          <>
+            <p>{data.text}</p>
+            <p>
+              Interested? Look into the project at <a href={data.link}>Github.</a>
+            </p>
+          </>
+        )}
+      </div>
+    </>
+  );
+};
 
 export default Project;

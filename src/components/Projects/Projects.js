@@ -1,30 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import ProjectCard from './ProjectCard';
 
-const Projects = ({ projects }) => {
-  const projectlist = projects.map((project) => {
-    return (
-      <div key={project.id}>
-        <Link to={`/project/${project.id}`} style={{ textDecoration: 'none' }}>
-          <div className='card-div'>
-            <div className='card-content'>
-              <h3 className='card-title'>{project.title}</h3>
-              <p className='card-desc'>{project.shortDescription}</p>
-            </div>
-          </div>
-        </Link>
-        <br />
-      </div>
-    );
-  });
+const Projects = () => {
+  const fetchProjects = async () => {
+    const res = await fetch('http://localhost:5000/api/project');
+    return res.json();
+  };
 
+  const { data, status } = useQuery('projects', fetchProjects, { staleTime: 60000, cacheTime: 3600000 });
   return (
     <>
       <div className='text-center main-header'>
         <h1>My Projects</h1>
       </div>
       <br />
-      <div className='main-text'>{projectlist}</div>
+      <div className='main-text'>
+        {status === 'loading' && <p>Loading projects ....</p>}
+        {status === 'error' && <p>Error fetching data!</p>}
+        {status === 'success' &&
+          data.map((project) => {
+            return <ProjectCard key={project._id} project={project} />;
+          })}
+      </div>
     </>
   );
 };

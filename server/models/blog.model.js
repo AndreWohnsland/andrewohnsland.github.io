@@ -6,7 +6,7 @@ const blogSchema = new Schema(
   {
     title: { type: String, required: true, unique: true },
     description: { type: String, required: true },
-    blogFile: { type: String, data: Buffer, required: true },
+    text: { type: String, required: true },
   },
   { timestamps: true }
 );

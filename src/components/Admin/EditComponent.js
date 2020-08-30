@@ -3,6 +3,7 @@ import axios from 'axios';
 import Dropdown from './Forms/Dropdown';
 import TextInput from './Forms/TextInput';
 import TextArea from './Forms/TextArea';
+import InfoBox from './Forms/InfoBox';
 
 class EditComponent extends Component {
   state = {
@@ -12,7 +13,13 @@ class EditComponent extends Component {
     description: '',
     text: '',
     link: '',
-    seen: false,
+    showMessage: false,
+    res: null,
+    messageTitle: '',
+  };
+
+  handleMessage = () => {
+    this.setState({ showMessage: !this.state.showMessage });
   };
 
   clearState = () => {
@@ -35,28 +42,37 @@ class EditComponent extends Component {
     });
   };
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
     console.log(this.state);
+    let response = null;
     if (this.state.elementId) {
-      this.updateExistingElement();
+      response = await this.updateExistingElement();
     } else {
-      this.createNewElement();
+      response = await this.createNewElement();
     }
-    this.clearState();
-    this.loadElements();
+    console.log(response.status, response.statusText, response.data);
+    this.setState({ res: response, showMessage: true, messageTitle: this.state.title });
+    if (response.statusText === 'OK') {
+      this.clearState();
+      this.loadElements();
+    }
   };
 
-  createNewElement = () => {
+  createNewElement = async () => {
     let link = `http://localhost:5000/api/${this.props.elementType}/add`;
-    console.log(link);
-    axios.post().then((res) => console.log(res));
+    let response = await axios.post(link, this.state, { validateStatus: () => true }).then((res) => {
+      return res;
+    });
+    return response;
   };
 
-  updateExistingElement = () => {
+  updateExistingElement = async () => {
     let link = `http://localhost:5000/api/${this.props.elementType}/update/${this.state.elementId}`;
-    console.log(link);
-    axios.post(link).then((res) => console.log(res));
+    let response = await axios.post(link, this.state, { validateStatus: () => true }).then((res) => {
+      return res;
+    });
+    return response;
   };
 
   handleAnyChange = (e) => {
@@ -100,6 +116,11 @@ class EditComponent extends Component {
         </div>
         <br />
         <div className='main-text'>
+          {this.state.showMessage && (
+            <>
+              <InfoBox res={this.state.res} name={this.state.messageTitle} handleShow={this.handleMessage} /> <br />{' '}
+            </>
+          )}
           <form onSubmit={this.onSubmit}>
             <Dropdown
               label={'Select your project'}

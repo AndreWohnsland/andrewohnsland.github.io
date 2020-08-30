@@ -13,7 +13,7 @@ const ElementView = (props) => {
     return res.json();
   };
 
-  const { data, status } = useQuery(`${elementType}?id=${id}`, fetchData, { staleTime: 100000, cacheTime: 3600000 });
+  const { data, status } = useQuery(`${elementType}?id=${id}`, fetchData, { staleTime: 300000, cacheTime: 3600000 });
 
   return (
     <>

@@ -18,7 +18,11 @@ class Home extends Component {
             </span>
             . If you want to dive deeper, you can also have a look into my Github!
           </p>
-          <p>For now, that's all, maybe here will be later more Information</p>
+          <p>
+            In the meantime have a look into the different section. You can find them in the header. There is a list of
+            some of my projects (mostly programming topics) and a section for blog entries. For now, that's all, maybe
+            next time you can discover even more information!
+          </p>
         </div>
       </div>
     );

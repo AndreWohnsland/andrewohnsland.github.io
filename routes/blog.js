@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const authorize = require('../middlewares/auth');
 let Blog = require('../models/blog.model');
 
 router.route('/').get((req, res) => {
@@ -13,7 +14,7 @@ router.route('/:id').get((req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post((req, res) => {
+router.route('/update/:id').post(authorize, (req, res) => {
   Blog.findById(req.params.id)
     .then((blog) => {
       blog.title = req.body.title;
@@ -28,7 +29,7 @@ router.route('/update/:id').post((req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
+router.route('/add').post(authorize, (req, res) => {
   const title = req.body.title;
   const description = req.body.description;
   const text = req.body.text;

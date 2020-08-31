@@ -1,14 +1,32 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+var whitelist = ['http://localhost:3000', 'http://testdomain.de' /** other domains if any */];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error(`${origin}: Not allowed by CORS`));
+    }
+  },
+  methods: 'GET,HEAD,POST,PATCH,DELETE,OPTIONS',
+  credentials: true, // required to pass
+  allowedHeaders: 'Content-Type,Authorization,X-Requested-With',
+  exposedHeaders: ['set-cookie'],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser());
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });

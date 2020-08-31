@@ -4,8 +4,10 @@ import Dropdown from './Forms/Dropdown';
 import TextInput from './Forms/TextInput';
 import TextArea from './Forms/TextArea';
 import InfoBox from './Forms/InfoBox';
+import { AuthContext } from '../../contexts/AuthContext';
 
 class EditComponent extends Component {
+  static contextType = AuthContext;
   state = {
     elements: null,
     elementId: '',
@@ -61,17 +63,21 @@ class EditComponent extends Component {
 
   createNewElement = async () => {
     let link = `http://localhost:5000/api/${this.props.elementType}/add`;
-    let response = await axios.post(link, this.state, { validateStatus: () => true }).then((res) => {
-      return res;
-    });
+    let response = await axios
+      .post(link, this.state, { withCredentials: true, validateStatus: () => true })
+      .then((res) => {
+        return res;
+      });
     return response;
   };
 
   updateExistingElement = async () => {
     let link = `http://localhost:5000/api/${this.props.elementType}/update/${this.state.elementId}`;
-    let response = await axios.post(link, this.state, { validateStatus: () => true }).then((res) => {
-      return res;
-    });
+    let response = await axios
+      .post(link, this.state, { withCredentials: true, validateStatus: () => true })
+      .then((res) => {
+        return res;
+      });
     return response;
   };
 
@@ -105,6 +111,7 @@ class EditComponent extends Component {
   };
 
   render() {
+    const { isAuth } = this.context;
     let options = [{ name: `Add new ${this.capitalizeElement()}`, value: '' }];
     if (this.state.elements) {
       options.push(...this.state.elements.map((element) => ({ name: element.title, value: element._id })));
@@ -116,37 +123,43 @@ class EditComponent extends Component {
         </div>
         <br />
         <div className='main-text'>
-          {this.state.showMessage && (
+          {isAuth ? (
             <>
-              <InfoBox res={this.state.res} name={this.state.messageTitle} handleShow={this.handleMessage} /> <br />{' '}
+              {this.state.showMessage && (
+                <>
+                  <InfoBox res={this.state.res} name={this.state.messageTitle} handleShow={this.handleMessage} /> <br />{' '}
+                </>
+              )}
+              <form onSubmit={this.onSubmit}>
+                <Dropdown
+                  label={'Select your project'}
+                  value={this.state.elementId}
+                  onChange={this.selectElement}
+                  options={options}
+                />
+                <TextInput label={'Title'} name={'title'} value={this.state.title} onChange={this.handleAnyChange} />
+                <TextInput
+                  label={'Description'}
+                  name={'description'}
+                  value={this.state.description}
+                  onChange={this.handleAnyChange}
+                />
+                {this.props.elementType === 'project' && (
+                  <TextInput label={'Link'} name={'link'} value={this.state.link} onChange={this.handleAnyChange} />
+                )}
+                <TextArea label={'Text'} name={'text'} value={this.state.text} onChange={this.handleAnyChange} />
+                <div className='form-group'>
+                  <input
+                    type='submit'
+                    value={this.state.elementId === '' ? 'Create' : 'Change'}
+                    className='btn btn-primary'
+                  />
+                </div>
+              </form>
             </>
+          ) : (
+            <p>Not authentificated!</p>
           )}
-          <form onSubmit={this.onSubmit}>
-            <Dropdown
-              label={'Select your project'}
-              value={this.state.elementId}
-              onChange={this.selectElement}
-              options={options}
-            />
-            <TextInput label={'Title'} name={'title'} value={this.state.title} onChange={this.handleAnyChange} />
-            <TextInput
-              label={'Description'}
-              name={'description'}
-              value={this.state.description}
-              onChange={this.handleAnyChange}
-            />
-            {this.props.elementType === 'project' && (
-              <TextInput label={'Link'} name={'link'} value={this.state.link} onChange={this.handleAnyChange} />
-            )}
-            <TextArea label={'Text'} name={'text'} value={this.state.text} onChange={this.handleAnyChange} />
-            <div className='form-group'>
-              <input
-                type='submit'
-                value={this.state.elementId === '' ? 'Create' : 'Change'}
-                className='btn btn-primary'
-              />
-            </div>
-          </form>
         </div>
       </div>
     );

@@ -27,7 +27,6 @@ class ThemeContextProvider extends Component {
   cacheTheme = (lightTheme) => {
     const saveTheme = lightTheme ? 'light' : 'dark';
     localStorage.setItem('theme', saveTheme);
-    console.log(saveTheme);
   };
 
   toggleTheme = () => {

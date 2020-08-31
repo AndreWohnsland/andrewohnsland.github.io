@@ -14,6 +14,7 @@ import EditComponent from './components/Admin/EditComponent';
 
 class App extends Component {
   static contextType = ThemeContext;
+
   state = {
     projects: tmpData,
   };
@@ -45,6 +46,7 @@ class App extends Component {
                   <Route exact path='/blog/:_id' component={(props) => <ElementView {...props} elementType='blog' />} />
 
                   <Route path='/admin/login' component={Login} />
+
                   <Route path='/admin/projects' component={() => <EditComponent elementType='project' />} />
                   <Route path='/admin/blog' component={() => <EditComponent elementType='blog' />} />
                 </Switch>

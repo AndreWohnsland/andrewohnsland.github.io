@@ -3,9 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import ThemeToggle from './ThemeToggle';
+import { AuthContext } from '../../contexts/AuthContext';
 
 class NavBar extends Component {
+  static contextType = AuthContext;
   render() {
+    const { isAuth } = this.context;
     return (
       <div>
         <Navbar fixed='top' collapseOnSelect expand='md' bg='primary' variant='dark'>
@@ -28,14 +31,16 @@ class NavBar extends Component {
             </Nav>
             <ThemeToggle />
             <Nav>
-              <NavDropdown title='Admin' id='collasible-nav-dropdown'>
-                <LinkContainer to='/admin/projects'>
-                  <NavDropdown.Item>Edit Projects</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to='/admin/blog'>
-                  <NavDropdown.Item>Edit Blog Article</NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
+              {isAuth && (
+                <NavDropdown title='Admin' id='collasible-nav-dropdown'>
+                  <LinkContainer to='/admin/projects'>
+                    <NavDropdown.Item>Edit Projects</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/blog'>
+                    <NavDropdown.Item>Edit Blog Article</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
               <Nav.Link href='https://github.com/AndreWohnsland'>My Github</Nav.Link>
             </Nav>
           </Navbar.Collapse>

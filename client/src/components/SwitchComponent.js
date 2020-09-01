@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import ListView from './ListView/ListView';
 import Home from './Home';
 import About from './About';
@@ -24,6 +24,7 @@ const SwitchComponent = () => {
 
       <PrivateRoute path='/admin/projects' isAuth={isAuth} component={() => <EditComponent elementType='project' />} />
       <PrivateRoute path='/admin/blog' isAuth={isAuth} component={() => <EditComponent elementType='blog' />} />
+      <Redirect from='*' to='/' />
     </Switch>
   );
 };

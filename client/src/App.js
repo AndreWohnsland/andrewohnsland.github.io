@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import NavBar from './components/Navbar/Navbar';
 import { BrowserRouter } from 'react-router-dom';
-import tmpData from './dummydata/tmp';
 import Footer from './components/Footer';
 import { ThemeContext } from './contexts/ThemeContext';
-// import { ReactQueryDevtools } from 'react-query-devtools';
+import { ReactQueryDevtools } from 'react-query-devtools';
 import SwitchComponent from './components/SwitchComponent';
 
 class App extends Component {
   static contextType = ThemeContext;
 
-  state = {
-    projects: tmpData,
-  };
   render() {
     const { isLightTheme, light, dark } = this.context;
     const theme = isLightTheme ? light : dark;
@@ -30,7 +26,7 @@ class App extends Component {
             <Footer />
           </div>
         </BrowserRouter>
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+        <ReactQueryDevtools initialIsOpen={false} />
       </>
     );
   }

@@ -1,44 +1,12 @@
 const router = require('express').Router();
 const authorize = require('../middlewares/auth');
 let Blog = require('../models/blog.model');
+const blogControler = require('../controller/blog.controler');
 
-router.route('/').get((req, res) => {
-  Blog.find()
-    .then((blog) => res.json(blog))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.route('/').get(blogControler.getAllBlogs);
+router.route('/:id').get(blogControler.getBlogById);
 
-router.route('/:id').get((req, res) => {
-  Blog.findById(req.params.id)
-    .then((blog) => res.json(blog))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
-
-router.route('/update/:id').post(authorize, (req, res) => {
-  Blog.findById(req.params.id)
-    .then((blog) => {
-      blog.title = req.body.title;
-      blog.description = req.body.description;
-      blog.text = req.body.text;
-
-      blog
-        .save()
-        .then(() => res.json('Blog updated'))
-        .catch((err) => res.status(400).json('Error: ' + err));
-    })
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
-
-router.route('/add').post(authorize, (req, res) => {
-  const title = req.body.title;
-  const description = req.body.description;
-  const text = req.body.text;
-
-  const newBlog = Blog({ title, description, text });
-  newBlog
-    .save()
-    .then(() => res.json('Blog added!'))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.route('/update/:id').post(authorize, blogControler.updateBlog);
+router.route('/add').post(authorize, blogControler.addBlog);
 
 module.exports = router;

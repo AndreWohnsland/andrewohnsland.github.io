@@ -1,11 +1,12 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import ElementCard from './ElementCard';
+import axios from 'axios';
 
 const ListView = ({ elementType, header }) => {
   const fetchProjects = async () => {
-    const res = await fetch(`http://localhost:5000/api/${elementType}`);
-    return res.json();
+    const { data } = await axios.get(`http://localhost:5000/api/${elementType}`);
+    return data;
   };
 
   const { data, status } = useQuery(`${elementType}s`, fetchProjects, { staleTime: 60000, cacheTime: 3600000 });

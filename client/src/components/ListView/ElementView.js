@@ -3,17 +3,23 @@ import { useQuery } from 'react-query';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
 import HeadingRenderer from './HeadingRenderer';
+import axios from 'axios';
 
 const ElementView = (props) => {
   let { elementType } = props;
   let id = props.match.params._id;
 
   const fetchData = async () => {
-    const res = await fetch(`http://localhost:5000/api/${elementType}/${id}`);
-    return res.json();
+    const { data } = await axios.get(`http://localhost:5000/api/${elementType}/${id}`);
+    return data;
   };
 
-  const { data, status } = useQuery(`${elementType}?id=${id}`, fetchData, { staleTime: 300000, cacheTime: 3600000 });
+  const queryOption = {
+    staleTime: 300000,
+    cacheTime: 3600000,
+    retry: 1,
+  };
+  const { data, status } = useQuery(`${elementType}?id=${id}`, fetchData, { ...queryOption });
 
   return (
     <>
@@ -26,7 +32,8 @@ const ElementView = (props) => {
       </div>
       <br />
       <div className='main-text'>
-        {status === 'error' && 'Probably not a valid id :('}
+        {status === 'error' &&
+          'Probably not a valid id :( If you get here from blog or project try getting back and forth again.'}
         {status === 'success' && (
           <>
             <ReactMarkdown

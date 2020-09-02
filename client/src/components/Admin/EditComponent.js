@@ -46,14 +46,12 @@ class EditComponent extends Component {
 
   onSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state);
     let response = null;
     if (this.state.elementId) {
       response = await this.updateExistingElement();
     } else {
       response = await this.createNewElement();
     }
-    console.log(response.status, response.statusText, response.data);
     this.setState({ res: response, showMessage: true, messageTitle: this.state.title });
     if (response.statusText === 'OK') {
       this.clearState();

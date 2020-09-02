@@ -1,5 +1,6 @@
 let User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
+const { AppError } = require('../middlewares/errorHandler');
 
 async function addUser(req, res) {
   const username = req.body.username;
@@ -9,7 +10,7 @@ async function addUser(req, res) {
   newUser
     .save()
     .then(() => res.json('User added!'))
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => next(new AppError('Error: ' + err, 400)));
 }
 
 async function login(req, res) {
@@ -22,7 +23,7 @@ async function login(req, res) {
       res.cookie('jwt', token, { httpOnly: true, maxAge: maxAgeInSeconds * 1000, sameSite: 'lax' });
       res.status(200).json('Login successful!');
     })
-    .catch((err) => res.status(400).json(`${err}`));
+    .catch((err) => next(new AppError('Error: ' + err, 400)));
 }
 
 async function getAuth(req, res) {

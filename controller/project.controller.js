@@ -1,18 +1,19 @@
 let Project = require('../models/project.model');
+const { AppError } = require('../middlewares/errorHandler');
 
-async function getProjects(req, res) {
+async function getProjects(req, res, next) {
   Project.find()
     .then((project) => res.json(project))
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => next(new AppError('Error: ' + err, 400)));
 }
 
-async function getProjectById(req, res) {
+async function getProjectById(req, res, next) {
   Project.findById(req.params.id)
     .then((project) => res.json(project))
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => next(new AppError('Error: ' + err, 400)));
 }
 
-async function updateProject(req, res) {
+async function updateProject(req, res, next) {
   Project.findById(req.params.id)
     .then((project) => {
       project.title = req.body.title;
@@ -23,12 +24,12 @@ async function updateProject(req, res) {
       project
         .save()
         .then(() => res.json('Project updated'))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => next(new AppError('Error: ' + err, 400)));
     })
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => next(new AppError('Error: ' + err, 400)));
 }
 
-async function addProject(req, res) {
+async function addProject(req, res, next) {
   const title = req.body.title;
   const description = req.body.description;
   const text = req.body.text;
@@ -38,7 +39,7 @@ async function addProject(req, res) {
   newProject
     .save()
     .then(() => res.json('Project added!'))
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => next(new AppError('Error: ' + err, 400)));
 }
 
 module.exports = { getProjects, getProjectById, updateProject, addProject };

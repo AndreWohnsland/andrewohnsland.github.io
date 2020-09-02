@@ -5,7 +5,7 @@ const projectRouter = require('./routes/project');
 const blogRouter = require('./routes/blog');
 const { forwardError, throwErrorOnInvalidRoute } = require('./middlewares/errorHandler');
 const { initCors } = require('./setUp/initCors');
-const { initMongodb } = require('./setUp/initMonogodb');
+const { initMongodb } = require('./setUp/initMongodb');
 
 require('dotenv').config();
 

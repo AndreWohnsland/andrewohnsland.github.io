@@ -35,7 +35,7 @@ const InfoBox = ({ res, name, handleShow }) => {
         {res.status}, {res.statusText}:
       </h3>
       <p style={{ marginBottom: '0.5rem' }}>Data for "{name}":</p>
-      <p style={{ marginBottom: '0.5rem' }}>{res.data}</p>
+      <p style={{ marginBottom: '0.5rem' }}>{res.data.message}</p>
     </div>
   );
 };

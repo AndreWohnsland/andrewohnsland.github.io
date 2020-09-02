@@ -47,11 +47,14 @@ class EditComponent extends Component {
   onSubmit = async (e) => {
     e.preventDefault();
     let response = null;
-    if (this.state.elementId) {
-      response = await this.updateExistingElement();
-    } else {
-      response = await this.createNewElement();
-    }
+    const dataToSend = {
+      elementId: this.state.elementId,
+      title: this.state.title,
+      description: this.state.description,
+      text: this.state.text,
+      link: this.state.link,
+    };
+    response = await this.postElement(dataToSend);
     this.setState({ res: response, showMessage: true, messageTitle: this.state.title });
     if (response.statusText === 'OK') {
       this.clearState();
@@ -59,24 +62,22 @@ class EditComponent extends Component {
     }
   };
 
-  createNewElement = async () => {
-    let link = `http://localhost:5000/api/${this.props.elementType}/add`;
+  postElement = async (dataToSend) => {
+    let link = this.generateLink();
     let response = await axios
-      .post(link, this.state, { withCredentials: true, validateStatus: () => true })
+      .post(link, dataToSend, { withCredentials: true, validateStatus: () => true })
       .then((res) => {
         return res;
       });
     return response;
   };
 
-  updateExistingElement = async () => {
-    let link = `http://localhost:5000/api/${this.props.elementType}/update/${this.state.elementId}`;
-    let response = await axios
-      .post(link, this.state, { withCredentials: true, validateStatus: () => true })
-      .then((res) => {
-        return res;
-      });
-    return response;
+  generateLink = () => {
+    if (this.state.elementId) {
+      return `http://localhost:5000/api/${this.props.elementType}/update/${this.state.elementId}`;
+    } else {
+      return `http://localhost:5000/api/${this.props.elementType}/add`;
+    }
   };
 
   handleAnyChange = (e) => {

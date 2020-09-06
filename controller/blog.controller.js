@@ -3,6 +3,7 @@ const { AppError } = require('../middlewares/errorHandler');
 
 async function getAllBlogs(req, res, next) {
   Blog.find()
+    .sort({ createdAt: -1 })
     .then((blog) => res.json(blog))
     .catch((err) => next(new AppError('Error: ' + err, 400)));
 }

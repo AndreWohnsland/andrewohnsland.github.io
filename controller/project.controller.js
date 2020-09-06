@@ -3,6 +3,7 @@ const { AppError } = require('../middlewares/errorHandler');
 
 async function getProjects(req, res, next) {
   Project.find()
+    .sort({ createdAt: -1 })
     .then((project) => res.json(project))
     .catch((err) => next(new AppError('Error: ' + err, 400)));
 }

@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
 import HeadingRenderer from './HeadingRenderer';
 import axios from 'axios';
+import dateFormatter from './dateFormatter';
 
 const ElementView = (props) => {
   let { elementType } = props;
@@ -20,6 +21,7 @@ const ElementView = (props) => {
     retry: 1,
   };
   const { data, status } = useQuery(`${elementType}?id=${id}`, fetchData, { ...queryOption });
+  const dateInfoStyle = { fontWeight: 'lighter', marginBottom: '0rem' };
 
   return (
     <>
@@ -36,6 +38,12 @@ const ElementView = (props) => {
           'Probably not a valid id :( If you get here from blog or project try getting back and forth again.'}
         {status === 'success' && (
           <>
+            <p style={dateInfoStyle}>
+              <span>Created: {dateFormatter(data.createdAt)}</span>
+              <span> | </span>
+              <span> Latest update: {dateFormatter(data.updatedAt)}</span>
+            </p>
+            <p>{data.description}</p>
             <ReactMarkdown
               className='blog-md'
               source={data.text}

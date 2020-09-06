@@ -21,14 +21,15 @@ const ElementView = (props) => {
     retry: 1,
   };
   const { data, status } = useQuery(`${elementType}?id=${id}`, fetchData, { ...queryOption });
-  const dateInfoStyle = { fontWeight: 'lighter', marginBottom: '0rem' };
+  const dateInfoStyle = { fontWeight: 'lighter', marginBottom: '0.1rem' };
+  const descStyle = { marginBottom: '2rem' };
 
   return (
     <>
       <div className='text-center main-header'>
         <h1>
           {status === 'loading' && 'Loading ....'}
-          {status === 'error' && 'Error fetching data!'}
+          {status === 'error' && 'Error getting data!'}
           {status === 'success' && data.title}
         </h1>
       </div>
@@ -43,7 +44,7 @@ const ElementView = (props) => {
               <span> | </span>
               <span> Latest update: {dateFormatter(data.updatedAt)}</span>
             </p>
-            <p>{data.description}</p>
+            <p style={descStyle}>{data.description}</p>
             <ReactMarkdown
               className='blog-md'
               source={data.text}

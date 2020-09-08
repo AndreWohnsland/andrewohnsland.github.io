@@ -48,9 +48,8 @@ const Login = () => {
   }
 
   const divStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    margin: 'auto',
+    maxWidth: '400px',
   };
   const loginStyle = {
     paddingRight: '20px',

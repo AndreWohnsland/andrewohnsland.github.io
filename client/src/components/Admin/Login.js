@@ -81,16 +81,16 @@ const Login = () => {
       <div className='main-text' style={divStyle}>
         <div className='Login' style={loginStyle}>
           <form onSubmit={handleSubmit}>
-            <Form.Group controlId='email' bsSize='large'>
+            <Form.Group controlId='email'>
               <Form.Label>Name</Form.Label>
               <Form.Control autoFocus type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
             </Form.Group>
-            <Form.Group controlId='password' bsSize='large'>
+            <Form.Group controlId='password'>
               <Form.Label>Password</Form.Label>
               <Form.Control value={password} onChange={(e) => setPassword(e.target.value)} type='password' />
             </Form.Group>
             {!valid && <div style={errorStyle}>{message}</div>}
-            <Button block bsSize='large' disabled={!validateForm()} type='submit'>
+            <Button block disabled={!validateForm()} type='submit'>
               Login
             </Button>
           </form>

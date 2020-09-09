@@ -46,5 +46,4 @@ To administrate the entries, you will need to generate an admin user in the data
 - create initial admin user if not exists
 - give the possibility to change admin credentials
 - improve styling for cards
-- investigate context behaviour being shortly not authenticated on refresh even if logged in and getting redirected to home
 - adjust interest link keyword from Github to dependent on link

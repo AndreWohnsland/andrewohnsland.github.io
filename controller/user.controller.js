@@ -2,7 +2,7 @@ let User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const { AppError } = require('../middlewares/errorHandler');
 
-async function addUser(req, res) {
+async function addUser(req, res, next) {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -13,7 +13,7 @@ async function addUser(req, res) {
     .catch((err) => next(new AppError('Error: ' + err, 400)));
 }
 
-async function login(req, res) {
+async function login(req, res, next) {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -26,7 +26,7 @@ async function login(req, res) {
     .catch((err) => next(new AppError('Error: ' + err, 400)));
 }
 
-async function getAuth(req, res) {
+async function getAuth(req, res, next) {
   res.status(200).json('Authentication suceeded');
 }
 

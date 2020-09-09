@@ -7,13 +7,28 @@ class AuthContextProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuth: false,
+      isAuth: async () => {
+        return await axios
+          .get('http://localhost:5000/api/user/auth', {
+            withCredentials: true,
+          })
+          .then(() => {
+            return true;
+          })
+          .catch(() => {
+            return false;
+          });
+      },
     };
   }
 
   componentDidMount() {
     this.getAuthStatus();
   }
+
+  setIsAuth = (state) => {
+    this.setState({ isAuth: state });
+  };
 
   getAuthStatus = async () => {
     return await axios
@@ -30,7 +45,7 @@ class AuthContextProvider extends Component {
 
   render() {
     return (
-      <AuthContext.Provider value={{ ...this.state, getAuthStatus: this.getAuthStatus }}>
+      <AuthContext.Provider value={{ ...this.state, setIsAuth: this.setIsAuth, getAuthStatus: this.getAuthStatus }}>
         {this.props.children}
       </AuthContext.Provider>
     );

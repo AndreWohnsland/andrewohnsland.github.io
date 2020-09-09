@@ -9,10 +9,10 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setValid] = useState(true);
-  const { getAuthStatus, isAuth } = useContext(AuthContext);
+  const { setIsAuth, isAuth } = useContext(AuthContext);
   const [message, setMessage] = useState('');
 
-  if (isAuth) history.push('/admin/projects');
+  if (isAuth === true) history.push('/admin/projects');
 
   function validateForm() {
     return username.length > 0 && password.length > 0;
@@ -34,7 +34,7 @@ const Login = () => {
         console.log(res);
         if (res.statusText === 'OK') {
           setValid(true);
-          getAuthStatus();
+          setIsAuth(true);
           history.push('/admin/projects');
         } else {
           setValid(false);

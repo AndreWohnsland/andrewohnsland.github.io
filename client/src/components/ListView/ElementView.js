@@ -23,6 +23,10 @@ const ElementView = (props) => {
   const { data, status } = useQuery(`${elementType}?id=${id}`, fetchData, { ...queryOption });
   const dateInfoStyle = { fontWeight: 'lighter', marginBottom: '0.1rem' };
   const descStyle = { marginBottom: '2rem' };
+  let linkDescription = 'at Github';
+  if (data !== undefined && data.link !== undefined) {
+    linkDescription = data.link.includes('github') ? 'at Github' : 'here for more impressions';
+  }
 
   return (
     <>
@@ -52,7 +56,7 @@ const ElementView = (props) => {
             ></ReactMarkdown>
             {elementType === 'project' && (
               <p>
-                Interested? Look into the project at <a href={data.link}>Github.</a>
+                Interested? Look into the project <a href={data.link}>{linkDescription}</a>.
               </p>
             )}
           </>

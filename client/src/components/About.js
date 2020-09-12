@@ -21,6 +21,7 @@ const About = () => {
           <li>React Query</li>
           <li>React Markdown</li>
           <li>React Syntax Highlighter</li>
+          <li>Axios</li>
         </ul>
         <p style={{ textAlign: 'left', paddingLeft: '12%', marginBottom: '0px' }}>For the Backend:</p>
         <ul style={{ listStylePosition: 'inside', textAlign: 'left', paddingLeft: '12%' }}>

@@ -43,7 +43,7 @@ To administrate the entries, you will need to generate an admin user in the data
 
 ## ToDo's
 
-- create initial admin user if not exists
+- implement logging of post / put / delete requests (admin only level)
 - give the possibility to change admin credentials
 - improve styling for cards
 - adjust interest link keyword from Github to dependent on link

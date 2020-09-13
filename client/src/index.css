@@ -112,8 +112,9 @@ code {
   padding-right: 20px;
   padding-left: 20px;
   padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: rgb(18, 20, 42);
+  padding-bottom: 20px;
+  background-color: rgb(29, 29, 29);
   color: rgb(240, 241, 255);
   border-radius: 10px;
+  margin-bottom: 20px;
 }

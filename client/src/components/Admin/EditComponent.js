@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import Dropdown from './Forms/Dropdown';
 import TextInput from './Forms/TextInput';
@@ -129,32 +130,28 @@ class EditComponent extends Component {
                   <InfoBox res={this.state.res} name={this.state.messageTitle} handleShow={this.handleMessage} /> <br />{' '}
                 </>
               )}
-              <form onSubmit={this.onSubmit}>
-                <Dropdown
-                  label={'Select your project'}
-                  value={this.state.elementId}
-                  onChange={this.selectElement}
-                  options={options}
-                />
-                <TextInput label={'Title'} name={'title'} value={this.state.title} onChange={this.handleAnyChange} />
-                <TextInput
-                  label={'Description'}
-                  name={'description'}
-                  value={this.state.description}
-                  onChange={this.handleAnyChange}
-                />
-                {this.props.elementType === 'project' && (
-                  <TextInput label={'Link'} name={'link'} value={this.state.link} onChange={this.handleAnyChange} />
-                )}
-                <TextArea label={'Text'} name={'text'} value={this.state.text} onChange={this.handleAnyChange} />
-                <div className='form-group'>
-                  <input
-                    type='submit'
-                    value={this.state.elementId === '' ? 'Create' : 'Change'}
-                    className='btn btn-primary'
+              <div className='user-form-container'>
+                <form onSubmit={this.onSubmit}>
+                  <Dropdown
+                    label={'Select your project'}
+                    value={this.state.elementId}
+                    onChange={this.selectElement}
+                    options={options}
                   />
-                </div>
-              </form>
+                  <TextInput label={'Title'} name={'title'} value={this.state.title} onChange={this.handleAnyChange} />
+                  <TextInput
+                    label={'Description'}
+                    name={'description'}
+                    value={this.state.description}
+                    onChange={this.handleAnyChange}
+                  />
+                  {this.props.elementType === 'project' && (
+                    <TextInput label={'Link'} name={'link'} value={this.state.link} onChange={this.handleAnyChange} />
+                  )}
+                  <TextArea label={'Text'} name={'text'} value={this.state.text} onChange={this.handleAnyChange} />
+                  <Button type='submit'>{this.state.elementId === '' ? 'Create' : 'Change'}</Button>
+                </form>
+              </div>
             </>
           ) : (
             <p>Not authentificated!</p>

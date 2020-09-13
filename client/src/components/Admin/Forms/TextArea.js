@@ -1,11 +1,12 @@
 import React from 'react';
+import { Form } from 'react-bootstrap';
 
 const TextArea = ({ label, name, value, onChange }) => {
   return (
-    <div className='form-group'>
-      <label>{label}:</label>
-      <textarea rows='8' type='text' name={name} required className='form-control' value={value} onChange={onChange} />
-    </div>
+    <Form.Group controlId={name}>
+      <Form.Label>{label}:</Form.Label>
+      <Form.Control name={name} as='textarea' rows='8' value={value} onChange={onChange} />
+    </Form.Group>
   );
 };
 

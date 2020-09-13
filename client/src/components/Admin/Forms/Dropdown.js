@@ -1,10 +1,11 @@
 import React from 'react';
+import { Form } from 'react-bootstrap';
 
 const Dropdown = ({ label, value, onChange, options }) => {
   return (
-    <div>
-      <label>{label}:</label>
-      <select className='form-control' value={value} onChange={onChange}>
+    <Form.Group controlId={label}>
+      <Form.Label>{label}:</Form.Label>
+      <Form.Control as='select' value={value} onChange={onChange}>
         {options.map((option) => {
           return (
             <option key={option.value} value={option.value}>
@@ -12,9 +13,8 @@ const Dropdown = ({ label, value, onChange, options }) => {
             </option>
           );
         })}
-      </select>
-      <br />
-    </div>
+      </Form.Control>
+    </Form.Group>
   );
 };
 

@@ -62,7 +62,6 @@ const Login = () => {
       <div className='main-header text-center'>
         <h1>Welcome Boss</h1>
       </div>
-      <br />
       <div className='main-text user-input-container'>
         <div className='Login user-form-container'>
           <form onSubmit={handleSubmit}>

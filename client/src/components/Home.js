@@ -7,7 +7,6 @@ class Home extends Component {
         <div className='main-header text-center'>
           <h1>Hi there!</h1>
         </div>
-        <br />
         <div className='main-text'>
           <p>
             Welcome to my little humble homepage. I am Andre, a Software, IoT and Data Science enthusiast. I enjoy

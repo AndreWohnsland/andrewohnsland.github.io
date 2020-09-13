@@ -121,7 +121,6 @@ class EditComponent extends Component {
         <div className='main-header text-center'>
           <h1>Edit {this.capitalizeElement()} Entries</h1>
         </div>
-        <br />
         <div className='main-text'>
           {isAuth ? (
             <>

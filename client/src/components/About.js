@@ -6,7 +6,6 @@ const About = () => {
       <div className='main-header text-center'>
         <h1>Made with React</h1>
       </div>
-      <br />
       <div className='main-text'>
         <p>
           This page was created while practising and improving my react knowledge. It is also used to present some of my

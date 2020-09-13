@@ -47,7 +47,6 @@ const ChangePassword = () => {
       <div className='main-header text-center'>
         <h1>Make it safer</h1>
       </div>
-      <br />
       <div className='main-text user-input-container'>
         {showMessage && (
           <>

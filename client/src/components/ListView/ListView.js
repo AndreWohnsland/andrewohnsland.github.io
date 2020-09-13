@@ -16,7 +16,6 @@ const ListView = ({ elementType, header }) => {
       <div className='text-center main-header'>
         <h1>{header}</h1>
       </div>
-      <br />
       <div className='main-text'>
         {status === 'loading' && <p>Loading ....</p>}
         {status === 'error' && <p>Error fetching data!</p>}

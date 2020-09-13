@@ -28,10 +28,9 @@ const Login = () => {
           withCredentials: true,
           headers: { 'Content-Type': 'application/json' },
           validateStatus: () => true,
-        } //, withCredentials: true
+        }
       )
       .then((res) => {
-        console.log(res);
         if (res.statusText === 'OK') {
           setValid(true);
           setIsAuth(true);
@@ -46,20 +45,6 @@ const Login = () => {
         setMessage(err.data);
       });
   }
-
-  const divStyle = {
-    margin: 'auto',
-    maxWidth: '400px',
-  };
-  const loginStyle = {
-    paddingRight: '20px',
-    paddingLeft: '20px',
-    paddingTop: '10px',
-    paddingBottom: '20px',
-    backgroundColor: 'rgb(18, 20, 42)',
-    color: 'rgb(240, 241, 255)',
-    borderRadius: '10px',
-  };
   const errorStyle = {
     backgroundColor: 'rgb(255, 141, 141)',
     color: 'rgb(146, 0, 0)',
@@ -78,8 +63,8 @@ const Login = () => {
         <h1>Welcome Boss</h1>
       </div>
       <br />
-      <div className='main-text' style={divStyle}>
-        <div className='Login' style={loginStyle}>
+      <div className='main-text user-input-container'>
+        <div className='Login user-form-container'>
           <form onSubmit={handleSubmit}>
             <Form.Group controlId='email'>
               <Form.Label>Name</Form.Label>

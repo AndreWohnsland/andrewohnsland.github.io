@@ -102,3 +102,18 @@ code {
 .blog-md pre {
   border-radius: 10px;
 }
+
+.user-input-container {
+  margin: auto;
+  max-width: 400px;
+}
+
+.user-form-container {
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(18, 20, 42);
+  color: rgb(240, 241, 255);
+  border-radius: 10px;
+}

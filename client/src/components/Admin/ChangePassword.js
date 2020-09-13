@@ -81,7 +81,7 @@ const ChangePassword = () => {
             </Button>
           </form>
         </div>
-        {!isLongEnough() && <p>The password needs to be at least 8 Characters. </p>}
+        {!isLongEnough() && <p style={{ marginTop: '10px' }}>The password needs to be at least 8 Characters. </p>}
         {!bothNewPasswordsAreSame() && <p>Both, the new and repeated password needs to be identical. </p>}
       </div>
     </div>

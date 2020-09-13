@@ -13,9 +13,12 @@ async function addUser(req, res, next) {
 }
 
 async function changePassword(req, res, next) {
-  const { username, password, newPassword } = req.body;
+  const { username, password, newPassword, repeatedPassword } = req.body;
   if (newPassword.length < 8) {
     return next(new AppError('Password needs to have at least 8 letters', 400));
+  }
+  if (newPassword !== repeatedPassword) {
+    return next(new AppError('The new and repeated password are not the same', 400));
   }
   User.login(username, password)
     .then((user) => {

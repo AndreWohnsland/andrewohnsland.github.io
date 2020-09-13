@@ -39,6 +39,9 @@ class NavBar extends Component {
                   <LinkContainer to='/admin/blog'>
                     <NavDropdown.Item>Edit Blog Article</NavDropdown.Item>
                   </LinkContainer>
+                  <LinkContainer to='/admin/changepassword'>
+                    <NavDropdown.Item>Change Password</NavDropdown.Item>
+                  </LinkContainer>
                 </NavDropdown>
               )}
               <Nav.Link href='https://github.com/AndreWohnsland'>My Github</Nav.Link>

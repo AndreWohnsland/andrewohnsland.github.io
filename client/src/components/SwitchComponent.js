@@ -8,6 +8,7 @@ import Login from './Admin/Login';
 import EditComponent from './Admin/EditComponent';
 import { AuthContext } from '../contexts/AuthContext';
 import PrivateRoute from './Admin/PrivateRoute';
+import ChangePassword from './Admin/ChangePassword';
 
 const SwitchComponent = () => {
   const { isAuth } = useContext(AuthContext);
@@ -24,6 +25,7 @@ const SwitchComponent = () => {
 
       <PrivateRoute path='/admin/projects' isAuth={isAuth} component={() => <EditComponent elementType='project' />} />
       <PrivateRoute path='/admin/blog' isAuth={isAuth} component={() => <EditComponent elementType='blog' />} />
+      <PrivateRoute path='/admin/changepassword' isAuth={isAuth} component={ChangePassword} />
       <Redirect from='*' to='/' />
     </Switch>
   );

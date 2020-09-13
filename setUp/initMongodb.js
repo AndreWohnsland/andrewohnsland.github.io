@@ -7,8 +7,12 @@ function initMongodb() {
     const existingUser = await User.find();
     if (existingUser.length === 0) {
       console.log('No user exists, generating default user ...');
-      const newUser = User({ username: 'admin', password: 'admin' });
-      await newUser.save().then(console.los('User admin was generated. Please keep in mind changing creds.'));
+      const newUser = User({ username: 'admin', password: 'adminadmin' });
+      await newUser
+        .save()
+        .then(
+          console.los('User "admin" with password "adminadmin" was generated. Please keep in mind changing creds.')
+        );
     }
   });
   const connection = mongoose.connection;

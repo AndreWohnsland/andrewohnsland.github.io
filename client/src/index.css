@@ -38,8 +38,7 @@ code {
 .card-div {
   background-color: rgb(0, 123, 255);
   border-radius: 5px;
-  box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.61), -1px 0px 0px rgba(0, 0, 0, 0.246), 2px 0px 1px rgba(0, 0, 0, 0.233),
-    0px 2px 13px rgba(0, 0, 0, 0.486);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.205), -1px 0px 1px rgba(0, 0, 0, 0.178);
   color: #ececec;
   text-decoration: none !important;
   padding: 1px;
@@ -49,13 +48,13 @@ code {
 .card-div:hover,
 .card-div:focus,
 .card-div:active {
-  background-color: rgb(67, 80, 255);
+  background-color: rgb(0, 99, 228);
   text-decoration: none !important;
   cursor: pointer;
   transition: 0.5s;
   transform: translate(20px, 0px);
-  box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.61), -1px 0px 0px rgba(0, 0, 0, 0.246), 2px 0px 1px rgba(0, 0, 0, 0.233),
-    0px 2px 13px rgba(0, 0, 0, 0.486), -30px 15px 20px rgba(0, 0, 0, 0.137);
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3), -2px 2px 3px rgba(0, 0, 0, 0.205), -30px 15px 20px rgba(0, 0, 0, 0.137),
+    1px 0px 1px rgba(0, 0, 0, 0.178);
 }
 
 .card-title {

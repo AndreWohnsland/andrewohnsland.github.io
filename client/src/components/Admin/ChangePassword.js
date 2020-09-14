@@ -54,23 +54,37 @@ const ChangePassword = () => {
           </>
         )}
         <div className='Login user-form-container'>
+          <p>Change your password</p>
           <form onSubmit={handleSubmit}>
             <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
-              <Form.Control autoFocus type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+              <Form.Control
+                autoFocus
+                type='text'
+                placeholder='Name'
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </Form.Group>
             <Form.Group controlId='password'>
-              <Form.Label>Password</Form.Label>
-              <Form.Control value={password} onChange={(e) => setPassword(e.target.value)} type='password' />
+              <Form.Control
+                value={password}
+                placeholder='Password'
+                onChange={(e) => setPassword(e.target.value)}
+                type='password'
+              />
             </Form.Group>
             <Form.Group controlId='newPassword'>
-              <Form.Label>New Password</Form.Label>
-              <Form.Control value={newPassword} onChange={(e) => setNewPassword(e.target.value)} type='password' />
+              <Form.Control
+                value={newPassword}
+                placeholder='New Password'
+                onChange={(e) => setNewPassword(e.target.value)}
+                type='password'
+              />
             </Form.Group>
             <Form.Group controlId='repeatedPassword'>
-              <Form.Label>Repeat New Password</Form.Label>
               <Form.Control
                 value={repeatedPassword}
+                placeholder='Repeat New Password'
                 onChange={(e) => setRepeatedPassword(e.target.value)}
                 type='password'
               />

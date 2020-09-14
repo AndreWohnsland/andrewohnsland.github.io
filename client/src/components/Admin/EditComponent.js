@@ -132,7 +132,7 @@ class EditComponent extends Component {
               <div className='user-form-container'>
                 <form onSubmit={this.onSubmit}>
                   <Dropdown
-                    label={'Select your project'}
+                    label={`Select your ${this.props.elementType}`}
                     value={this.state.elementId}
                     onChange={this.selectElement}
                     options={options}

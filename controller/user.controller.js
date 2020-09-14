@@ -44,7 +44,7 @@ async function getAuth(req, res, next) {
   res.status(200).json('Authentication suceeded');
 }
 
-const maxAgeInSeconds = 24 * 60 * 60;
+const maxAgeInSeconds = 24 * 60 * 60 * 7;
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: maxAgeInSeconds,

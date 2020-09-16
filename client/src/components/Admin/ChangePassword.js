@@ -36,7 +36,6 @@ const ChangePassword = () => {
         }
       )
       .then((res) => {
-        console.log(res);
         setMessage(res);
         setShowMessage(true);
       });

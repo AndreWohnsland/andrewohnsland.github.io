@@ -32,13 +32,13 @@ const Login = () => {
       )
       .then((res) => {
         if (res.statusText === 'OK') {
-          setValid(true);
           setIsAuth(true);
           history.push('/admin/projects');
+          return;
         } else {
           setValid(false);
         }
-        setMessage(res.data);
+        setMessage(res.data.message);
       })
       .catch((err) => {
         setValid(false);

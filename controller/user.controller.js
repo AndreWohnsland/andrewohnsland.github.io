@@ -37,7 +37,7 @@ async function login(req, res, next) {
       res.cookie('jwt', token, { httpOnly: true, maxAge: maxAgeInSeconds * 1000, sameSite: 'lax' });
       res.status(200).json('Login successful!');
     })
-    .catch((err) => next(new AppError('Error: ' + err, 400)));
+    .catch((err) => next(new AppError(`${err}`, 400)));
 }
 
 async function getAuth(req, res, next) {

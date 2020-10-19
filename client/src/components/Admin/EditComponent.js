@@ -126,7 +126,8 @@ class EditComponent extends Component {
             <>
               {this.state.showMessage && (
                 <>
-                  <InfoBox res={this.state.res} name={this.state.messageTitle} handleShow={this.handleMessage} /> <br />{' '}
+                  <InfoBox res={this.state.res} name={this.state.messageTitle} handleShow={this.handleMessage} />
+                  <br />
                 </>
               )}
               <div className='user-form-container'>

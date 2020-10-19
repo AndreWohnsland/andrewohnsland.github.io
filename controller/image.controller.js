@@ -1,15 +1,11 @@
-var fs = require('fs');
-var path = require('path');
 let Image = require('../models/image.model');
 const { AppError } = require('../middlewares/errorHandler');
 
 async function addImage(req, res, next) {
   const { name, description } = req.body;
   let receivedFile = req.files;
-  if (receivedFile === undefined || receivedFile === null) return next(new AppError('No file given'));
+  if (receivedFile === undefined || receivedFile === null) return next(new AppError('No file given', 400));
   receivedFile = receivedFile.file;
-  console.log(name, description, receivedFile);
-  // return res.json('implement me');
   const img = {
     data: receivedFile.data,
     contentType: receivedFile.mimetype,
@@ -23,8 +19,10 @@ async function addImage(req, res, next) {
 
 async function getImages(req, res, next) {
   Image.find()
-    .then((img) => res.json({ data: img }))
-    .catch((err) => next(new AppError(`Error getting pictures ${err}`)));
+    .then((img) => {
+      res.json(img);
+    })
+    .catch((err) => next(new AppError(`Error getting pictures ${err}`, 400)));
 }
 
 module.exports = { addImage, getImages };

@@ -5,7 +5,7 @@ const Footer = () => {
     <div className='footer'>
       <footer>
         <div className='left-footer' style={{ float: 'left' }}>
-          &copy;{new Date().getFullYear()} A. Wohnsland
+          &copy; {new Date().getFullYear()} A. Wohnsland
         </div>
         <div className='right-footer' style={{ float: 'right' }}>
           Made with React{' '}

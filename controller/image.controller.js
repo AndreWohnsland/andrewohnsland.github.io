@@ -19,6 +19,7 @@ async function addImage(req, res, next) {
 
 async function getImages(req, res, next) {
   Image.find()
+    .sort({ createdAt: -1 })
     .then((img) => {
       res.json(img);
     })

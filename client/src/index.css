@@ -129,26 +129,3 @@ code {
   border-radius: 10px;
   margin-bottom: 20px;
 }
-
-.image-modal {
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  justify-content: center;
-}
-
-.picture-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.image-card {
-  margin: 0px 2px 4px 2px;
-}
-
-.image {
-  max-height: 250px;
-  width: auto;
-  /* border-radius: 5px 5px 0px 0px; */
-}

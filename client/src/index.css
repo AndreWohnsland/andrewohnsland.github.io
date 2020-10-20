@@ -118,3 +118,27 @@ code {
   border-radius: 10px;
   margin-bottom: 20px;
 }
+
+.image {
+  height: 250px;
+  width: auto;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.picture-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-card {
+  margin: 0px 10px 20px 10px;
+  padding: 2px;
+  background-color: rgb(29, 29, 29);
+  border-radius: 5px;
+}
+
+.image-card p {
+  text-align: center;
+  margin: 0px 10px 2px 10px;
+}

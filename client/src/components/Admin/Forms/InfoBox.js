@@ -3,7 +3,7 @@ import React from 'react';
 const InfoBox = ({ res, name, handleShow }) => {
   const successStyle = { backgroundColor: 'rgb(119, 255, 183)', color: 'rgb(0, 160, 53)' };
   const failStyle = { backgroundColor: 'rgb(255, 141, 141)', color: 'rgb(146, 0, 0)' };
-  let style = Math.floor(res.status / 100) === 4 ? failStyle : successStyle;
+  let style = res.status >= 400 ? failStyle : successStyle;
   style = {
     ...style,
     borderRadius: '5px',

@@ -7,7 +7,6 @@ import InfoBox from './Forms/InfoBox';
 const jpegType = 'image/jpeg';
 
 const PictureUpload = () => {
-  const [description, setDescription] = useState('');
   const [name, setName] = useState('');
   const [image, setImage] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
@@ -23,7 +22,6 @@ const PictureUpload = () => {
     const data = new FormData();
     data.append('file', image);
     data.append('name', name);
-    data.append('description', description);
     axios
       .post('http://localhost:5000/api/image/add', data, { withCredentials: true, validateStatus: () => true })
       .then((res) => {
@@ -35,7 +33,6 @@ const PictureUpload = () => {
   };
 
   const clearState = () => {
-    setDescription('');
     setName('');
     setImage(null);
   };
@@ -54,12 +51,6 @@ const PictureUpload = () => {
         )}
         <div className='user-form-container'>
           <form onSubmit={onSubmit}>
-            <TextInput
-              label={'Description'}
-              name={'description'}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
             <TextInput label={'Name'} name={'name'} value={name} onChange={(e) => setName(e.target.value)} />
             <Form.Group>
               <Form.Label>

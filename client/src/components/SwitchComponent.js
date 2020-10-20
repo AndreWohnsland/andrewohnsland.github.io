@@ -10,6 +10,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import PrivateRoute from './Admin/PrivateRoute';
 import ChangePassword from './Admin/ChangePassword';
 import PictureUpload from './Admin/PictureUpload';
+import PictureView from './PictureView/PictureList';
 
 const SwitchComponent = () => {
   const { isAuth } = useContext(AuthContext);
@@ -21,6 +22,7 @@ const SwitchComponent = () => {
       <Route exact path='/project/:_id' component={(props) => <ElementView {...props} elementType='project' />} />
       <Route exact path='/blog' component={() => <ListView elementType='blog' header="It's Storytime" />} />
       <Route exact path='/blog/:_id' component={(props) => <ElementView {...props} elementType='blog' />} />
+      <Route exact path='/pictures' component={PictureView} />
 
       <Route path='/admin/login' component={Login} />
 

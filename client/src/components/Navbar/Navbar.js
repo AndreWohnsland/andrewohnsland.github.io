@@ -25,6 +25,9 @@ class NavBar extends Component {
               <LinkContainer to='/blog'>
                 <Nav.Link>Blog</Nav.Link>
               </LinkContainer>
+              <LinkContainer to='/pictures'>
+                <Nav.Link>Pictures</Nav.Link>
+              </LinkContainer>
               <LinkContainer to='/about'>
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>

@@ -51,13 +51,11 @@ const PictureUpload = () => {
         )}
         <div className='user-form-container'>
           <form onSubmit={onSubmit}>
-            <TextInput label={'Name'} name={'name'} value={name} onChange={(e) => setName(e.target.value)} />
+            <TextInput label='Name' name='name' value={name} onChange={(e) => setName(e.target.value)} />
             <Form.Group>
-              <Form.Label>
-                <span>Please select picture</span>
-              </Form.Label>
               <Form.File
                 name='uploadImage'
+                label='Please select picture'
                 required
                 accept={`${jpegType}`}
                 onChange={(e) => setImage(e.target.files[0])}

@@ -28,7 +28,7 @@ const PictureView = ({ title }) => {
   const { data, status } = useQuery(pictureType, fetchpictures, { staleTime: 120000, cacheTime: 3600000 });
 
   return (
-    <div>
+    <>
       <div className='text-center main-header'>
         <h1>{title}</h1>
       </div>
@@ -39,7 +39,7 @@ const PictureView = ({ title }) => {
           <>{data.length > 0 ? <Gallery photos={data} direction={'column'} /> : <p>Currently no Pictures here</p>}</>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

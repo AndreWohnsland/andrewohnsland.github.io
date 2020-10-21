@@ -2,11 +2,11 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div>
+    <>
       <div className='main-header text-center'>
         <h1>Made with React</h1>
       </div>
-      <div className='main-text'>
+      <div className='main-text-page'>
         <p>
           This page was created while practising and improving my react knowledge. It is also used to present some of my
           other coding projects and give me the possibility to write blog entries. Here is a list of the mandatory tools
@@ -32,7 +32,7 @@ const About = () => {
           <li>Bcrypt</li>
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

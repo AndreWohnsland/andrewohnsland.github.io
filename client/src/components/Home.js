@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 class Home extends Component {
   render() {
     return (
-      <div>
+      <>
         <div className='main-header text-center'>
           <h1>Hi there!</h1>
         </div>
-        <div className='main-text'>
+        <div className='main-text-page'>
           <p>
             Welcome to my little humble homepage. I am Andre, a Software, IoT and Data Science enthusiast. I enjoy
             spending my free time learning new technologies and tinker around with soft- and hardware of all kinds.
@@ -29,7 +29,7 @@ class Home extends Component {
             can discover even more information!
           </p>
         </div>
-      </div>
+      </>
     );
   }
 }

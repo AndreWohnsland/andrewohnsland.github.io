@@ -10,8 +10,8 @@ class NavBar extends Component {
   render() {
     const { isAuth } = this.context;
     return (
-      <div>
-        <Navbar fixed='top' collapseOnSelect expand='md' bg='primary' variant='dark'>
+      <>
+        <Navbar fixed='top' collapseOnSelect expand='lg' bg='primary' variant='dark'>
           <Navbar.Brand>Andre Wohnsland</Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
@@ -62,7 +62,7 @@ class NavBar extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-      </div>
+      </>
     );
   }
 }

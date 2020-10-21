@@ -10,6 +10,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import PrivateRoute from './Admin/PrivateRoute';
 import ChangePassword from './Admin/ChangePassword';
 import PictureUpload from './Admin/PictureUpload';
+import PictureDelete from './Admin/PictureDelete';
 import PictureList from './PictureView/PictureList';
 
 const SwitchComponent = () => {
@@ -29,7 +30,8 @@ const SwitchComponent = () => {
 
       <PrivateRoute path='/admin/projects' isAuth={isAuth} component={() => <EditComponent elementType='project' />} />
       <PrivateRoute path='/admin/blog' isAuth={isAuth} component={() => <EditComponent elementType='blog' />} />
-      <PrivateRoute path='/admin/image' isAuth={isAuth} component={PictureUpload} />
+      <PrivateRoute exact path='/admin/image' isAuth={isAuth} component={PictureUpload} />
+      <PrivateRoute exact path='/admin/image/delete' isAuth={isAuth} component={PictureDelete} />
       <PrivateRoute path='/admin/changepassword' isAuth={isAuth} component={ChangePassword} />
       <Redirect from='*' to='/' />
     </Switch>

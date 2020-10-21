@@ -25,9 +25,14 @@ class NavBar extends Component {
               <LinkContainer to='/blog'>
                 <Nav.Link>Blog</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/pictures'>
-                <Nav.Link>Pictures</Nav.Link>
-              </LinkContainer>
+              <NavDropdown title='Pictures' id='collasible-nav-dropdown'>
+                <LinkContainer to='/pictures/fotography'>
+                  <NavDropdown.Item>Fotography</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/pictures/woodwork'>
+                  <NavDropdown.Item>Woodwork</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
               <LinkContainer to='/about'>
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>

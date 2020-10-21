@@ -24,8 +24,9 @@ class Home extends Component {
           </p>
           <p>
             In the meantime explore the different section. You can find them in the header. There is a list of some of
-            my projects (mostly programming topics) and a section for blog entries. For now, that's all, maybe next time
-            you can discover even more information!
+            my projects (mostly programming topics) and a section for blog entries. Also, there are some pictures from
+            my hobby fotography and my other passion, woodworking with resign. For now, that's all, maybe next time you
+            can discover even more information!
           </p>
         </div>
       </div>

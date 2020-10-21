@@ -29,7 +29,7 @@ const About = () => {
           <li>CORS</li>
           <li>Jsonwebtoken</li>
           <li>Cookie Parser</li>
-          <li>Brypt</li>
+          <li>Bcrypt</li>
         </ul>
       </div>
     </div>

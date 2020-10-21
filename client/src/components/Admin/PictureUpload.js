@@ -20,6 +20,10 @@ const PictureUpload = () => {
     { value: 'woodwork', name: 'Woodwork' },
   ];
 
+  const validateSubmit = () => {
+    return name.length > 0 && image !== null;
+  };
+
   const handleMessage = () => {
     setShowMessage(!showMessage);
   };
@@ -48,7 +52,7 @@ const PictureUpload = () => {
   return (
     <div>
       <div className='main-header text-center'>
-        <h1>Edit Image Entries</h1>
+        <h1>Add Image</h1>
       </div>
       <div className='main-text'>
         {showMessage && (
@@ -75,7 +79,9 @@ const PictureUpload = () => {
                 onChange={(e) => setImage(e.target.files[0])}
               />
             </Form.Group>
-            <Button type='submit'>Upload</Button>
+            <Button type='submit' disabled={!validateSubmit()}>
+              Upload
+            </Button>
           </form>
         </div>
       </div>

@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const imageSchema = new mongoose.Schema(
   {
     name: { type: String, required: [true, 'Please enter a name'] },
-    description: { type: String, required: [true, 'Please enter a description'] },
+    width: Number,
+    height: Number,
     img: {
       data: Buffer,
       contentType: String,
     },
+    category: String,
   },
   { timestamps: true }
 );

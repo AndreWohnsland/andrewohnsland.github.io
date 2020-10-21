@@ -21,6 +21,11 @@ class EditComponent extends Component {
     messageTitle: '',
   };
 
+  validateSubmit = () => {
+    const { title, description, text } = this.state;
+    return title.length > 0 && description.length > 0 && text.length > 0;
+  };
+
   handleMessage = () => {
     this.setState({ showMessage: !this.state.showMessage });
   };
@@ -149,7 +154,9 @@ class EditComponent extends Component {
                     <TextInput label={'Link'} name={'link'} value={this.state.link} onChange={this.handleAnyChange} />
                   )}
                   <TextArea label={'Text'} name={'text'} value={this.state.text} onChange={this.handleAnyChange} />
-                  <Button type='submit'>{this.state.elementId === '' ? 'Create' : 'Change'}</Button>
+                  <Button type='submit' disabled={!this.validateSubmit()}>
+                    {this.state.elementId === '' ? 'Create' : 'Change'}
+                  </Button>
                 </form>
               </div>
             </>

@@ -52,4 +52,22 @@ async function getWoodworks(req, res, next) {
     .catch((err) => next(new AppError(`Error getting pictures ${err}`, 400)));
 }
 
-module.exports = { addImage, getFotographs, getWoodworks };
+async function getAllDetails(req, res, next) {
+  Image.find({}, { name: 1, category: 1 })
+    .sort({ createdAt: -1 })
+    .then((img) => {
+      res.json(img);
+    })
+    .catch((err) => next(new AppError(`Error getting pictures ${err}`, 400)));
+}
+
+async function deleteImage(req, res, next) {
+  Image.findByIdAndDelete(req.params.id)
+    .then((img) => {
+      if (img) res.json(`Image with name: ${img.name} was deleted.`);
+      else return next(new AppError(`This id/picture does not exits`, 400));
+    })
+    .catch((err) => next(new AppError(`Error deleting image: ${err}`, 400)));
+}
+
+module.exports = { addImage, getFotographs, getWoodworks, getAllDetails, deleteImage };

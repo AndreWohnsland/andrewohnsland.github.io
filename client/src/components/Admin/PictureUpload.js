@@ -3,15 +3,22 @@ import TextInput from './Forms/TextInput';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import InfoBox from './Forms/InfoBox';
+import Dropdown from './Forms/Dropdown';
 
 const jpegType = 'image/jpeg';
 
 const PictureUpload = () => {
   const [name, setName] = useState('');
   const [image, setImage] = useState(null);
+  const [category, setCategory] = useState('fotography');
   const [showMessage, setShowMessage] = useState(false);
   const [res, setRes] = useState('');
   const [messageTitle, setmessageTitle] = useState('');
+
+  const categoryOptions = [
+    { value: 'fotography', name: 'Fotography' },
+    { value: 'woodwork', name: 'Woodwork' },
+  ];
 
   const handleMessage = () => {
     setShowMessage(!showMessage);
@@ -22,6 +29,7 @@ const PictureUpload = () => {
     const data = new FormData();
     data.append('file', image);
     data.append('name', name);
+    data.append('category', category);
     axios
       .post('http://localhost:5000/api/image/add', data, { withCredentials: true, validateStatus: () => true })
       .then((res) => {
@@ -52,6 +60,12 @@ const PictureUpload = () => {
         <div className='user-form-container'>
           <form onSubmit={onSubmit}>
             <TextInput label='Name' name='name' value={name} onChange={(e) => setName(e.target.value)} />
+            <Dropdown
+              label={`Select category`}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              options={categoryOptions}
+            />
             <Form.Group>
               <Form.File
                 name='uploadImage'

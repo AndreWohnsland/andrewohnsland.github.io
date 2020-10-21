@@ -4,9 +4,10 @@ import axios from 'axios';
 import Gallery from 'react-photo-gallery';
 // import Carousel, { Modal, ModalGateway } from 'react-images';
 
-const PictureView = () => {
+const PictureView = ({ title }) => {
   // const [currentImage, setCurrentImage] = useState(0);
   // const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  const pictureType = title.toLowerCase();
 
   const arrayBufferToBase64 = (buffer) => {
     var binary = '';
@@ -16,7 +17,7 @@ const PictureView = () => {
   };
 
   const fetchpictures = async () => {
-    const { data } = await axios.get(`http://localhost:5000/api/image`);
+    const { data } = await axios.get(`http://localhost:5000/api/image/${pictureType}`);
     const returnData = await data.map((obj) => {
       return {
         width: obj['width'],
@@ -27,7 +28,7 @@ const PictureView = () => {
     });
     return returnData;
   };
-  const { data, status } = useQuery('pictures', fetchpictures, { staleTime: 120000, cacheTime: 3600000 });
+  const { data, status } = useQuery(pictureType, fetchpictures, { staleTime: 120000, cacheTime: 3600000 });
 
   // const openLightbox = useCallback((event, { photo, index }) => {
   //   setCurrentImage(index);
@@ -42,7 +43,7 @@ const PictureView = () => {
   return (
     <div>
       <div className='text-center main-header'>
-        <h1>Pictures</h1>
+        <h1>{title}</h1>
       </div>
       <div className='main-text-picture'>
         {status === 'loading' && <p>Loading ....</p>}

@@ -23,7 +23,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.main-text {
+.main-text,
+.main-text-page,
+.main-text-picture {
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -34,67 +36,53 @@ code {
 }
 
 .main-text-page {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  text-align: justify;
-  hyphens: auto;
   max-width: 900px;
   padding: 20px 20px 10px 20px;
-  /* background-color: #00000015; */
 }
 
 .main-text-picture {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  text-align: justify;
-  hyphens: auto;
   max-width: 1800px;
   padding: 20px;
 }
 
-.card-div {
-  background-color: rgb(0, 123, 255);
-  border-radius: 5px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.205), -1px 0px 1px rgba(0, 0, 0, 0.178);
-  color: #ececec;
-  text-decoration: none !important;
-  padding: 1px;
-  transition: 1s;
+.dropdown-menu {
+  background-color: rgb(240, 241, 255) !important;
 }
 
-.card-div:hover,
-.card-div:focus,
-.card-div:active {
-  background-color: rgb(0, 99, 228);
+.card-div {
+  color: #ececec;
+  background-color: rgb(29, 29, 29);
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.205), -1px 0px 1px rgba(0, 0, 0, 0.178);
   text-decoration: none !important;
-  cursor: pointer;
-  transition: 0.5s;
-  transform: translate(20px, 0px);
-  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3), -2px 2px 3px rgba(0, 0, 0, 0.205), -30px 15px 20px rgba(0, 0, 0, 0.137),
-    1px 0px 1px rgba(0, 0, 0, 0.178);
+  padding: 10px 18px 12px 18px;
+  margin-bottom: 20px;
+  transition: 1s;
+  &:hover,
+  &:focus,
+  &:active {
+    transition: 0.5s;
+    transform: translate(20px, 0px);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3), -2px 2px 3px rgba(0, 0, 0, 0.205),
+      -30px 15px 20px rgba(0, 0, 0, 0.137), 1px 0px 1px rgba(0, 0, 0, 0.178);
+  }
 }
 
 .card-title {
   text-align: left;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .card-info {
   text-align: left;
-  padding-left: 15px;
-  padding-right: 15px;
   font-weight: lighter;
 }
 
 .card-desc {
   text-align: left;
-  padding-left: 15px;
-  padding-right: 15px;
   text-align: justify;
+  margin-bottom: 0px;
 }
 
 .main-header {
@@ -118,8 +106,10 @@ code {
   box-shadow: 0px -2px 1px rgb(109, 109, 109);
 }
 
-.blog-md pre {
-  border-radius: 10px;
+.blog-md {
+  pre {
+    border-radius: 10px;
+  }
 }
 
 .user-input-container {

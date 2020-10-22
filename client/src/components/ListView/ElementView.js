@@ -37,8 +37,7 @@ const ElementView = (props) => {
           {status === 'success' && data.title}
         </h1>
       </div>
-      <br />
-      <div className='main-text'>
+      <div className='main-text-page'>
         {status === 'error' &&
           'Probably not a valid id :( If you get here from blog or project try getting back and forth again.'}
         {status === 'success' && (

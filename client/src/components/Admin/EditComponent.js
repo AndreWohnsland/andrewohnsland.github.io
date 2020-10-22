@@ -22,8 +22,13 @@ class EditComponent extends Component {
   };
 
   validateSubmit = () => {
-    const { title, description, text } = this.state;
-    return title.length > 0 && description.length > 0 && text.length > 0;
+    const { link, title, description, text } = this.state;
+    return (
+      title.length > 0 &&
+      description.length > 0 &&
+      text.length > 0 &&
+      (this.props.elementType === 'project' ? link.length > 0 : true)
+    );
   };
 
   handleMessage = () => {
@@ -53,15 +58,10 @@ class EditComponent extends Component {
   onSubmit = async (e) => {
     e.preventDefault();
     let response = null;
-    const dataToSend = {
-      elementId: this.state.elementId,
-      title: this.state.title,
-      description: this.state.description,
-      text: this.state.text,
-      link: this.state.link,
-    };
+    const { elementId, title, description, text, link } = this.state;
+    const dataToSend = { elementId, title, description, text, link };
     response = await this.postElement(dataToSend);
-    this.setState({ res: response, showMessage: true, messageTitle: this.state.title });
+    this.setState({ res: response, showMessage: true, messageTitle: title });
     if (response.statusText === 'OK') {
       this.clearState();
       this.loadElements();
@@ -79,8 +79,9 @@ class EditComponent extends Component {
   };
 
   generateLink = () => {
-    if (this.state.elementId) {
-      return `http://localhost:5000/api/${this.props.elementType}/update/${this.state.elementId}`;
+    const { elementId } = this.state;
+    if (elementId) {
+      return `http://localhost:5000/api/${this.props.elementType}/update/${elementId}`;
     } else {
       return `http://localhost:5000/api/${this.props.elementType}/add`;
     }
@@ -93,13 +94,15 @@ class EditComponent extends Component {
   };
 
   selectElement = (e) => {
-    let selectedElement = this.state.elements.filter((element) => {
+    const { elements } = this.state;
+    const { elementType } = this.props;
+    let selectedElement = elements.filter((element) => {
       return element._id === e.target.value;
     })[0];
     if (selectedElement === undefined) {
       this.clearState();
     } else {
-      let link = this.props.elementType === 'project' ? selectedElement.link : '';
+      const link = elementType === 'project' ? selectedElement.link : '';
       this.setState({
         elementId: e.target.value,
         title: selectedElement.title,
@@ -111,51 +114,49 @@ class EditComponent extends Component {
   };
 
   capitalizeElement = () => {
-    let element = this.props.elementType;
-    return element.charAt(0).toUpperCase() + element.slice(1);
+    const { elementType } = this.props;
+    return elementType.charAt(0).toUpperCase() + elementType.slice(1);
   };
 
   render() {
     const { isAuth } = this.context;
-    let options = [{ name: `Add new ${this.capitalizeElement()}`, value: '' }];
-    if (this.state.elements) {
-      options.push(...this.state.elements.map((element) => ({ name: element.title, value: element._id })));
+    const { elements, showMessage, res, messageTitle, title, description, link, text, elementId } = this.state;
+    const { elementType } = this.props;
+    const { capitalizeElement, handleMessage, selectElement, handleAnyChange, validateSubmit, onSubmit } = this;
+    let options = [{ name: `Add new ${capitalizeElement()}`, value: '' }];
+    if (elements) {
+      options.push(...elements.map((element) => ({ name: element.title, value: element._id })));
     }
     return (
       <div>
         <div className='main-header text-center'>
-          <h1>Edit {this.capitalizeElement()} Entries</h1>
+          <h1>Edit {capitalizeElement()} Entries</h1>
         </div>
         <div className='main-text'>
           {isAuth ? (
             <>
-              {this.state.showMessage && (
-                <>
-                  <InfoBox res={this.state.res} name={this.state.messageTitle} handleShow={this.handleMessage} />
-                  <br />
-                </>
-              )}
+              {showMessage && <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />}
               <div className='user-form-container'>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={onSubmit}>
                   <Dropdown
-                    label={`Select your ${this.props.elementType}`}
-                    value={this.state.elementId}
-                    onChange={this.selectElement}
+                    label={`Select your ${elementType}`}
+                    value={elementId}
+                    onChange={selectElement}
                     options={options}
                   />
-                  <TextInput label={'Title'} name={'title'} value={this.state.title} onChange={this.handleAnyChange} />
+                  <TextInput label={'Title'} name={'title'} value={title} onChange={handleAnyChange} />
                   <TextInput
                     label={'Description'}
                     name={'description'}
-                    value={this.state.description}
-                    onChange={this.handleAnyChange}
+                    value={description}
+                    onChange={handleAnyChange}
                   />
-                  {this.props.elementType === 'project' && (
-                    <TextInput label={'Link'} name={'link'} value={this.state.link} onChange={this.handleAnyChange} />
+                  {elementType === 'project' && (
+                    <TextInput label={'Link'} name={'link'} value={link} onChange={handleAnyChange} />
                   )}
-                  <TextArea label={'Text'} name={'text'} value={this.state.text} onChange={this.handleAnyChange} />
-                  <Button type='submit' disabled={!this.validateSubmit()}>
-                    {this.state.elementId === '' ? 'Create' : 'Change'}
+                  <TextArea label={'Text'} name={'text'} value={text} onChange={handleAnyChange} />
+                  <Button type='submit' disabled={!validateSubmit()}>
+                    {elementId === '' ? 'Create' : 'Change'}
                   </Button>
                 </form>
               </div>

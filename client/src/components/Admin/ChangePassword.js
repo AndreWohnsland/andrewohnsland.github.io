@@ -47,11 +47,7 @@ const ChangePassword = () => {
         <h1>Make it safer</h1>
       </div>
       <div className='main-text user-input-container'>
-        {showMessage && (
-          <>
-            <InfoBox res={message} name={'User change'} handleShow={() => setShowMessage(!showMessage)} /> <br />{' '}
-          </>
-        )}
+        {showMessage && <InfoBox res={message} name={'User change'} handleShow={() => setShowMessage(!showMessage)} />}
         <div className='Login user-form-container'>
           <p>Change your password</p>
           <form onSubmit={handleSubmit}>

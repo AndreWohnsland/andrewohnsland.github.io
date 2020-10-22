@@ -61,12 +61,7 @@ const PictureDelete = () => {
         <h1>Delete Image</h1>
       </div>
       <div className='main-text'>
-        {showMessage && (
-          <>
-            <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />
-            <br />
-          </>
-        )}
+        {showMessage && <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />}
         <div className='user-form-container'>
           <form onSubmit={onSubmit}>
             <Dropdown

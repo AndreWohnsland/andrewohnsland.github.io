@@ -11,6 +11,7 @@ const InfoBox = ({ res, name, handleShow }) => {
     paddingTop: '7px',
     paddingLeft: '15px',
     paddingRight: '15px',
+    marginBottom: '20px',
   };
   const buttonStyle = {
     color: style.color,
@@ -35,7 +36,7 @@ const InfoBox = ({ res, name, handleShow }) => {
         {res.status}, {res.statusText}:
       </h3>
       <p style={{ marginBottom: '0.5rem' }}>Data for "{name}":</p>
-      <p style={{ marginBottom: '0.5rem' }}>{res.data.message}</p>
+      <p style={{ marginBottom: '0.5rem' }}>{res.data.message || res.data}</p>
     </div>
   );
 };

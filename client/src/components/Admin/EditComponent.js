@@ -6,6 +6,7 @@ import TextInput from './Forms/TextInput';
 import TextArea from './Forms/TextArea';
 import InfoBox from './Forms/InfoBox';
 import { AuthContext } from '../../contexts/AuthContext';
+import CaptionBanner from '../CaptionBanner';
 
 class EditComponent extends Component {
   static contextType = AuthContext;
@@ -129,9 +130,7 @@ class EditComponent extends Component {
     }
     return (
       <div>
-        <div className='main-header text-center'>
-          <h1>Edit {capitalizeElement()} Entries</h1>
-        </div>
+        <CaptionBanner text={`Edit ${capitalizeElement()} Entries`} />
         <div className='main-text'>
           {isAuth ? (
             <>

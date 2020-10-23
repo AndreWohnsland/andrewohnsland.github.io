@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import InfoBox from './Forms/InfoBox';
 import Dropdown from './Forms/Dropdown';
+import CaptionBanner from '../CaptionBanner';
 
 const jpegType = 'image/jpeg';
 
@@ -51,9 +52,7 @@ const PictureUpload = () => {
 
   return (
     <div>
-      <div className='main-header text-center'>
-        <h1>Add Image</h1>
-      </div>
+      <CaptionBanner text='Add Image' />
       <div className='main-text'>
         {showMessage && <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />}
         <div className='user-form-container'>

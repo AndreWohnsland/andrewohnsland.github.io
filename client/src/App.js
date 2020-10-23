@@ -3,7 +3,6 @@ import NavBar from './components/Navbar/Navbar';
 import { BrowserRouter } from 'react-router-dom';
 import Footer from './components/Footer';
 import { ThemeContext } from './contexts/ThemeContext';
-import { ReactQueryDevtools } from 'react-query-devtools';
 import SwitchComponent from './components/SwitchComponent';
 
 class App extends Component {
@@ -26,7 +25,6 @@ class App extends Component {
             <Footer />
           </div>
         </BrowserRouter>
-        <ReactQueryDevtools initialIsOpen={false} />
       </>
     );
   }

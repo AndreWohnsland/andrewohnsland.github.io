@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import InfoBox from './Forms/InfoBox';
+import CaptionBanner from '../CaptionBanner';
 
 const ChangePassword = () => {
   const [username, setUsername] = useState('');
@@ -43,9 +44,7 @@ const ChangePassword = () => {
 
   return (
     <div>
-      <div className='main-header text-center'>
-        <h1>Make it safer</h1>
-      </div>
+      <CaptionBanner text='Make it safer' />
       <div className='main-text user-input-container'>
         {showMessage && <InfoBox res={message} name={'User change'} handleShow={() => setShowMessage(!showMessage)} />}
         <div className='Login user-form-container'>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import Gallery from 'react-photo-gallery';
+import CaptionBanner from '../CaptionBanner';
 import arrayBufferToBase64 from '../../util/binaryConverter';
 
 const queryOption = {
@@ -28,9 +29,7 @@ const PictureView = ({ title }) => {
 
   return (
     <>
-      <div className='text-center main-header'>
-        <h1>{title}</h1>
-      </div>
+      <CaptionBanner text={title} />
       <div className='main-text-picture'>
         {status === 'loading' && <p>Loading ....</p>}
         {status === 'error' && <p>Error fetching data!</p>}

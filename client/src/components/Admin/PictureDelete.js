@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import InfoBox from './Forms/InfoBox';
 import Dropdown from './Forms/Dropdown';
 import { getAndGenerateImageDetails, deleteImage } from '../../util/apiHelper';
+import CaptionBanner from '../CaptionBanner';
 
 const PictureDelete = () => {
   const [showMessage, setShowMessage] = useState(false);
@@ -43,9 +44,7 @@ const PictureDelete = () => {
 
   return (
     <div>
-      <div className='main-header text-center'>
-        <h1>Delete Image</h1>
-      </div>
+      <CaptionBanner text='Delete Image' />
       <div className='main-text'>
         {showMessage && <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />}
         <div className='user-form-container'>

@@ -1,11 +1,10 @@
 import React from 'react';
+import CaptionBanner from './CaptionBanner';
 
 const About = () => {
   return (
     <>
-      <div className='main-header text-center'>
-        <h1>Made with React</h1>
-      </div>
+      <CaptionBanner text='Made with React' />
       <div className='main-text-page'>
         <p>
           This page was created while practising and improving my react knowledge. It is also used to present some of my

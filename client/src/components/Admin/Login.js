@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
 import { loginUser } from '../../util/apiHelper';
+import CaptionBanner from '../CaptionBanner';
 
 const Login = () => {
   let history = useHistory();
@@ -39,9 +40,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className='main-header text-center'>
-        <h1>Welcome Boss</h1>
-      </div>
+      <CaptionBanner text='Welcome Boss' />
       <div className='main-text user-input-container'>
         <div className='Login user-form-container'>
           <form onSubmit={handleSubmit}>

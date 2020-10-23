@@ -1,7 +1,13 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import ElementCard from './ElementCard';
+import CaptionBanner from '../CaptionBanner';
 import axios from 'axios';
+
+const queryOption = {
+  staleTime: 60000,
+  cacheTime: 3600000,
+};
 
 const ListView = ({ elementType, header }) => {
   const fetchProjects = async () => {
@@ -9,13 +15,11 @@ const ListView = ({ elementType, header }) => {
     return data;
   };
 
-  const { data, status } = useQuery(`${elementType}s`, fetchProjects, { staleTime: 60000, cacheTime: 3600000 });
+  const { data, status } = useQuery(`${elementType}s`, fetchProjects, { ...queryOption });
 
   return (
     <>
-      <div className='text-center main-header'>
-        <h1>{header}</h1>
-      </div>
+      <CaptionBanner text={header} />
       <div className='main-text'>
         {status === 'loading' && <p>Loading ....</p>}
         {status === 'error' && <p>Error fetching data!</p>}

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import CaptionBanner from './CaptionBanner';
 
 class Home extends Component {
   render() {
     return (
       <>
-        <div className='main-header text-center'>
-          <h1>Hi there!</h1>
-        </div>
+        <CaptionBanner text='Hi there!' />
         <div className='main-text-page'>
           <p>
             Welcome to my little humble homepage. I am Andre, a Software, IoT and Data Science enthusiast. I enjoy

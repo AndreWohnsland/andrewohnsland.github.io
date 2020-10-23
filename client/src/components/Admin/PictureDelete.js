@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import InfoBox from './Forms/InfoBox';
 import Dropdown from './Forms/Dropdown';
-import axios from 'axios';
+import { getAndGenerateImageDetails, deleteImage } from '../../util/apiHelper';
 
 const PictureDelete = () => {
   const [showMessage, setShowMessage] = useState(false);
@@ -15,44 +15,30 @@ const PictureDelete = () => {
     loadElements();
   }, []);
 
+  const loadElements = async () => {
+    const imageData = await getAndGenerateImageDetails();
+    setImageList(imageData);
+  };
+
   const validateSubmit = () => {
     return imageId !== 'noId';
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .delete(`http://localhost:5000/api/image/delete/${imageId}`, {
-        withCredentials: true,
-        validateStatus: () => true,
-      })
-      .then((res) => {
-        setRes(res);
-        setmessageTitle(`Image with id: ${imageId}`);
-        setShowMessage(true);
-        if (res.statusText === 'OK') {
-          setImageId('');
-          loadElements();
-        }
-      });
+    deleteImage(imageId).then((res) => {
+      setRes(res);
+      setmessageTitle(`Image with id: ${imageId}`);
+      setShowMessage(true);
+      if (res.statusText === 'OK') {
+        setImageId('');
+        loadElements();
+      }
+    });
   };
 
   const handleMessage = () => {
     setShowMessage(!showMessage);
-  };
-
-  const loadElements = () => {
-    axios.get(`http://localhost:5000/api/image/all/details`).then((res) => {
-      const start = [{ name: 'Select image', value: 'noId' }];
-      const imgList = res.data.map((img) => {
-        const suff = img.category !== undefined ? ` (${img.category})` : '';
-        return {
-          name: `${img.name}${suff}`,
-          value: img._id,
-        };
-      });
-      setImageList([...start, ...imgList]);
-    });
   };
 
   return (

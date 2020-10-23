@@ -2,19 +2,18 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import Gallery from 'react-photo-gallery';
+import arrayBufferToBase64 from '../../util/binaryConverter';
+
+const queryOption = {
+  staleTime: 600000,
+  cacheTime: 3600000,
+};
 
 const PictureView = ({ title }) => {
   const pictureType = title.toLowerCase();
 
-  const arrayBufferToBase64 = (buffer) => {
-    var binary = '';
-    var bytes = [].slice.call(new Uint8Array(buffer));
-    bytes.forEach((b) => (binary += String.fromCharCode(b)));
-    return window.btoa(binary);
-  };
-
-  const fetchpictures = async () => {
-    const { data } = await axios.get(`http://localhost:5000/api/image/${pictureType}`);
+  const fetchpictures = async (pictype) => {
+    const { data } = await axios.get(`http://localhost:5000/api/image/${pictype}`);
     const returnData = await data.map((obj) => {
       return {
         width: obj['width'],
@@ -25,7 +24,7 @@ const PictureView = ({ title }) => {
     });
     return returnData;
   };
-  const { data, status } = useQuery(pictureType, fetchpictures, { staleTime: 120000, cacheTime: 3600000 });
+  const { data, status } = useQuery(pictureType, () => fetchpictures(pictureType), { ...queryOption });
 
   return (
     <>
@@ -36,7 +35,13 @@ const PictureView = ({ title }) => {
         {status === 'loading' && <p>Loading ....</p>}
         {status === 'error' && <p>Error fetching data!</p>}
         {status === 'success' && (
-          <>{data.length > 0 ? <Gallery photos={data} direction={'column'} /> : <p>Currently no Pictures here</p>}</>
+          <>
+            {data.length > 0 ? (
+              <Gallery photos={data.sort(() => Math.random() - 0.5)} direction={'column'} />
+            ) : (
+              <p>Currently no Pictures here</p>
+            )}
+          </>
         )}
       </div>
     </>

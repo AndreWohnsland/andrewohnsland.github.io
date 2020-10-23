@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import axios from 'axios';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
+import { loginUser } from '../../util/apiHelper';
 
 const Login = () => {
   let history = useHistory();
@@ -20,16 +20,7 @@ const Login = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    axios
-      .post(
-        'http://localhost:5000/api/user/login',
-        { username, password },
-        {
-          withCredentials: true,
-          headers: { 'Content-Type': 'application/json' },
-          validateStatus: () => true,
-        }
-      )
+    loginUser(username, password)
       .then((res) => {
         if (res.statusText === 'OK') {
           setIsAuth(true);
@@ -45,17 +36,6 @@ const Login = () => {
         setMessage(err.data);
       });
   }
-  const errorStyle = {
-    backgroundColor: 'rgb(255, 141, 141)',
-    color: 'rgb(146, 0, 0)',
-    borderRadius: '5px',
-    paddingRight: '5px',
-    paddingLeft: '5px',
-    paddingTop: '2px',
-    paddingBottom: '2px',
-    marginTop: '5px',
-    marginBottom: '15px',
-  };
 
   return (
     <div>
@@ -73,7 +53,7 @@ const Login = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control value={password} onChange={(e) => setPassword(e.target.value)} type='password' />
             </Form.Group>
-            {!valid && <div style={errorStyle}>{message}</div>}
+            {!valid && <div className='res-error'>{message}</div>}
             <Button block disabled={!validateForm()} type='submit'>
               Login
             </Button>

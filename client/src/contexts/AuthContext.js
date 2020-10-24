@@ -1,5 +1,5 @@
 import React, { createContext, Component } from 'react';
-import axios from 'axios';
+import { getAuth } from '../util/apiHelper';
 
 export const AuthContext = createContext();
 
@@ -8,16 +8,7 @@ class AuthContextProvider extends Component {
     super(props);
     this.state = {
       isAuth: async () => {
-        return await axios
-          .get('http://localhost:5000/api/user/auth', {
-            withCredentials: true,
-          })
-          .then(() => {
-            return true;
-          })
-          .catch(() => {
-            return false;
-          });
+        return await getAuth();
       },
     };
   }
@@ -31,16 +22,9 @@ class AuthContextProvider extends Component {
   };
 
   getAuthStatus = async () => {
-    return await axios
-      .get('http://localhost:5000/api/user/auth', {
-        withCredentials: true,
-      })
-      .then(() => {
-        this.setState({ isAuth: true });
-      })
-      .catch(() => {
-        this.setState({ isAuth: false });
-      });
+    return await getAuth().then((auth) => {
+      this.setState({ isAuth: auth });
+    });
   };
 
   render() {

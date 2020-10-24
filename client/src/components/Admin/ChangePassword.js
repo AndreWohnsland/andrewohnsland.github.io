@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import axios from 'axios';
 import InfoBox from './Forms/InfoBox';
 import CaptionBanner from '../CaptionBanner';
+import { updatePassword } from '../../util/apiHelper';
 
 const ChangePassword = () => {
   const [username, setUsername] = useState('');
@@ -12,35 +12,25 @@ const ChangePassword = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState('');
 
-  function validateForm() {
+  const validateForm = () => {
     return username.length > 0 && password.length > 0 && newPassword.length >= 8 && newPassword === repeatedPassword;
-  }
+  };
 
-  function isLongEnough() {
+  const isLongEnough = () => {
     return newPassword.length >= 8;
-  }
+  };
 
-  function bothNewPasswordsAreSame() {
+  const bothNewPasswordsAreSame = () => {
     return newPassword === repeatedPassword;
-  }
+  };
 
-  async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-      .post(
-        'http://localhost:5000/api/user/change',
-        { username, password, newPassword, repeatedPassword },
-        {
-          withCredentials: true,
-          headers: { 'Content-Type': 'application/json' },
-          validateStatus: () => true,
-        }
-      )
-      .then((res) => {
-        setMessage(res);
-        setShowMessage(true);
-      });
-  }
+    updatePassword(username, password, newPassword, repeatedPassword).then((res) => {
+      setMessage(res);
+      setShowMessage(true);
+    });
+  };
 
   return (
     <div>

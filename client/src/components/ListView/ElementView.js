@@ -3,51 +3,54 @@ import { useQuery } from 'react-query';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
 import HeadingRenderer from './HeadingRenderer';
-import axios from 'axios';
 import dateFormatter from './dateFormatter';
+import CaptionBanner from '../CaptionBanner';
+import { getElementData } from '../../util/apiHelper';
+
+const queryOption = {
+  staleTime: 300000,
+  cacheTime: 3600000,
+  retry: 1,
+};
 
 const ElementView = (props) => {
   let { elementType } = props;
   let id = props.match.params._id;
 
-  const fetchData = async () => {
-    const { data } = await axios.get(`http://localhost:5000/api/${elementType}/${id}`);
-    return data;
+  const { data, status } = useQuery(`${elementType}?id=${id}`, () => getElementData(elementType, id), {
+    ...queryOption,
+  });
+
+  const createDateTag = (data) => {
+    return `Created: ${dateFormatter(data.createdAt)} | Latest update: ${dateFormatter(data.updatedAt)}`;
   };
 
-  const queryOption = {
-    staleTime: 300000,
-    cacheTime: 3600000,
-    retry: 1,
-  };
-  const { data, status } = useQuery(`${elementType}?id=${id}`, fetchData, { ...queryOption });
-  const dateInfoStyle = { fontWeight: 'lighter', marginBottom: '0.1rem' };
-  const descStyle = { marginBottom: '2rem' };
-  let linkDescription = 'at Github';
-  if (data !== undefined && data.link !== undefined) {
-    linkDescription = data.link.includes('github') ? 'at Github' : 'here for more impressions';
+  let linkDescription = 'here for more impressions';
+  if (data?.link?.includes('github')) {
+    linkDescription = 'at Github';
   }
 
   return (
     <>
-      <div className='text-center main-header'>
-        <h1>
-          {status === 'loading' && 'Loading ....'}
-          {status === 'error' && 'Error getting data!'}
-          {status === 'success' && data.title}
-        </h1>
-      </div>
+      <CaptionBanner
+        text={
+          status === 'loading'
+            ? 'Loading ....'
+            : status === 'error'
+            ? 'Error getting data!'
+            : status === 'success'
+            ? data.title
+            : ''
+        }
+      />
       <div className='main-text-page'>
         {status === 'error' &&
           'Probably not a valid id :( If you get here from blog or project try getting back and forth again.'}
         {status === 'success' && (
           <>
-            <p style={dateInfoStyle}>
-              <span>Created: {dateFormatter(data.createdAt)}</span>
-              <span> | </span>
-              <span> Latest update: {dateFormatter(data.updatedAt)}</span>
-            </p>
-            <p style={descStyle}>{data.description}</p>
+            <p className='blog-date'>{createDateTag(data)}</p>
+            <p className='blog-description'>{data.description}</p>
+            <hr className='blog-dividor' />
             <ReactMarkdown
               className='blog-md'
               source={data.text}

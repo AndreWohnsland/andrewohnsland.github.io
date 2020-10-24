@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import axios from 'axios';
 import Dropdown from './Forms/Dropdown';
 import TextInput from './Forms/TextInput';
 import TextArea from './Forms/TextArea';
 import InfoBox from './Forms/InfoBox';
 import { AuthContext } from '../../contexts/AuthContext';
 import CaptionBanner from '../CaptionBanner';
+import { getElements, addElement, updateElement } from '../../util/apiHelper';
 
 class EditComponent extends Component {
   static contextType = AuthContext;
@@ -24,11 +24,12 @@ class EditComponent extends Component {
 
   validateSubmit = () => {
     const { link, title, description, text } = this.state;
+    const { elementType } = this.props;
     return (
       title.length > 0 &&
       description.length > 0 &&
       text.length > 0 &&
-      (this.props.elementType === 'project' ? link.length > 0 : true)
+      (elementType === 'project' ? link.length > 0 : true)
     );
   };
 
@@ -50,10 +51,10 @@ class EditComponent extends Component {
     this.loadElements();
   }
 
-  loadElements = () => {
-    axios.get(`http://localhost:5000/api/${this.props.elementType}`).then((res) => {
-      this.setState({ elements: res.data });
-    });
+  loadElements = async () => {
+    const { elementType } = this.props;
+    const elementData = await getElements(elementType);
+    this.setState({ elements: elementData });
   };
 
   onSubmit = async (e) => {
@@ -61,7 +62,7 @@ class EditComponent extends Component {
     let response = null;
     const { elementId, title, description, text, link } = this.state;
     const dataToSend = { elementId, title, description, text, link };
-    response = await this.postElement(dataToSend);
+    response = await this.selectApiOption(dataToSend);
     this.setState({ res: response, showMessage: true, messageTitle: title });
     if (response.statusText === 'OK') {
       this.clearState();
@@ -69,22 +70,13 @@ class EditComponent extends Component {
     }
   };
 
-  postElement = async (dataToSend) => {
-    let link = this.generateLink();
-    let response = await axios
-      .post(link, dataToSend, { withCredentials: true, validateStatus: () => true })
-      .then((res) => {
-        return res;
-      });
-    return response;
-  };
-
-  generateLink = () => {
+  selectApiOption = (dataToSend) => {
     const { elementId } = this.state;
+    const { elementType } = this.props;
     if (elementId) {
-      return `http://localhost:5000/api/${this.props.elementType}/update/${elementId}`;
+      return updateElement(dataToSend, elementType, elementId);
     } else {
-      return `http://localhost:5000/api/${this.props.elementType}/add`;
+      return addElement(dataToSend, elementType);
     }
   };
 

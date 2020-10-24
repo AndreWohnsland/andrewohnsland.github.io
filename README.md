@@ -44,6 +44,3 @@ To administrate the entries, you will need to generate an admin user in the data
 ## ToDo's
 
 - implement logging of post / put / delete requests (admin only level)
-- improve styling for cards
-- change url into .env variable (!important)
-- switch all api calls to util

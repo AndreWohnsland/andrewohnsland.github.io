@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import TextInput from './Forms/TextInput';
-import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import InfoBox from './Forms/InfoBox';
 import Dropdown from './Forms/Dropdown';
 import CaptionBanner from '../CaptionBanner';
+import { postImage } from '../../util/apiHelper';
 
 const jpegType = 'image/jpeg';
 
@@ -35,14 +35,12 @@ const PictureUpload = () => {
     data.append('file', image);
     data.append('name', name);
     data.append('category', category);
-    axios
-      .post('http://localhost:5000/api/image/add', data, { withCredentials: true, validateStatus: () => true })
-      .then((res) => {
-        setRes(res);
-        setShowMessage(true);
-        setmessageTitle(name);
-        clearState();
-      });
+    postImage(data).then((res) => {
+      setRes(res);
+      setShowMessage(true);
+      setmessageTitle(name);
+      clearState();
+    });
   };
 
   const clearState = () => {

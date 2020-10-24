@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import ElementCard from './ElementCard';
 import CaptionBanner from '../CaptionBanner';
-import axios from 'axios';
+import { getElements } from '../../util/apiHelper';
 
 const queryOption = {
   staleTime: 60000,
@@ -10,12 +10,7 @@ const queryOption = {
 };
 
 const ListView = ({ elementType, header }) => {
-  const fetchProjects = async () => {
-    const { data } = await axios.get(`http://localhost:5000/api/${elementType}`);
-    return data;
-  };
-
-  const { data, status } = useQuery(`${elementType}s`, fetchProjects, { ...queryOption });
+  const { data, status } = useQuery(`${elementType}s`, () => getElements(elementType), { ...queryOption });
 
   return (
     <>

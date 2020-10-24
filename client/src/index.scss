@@ -6,6 +6,8 @@ $primary-color: rgb(67, 80, 255);
 $separator-color: rgb(109, 109, 109);
 $font-color-error: rgb(146, 0, 0);
 $bg-error: rgb(255, 141, 141);
+$font-color-success: rgb(0, 160, 53);
+$bg-success: rgb(119, 255, 183);
 
 body {
   margin: 0;
@@ -84,13 +86,15 @@ code {
 
 .card-info {
   text-align: left;
+  font-size: 0.9rem;
   font-weight: lighter;
 }
 
 .card-desc {
   text-align: left;
   text-align: justify;
-  margin-bottom: 0px;
+  hyphens: auto;
+  margin: 2px 0px 0px 0px;
 }
 
 .main-header {
@@ -108,12 +112,33 @@ code {
   width: 100%;
   padding: 2px 5px 2px 5px;
   box-shadow: 0px -2px 1px $separator-color;
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
 }
 
 .blog-md {
   pre {
     border-radius: 10px;
   }
+}
+
+.blog-date {
+  font-weight: lighter;
+  margin-bottom: 0.1rem;
+}
+
+.blog-description {
+  margin-bottom: 1rem;
+}
+
+.blog-dividor {
+  border-color: inherit;
+  border-top: 1px solid;
+  margin-bottom: 2rem;
 }
 
 .user-input-container {
@@ -135,4 +160,58 @@ code {
   border-radius: 5px;
   padding: 2px 5px 2px 5px;
   margin: 5px 0px 15px 0px;
+}
+
+.error-div,
+.success-div {
+  border-radius: 5px;
+  padding: 7px 15px 2px 15px;
+  margin-bottom: 20px;
+  .button-info {
+    float: right;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    display: inline-flex;
+    align-items: flex-start;
+    font-size: 2rem;
+    line-height: 25px;
+  }
+  h3 {
+    display: flex;
+  }
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.error-div {
+  background-color: $bg-error;
+  color: $font-color-error;
+  .button-info {
+    color: $font-color-error;
+  }
+}
+
+.success-div {
+  background-color: $bg-success;
+  color: $font-color-success;
+  .button-info {
+    color: $font-color-success;
+  }
+}
+
+.list-header {
+  text-align: left;
+  padding-left: 12%;
+  margin-bottom: 0px;
+}
+
+.list-elements {
+  list-style-position: inside;
+  text-align: left;
+  padding-left: 12%;
 }

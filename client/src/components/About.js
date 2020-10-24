@@ -9,10 +9,10 @@ const About = () => {
         <p>
           This page was created while practising and improving my react knowledge. It is also used to present some of my
           other coding projects and give me the possibility to write blog entries. Here is a list of the mandatory tools
-          and frameworks used in combination with this side
+          and frameworks used in combination with this side.
         </p>
-        <p style={{ textAlign: 'left', paddingLeft: '12%', marginBottom: '0px' }}>For the Frontend:</p>
-        <ul style={{ listStylePosition: 'inside', textAlign: 'left', paddingLeft: '12%' }}>
+        <p className='list-header'>For the Frontend:</p>
+        <ul className='list-elements'>
           <li>React</li>
           <li>React Router (Dom)</li>
           <li>React (Router) Bootstrap</li>
@@ -21,8 +21,8 @@ const About = () => {
           <li>React Syntax Highlighter</li>
           <li>Axios</li>
         </ul>
-        <p style={{ textAlign: 'left', paddingLeft: '12%', marginBottom: '0px' }}>For the Backend:</p>
-        <ul style={{ listStylePosition: 'inside', textAlign: 'left', paddingLeft: '12%' }}>
+        <p className='list-header'>For the Backend:</p>
+        <ul className='list-elements'>
           <li>Express</li>
           <li>MongoDB / Mongoose</li>
           <li>CORS</li>

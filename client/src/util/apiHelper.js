@@ -94,7 +94,7 @@ const updatePassword = (username, password, newPassword, repeatedPassword) => {
 
 const getAuth = () => {
   return axios
-    .get('http://localhost:5000/api/user/auth', {
+    .get(`${api}/user/auth`, {
       withCredentials: true,
     })
     .then(() => {

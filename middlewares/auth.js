@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
     const tokenDetails = jwt.verify(token, process.env.JWT_SECRET);
     const foundUser = await User.findById(tokenDetails.id);
     if (foundUser === null) {
-      res.cookie('jwt', '', { httpOnly: true, maxAge: 0, sameSite: 'lax' });
+      res.cookie('jwt', '', { httpOnly: true, maxAge: 0 }); //, sameSite: 'lax'
       return next(new AppError('Invalid token data', 401));
     }
     next();

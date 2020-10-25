@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import NavBar from './components/Navbar/Navbar';
 import Footer from './components/Footer';
 import { ThemeContext } from './contexts/ThemeContext';
@@ -15,7 +15,7 @@ class App extends Component {
     const style = { backgroundColor: theme.bg, color: theme.syntax };
     return (
       <>
-        <BrowserRouter>
+        <HashRouter>
           <div className="App">
             <div className="content-container" style={style}>
               <NavBar />
@@ -25,7 +25,7 @@ class App extends Component {
             </div>
             <Footer />
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </>
     );
   }

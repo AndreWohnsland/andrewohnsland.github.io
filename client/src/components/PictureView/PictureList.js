@@ -12,18 +12,25 @@ const queryOption = {
 const PictureView = ({ title }) => {
   const pictureType = title.toLowerCase();
 
-  const { data, status } = useQuery(pictureType, () => getAllImageData(pictureType), { ...queryOption });
+  const { data, status } = useQuery(
+    pictureType,
+    () => getAllImageData(pictureType),
+    { ...queryOption }
+  );
 
   return (
     <>
       <CaptionBanner text={title} />
-      <div className='main-text-picture'>
+      <div className="main-text-picture">
         {status === 'loading' && <p>Loading ....</p>}
         {status === 'error' && <p>Error fetching data!</p>}
         {status === 'success' && (
           <>
             {data.length > 0 ? (
-              <Gallery photos={data.sort(() => Math.random() - 0.5)} direction={'column'} />
+              <Gallery
+                photos={data.sort(() => Math.random() - 0.5)}
+                direction="column"
+              />
             ) : (
               <p>Currently no Pictures here</p>
             )}

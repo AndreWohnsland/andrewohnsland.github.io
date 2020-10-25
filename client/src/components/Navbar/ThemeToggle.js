@@ -3,7 +3,9 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 import './sliderStyle.css';
 
 class ThemeToggle extends Component {
+  // eslint-disable-next-line react/static-property-placement
   static contextType = ThemeContext;
+
   constructor(props, context) {
     super(props, context);
     const { getCachedTheme } = this.context;
@@ -14,10 +16,9 @@ class ThemeToggle extends Component {
 
   toggleCheckboxChange = () => {
     const { setTheme } = this.context;
-    setTheme(this.state.isChecked);
-    this.setState(({ isChecked }) => ({
-      isChecked: !isChecked,
-    }));
+    const { isChecked } = this.state;
+    setTheme(isChecked);
+    this.setState({ isChecked: !isChecked });
   };
 
   render() {
@@ -29,16 +30,20 @@ class ThemeToggle extends Component {
     const lightfont = isLightTheme ? activeFont : inactiveFont;
     return (
       <>
-        <div className='sliderholder'>
-          <p className='themefont' style={lightfont}>
-            Light{'\u00a0'}
+        <div className="sliderholder">
+          <p className="themefont" style={lightfont}>
+            Light&nbsp;
           </p>
-          <label className='switch'>
-            <input type='checkbox' checked={!isLightTheme} onChange={this.toggleCheckboxChange} />
-            <span className='slider round'></span>
+          <label className="switch">
+            <input
+              type="checkbox"
+              checked={!isLightTheme}
+              onChange={this.toggleCheckboxChange}
+            />
+            <span className="slider round" />
           </label>
-          <p className='themefont' style={darkfont}>
-            {'\u00a0'}Dark {'\u00a0\u00a0\u00a0'}
+          <p className="themefont" style={darkfont}>
+            &nbsp;Dark&nbsp;&nbsp;&nbsp;
           </p>
         </div>
       </>

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import arrayBufferToBase64 from './binaryConverter';
 
-const api_address = process.env.REACT_APP_API_ADDRESS;
-const api = `${api_address}/api`;
+const apiAddress = process.env.REACT_APP_API_ADDRESS;
+const api = `${apiAddress}/api`;
 
 const getAndGenerateImageDetails = async () => {
   const res = await axios.get(`${api}/image/all/details`);
@@ -23,7 +23,7 @@ const getAllImageData = async (pictype) => {
     return {
       width: obj.width,
       height: obj.height,
-      src: 'data:image/jpeg;base64,' + arrayBufferToBase64(obj.img.data.data),
+      src: `data:image/jpeg;base64,${arrayBufferToBase64(obj.img.data.data)}`,
       title: obj.name,
     };
   });
@@ -31,7 +31,10 @@ const getAllImageData = async (pictype) => {
 };
 
 const postImage = (data) => {
-  return axios.post(`${api}/image/add`, data, { withCredentials: true, validateStatus: () => true });
+  return axios.post(`${api}/image/add`, data, {
+    withCredentials: true,
+    validateStatus: () => true,
+  });
 };
 
 const deleteImage = (imageId) => {

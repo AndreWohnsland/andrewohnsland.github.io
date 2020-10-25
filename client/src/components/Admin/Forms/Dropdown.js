@@ -5,7 +5,7 @@ const Dropdown = ({ label, value, onChange, options }) => {
   return (
     <Form.Group controlId={label}>
       <Form.Label>{label}</Form.Label>
-      <Form.Control as='select' value={value} onChange={onChange}>
+      <Form.Control as="select" value={value} onChange={onChange}>
         {options.map((option) => {
           return (
             <option key={option.value} value={option.value}>

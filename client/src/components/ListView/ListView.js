@@ -10,17 +10,27 @@ const queryOption = {
 };
 
 const ListView = ({ elementType, header }) => {
-  const { data, status } = useQuery(`${elementType}s`, () => getElements(elementType), { ...queryOption });
+  const { data, status } = useQuery(
+    `${elementType}s`,
+    () => getElements(elementType),
+    { ...queryOption }
+  );
 
   return (
     <>
       <CaptionBanner text={header} />
-      <div className='main-text'>
+      <div className="main-text">
         {status === 'loading' && <p>Loading ....</p>}
         {status === 'error' && <p>Error fetching data!</p>}
         {status === 'success' &&
           data.map((element) => {
-            return <ElementCard key={element._id} element={element} elementType={elementType} />;
+            return (
+              <ElementCard
+                key={element._id}
+                element={element}
+                elementType={elementType}
+              />
+            );
           })}
       </div>
     </>

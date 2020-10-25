@@ -12,14 +12,14 @@ const PictureDelete = () => {
   const [imageId, setImageId] = useState('noId');
   const [imageList, setImageList] = useState([]);
 
-  useEffect(() => {
-    loadElements();
-  }, []);
-
   const loadElements = async () => {
     const imageData = await getAndGenerateImageDetails();
     setImageList(imageData);
   };
+
+  useEffect(() => {
+    loadElements();
+  }, []);
 
   const validateSubmit = () => {
     return imageId !== 'noId';
@@ -27,11 +27,11 @@ const PictureDelete = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    deleteImage(imageId).then((res) => {
-      setRes(res);
+    deleteImage(imageId).then((response) => {
+      setRes(response);
       setmessageTitle(`Image with id: ${imageId}`);
       setShowMessage(true);
-      if (res.statusText === 'OK') {
+      if (response.statusText === 'OK') {
         setImageId('');
         loadElements();
       }
@@ -44,18 +44,20 @@ const PictureDelete = () => {
 
   return (
     <div>
-      <CaptionBanner text='Delete Image' />
-      <div className='main-text'>
-        {showMessage && <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />}
-        <div className='user-form-container'>
+      <CaptionBanner text="Delete Image" />
+      <div className="main-text">
+        {showMessage && (
+          <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />
+        )}
+        <div className="user-form-container">
           <form onSubmit={onSubmit}>
             <Dropdown
-              label='Select image to delete'
+              label="Select image to delete"
               value={imageId}
               onChange={(e) => setImageId(e.target.value)}
               options={imageList}
             />
-            <Button type='submit' disabled={!validateSubmit()}>
+            <Button type="submit" disabled={!validateSubmit()}>
               Delete
             </Button>
           </form>

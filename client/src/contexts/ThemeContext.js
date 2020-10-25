@@ -30,7 +30,8 @@ class ThemeContextProvider extends Component {
   };
 
   toggleTheme = () => {
-    this.setState({ isLightTheme: !this.state.isLightTheme });
+    const { isLightTheme } = this.state;
+    this.setState({ isLightTheme: !isLightTheme });
   };
 
   setTheme = (theme) => {
@@ -39,6 +40,7 @@ class ThemeContextProvider extends Component {
   };
 
   render() {
+    const { children } = this.props;
     return (
       <ThemeContext.Provider
         value={{
@@ -49,7 +51,7 @@ class ThemeContextProvider extends Component {
           getCachedTheme: this.getCachedTheme,
         }}
       >
-        {this.props.children}
+        {children}
       </ThemeContext.Provider>
     );
   }

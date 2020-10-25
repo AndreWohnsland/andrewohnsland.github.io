@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import TextInput from './Forms/TextInput';
 import { Form, Button } from 'react-bootstrap';
+import TextInput from './Forms/TextInput';
 import InfoBox from './Forms/InfoBox';
 import Dropdown from './Forms/Dropdown';
 import CaptionBanner from '../CaptionBanner';
@@ -29,49 +29,56 @@ const PictureUpload = () => {
     setShowMessage(!showMessage);
   };
 
+  const clearState = () => {
+    setName('');
+    setImage(null);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append('file', image);
     data.append('name', name);
     data.append('category', category);
-    postImage(data).then((res) => {
-      setRes(res);
+    postImage(data).then((response) => {
+      setRes(response);
       setShowMessage(true);
       setmessageTitle(name);
       clearState();
     });
   };
 
-  const clearState = () => {
-    setName('');
-    setImage(null);
-  };
-
   return (
     <div>
-      <CaptionBanner text='Add Image' />
-      <div className='main-text'>
-        {showMessage && <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />}
-        <div className='user-form-container'>
+      <CaptionBanner text="Add Image" />
+      <div className="main-text">
+        {showMessage && (
+          <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />
+        )}
+        <div className="user-form-container">
           <form onSubmit={onSubmit}>
-            <TextInput label='Name' name='name' value={name} onChange={(e) => setName(e.target.value)} />
+            <TextInput
+              label="Name"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
             <Dropdown
-              label={`Select category`}
+              label="Select category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               options={categoryOptions}
             />
             <Form.Group>
               <Form.File
-                name='uploadImage'
-                label='Please select picture'
+                name="uploadImage"
+                label="Please select picture"
                 required
                 accept={`${jpegType}`}
                 onChange={(e) => setImage(e.target.files[0])}
               />
             </Form.Group>
-            <Button type='submit' disabled={!validateSubmit()}>
+            <Button type="submit" disabled={!validateSubmit()}>
               Upload
             </Button>
           </form>

@@ -1,5 +1,5 @@
 const dateFormatter = (dateString) => {
-  var formatter = new Intl.DateTimeFormat('en-GB', {
+  const formatter = new Intl.DateTimeFormat('en-GB', {
     weekday: 'short',
     year: 'numeric',
     month: 'short',

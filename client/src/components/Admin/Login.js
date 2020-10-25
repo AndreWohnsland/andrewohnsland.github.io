@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { AuthContext } from '../../contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 import { loginUser } from '../../util/apiHelper';
 import CaptionBanner from '../CaptionBanner';
 
 const Login = () => {
-  let history = useHistory();
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setValid] = useState(true);
@@ -27,9 +27,8 @@ const Login = () => {
           setIsAuth(true);
           history.push('/admin/projects');
           return;
-        } else {
-          setValid(false);
         }
+        setValid(false);
         setMessage(res.data.message);
       })
       .catch((err) => {
@@ -40,20 +39,29 @@ const Login = () => {
 
   return (
     <div>
-      <CaptionBanner text='Welcome Boss' />
-      <div className='main-text user-input-container'>
-        <div className='Login user-form-container'>
+      <CaptionBanner text="Welcome Boss" />
+      <div className="main-text user-input-container">
+        <div className="Login user-form-container">
           <form onSubmit={handleSubmit}>
-            <Form.Group controlId='email'>
+            <Form.Group controlId="email">
               <Form.Label>Name</Form.Label>
-              <Form.Control autoFocus type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+              <Form.Control
+                autoFocus
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </Form.Group>
-            <Form.Group controlId='password'>
+            <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control value={password} onChange={(e) => setPassword(e.target.value)} type='password' />
+              <Form.Control
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+              />
             </Form.Group>
-            {!valid && <div className='res-error'>{message}</div>}
-            <Button block disabled={!validateForm()} type='submit'>
+            {!valid && <div className="res-error">{message}</div>}
+            <Button block disabled={!validateForm()} type="submit">
               Login
             </Button>
           </form>

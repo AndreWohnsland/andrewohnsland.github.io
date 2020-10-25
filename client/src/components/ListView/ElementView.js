@@ -13,16 +13,26 @@ const queryOption = {
   retry: 1,
 };
 
-const ElementView = (props) => {
-  let { elementType } = props;
-  let id = props.match.params._id;
+const ElementView = ({ match, elementType }) => {
+  const id = match.params._id;
 
-  const { data, status } = useQuery(`${elementType}?id=${id}`, () => getElementData(elementType, id), {
-    ...queryOption,
-  });
+  const { data, status } = useQuery(
+    `${elementType}?id=${id}`,
+    () => getElementData(elementType, id),
+    queryOption
+  );
 
-  const createDateTag = (data) => {
-    return `Created: ${dateFormatter(data.createdAt)} | Latest update: ${dateFormatter(data.updatedAt)}`;
+  const createDateTag = (d) => {
+    return `Created: ${dateFormatter(
+      d.createdAt
+    )} | Latest update: ${dateFormatter(d.updatedAt)}`;
+  };
+
+  const chooseHeader = (s, d) => {
+    if (s === 'loading') return 'Loading ....';
+    if (s === 'error') return 'Error getting data!';
+    if (s === 'success') return d.title;
+    return '';
   };
 
   let linkDescription = 'here for more impressions';
@@ -32,33 +42,24 @@ const ElementView = (props) => {
 
   return (
     <>
-      <CaptionBanner
-        text={
-          status === 'loading'
-            ? 'Loading ....'
-            : status === 'error'
-            ? 'Error getting data!'
-            : status === 'success'
-            ? data.title
-            : ''
-        }
-      />
-      <div className='main-text-page'>
+      <CaptionBanner text={chooseHeader(status, data)} />
+      <div className="main-text-page">
         {status === 'error' &&
           'Probably not a valid id :( If you get here from blog or project try getting back and forth again.'}
         {status === 'success' && (
           <>
-            <p className='blog-date'>{createDateTag(data)}</p>
-            <p className='blog-description'>{data.description}</p>
-            <hr className='blog-dividor' />
+            <p className="blog-date">{createDateTag(data)}</p>
+            <p className="blog-description">{data.description}</p>
+            <hr className="blog-dividor" />
             <ReactMarkdown
-              className='blog-md'
+              className="blog-md"
               source={data.text}
               renderers={{ code: CodeBlock, heading: HeadingRenderer }}
-            ></ReactMarkdown>
+            />
             {elementType === 'project' && (
               <p>
-                Interested? Look into the project <a href={data.link}>{linkDescription}</a>.
+                {'Interested? Look into the project '}
+                <a href={data.link}>{linkDescription}</a>
               </p>
             )}
           </>

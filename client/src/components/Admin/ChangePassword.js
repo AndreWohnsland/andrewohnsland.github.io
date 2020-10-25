@@ -13,7 +13,12 @@ const ChangePassword = () => {
   const [message, setMessage] = useState('');
 
   const validateForm = () => {
-    return username.length > 0 && password.length > 0 && newPassword.length >= 8 && newPassword === repeatedPassword;
+    return (
+      username.length > 0 &&
+      password.length > 0 &&
+      newPassword.length >= 8 &&
+      newPassword === repeatedPassword
+    );
   };
 
   const isLongEnough = () => {
@@ -26,60 +31,72 @@ const ChangePassword = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    updatePassword(username, password, newPassword, repeatedPassword).then((res) => {
-      setMessage(res);
-      setShowMessage(true);
-    });
+    updatePassword(username, password, newPassword, repeatedPassword).then(
+      (res) => {
+        setMessage(res);
+        setShowMessage(true);
+      }
+    );
   };
 
   return (
     <div>
-      <CaptionBanner text='Make it safer' />
-      <div className='main-text user-input-container'>
-        {showMessage && <InfoBox res={message} name={'User change'} handleShow={() => setShowMessage(!showMessage)} />}
-        <div className='Login user-form-container'>
+      <CaptionBanner text="Make it safer" />
+      <div className="main-text user-input-container">
+        {showMessage && (
+          <InfoBox
+            res={message}
+            name="User change"
+            handleShow={() => setShowMessage(!showMessage)}
+          />
+        )}
+        <div className="Login user-form-container">
           <p>Change your password</p>
           <form onSubmit={handleSubmit}>
-            <Form.Group controlId='name'>
+            <Form.Group controlId="name">
               <Form.Control
                 autoFocus
-                type='text'
-                placeholder='Name'
+                type="text"
+                placeholder="Name"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId='password'>
+            <Form.Group controlId="password">
               <Form.Control
                 value={password}
-                placeholder='Password'
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
-                type='password'
+                type="password"
               />
             </Form.Group>
-            <Form.Group controlId='newPassword'>
+            <Form.Group controlId="newPassword">
               <Form.Control
                 value={newPassword}
-                placeholder='New Password'
+                placeholder="New Password"
                 onChange={(e) => setNewPassword(e.target.value)}
-                type='password'
+                type="password"
               />
             </Form.Group>
-            <Form.Group controlId='repeatedPassword'>
+            <Form.Group controlId="repeatedPassword">
               <Form.Control
                 value={repeatedPassword}
-                placeholder='Repeat New Password'
+                placeholder="Repeat New Password"
                 onChange={(e) => setRepeatedPassword(e.target.value)}
-                type='password'
+                type="password"
               />
             </Form.Group>
-            <Button block disabled={!validateForm()} type='submit'>
+            <Button block disabled={!validateForm()} type="submit">
               Change Password
             </Button>
           </form>
         </div>
-        {!isLongEnough() && <p>The password needs to be at least 8 Characters. </p>}
-        {!bothNewPasswordsAreSame() && <p>Both, the new and repeated password needs to be identical. </p>}
+        {!isLongEnough() && (
+          <p>The password needs to be at least 8 Characters. </p>
+        )}
+        {!bothNewPasswordsAreSame() && (
+          <p>Both, the new and repeated password needs to be identical. </p>
+        )}
       </div>
     </div>
   );

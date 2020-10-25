@@ -9,18 +9,27 @@ import CaptionBanner from '../CaptionBanner';
 import { getElements, addElement, updateElement } from '../../util/apiHelper';
 
 class EditComponent extends Component {
+  // eslint-disable-next-line react/static-property-placement
   static contextType = AuthContext;
-  state = {
-    elements: null,
-    elementId: '',
-    title: '',
-    description: '',
-    text: '',
-    link: '',
-    showMessage: false,
-    res: null,
-    messageTitle: '',
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      elements: null,
+      elementId: '',
+      title: '',
+      description: '',
+      text: '',
+      link: '',
+      showMessage: false,
+      res: null,
+      messageTitle: '',
+    };
+  }
+
+  componentDidMount() {
+    this.loadElements();
+  }
 
   validateSubmit = () => {
     const { link, title, description, text } = this.state;
@@ -34,7 +43,7 @@ class EditComponent extends Component {
   };
 
   handleMessage = () => {
-    this.setState({ showMessage: !this.state.showMessage });
+    this.setState((prevState) => ({ showMessage: !prevState.showMessage }));
   };
 
   clearState = () => {
@@ -46,10 +55,6 @@ class EditComponent extends Component {
       link: '',
     });
   };
-
-  componentDidMount() {
-    this.loadElements();
-  }
 
   loadElements = async () => {
     const { elementType } = this.props;
@@ -75,9 +80,8 @@ class EditComponent extends Component {
     const { elementType } = this.props;
     if (elementId) {
       return updateElement(dataToSend, elementType, elementId);
-    } else {
-      return addElement(dataToSend, elementType);
     }
+    return addElement(dataToSend, elementType);
   };
 
   handleAnyChange = (e) => {
@@ -89,7 +93,7 @@ class EditComponent extends Component {
   selectElement = (e) => {
     const { elements } = this.state;
     const { elementType } = this.props;
-    let selectedElement = elements.filter((element) => {
+    const selectedElement = elements.filter((element) => {
       return element._id === e.target.value;
     })[0];
     if (selectedElement === undefined) {
@@ -113,21 +117,49 @@ class EditComponent extends Component {
 
   render() {
     const { isAuth } = this.context;
-    const { elements, showMessage, res, messageTitle, title, description, link, text, elementId } = this.state;
+    const {
+      elements,
+      showMessage,
+      res,
+      messageTitle,
+      title,
+      description,
+      link,
+      text,
+      elementId,
+    } = this.state;
     const { elementType } = this.props;
-    const { capitalizeElement, handleMessage, selectElement, handleAnyChange, validateSubmit, onSubmit } = this;
-    let options = [{ name: `Add new ${capitalizeElement()}`, value: '' }];
+    const {
+      capitalizeElement,
+      handleMessage,
+      selectElement,
+      handleAnyChange,
+      validateSubmit,
+      onSubmit,
+    } = this;
+    const options = [{ name: `Add new ${capitalizeElement()}`, value: '' }];
     if (elements) {
-      options.push(...elements.map((element) => ({ name: element.title, value: element._id })));
+      options.push(
+        ...elements.map((element) => ({
+          name: element.title,
+          value: element._id,
+        }))
+      );
     }
     return (
       <div>
         <CaptionBanner text={`Edit ${capitalizeElement()} Entries`} />
-        <div className='main-text'>
+        <div className="main-text">
           {isAuth ? (
             <>
-              {showMessage && <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />}
-              <div className='user-form-container'>
+              {showMessage && (
+                <InfoBox
+                  res={res}
+                  name={messageTitle}
+                  handleShow={handleMessage}
+                />
+              )}
+              <div className="user-form-container">
                 <form onSubmit={onSubmit}>
                   <Dropdown
                     label={`Select your ${elementType}`}
@@ -135,18 +167,33 @@ class EditComponent extends Component {
                     onChange={selectElement}
                     options={options}
                   />
-                  <TextInput label={'Title'} name={'title'} value={title} onChange={handleAnyChange} />
                   <TextInput
-                    label={'Description'}
-                    name={'description'}
+                    label="Title"
+                    name="title"
+                    value={title}
+                    onChange={handleAnyChange}
+                  />
+                  <TextInput
+                    label="Description"
+                    name="description"
                     value={description}
                     onChange={handleAnyChange}
                   />
                   {elementType === 'project' && (
-                    <TextInput label={'Link'} name={'link'} value={link} onChange={handleAnyChange} />
+                    <TextInput
+                      label="Link"
+                      name="link"
+                      value={link}
+                      onChange={handleAnyChange}
+                    />
                   )}
-                  <TextArea label={'Text'} name={'text'} value={text} onChange={handleAnyChange} />
-                  <Button type='submit' disabled={!validateSubmit()}>
+                  <TextArea
+                    label="Text"
+                    name="text"
+                    value={text}
+                    onChange={handleAnyChange}
+                  />
+                  <Button type="submit" disabled={!validateSubmit()}>
                     {elementId === '' ? 'Create' : 'Change'}
                   </Button>
                 </form>

@@ -9,17 +9,19 @@ const ElementCard = ({ element, elementType }) => {
   const createDateTag = () => {
     if (createdAt === updatedAt) {
       return `Created ${dateFormatter(element.createdAt)}`;
-    } else {
-      return `Updated ${dateFormatter(element.updatedAt)}`;
     }
+    return `Updated ${dateFormatter(element.updatedAt)}`;
   };
 
   return (
-    <Link to={`/${elementType}/${element._id}`} style={{ textDecoration: 'none' }}>
-      <div className='card-div'>
-        <h3 className='card-title'>{element.title}</h3>
-        <span className='card-info'>{createDateTag()}</span>
-        <p className='card-desc'>{element.description}</p>
+    <Link
+      to={`/${elementType}/${element._id}`}
+      style={{ textDecoration: 'none' }}
+    >
+      <div className="card-div">
+        <h3 className="card-title">{element.title}</h3>
+        <span className="card-info">{createDateTag()}</span>
+        <p className="card-desc">{element.description}</p>
       </div>
     </Link>
   );

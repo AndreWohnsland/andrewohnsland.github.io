@@ -2,12 +2,15 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className='footer'>
+    <div className="footer">
       <footer>
-        <div className='left'>&copy; {new Date().getFullYear()} A. Wohnsland</div>
-        <div className='right'>
-          Made with React{' '}
-          <span role='img' aria-label='heart'>
+        <div className="left">
+          &copy;&nbsp;
+          {`${new Date().getFullYear()} A. Wohnsland`}
+        </div>
+        <div className="right">
+          Made with React&nbsp;
+          <span role="img" aria-label="heart">
             ❤️
           </span>
         </div>

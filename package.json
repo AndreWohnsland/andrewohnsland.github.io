@@ -10,7 +10,8 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "deploy": "npm run deploy --prefix client"
+    "client-deploy": "npm run deploy --prefix client",
+    "api-deploy": "git push heroku master"
   },
   "keywords": [],
   "author": "Andre Wohnsland",

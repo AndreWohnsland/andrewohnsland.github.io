@@ -1,9 +1,9 @@
 const cors = require('cors');
 
 function initCors(app) {
-  var whitelist = ['http://localhost:3000', 'https://andrewohnsland.github.io' /** other domains if any */];
+  const whitelist = ['http://localhost:3000', 'https://andrewohnsland.github.io'];
   const corsOptions = {
-    origin: function (origin, callback) {
+    origin(origin, callback) {
       if (whitelist.indexOf(origin) !== -1) {
         callback(null, true);
       } else {

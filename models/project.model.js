@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
+const uniqueValidator = require('mongoose-unique-validator');
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const projectSchema = new Schema(
   {
@@ -10,7 +10,7 @@ const projectSchema = new Schema(
     text: { type: String, required: [true, 'Please enter a text'] },
     link: { type: String, required: [true, 'Please enter a link'] },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 projectSchema.plugin(uniqueValidator);

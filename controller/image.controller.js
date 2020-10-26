@@ -1,6 +1,6 @@
 const sizeOf = require('buffer-image-size');
 const sharp = require('sharp');
-let Image = require('../models/image.model');
+const Image = require('../models/image.model');
 const { AppError } = require('../middlewares/errorHandler');
 
 const SIZE_LONG_SIDE = 800;
@@ -11,7 +11,7 @@ async function resizeImage(buffer) {
   const { height, width } = dimensions;
   let resizeOptions = { height: SIZE_LONG_SIDE };
   if (width > height) resizeOptions = { width: SIZE_LONG_SIDE };
-  ret = await sharp(buffer).resize(resizeOptions).toBuffer();
+  const ret = await sharp(buffer).resize(resizeOptions).toBuffer();
   return ret;
 }
 
@@ -31,7 +31,7 @@ async function addImage(req, res, next) {
   newImage
     .save()
     .then(() => res.json('Picture added'))
-    .catch((err) => next(new AppError('Error: ' + err, 400)));
+    .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
 async function getFotographs(req, res, next) {
@@ -65,7 +65,7 @@ async function deleteImage(req, res, next) {
   Image.findByIdAndDelete(req.params.id)
     .then((img) => {
       if (img) res.json(`Image with name: ${img.name} was deleted.`);
-      else return next(new AppError(`This id/picture does not exits`, 400));
+      else return next(new AppError('This id/picture does not exits', 400));
     })
     .catch((err) => next(new AppError(`Error deleting image: ${err}`, 400)));
 }

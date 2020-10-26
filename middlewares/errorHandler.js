@@ -8,10 +8,6 @@ async function forwardError(err, req, res, next) {
   });
 }
 
-async function throwErrorOnInvalidRoute(req, res, next) {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-}
-
 class AppError extends Error {
   constructor(message, statusCode) {
     super(message);
@@ -22,6 +18,10 @@ class AppError extends Error {
 
     Error.captureStackTrace(this, this.constructor);
   }
+}
+
+async function throwErrorOnInvalidRoute(req, res, next) {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 }
 
 module.exports = { forwardError, throwErrorOnInvalidRoute, AppError };

@@ -6,6 +6,8 @@ const imageController = require('../controller/image.controller');
 router.route('/fotography').get(imageController.getFotographs);
 router.route('/woodwork').get(imageController.getWoodworks);
 router.route('/all/details').get(imageController.getAllDetails);
+
+// post
 router.route('/add').post(authorize, imageController.addImage);
 
 // delete

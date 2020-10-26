@@ -1,7 +1,8 @@
+/* eslint-disable func-names */
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
@@ -18,7 +19,7 @@ const userSchema = new Schema(
       minlength: [8, 'Must be at least 8 characters'],
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 // middleware to hash the PW

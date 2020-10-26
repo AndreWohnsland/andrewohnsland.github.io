@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const imageSchema = new mongoose.Schema(
+const { Schema } = mongoose;
+
+const imageSchema = new Schema(
   {
     name: { type: String, required: [true, 'Please enter a name'] },
     width: Number,
@@ -11,7 +13,7 @@ const imageSchema = new mongoose.Schema(
     },
     category: String,
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Image = mongoose.model('Image', imageSchema);

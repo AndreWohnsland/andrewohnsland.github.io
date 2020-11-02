@@ -1,7 +1,10 @@
 const sizeOf = require('buffer-image-size');
 const sharp = require('sharp');
+const pino = require('pino');
 const Image = require('../models/image.model');
 const { AppError } = require('../middlewares/errorHandler');
+
+const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 const SIZE_LONG_SIDE = 800;
 const cat = { foto: 'fotography', wood: 'woodwork' };
@@ -64,8 +67,13 @@ async function getAllDetails(req, res, next) {
 async function deleteImage(req, res, next) {
   Image.findByIdAndDelete(req.params.id)
     .then((img) => {
-      if (img) res.json(`Image with name: ${img.name} was deleted.`);
-      else return next(new AppError('This id/picture does not exits', 400));
+      if (img) {
+        const msg = `Image with name: ${img.name} was deleted.`;
+        logger.info(msg);
+        res.json(msg);
+      } else {
+        return next(new AppError('This id/picture does not exits', 400));
+      }
     })
     .catch((err) => next(new AppError(`Error deleting image: ${err}`, 400)));
 }

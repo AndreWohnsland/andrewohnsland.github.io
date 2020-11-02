@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
+const pino = require('pino');
 const User = require('../models/user.model');
 const { AppError } = require('../middlewares/errorHandler');
+
+const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 const maxAgeInSeconds = 24 * 60 * 60 * 7;
 
@@ -10,7 +13,10 @@ async function addUser(req, res, next) {
   const newUser = User({ username, password });
   newUser
     .save()
-    .then(() => res.json('User added!'))
+    .then(() => {
+      logger.info(`User ${username} was created`);
+      res.json('User added!');
+    })
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
@@ -25,9 +31,15 @@ async function changePassword(req, res, next) {
   User.login(username, password)
     .then((user) => {
       user.password = newPassword;
-      user.save().then(res.status(200).json('Password changed successfully'));
+      user.save().then(() => {
+        logger.info(`Password for user ${username} was changed`);
+        res.status(200).json('Password changed successfully');
+      });
     })
-    .catch((err) => next(new AppError(`${err}`, 400)));
+    .catch((err) => {
+      logger.warn(`Failure changing password for user ${username}`);
+      next(new AppError(`${err}`, 400));
+    });
 }
 
 const createToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: maxAgeInSeconds });
@@ -39,11 +51,15 @@ async function login(req, res, next) {
 
   User.login(username, password)
     .then((user) => {
+      logger.info(`Login by user ${username}`);
       const token = createToken(user._id);
       res.cookie('jwt', token, { httpOnly: true, maxAge: maxAgeInSeconds * 1000, ...cookiePolicy });
       res.status(200).json('Login successful!');
     })
-    .catch((err) => next(new AppError(`${err}`, 400)));
+    .catch((err) => {
+      logger.warn(`Incorrect login for user ${username}`);
+      next(new AppError(`${err}`, 400));
+    });
 }
 
 async function getAuth(req, res) {

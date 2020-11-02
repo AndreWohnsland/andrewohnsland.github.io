@@ -1,5 +1,8 @@
+const pino = require('pino');
 const Project = require('../models/project.model');
 const { AppError } = require('../middlewares/errorHandler');
+
+const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 async function getProjects(req, res, next) {
   Project.find()
@@ -15,16 +18,21 @@ async function getProjectById(req, res, next) {
 }
 
 async function updateProject(req, res, next) {
-  Project.findById(req.params.id)
+  const { title, description, text, link } = req.body;
+  const { id } = req.params;
+  Project.findById(id)
     .then((project) => {
-      project.title = req.body.title;
-      project.description = req.body.description;
-      project.text = req.body.text;
-      project.link = req.body.link;
+      project.title = title;
+      project.description = description;
+      project.text = text;
+      project.link = link;
 
       project
         .save()
-        .then(() => res.json('Project updated'))
+        .then(() => {
+          logger.info(`Project ${title} was updated`);
+          res.json('Project updated');
+        })
         .catch((err) => next(new AppError(`Error: ${err}`, 400)));
     })
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
@@ -36,7 +44,10 @@ async function addProject(req, res, next) {
   const newProject = Project({ title, description, text, link });
   newProject
     .save()
-    .then(() => res.json('Project added!'))
+    .then(() => {
+      logger.info(`Project ${title} was created`);
+      res.json('Project added!');
+    })
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 

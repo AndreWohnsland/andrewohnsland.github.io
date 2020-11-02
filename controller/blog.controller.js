@@ -28,7 +28,7 @@ async function updateBlog(req, res, next) {
       blog
         .save()
         .then(() => {
-          logger.info(`${title} was updated`);
+          logger.info(`Blog ${title} was updated`);
           res.json('Blog updated');
         })
         .catch((err) => next(new AppError(`Error: ${err}`, 400)));
@@ -43,7 +43,7 @@ async function addBlog(req, res, next) {
   newBlog
     .save()
     .then(() => {
-      logger.info(`${title} was added`);
+      logger.info(`Blog ${title} was added`);
       res.json('Blog added!');
     })
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));

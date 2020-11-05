@@ -27,4 +27,4 @@ This is the front end part for the Web App. Please refer to the instruction in t
 npm install
 ```
 
-instead running the according command in the main folder.
+instead running the according command in the main folder. Also it is recommended using all the npm commands in the main folder.

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import InfoBox from './Forms/InfoBox';
 import CaptionBanner from '../CaptionBanner';
@@ -11,6 +11,10 @@ const ChangePassword = () => {
   const [repeatedPassword, setRepeatedPassword] = useState('');
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    document.title = 'Admin | Andre Wohnsland';
+  }, []);
 
   const validateForm = () => {
     return (

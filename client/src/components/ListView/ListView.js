@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import ElementCard from './ElementCard';
 import CaptionBanner from '../CaptionBanner';
 import { getElements } from '../../util/apiHelper';
+import capFirst from '../../util/stringHelper';
 
 const queryOption = {
   staleTime: 60000,
@@ -10,6 +11,10 @@ const queryOption = {
 };
 
 const ListView = ({ elementType, header }) => {
+  useEffect(() => {
+    document.title = `${capFirst(elementType)} | Andre Wohnsland`;
+  }, [elementType]);
+
   const { data, status } = useQuery(
     `${elementType}s`,
     () => getElements(elementType),

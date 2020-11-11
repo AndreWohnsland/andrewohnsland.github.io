@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import Gallery from 'react-photo-gallery';
 import CaptionBanner from '../CaptionBanner';
@@ -11,6 +11,10 @@ const queryOption = {
 
 const PictureView = ({ title }) => {
   const pictureType = title.toLowerCase();
+
+  useEffect(() => {
+    document.title = `${title} | Andre Wohnsland`;
+  }, [title]);
 
   const { data, status } = useQuery(
     pictureType,

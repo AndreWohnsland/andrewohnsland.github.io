@@ -29,6 +29,7 @@ class EditComponent extends Component {
 
   componentDidMount() {
     this.loadElements();
+    document.title = 'Admin | Andre Wohnsland';
   }
 
   validateSubmit = () => {

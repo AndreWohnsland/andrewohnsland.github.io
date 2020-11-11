@@ -19,6 +19,7 @@ const PictureDelete = () => {
 
   useEffect(() => {
     loadElements();
+    document.title = 'Admin | Andre Wohnsland';
   }, []);
 
   const validateSubmit = () => {

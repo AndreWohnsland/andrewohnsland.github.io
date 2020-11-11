@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import TextInput from './Forms/TextInput';
 import InfoBox from './Forms/InfoBox';
@@ -15,6 +15,10 @@ const PictureUpload = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [res, setRes] = useState('');
   const [messageTitle, setmessageTitle] = useState('');
+
+  useEffect(() => {
+    document.title = 'Admin | Andre Wohnsland';
+  }, []);
 
   const categoryOptions = [
     { value: 'fotography', name: 'Fotography' },

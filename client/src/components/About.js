@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CaptionBanner from './CaptionBanner';
 
 const About = () => {
+  useEffect(() => {
+    document.title = 'About | Andre Wohnsland';
+  }, []);
   return (
     <>
       <CaptionBanner text="Made with React" />

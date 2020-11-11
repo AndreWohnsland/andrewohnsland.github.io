@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -12,6 +12,10 @@ const Login = () => {
   const [valid, setValid] = useState(true);
   const { setIsAuth, isAuth } = useContext(AuthContext);
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    document.title = 'Login | Andre Wohnsland';
+  }, []);
 
   if (isAuth === true) history.push('/admin/projects');
 

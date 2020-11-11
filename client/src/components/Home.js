@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CaptionBanner from './CaptionBanner';
 
 const Home = () => {
+  useEffect(() => {
+    document.title = 'Home | Andre Wohnsland';
+  }, []);
   return (
     <>
       <CaptionBanner text="Hi there!" />

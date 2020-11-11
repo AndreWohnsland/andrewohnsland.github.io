@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
@@ -6,6 +6,7 @@ import HeadingRenderer from './HeadingRenderer';
 import dateFormatter from './dateFormatter';
 import CaptionBanner from '../CaptionBanner';
 import { getElementData } from '../../util/apiHelper';
+import capFirst from '../../util/stringHelper';
 
 const queryOption = {
   staleTime: 300000,
@@ -15,6 +16,10 @@ const queryOption = {
 
 const ElementView = ({ match, elementType }) => {
   const id = match.params._id;
+
+  useEffect(() => {
+    document.title = `${capFirst(elementType)} | Andre Wohnsland`;
+  }, [elementType]);
 
   const { data, status } = useQuery(
     `${elementType}?id=${id}`,

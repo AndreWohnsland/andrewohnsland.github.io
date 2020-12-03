@@ -4,6 +4,7 @@ import ElementCard from './ElementCard';
 import CaptionBanner from '../CaptionBanner';
 import { getElements } from '../../util/apiHelper';
 import capFirst from '../../util/stringHelper';
+import SkeletonArticle from '../../skeletons/SkeletonArticle';
 
 const queryOption = {
   staleTime: 60000,
@@ -25,7 +26,8 @@ const ListView = ({ elementType, header }) => {
     <>
       <CaptionBanner text={header} />
       <div className="main-text">
-        {status === 'loading' && <p>Loading ....</p>}
+        {status === 'loading' &&
+          [1, 2, 3, 4, 5].map((n) => <SkeletonArticle key={n} theme="dark" />)}
         {status === 'error' && <p>Error fetching data!</p>}
         {status === 'success' &&
           data.map((element) => {

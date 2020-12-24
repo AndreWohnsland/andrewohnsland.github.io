@@ -1,6 +1,6 @@
 {
-  "name": "react_testhomepage",
-  "version": "0.1.0",
+  "name": "react_homepage",
+  "version": "1.0.0",
   "private": true,
   "homepage": "https://andrewohnsland.github.io/",
   "dependencies": {

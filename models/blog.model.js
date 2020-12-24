@@ -8,7 +8,7 @@ const blogSchema = new Schema(
     title: { type: String, required: [true, 'Please enter a titel'], unique: [true, 'No duplicate title allowed'] },
     description: { type: String, required: [true, 'Please enter a description'] },
     text: { type: String, required: [true, 'Please enter a text'] },
-    // draft: { type: Boolean, default: true },
+    draft: { type: Boolean, default: false },
   },
   { timestamps: true },
 );

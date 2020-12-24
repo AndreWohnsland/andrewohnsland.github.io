@@ -2,8 +2,8 @@ $bg-light: rgb(240, 241, 255);
 $font-color-default: #1a1a1a;
 $font-color-light: #ececec;
 $form-color: rgb(29, 29, 29);
-$primary-color: rgb(67, 80, 255);
-$separator-color: rgb(109, 109, 109);
+$primary-color: #004ea7;
+$separator-color: rgb(77, 77, 77);
 $font-color-error: rgb(146, 0, 0);
 $bg-error: rgb(255, 141, 141);
 $font-color-success: rgb(0, 160, 53);
@@ -11,8 +11,9 @@ $bg-success: rgb(119, 255, 183);
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -31,7 +32,8 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 .main-text,
@@ -64,7 +66,8 @@ code {
   color: $font-color-light;
   background-color: $form-color;
   border-radius: 5px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.205), -1px 0px 1px rgba(0, 0, 0, 0.178);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.205),
+    -1px 0px 1px rgba(0, 0, 0, 0.178);
   text-decoration: none !important;
   padding: 10px 18px 12px 18px;
   margin-bottom: 20px;
@@ -74,8 +77,9 @@ code {
   &:active {
     transition: 0.5s;
     transform: translate(20px, 0px);
-    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3), -2px 2px 3px rgba(0, 0, 0, 0.205),
-      -30px 15px 20px rgba(0, 0, 0, 0.137), 1px 0px 1px rgba(0, 0, 0, 0.178);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3),
+      -2px 2px 3px rgba(0, 0, 0, 0.205), -30px 15px 20px rgba(0, 0, 0, 0.137),
+      1px 0px 1px rgba(0, 0, 0, 0.178);
   }
 }
 
@@ -111,7 +115,7 @@ code {
   bottom: 0;
   width: 100%;
   padding: 2px 5px 2px 5px;
-  box-shadow: 0px -2px 1px $separator-color;
+  box-shadow: 0px -1px 3px $separator-color;
   .left {
     float: left;
   }

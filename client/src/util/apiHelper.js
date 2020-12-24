@@ -66,6 +66,24 @@ const getElements = async (elementType) => {
   return data;
 };
 
+// For the new feature to differentiate between drafts and released posts
+// drafts are only for the admin available and got the draft = true state
+const getElementDataAsAdmin = async (elementType, id) => {
+  const { data } = await axios.get(`${api}/${elementType}/admin/${id}`, {
+    withCredentials: true,
+    validateStatus: () => true,
+  });
+  return data;
+};
+
+const getElementsAsAdmin = async (elementType) => {
+  const { data } = await axios.get(`${api}/${elementType}/admin`, {
+    withCredentials: true,
+    validateStatus: () => true,
+  });
+  return data;
+};
+
 const addElement = (dataToSend, elementType) => {
   return axios.post(`${api}/${elementType}/add`, dataToSend, {
     withCredentials: true,
@@ -111,7 +129,9 @@ export {
   getAllImageData,
   loginUser,
   getElementData,
+  getElementDataAsAdmin,
   getElements,
+  getElementsAsAdmin,
   addElement,
   updateElement,
   updatePassword,

@@ -4,9 +4,14 @@ import Dropdown from './Forms/Dropdown';
 import TextInput from './Forms/TextInput';
 import TextArea from './Forms/TextArea';
 import InfoBox from './Forms/InfoBox';
+import Checkbox from './Forms/Checkbox';
 import { AuthContext } from '../../contexts/AuthContext';
 import CaptionBanner from '../CaptionBanner';
-import { getElements, addElement, updateElement } from '../../util/apiHelper';
+import {
+  getElementsAsAdmin,
+  addElement,
+  updateElement,
+} from '../../util/apiHelper';
 
 class EditComponent extends Component {
   // eslint-disable-next-line react/static-property-placement
@@ -21,6 +26,7 @@ class EditComponent extends Component {
       description: '',
       text: '',
       link: '',
+      draft: false,
       showMessage: false,
       res: null,
       messageTitle: '',
@@ -54,20 +60,21 @@ class EditComponent extends Component {
       description: '',
       text: '',
       link: '',
+      draft: false,
     });
   };
 
   loadElements = async () => {
     const { elementType } = this.props;
-    const elementData = await getElements(elementType);
+    const elementData = await getElementsAsAdmin(elementType);
     this.setState({ elements: elementData });
   };
 
   onSubmit = async (e) => {
     e.preventDefault();
     let response = null;
-    const { elementId, title, description, text, link } = this.state;
-    const dataToSend = { elementId, title, description, text, link };
+    const { elementId, title, description, text, link, draft } = this.state;
+    const dataToSend = { elementId, title, description, text, link, draft };
     response = await this.selectApiOption(dataToSend);
     this.setState({ res: response, showMessage: true, messageTitle: title });
     if (response.statusText === 'OK') {
@@ -91,6 +98,12 @@ class EditComponent extends Component {
     });
   };
 
+  handleCheckboxChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.checked,
+    });
+  };
+
   selectElement = (e) => {
     const { elements } = this.state;
     const { elementType } = this.props;
@@ -107,6 +120,7 @@ class EditComponent extends Component {
         description: selectedElement.description,
         text: selectedElement.text,
         link,
+        draft: selectedElement.draft,
       });
     }
   };
@@ -128,6 +142,7 @@ class EditComponent extends Component {
       link,
       text,
       elementId,
+      draft,
     } = this.state;
     const { elementType } = this.props;
     const {
@@ -135,6 +150,7 @@ class EditComponent extends Component {
       handleMessage,
       selectElement,
       handleAnyChange,
+      handleCheckboxChange,
       validateSubmit,
       onSubmit,
     } = this;
@@ -188,6 +204,12 @@ class EditComponent extends Component {
                       onChange={handleAnyChange}
                     />
                   )}
+                  <Checkbox
+                    label="This is currently a draft (will not be shown public)"
+                    name="draft"
+                    value={draft}
+                    onChange={handleCheckboxChange}
+                  />
                   <TextArea
                     label="Text"
                     name="text"

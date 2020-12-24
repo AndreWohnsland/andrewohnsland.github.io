@@ -9,6 +9,7 @@ const projectSchema = new Schema(
     description: { type: String, required: [true, 'Please enter a description'] },
     text: { type: String, required: [true, 'Please enter a text'] },
     link: { type: String, required: [true, 'Please enter a link'] },
+    // draft: { type: Boolean, default: true },
   },
   { timestamps: true },
 );

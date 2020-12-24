@@ -11,14 +11,27 @@ async function getProjects(req, res, next) {
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
+async function getProjectsAsAdmin(req, res, next) {
+  Project.find()
+    .sort({ createdAt: -1 })
+    .then((project) => res.json(project))
+    .catch((err) => next(new AppError(`Error: ${err}`, 400)));
+}
+
 async function getProjectById(req, res, next) {
   Project.findById(req.params.id)
     .then((project) => res.json(project))
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
+async function getProjectByIdAsAdmin(req, res, next) {
+  Project.findById(req.params.id)
+    .then((project) => res.json(project))
+    .catch((err) => next(new AppError(`Error: ${err}`, 400)));
+}
+
 async function updateProject(req, res, next) {
-  const { title, description, text, link } = req.body;
+  const { title, description, text, link, draft } = req.body;
   const { id } = req.params;
   Project.findById(id)
     .then((project) => {
@@ -26,6 +39,7 @@ async function updateProject(req, res, next) {
       project.description = description;
       project.text = text;
       project.link = link;
+      project.draft = draft;
 
       project
         .save()
@@ -39,9 +53,9 @@ async function updateProject(req, res, next) {
 }
 
 async function addProject(req, res, next) {
-  const { title, description, text, link } = req.body;
+  const { title, description, text, link, draft } = req.body;
 
-  const newProject = Project({ title, description, text, link });
+  const newProject = Project({ title, description, text, link, draft });
   newProject
     .save()
     .then(() => {
@@ -51,4 +65,4 @@ async function addProject(req, res, next) {
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
-module.exports = { getProjects, getProjectById, updateProject, addProject };
+module.exports = { getProjects, getProjectsAsAdmin, getProjectById, getProjectByIdAsAdmin, updateProject, addProject };

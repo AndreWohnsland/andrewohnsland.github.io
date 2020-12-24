@@ -7,9 +7,7 @@ class AuthContextProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuth: async () => {
-        return getAuth();
-      },
+      isAuth: null,
     };
   }
 

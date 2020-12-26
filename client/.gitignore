@@ -3,6 +3,8 @@
 # debug
 debug.log
 
+.eslintcache
+
 # dependencies
 /node_modules
 /.pnp

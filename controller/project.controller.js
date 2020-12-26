@@ -5,7 +5,7 @@ const { AppError } = require('../middlewares/errorHandler');
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 async function getProjects(req, res, next) {
-  Project.find()
+  Project.find({ draft: false })
     .sort({ createdAt: -1 })
     .then((project) => res.json(project))
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
@@ -20,6 +20,10 @@ async function getProjectsAsAdmin(req, res, next) {
 
 async function getProjectById(req, res, next) {
   Project.findById(req.params.id)
+    .then((project) => {
+      if (project.draft) return next(new AppError('Element is still a draft', 403));
+      return project;
+    })
     .then((project) => res.json(project))
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }

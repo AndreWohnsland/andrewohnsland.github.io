@@ -5,7 +5,7 @@ const { AppError } = require('../middlewares/errorHandler');
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 async function getAllBlogs(req, res, next) {
-  Blog.find()
+  Blog.find({ draft: false })
     .sort({ createdAt: -1 })
     .then((blog) => res.json(blog))
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
@@ -21,6 +21,10 @@ async function getAllBlogsAsAdmin(req, res, next) {
 async function getBlogById(req, res, next) {
   const { id } = req.params;
   Blog.findById(id)
+    .then((blog) => {
+      if (blog.draft) return next(new AppError('Element is still a draft', 403));
+      return blog;
+    })
     .then((blog) => res.json(blog))
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }

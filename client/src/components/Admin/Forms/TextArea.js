@@ -8,7 +8,7 @@ const TextArea = ({ label, name, value, onChange }) => {
       <Form.Control
         name={name}
         as="textarea"
-        rows="8"
+        rows="16"
         value={value}
         onChange={onChange}
       />

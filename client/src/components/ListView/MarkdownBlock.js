@@ -8,7 +8,12 @@ import HeadingRenderer from './HeadingRenderer';
 
 const MarkdownBlock = ({ maxWidth, sourcedata }) => {
   const PictureRenderer = ({ alt, src, title }) => (
-    <img alt={alt} src={src} title={title} style={{ maxWidth }} />
+    <img
+      alt={alt}
+      src={src}
+      title={title}
+      style={{ maxWidth, borderRadius: '10px' }}
+    />
   );
   return (
     <ReactMarkdown

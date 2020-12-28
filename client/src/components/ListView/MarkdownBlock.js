@@ -12,7 +12,13 @@ const MarkdownBlock = ({ maxWidth, sourcedata }) => {
       alt={alt}
       src={src}
       title={title}
-      style={{ maxWidth, borderRadius: '10px' }}
+      style={{
+        maxWidth,
+        borderRadius: '10px',
+        display: 'block',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      }}
     />
   );
   return (

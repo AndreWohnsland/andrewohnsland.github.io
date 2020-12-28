@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
-import ReactMarkdown from 'react-markdown';
-import CodeBlock from './CodeBlock';
-import HeadingRenderer from './HeadingRenderer';
+import MarkdownBlock from './MarkdownBlock';
+import useResize from './resize';
 import dateFormatter from './dateFormatter';
 import CaptionBanner from '../CaptionBanner';
 import { getElementData } from '../../util/apiHelper';
@@ -16,6 +15,8 @@ const queryOption = {
 
 const ElementView = ({ match, elementType }) => {
   const id = match.params._id;
+  const divRef = useRef(null);
+  const maxWidth = useResize(divRef);
 
   useEffect(() => {
     document.title = `${capFirst(elementType)} | Andre Wohnsland`;
@@ -48,7 +49,7 @@ const ElementView = ({ match, elementType }) => {
   return (
     <>
       <CaptionBanner text={chooseHeader(status, data)} />
-      <div className="main-text-page">
+      <div className="main-text-page" ref={divRef}>
         {status === 'error' &&
           'Probably not a valid id :( If you get here from blog or project try getting back and forth again.'}
         {status === 'success' && (
@@ -56,11 +57,7 @@ const ElementView = ({ match, elementType }) => {
             <p className="blog-date">{createDateTag(data)}</p>
             <p className="blog-description">{data.description}</p>
             <hr className="blog-dividor" />
-            <ReactMarkdown
-              className="blog-md"
-              source={data.text}
-              renderers={{ code: CodeBlock, heading: HeadingRenderer }}
-            />
+            <MarkdownBlock sourcedata={data.text} maxWidth={maxWidth} />
             {elementType === 'project' && (
               <p>
                 {'Interested? Look into the project '}

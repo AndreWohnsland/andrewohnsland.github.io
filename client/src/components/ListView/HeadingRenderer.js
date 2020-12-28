@@ -11,7 +11,11 @@ const HeadingRenderer = (props) => {
   const childrenElement = React.Children.toArray(children);
   const text = childrenElement.reduce(flatten, '');
   const slug = text.toLowerCase().replace(/\W/g, '-');
-  return React.createElement(`h${level}`, { id: slug }, children);
+  return React.createElement(
+    `h${level}`,
+    { id: slug, style: { textAlign: 'left', padding: '15px 0px 2px 0px' } },
+    children
+  );
 };
 
 export default HeadingRenderer;

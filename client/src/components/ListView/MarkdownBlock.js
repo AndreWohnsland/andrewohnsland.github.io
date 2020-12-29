@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Tex from '@matejmazur/react-katex';
 import math from 'remark-math';
+import gfm from 'remark-gfm';
 import 'katex/dist/katex.min.css';
 import CodeBlock from './CodeBlock';
 import HeadingRenderer from './HeadingRenderer';
@@ -24,7 +25,7 @@ const MarkdownBlock = ({ maxWidth, sourcedata }) => {
   return (
     <ReactMarkdown
       className="blog-md"
-      plugins={[math]}
+      plugins={[math, gfm]}
       escapeHtml={false}
       source={sourcedata}
       renderers={{

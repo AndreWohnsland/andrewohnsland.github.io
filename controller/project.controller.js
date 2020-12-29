@@ -5,7 +5,7 @@ const { AppError } = require('../middlewares/errorHandler');
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 async function getProjects(req, res, next) {
-  Project.find({ draft: false })
+  Project.find({ draft: false }, { text: 0 })
     .sort({ createdAt: -1 })
     .then((project) => res.json(project))
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));

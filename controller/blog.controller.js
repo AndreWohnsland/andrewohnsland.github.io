@@ -5,7 +5,7 @@ const { AppError } = require('../middlewares/errorHandler');
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 async function getAllBlogs(req, res, next) {
-  Blog.find({ draft: false })
+  Blog.find({ draft: false }, { text: 0 })
     .sort({ createdAt: -1 })
     .then((blog) => res.json(blog))
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));

@@ -50,5 +50,4 @@ By default, at first bootup, the backend will look if any user is found. If ther
 
 ## ToDo's
 
-- implement logging of post / put / delete requests (admin only level)
 - Create a more established style for the whole app

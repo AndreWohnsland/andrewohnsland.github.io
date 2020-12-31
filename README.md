@@ -2,6 +2,12 @@
 
 This is a React web app with the corresponding backend made with node.js, express, cors and mongodb.
 
+## Architecture
+
+The following schema shows the architecture of the Web App, API and corresponding services. React is used to build the frontend and gets hosted on github pages. The node.js with express is used for the API and is hosted on heroku. The data is stored in a MongoDB. The blog pages either get the pictures from dropbox or from github. The user and the Admin interacts with the Web App to update data or just view the content:
+
+![Architecture](docs/diagrams/out/Architecture.svg)
+
 ## Installation
 
 Over npm the server and the client can be installed separately:

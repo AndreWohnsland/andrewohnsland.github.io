@@ -1,0 +1,40 @@
+@startuml Architecture
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!define FONTAWESOMEOLD https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome
+
+!include DEVICONS/nodejs.puml
+!include DEVICONS/react.puml
+!include DEVICONS/mongodb.puml
+!include DEVICONS/dropbox.puml
+!include DEVICONS/heroku.puml
+!include DEVICONS/github_badge.puml
+!include FONTAWESOME/users.puml
+
+skinparam backgroundColor #fff
+
+LAYOUT_WITH_LEGEND()
+
+  Container(reactapp, "React App", "react", "Creates web app for the users to interact with", "react")
+  Container(api, "API", "nodejs", "Backend logic to serve data and handle requests", "nodejs")
+
+  Person_Ext(users, "Users", "People who visit the website and want a nice UI / UX", "users")
+ 
+  System(githubpages, "Github Pages", "Service to host website content", "github_badge")
+  System(mongodb, "Mongodb", "Database to hold views of website data", "mongodb")
+  System(dropbox, "Dropbox", "Service to upload pictures and serve over URL for blog/project", "dropbox")
+  System(heroku, "Heroku", "Serice to host the API backend", "heroku")
+
+
+Rel(users, githubpages, "uses", "https")
+Rel(reactapp, githubpages, "gets deployed to")
+Rel(githubpages, dropbox, "gets pictures")
+
+Rel_R(heroku, mongodb, "gets data")
+Rel(api, heroku, "gets deployed to")
+Rel(githubpages, heroku, "makes requests")
+
+
+@enduml

@@ -12,6 +12,7 @@
 !include DEVICONS/heroku.puml
 !include DEVICONS/github_badge.puml
 !include FONTAWESOME/users.puml
+!include FONTAWESOME/user.puml
 
 skinparam backgroundColor #fff
 
@@ -21,20 +22,22 @@ LAYOUT_WITH_LEGEND()
   Container(api, "API", "nodejs", "Backend logic to serve data and handle requests", "nodejs")
 
   Person_Ext(users, "Users", "People who visit the website and want a nice UI / UX", "users")
+  Person(admin, "Admin", "Person who edits content over the Web App", "user")
  
   System(githubpages, "Github Pages", "Service to host website content", "github_badge")
   System(mongodb, "Mongodb", "Database to hold views of website data", "mongodb")
   System(dropbox, "Dropbox", "Service to upload pictures and serve over URL for blog/project", "dropbox")
-  System(heroku, "Heroku", "Serice to host the API backend", "heroku")
+  System(heroku, "Heroku", "Serice to host the API backend server / logic", "heroku")
 
 
 Rel(users, githubpages, "uses", "https")
-Rel(reactapp, githubpages, "gets deployed to")
-Rel(githubpages, dropbox, "gets pictures")
+Rel(admin, githubpages, "uses", "https, auth")
+Rel(reactapp, githubpages, "gets deployed to", "node gh-pages")
+Rel(githubpages, dropbox, "gets pictures", "URI")
 
-Rel_R(heroku, mongodb, "gets data")
-Rel(api, heroku, "gets deployed to")
-Rel(githubpages, heroku, "makes requests")
+Rel_R(heroku, mongodb, "gets data", "mongoose")
+Rel(api, heroku, "gets deployed to", "heroku CLI")
+Rel(githubpages, heroku, "makes requests", "https")
 
 
 @enduml

@@ -126,7 +126,17 @@ code {
 
 .blog-md {
   pre {
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
+    margin-top: 0em !important;
+  }
+  .header-code {
+    text-align: left;
+    padding: 1px 0px 3px 15px;
+    font-size: 0.9rem;
+    margin-bottom: 0px;
+    color: #d4d4d4;
+    background-color: #000000;
+    border-radius: 10px 10px 0px 0px;
   }
 }
 

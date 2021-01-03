@@ -9,6 +9,8 @@ $bg-error: rgb(255, 141, 141);
 $font-color-success: rgb(0, 160, 53);
 $bg-success: rgb(119, 255, 183);
 
+$container-radius: 8px;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -126,7 +128,7 @@ code {
 
 .blog-md {
   pre {
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px $container-radius $container-radius;
     margin-top: 0em !important;
   }
   .header-code {
@@ -136,7 +138,13 @@ code {
     margin-bottom: 0px;
     color: #d4d4d4;
     background-color: #000000;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: $container-radius $container-radius 0px 0px;
+  }
+  .blog-picture {
+    border-radius: $container-radius;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

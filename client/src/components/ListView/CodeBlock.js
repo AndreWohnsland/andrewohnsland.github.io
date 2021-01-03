@@ -4,9 +4,12 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const CodeBlock = ({ language, value }) => {
   return (
-    <SyntaxHighlighter language={language} style={vscDarkPlus}>
-      {value}
-    </SyntaxHighlighter>
+    <>
+      <p className="header-code">{language}</p>
+      <SyntaxHighlighter language={language} style={vscDarkPlus}>
+        {value}
+      </SyntaxHighlighter>
+    </>
   );
 };
 

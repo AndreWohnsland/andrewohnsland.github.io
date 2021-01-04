@@ -6,7 +6,11 @@ const CodeBlock = ({ language, value }) => {
   return (
     <>
       <p className="header-code">{language}</p>
-      <SyntaxHighlighter language={language} style={vscDarkPlus}>
+      <SyntaxHighlighter
+        language={language}
+        style={vscDarkPlus}
+        wrapLongLines={false}
+      >
         {value}
       </SyntaxHighlighter>
     </>

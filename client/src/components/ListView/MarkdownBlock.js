@@ -9,15 +9,18 @@ import HeadingRenderer from './HeadingRenderer';
 
 const MarkdownBlock = ({ maxWidth, sourcedata }) => {
   const PictureRenderer = ({ alt, src, title }) => (
-    <img
-      alt={alt}
-      src={src}
-      title={title}
-      className="blog-picture"
-      style={{
-        maxWidth,
-      }}
-    />
+    <>
+      <img
+        alt={alt}
+        src={src}
+        title={title}
+        className="blog-picture"
+        style={{
+          maxWidth,
+        }}
+      />
+      <span className="picture-caption">{`${alt}`}</span>
+    </>
   );
   return (
     <ReactMarkdown

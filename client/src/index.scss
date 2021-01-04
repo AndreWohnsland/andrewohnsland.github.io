@@ -127,6 +127,7 @@ code {
 }
 
 .blog-md {
+  counter-reset: picturenumber;
   pre {
     border-radius: 0px 0px $container-radius $container-radius;
     margin-top: 0em !important;
@@ -145,6 +146,18 @@ code {
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+  .picture-caption {
+    text-align: center;
+    margin: auto;
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 3px;
+    counter-increment: picturenumber;
+  }
+  .picture-caption:before {
+    content: 'Picture ' counter(picturenumber) ': ';
+    font-weight: bold;
   }
 }
 

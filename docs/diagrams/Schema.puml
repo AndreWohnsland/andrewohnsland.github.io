@@ -19,7 +19,7 @@ skinparam backgroundColor #fff
 LAYOUT_WITH_LEGEND()
 
   Container(reactapp, "React App", "react", "Creates web app for the users to interact with", "react")
-  Container(api, "API", "nodejs", "Backend logic to serve data and handle requests", "nodejs")
+  Container(api, "API", "node.js", "Backend logic to serve data and handle requests", "nodejs")
 
   Person_Ext(users, "Users", "People who visit the website and want a nice UI / UX", "users")
   Person(admin, "Admin", "Person who edits content over the Web App", "user")

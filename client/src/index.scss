@@ -46,6 +46,9 @@ code {
   display: block;
   text-align: justify;
   hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
   max-width: 900px;
   padding: 20px 20px 0px 20px;
 }
@@ -131,7 +134,13 @@ code {
   pre {
     border-radius: 0px 0px $container-radius $container-radius;
     margin-top: 0em !important;
+    word-wrap: break-word;
+    overflow-wrap: normal;
+    code {
+      overflow-x: scroll !important;
+    }
   }
+
   .header-code {
     text-align: left;
     padding: 1px 0px 3px 15px;

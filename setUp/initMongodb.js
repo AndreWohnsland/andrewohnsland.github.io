@@ -3,8 +3,8 @@ const pino = require('pino');
 const User = require('../models/user.model');
 
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
-const username = 'admin';
-const password = 'adminadmin';
+const username = process.env.ADMIN_USER || 'admin';
+const password = process.env.ADMIN_PASSWORD || 'adminadmin';
 
 function initMongodb() {
   const uri = process.env.ATLAS_URI;

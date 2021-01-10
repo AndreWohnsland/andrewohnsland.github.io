@@ -3,8 +3,16 @@ const pino = require('pino');
 
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
+let whitelist = [];
+if (process.env.WHITELIST !== undefined) {
+  whitelist = process.env.WHITELIST.split(' ');
+}
+const isDev = process.env.ENVIRONMENT_TYPE === 'dev';
+if (isDev) {
+  whitelist.push('http://localhost:3000');
+}
+
 function initCors(app) {
-  const whitelist = ['http://localhost:3000', 'https://andrewohnsland.github.io'];
   const corsOptions = {
     origin(origin, callback) {
       if (whitelist.indexOf(origin) !== -1) {

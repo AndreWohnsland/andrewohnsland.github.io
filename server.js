@@ -3,6 +3,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const pino = require('pino');
+
+require('dotenv').config();
+
 const userRouter = require('./routes/user');
 const projectRouter = require('./routes/project');
 const blogRouter = require('./routes/blog');
@@ -12,8 +15,6 @@ const { initCors } = require('./setUp/initCors');
 const { initMongodb } = require('./setUp/initMongodb');
 
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
-
-require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;

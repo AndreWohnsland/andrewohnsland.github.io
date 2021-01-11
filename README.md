@@ -32,9 +32,10 @@ This will run mongodb on your local port 27017 in docker. In this case (if no cr
 ATLAS_URI=mongodb://127.0.0.1:27017
 JWT_SECRET=YourSecretForJWT
 ENVIRONMENT_TYPE=dev
+WHITELIST=yourwebdomainadress
 ```
 
-You can use the `.env.default` as starting point for your .env file.
+You can use the `.env.default` as starting point for your .env file. The whitelist can also be a list of domains, separated by a single whitespace (" ").
 
 The same applies to your `.env` files for the frontend / client. The default `.env.development` file contains the adress of the api, this will probably be different in your `.env.production` file, later when running on different servers.
 

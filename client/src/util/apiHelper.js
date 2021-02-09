@@ -1,5 +1,4 @@
 import axios from 'axios';
-import arrayBufferToBase64 from './binaryConverter';
 
 const apiAddress = process.env.REACT_APP_API_ADDRESS;
 const api = `${apiAddress}/api`;
@@ -23,7 +22,7 @@ const getAllImageData = async (pictype) => {
     return {
       width: obj.width,
       height: obj.height,
-      src: `data:image/jpeg;base64,${arrayBufferToBase64(obj.img.data.data)}`,
+      src: obj.img,
       title: obj.name,
     };
   });

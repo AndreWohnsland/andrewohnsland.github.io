@@ -18,6 +18,7 @@ function initMongodb() {
       });
     }
   });
+
   const { connection } = mongoose;
   connection.once('open', () => {
     logger.info('MongoDB database connection established successfully');

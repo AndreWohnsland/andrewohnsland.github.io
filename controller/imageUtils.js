@@ -15,12 +15,12 @@ const dropbox = dropboxV2Api.authenticate({
 const dbSync = util.promisify(dropbox);
 
 async function resizeImage(buffer) {
-  const dimensions = sizeOf(buffer);
-  const { height, width } = dimensions;
+  const { height, width } = sizeOf(buffer);
   let resizeOptions = { height: SIZE_LONG_SIDE };
   if (width > height) resizeOptions = { width: SIZE_LONG_SIDE };
-  const ret = await sharp(buffer).resize(resizeOptions).toBuffer();
-  return ret;
+  const returnBuffer = await sharp(buffer).resize(resizeOptions).toBuffer();
+  const { height: newHeight, width: newWidth } = sizeOf(returnBuffer);
+  return [returnBuffer, newHeight, newWidth];
 }
 
 function bufferToStream(binary) {

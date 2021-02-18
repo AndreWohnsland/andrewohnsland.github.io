@@ -1,4 +1,3 @@
-const sizeOf = require('buffer-image-size');
 const pino = require('pino');
 const Image = require('../models/imageDB.model');
 const { AppError } = require('../middlewares/errorHandler');
@@ -23,9 +22,7 @@ async function addImage(req, res, next) {
   const sameName = await Image.findOne({ name });
   if (sameName !== null) return next(new AppError('Name already exists', 400));
 
-  const resizedFile = await resizeImage(receivedFile.data);
-  const dimensions = sizeOf(resizedFile);
-  const { height, width } = dimensions;
+  const [resizedFile, height, width] = await resizeImage(receivedFile.data);
 
   const formattedName = name.replace(/\s/g, '');
   const dropboxPath = `/${category}/${formattedName}.jpg`;

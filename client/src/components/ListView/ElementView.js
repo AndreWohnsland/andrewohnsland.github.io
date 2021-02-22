@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
 import MarkdownBlock from './MarkdownBlock';
 import useResize from './resize';
 import dateFormatter from './dateFormatter';
@@ -13,8 +14,9 @@ const queryOption = {
   retry: 1,
 };
 
-const ElementView = ({ match, elementType }) => {
-  const id = match.params._id;
+const ElementView = ({ elementType }) => {
+  const params = useParams();
+  const id = params._id;
   const divRef = useRef(null);
   const maxWidth = useResize(divRef);
 

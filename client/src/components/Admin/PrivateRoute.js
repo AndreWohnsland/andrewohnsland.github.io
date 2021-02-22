@@ -2,13 +2,15 @@ import React from 'react';
 
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ isAuth, path, component }) => {
+const PrivateRoute = ({ isAuth, path, children }) => {
   return (
     <>
       {isAuth !== null && (
         <>
           {isAuth ? (
-            <Route exact path={path} component={component} />
+            <Route exact path={path}>
+              {children}
+            </Route>
           ) : (
             <Redirect to="/" />
           )}

@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-type FooterProps = {};
-
-const Footer: FunctionComponent<FooterProps> = () => {
+const Footer: FunctionComponent = () => {
   return (
     <div className="footer">
       <footer>

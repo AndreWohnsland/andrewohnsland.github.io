@@ -13,9 +13,7 @@ import PictureUpload from './Admin/PictureUpload';
 import PictureDelete from './Admin/PictureDelete';
 import PictureList from './PictureView/PictureList';
 
-type SwitchProps = {};
-
-const SwitchComponent: FunctionComponent<SwitchProps> = () => {
+const SwitchComponent: FunctionComponent = () => {
   const { isAuth } = useContext(AuthContext);
   return (
     <Switch>

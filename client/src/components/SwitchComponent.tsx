@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, FunctionComponent } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import ListView from './ListView/ListView';
 import Home from './Home';
@@ -13,7 +13,9 @@ import PictureUpload from './Admin/PictureUpload';
 import PictureDelete from './Admin/PictureDelete';
 import PictureList from './PictureView/PictureList';
 
-const SwitchComponent = () => {
+type SwitchProps = {}
+
+const SwitchComponent: FunctionComponent<SwitchProps> = () => {
   const { isAuth } = useContext(AuthContext);
   return (
     <Switch>

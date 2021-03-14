@@ -1,9 +1,7 @@
 import React, { useEffect, FunctionComponent } from 'react';
 import CaptionBanner from './CaptionBanner';
 
-type AboutProps = {}
-
-const About: FunctionComponent<AboutProps> = () => {
+const About: FunctionComponent = () => {
   useEffect(() => {
     document.title = 'About | Andre Wohnsland';
   }, []);

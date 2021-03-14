@@ -1,6 +1,6 @@
-import React, {FunctionComponent} from 'react';
+import React, { FunctionComponent } from 'react';
 
-type FooterProps = {}
+type FooterProps = {};
 
 const Footer: FunctionComponent<FooterProps> = () => {
   return (

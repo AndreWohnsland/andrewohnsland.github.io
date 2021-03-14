@@ -1,8 +1,8 @@
-import React, {FunctionComponent} from 'react';
+import React, { FunctionComponent } from 'react';
 
 type BannerProps = {
-  text: string,
-}
+  text: string;
+};
 
 const CaptionBanner: FunctionComponent<BannerProps> = ({ text }) => {
   return (

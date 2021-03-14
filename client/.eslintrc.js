@@ -5,6 +5,13 @@ module.exports = {
     allowImportExportEverywhere: false,
     codeFrame: false,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   extends: ['airbnb', 'prettier'],
   plugins: ['react', 'prettier'],
   env: { browser: true, jest: true },
@@ -17,5 +24,15 @@ module.exports = {
     'no-return-assign': ['off'],
     'no-underscore-dangle': ['off'],
     'jsx-a11y/label-has-associated-control': ['off'],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
   },
 };

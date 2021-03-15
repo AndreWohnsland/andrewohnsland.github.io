@@ -9,7 +9,7 @@ class App extends Component {
   // eslint-disable-next-line react/static-property-placement
   static contextType = ThemeContext;
 
-  render() {
+  render(): JSX.Element {
     const { isLightTheme, light, dark } = this.context;
     const theme = isLightTheme ? light : dark;
     const style = { backgroundColor: theme.bg, color: theme.syntax };

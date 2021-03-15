@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
-const Shimmer = () => {
+const Shimmer: FunctionComponent = () => {
   return (
     <div className="shimmer-wrapper">
       <div className="shimmer" />

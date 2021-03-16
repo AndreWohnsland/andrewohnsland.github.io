@@ -2,7 +2,16 @@ import React from 'react';
 
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ isAuth, path, children }) => {
+type PrivateRouterProps = {
+  isAuth: boolean | null;
+  path: string;
+};
+
+const PrivateRoute: React.FC<PrivateRouterProps> = ({
+  isAuth,
+  path,
+  children,
+}) => {
   return (
     <>
       {isAuth !== null && (

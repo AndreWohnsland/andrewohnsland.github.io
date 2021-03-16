@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { AxiosResponse } from 'axios';
 import TextInput from './Forms/TextInput';
 import InfoBox from './Forms/InfoBox';
 import Dropdown from './Forms/Dropdown';
@@ -8,12 +9,12 @@ import { postImage } from '../../util/apiHelper';
 
 const jpegType = 'image/jpeg';
 
-const PictureUpload = () => {
+const PictureUpload: React.FC = () => {
   const [name, setName] = useState('');
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<File | null>(null);
   const [category, setCategory] = useState('fotography');
   const [showMessage, setShowMessage] = useState(false);
-  const [res, setRes] = useState('');
+  const [res, setRes] = useState<AxiosResponse | undefined>(undefined);
   const [messageTitle, setmessageTitle] = useState('');
 
   useEffect(() => {
@@ -38,10 +39,10 @@ const PictureUpload = () => {
     setImage(null);
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     const data = new FormData();
-    data.append('file', image);
+    data.append('file', image as any);
     data.append('name', name);
     data.append('category', category);
     postImage(data).then((response) => {
@@ -79,7 +80,9 @@ const PictureUpload = () => {
                 label="Please select picture"
                 required
                 accept={`${jpegType}`}
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setImage(e.target.files === null ? null : e.target.files[0])
+                }
               />
             </Form.Group>
             <Button type="submit" disabled={!validateSubmit()}>

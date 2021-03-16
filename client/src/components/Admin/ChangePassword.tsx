@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { AxiosResponse } from 'axios';
 import InfoBox from './Forms/InfoBox';
 import CaptionBanner from '../CaptionBanner';
 import { updatePassword } from '../../util/apiHelper';
 
-const ChangePassword = () => {
+const ChangePassword: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [repeatedPassword, setRepeatedPassword] = useState('');
   const [showMessage, setShowMessage] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState<AxiosResponse | undefined>(undefined);
 
   useEffect(() => {
     document.title = 'Admin | Andre Wohnsland';
@@ -33,7 +34,7 @@ const ChangePassword = () => {
     return newPassword === repeatedPassword;
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.SyntheticEvent): Promise<void> => {
     event.preventDefault();
     updatePassword(username, password, newPassword, repeatedPassword).then(
       (res) => {

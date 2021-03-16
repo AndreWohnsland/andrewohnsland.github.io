@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { loginUser } from '../../util/apiHelper';
 import CaptionBanner from '../CaptionBanner';
 
-const Login = () => {
+const Login: React.FC = () => {
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -19,11 +19,11 @@ const Login = () => {
 
   if (isAuth === true) history.push('/admin/projects');
 
-  function validateForm() {
+  function validateForm(): boolean {
     return username.length > 0 && password.length > 0;
   }
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     loginUser(username, password)
       .then((res) => {

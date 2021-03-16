@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { AxiosResponse } from 'axios';
 import InfoBox from './Forms/InfoBox';
 import Dropdown from './Forms/Dropdown';
 import { getAndGenerateImageDetails, deleteImage } from '../../util/apiHelper';
 import CaptionBanner from '../CaptionBanner';
+import { IImageReducedDetails } from '../../Interfaces/image.interface';
 
-const PictureDelete = () => {
+const PictureDelete: React.FC = () => {
   const [showMessage, setShowMessage] = useState(false);
-  const [res, setRes] = useState('');
+  const [res, setRes] = useState<AxiosResponse | undefined>(undefined);
   const [messageTitle, setmessageTitle] = useState('');
   const [imageId, setImageId] = useState('noId');
-  const [imageList, setImageList] = useState([]);
+  const [imageList, setImageList] = useState<IImageReducedDetails[]>([]);
 
-  const loadElements = async () => {
+  const loadElements = async (): Promise<void> => {
     const imageData = await getAndGenerateImageDetails();
     setImageList(imageData);
   };
@@ -26,7 +28,7 @@ const PictureDelete = () => {
     return imageId !== 'noId';
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.SyntheticEvent): Promise<void> => {
     e.preventDefault();
     deleteImage(imageId).then((response) => {
       setRes(response);
@@ -39,7 +41,7 @@ const PictureDelete = () => {
     });
   };
 
-  const handleMessage = () => {
+  const handleMessage = (): void => {
     setShowMessage(!showMessage);
   };
 

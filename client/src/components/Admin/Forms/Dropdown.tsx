@@ -1,7 +1,24 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-const Dropdown = ({ label, value, onChange, options }) => {
+type OptionProps = {
+  name: string;
+  value: string;
+};
+
+type DropdownProps = {
+  label: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  options: OptionProps[];
+};
+
+const Dropdown: React.FC<DropdownProps> = ({
+  label,
+  value,
+  onChange,
+  options,
+}) => {
   return (
     <Form.Group controlId={label}>
       <Form.Label>{label}</Form.Label>

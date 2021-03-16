@@ -1,7 +1,19 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-const Checkbox = ({ label, name, value, onChange }) => {
+type CheckBoxProps = {
+  label: string;
+  name: string;
+  value: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const Checkbox: React.FC<CheckBoxProps> = ({
+  label,
+  name,
+  value,
+  onChange,
+}) => {
   return (
     <Form.Group controlId={name}>
       <Form.Check

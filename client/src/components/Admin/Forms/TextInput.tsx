@@ -1,7 +1,19 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-const TextInput = ({ label, name, value, onChange }) => {
+type TextInputProps = {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const TextInput: React.FC<TextInputProps> = ({
+  label,
+  name,
+  value,
+  onChange,
+}) => {
   return (
     <Form.Group controlId={name}>
       <Form.Label>{label}</Form.Label>

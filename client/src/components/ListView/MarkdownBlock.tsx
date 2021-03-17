@@ -7,8 +7,22 @@ import 'katex/dist/katex.min.css';
 import CodeBlock from './CodeBlock';
 import HeadingRenderer from './HeadingRenderer';
 
-const MarkdownBlock = ({ maxWidth, sourcedata }) => {
-  const PictureRenderer = ({ alt, src, title }) => (
+type MarkdownBlockProps = {
+  maxWidth: number | undefined;
+  sourcedata: string;
+};
+
+type PictureRendererProps = {
+  alt: string;
+  src: string;
+  title: string;
+};
+
+const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
+  maxWidth,
+  sourcedata,
+}) => {
+  const PictureRenderer = ({ alt, src, title }: PictureRendererProps) => (
     <>
       <img
         alt={alt}

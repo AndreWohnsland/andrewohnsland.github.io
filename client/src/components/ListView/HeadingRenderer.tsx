@@ -1,12 +1,17 @@
 import React from 'react';
 
-const flatten = (text, child) => {
+const flatten = (text: string, child: string | any): string | any => {
   return typeof child === 'string'
     ? text + child
     : React.Children.toArray(child.props.children).reduce(flatten, text);
 };
 
-const HeadingRenderer = (props) => {
+type HeadingRendererProps = {
+  children: any;
+  level: string;
+};
+
+const HeadingRenderer = (props: HeadingRendererProps): React.ReactElement => {
   const { children, level } = props;
   const childrenElement = React.Children.toArray(children);
   const text = childrenElement.reduce(flatten, '');

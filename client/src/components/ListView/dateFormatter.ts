@@ -1,4 +1,4 @@
-const dateFormatter = (dateString) => {
+const dateFormatter = (dateString: string): string => {
   const formatter = new Intl.DateTimeFormat('en-GB', {
     weekday: 'short',
     year: 'numeric',

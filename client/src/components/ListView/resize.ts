@@ -1,9 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 
-const useResize = (myRef) => {
+const useResize = (
+  myRef: React.RefObject<HTMLDivElement>
+): number | undefined => {
   const getWidth = useCallback(() => myRef?.current?.offsetWidth, [myRef]);
 
-  const [width, setWidth] = useState(undefined);
+  const [width, setWidth] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const handleResize = () => {

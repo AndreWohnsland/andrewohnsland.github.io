@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import dateFormatter from './dateFormatter';
+import { IElement } from '../../Interfaces/element.interface';
 
-const ElementCard = ({ element, elementType }) => {
+type ElementCardProps = {
+  element: IElement;
+  elementType: string;
+};
+
+const ElementCard: React.FC<ElementCardProps> = ({ element, elementType }) => {
   const createdAt = dateFormatter(element.createdAt);
   const updatedAt = dateFormatter(element.updatedAt);
 

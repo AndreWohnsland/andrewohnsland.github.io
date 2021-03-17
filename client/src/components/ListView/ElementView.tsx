@@ -7,6 +7,7 @@ import dateFormatter from './dateFormatter';
 import CaptionBanner from '../CaptionBanner';
 import { getElementData } from '../../util/apiHelper';
 import capFirst from '../../util/stringHelper';
+import { IElement } from '../../Interfaces/element.interface';
 
 const queryOption = {
   staleTime: 300000,
@@ -14,8 +15,16 @@ const queryOption = {
   retry: 1,
 };
 
-const ElementView = ({ elementType }) => {
-  const params = useParams();
+type ElementViewProps = {
+  elementType: string;
+};
+
+type ParamTypes = {
+  _id: string;
+};
+
+const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
+  const params = useParams<ParamTypes>();
   const id = params._id;
   const divRef = useRef(null);
   const maxWidth = useResize(divRef);
@@ -30,17 +39,17 @@ const ElementView = ({ elementType }) => {
     queryOption
   );
 
-  const createDateTag = (d) => {
+  const createDateTag = (d: IElement): string => {
     return `Created: ${dateFormatter(
       d.createdAt
     )} | Latest update: ${dateFormatter(d.updatedAt)}`;
   };
 
-  const chooseHeader = (s, d) => {
+  const chooseHeader = (s: string, d: IElement | undefined) => {
     if (s === 'loading') return 'Loading ....';
     if (s === 'error') return 'Error getting data!';
-    if (s === 'success') return d.title;
-    return '';
+    if (s === 'success' && d) return d.title;
+    return 'Error getting data!';
   };
 
   let linkDescription = 'here for more impressions';
@@ -54,7 +63,7 @@ const ElementView = ({ elementType }) => {
       <div className="main-text-page" ref={divRef}>
         {status === 'error' &&
           'Probably not a valid id :( If you get here from blog or project try getting back and forth again.'}
-        {status === 'success' && (
+        {status === 'success' && data && (
           <>
             <p className="blog-date">{createDateTag(data)}</p>
             <p className="blog-description">{data.description}</p>

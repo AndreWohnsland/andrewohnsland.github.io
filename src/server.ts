@@ -1,25 +1,25 @@
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const fileUpload = require('express-fileupload');
-const pino = require('pino');
-
 require('dotenv').config();
 
-const userRouter = require('./routes/user');
-const projectRouter = require('./routes/project');
-const blogRouter = require('./routes/blog');
-const imageRouter = require('./routes/image');
-const { forwardError, throwErrorOnInvalidRoute } = require('./middlewares/errorHandler');
-const { initCors } = require('./setUp/initCors');
-const { initMongodb } = require('./setUp/initMongodb');
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import fileUpload from 'express-fileupload';
+import pino from 'pino';
+import cors from 'cors';
+import userRouter from './routes/user';
+import projectRouter from './routes/project';
+import blogRouter from './routes/blog';
+import imageRouter from './routes/image';
+import { forwardError, throwErrorOnInvalidRoute } from './middlewares/errorHandler';
+import { createCorsOption } from './setUp/initCors';
+import { initMongodb } from './setUp/initMongodb';
 
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-initCors(app);
+app.use(cors(createCorsOption()));
 app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload({ createParentPath: true }));

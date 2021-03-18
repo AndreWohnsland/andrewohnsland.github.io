@@ -1,9 +1,9 @@
-const cors = require('cors');
-const pino = require('pino');
+import cors from 'cors';
+import pino from 'pino';
 
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
-let whitelist = [];
+let whitelist: string[] = [];
 if (process.env.WHITELIST !== undefined) {
   whitelist = process.env.WHITELIST.split(' ');
 }
@@ -12,10 +12,11 @@ if (isDev) {
   whitelist.push('http://localhost:3000');
 }
 
-function initCors(app) {
+function createCorsOption(): cors.CorsOptions {
   const corsOptions = {
-    origin(origin, callback) {
-      if (whitelist.indexOf(origin) !== -1) {
+    // type CustomOrigin = (requestOrigin: string | undefined, callback: (err: Error | null, origin?: StaticOrigin | undefined) => void) => void
+    origin: function (origin: string | undefined, callback: (err: Error | null, origin?: boolean | undefined) => void) {
+      if (whitelist && whitelist.indexOf(origin as string) !== -1) {
         callback(null, true);
       } else {
         logger.warn(`Not authorized acces from: ${origin}`);
@@ -27,7 +28,7 @@ function initCors(app) {
     allowedHeaders: 'Content-Type,Authorization,X-Requested-With',
     exposedHeaders: ['set-cookie'],
   };
-  app.use(cors(corsOptions));
+  return corsOptions;
 }
 
-module.exports = { initCors };
+export { createCorsOption };

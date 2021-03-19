@@ -1,23 +1,26 @@
-const pino = require('pino');
-const Image = require('../models/imageDB.model');
-const { AppError } = require('../middlewares/errorHandler');
-const {
+import pino from 'pino';
+import { Request, Response, NextFunction } from 'express';
+import { UploadedFile } from 'express-fileupload';
+import Image from '../models/imageDB.model';
+import { AppError } from '../middlewares/errorHandler';
+import {
   resizeImage,
   bufferToStream,
   postPictureToDropbox,
   generateShareableLink,
   deletePictureFromDropbox,
-} = require('./imageUtils');
+} from './imageUtils';
+import { IImageModel } from '../interfaces/image.interface';
 
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 const cat = { foto: 'fotography', wood: 'woodwork' };
 
-async function addImage(req, res, next) {
+async function addImage(req: Request, res: Response, next: NextFunction) {
   const { name, category } = req.body;
-  let receivedFile = req.files;
-  if (receivedFile === undefined || receivedFile === null) return next(new AppError('No file given', 400));
-  receivedFile = receivedFile.file;
+  const reqFile = req.files;
+  if (reqFile === undefined || reqFile === null) return next(new AppError('No file given', 400));
+  const receivedFile = reqFile.file as UploadedFile;
 
   const sameName = await Image.findOne({ name });
   if (sameName !== null) return next(new AppError('Name already exists', 400));
@@ -26,50 +29,50 @@ async function addImage(req, res, next) {
 
   const formattedName = name.replace(/\s/g, '');
   const dropboxPath = `/${category}/${formattedName}.jpg`;
-  const fileStream = bufferToStream(resizedFile);
+  const fileStream = bufferToStream(resizedFile as Buffer);
 
   await postPictureToDropbox(dropboxPath, fileStream);
   const sharedLinkResponse = await generateShareableLink(dropboxPath);
   let sharedUrl = sharedLinkResponse.url;
   sharedUrl = sharedUrl.replace(/\?dl=0/, '?raw=1');
 
-  const newImage = Image({ name, height, width, img: sharedUrl, category });
+  const newImage = new Image({ name, height, width, img: sharedUrl, category });
   newImage
     .save()
     .then(() => res.json('Picture added'))
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
-async function getFotographs(req, res, next) {
-  Image.find({ $or: [{ category: cat.foto }, { category: null }] })
+async function getFotographs(req: Request, res: Response, next: NextFunction) {
+  Image.find({ category: cat.foto })
     .sort({ createdAt: -1 })
-    .then((img) => {
+    .then((img: IImageModel[]) => {
       res.json(img);
     })
-    .catch((err) => next(new AppError(`Error getting pictures ${err}`, 400)));
+    .catch((err: Error) => next(new AppError(`Error getting pictures ${err}`, 400)));
 }
 
-async function getWoodworks(req, res, next) {
+async function getWoodworks(req: Request, res: Response, next: NextFunction) {
   Image.find({ category: cat.wood })
     .sort({ createdAt: -1 })
-    .then((img) => {
+    .then((img: IImageModel[]) => {
       res.json(img);
     })
-    .catch((err) => next(new AppError(`Error getting pictures ${err}`, 400)));
+    .catch((err: Error) => next(new AppError(`Error getting pictures ${err}`, 400)));
 }
 
-async function getAllDetails(req, res, next) {
+async function getAllDetails(req: Request, res: Response, next: NextFunction) {
   Image.find({}, { name: 1, category: 1 })
     .sort({ createdAt: -1 })
-    .then((img) => {
+    .then((img: IImageModel[]) => {
       res.json(img);
     })
-    .catch((err) => next(new AppError(`Error getting pictures ${err}`, 400)));
+    .catch((err: Error) => next(new AppError(`Error getting pictures ${err}`, 400)));
 }
 
-async function deleteImage(req, res, next) {
+async function deleteImage(req: Request, res: Response, next: NextFunction) {
   Image.findByIdAndDelete(req.params.id)
-    .then((img) => {
+    .then((img: IImageModel | null) => {
       if (img) {
         const msg = `Image with name: ${img.name} was deleted.`;
         const dropboxName = img.name.replace(/\s/g, '');
@@ -81,7 +84,7 @@ async function deleteImage(req, res, next) {
         return next(new AppError('This id/picture does not exits', 400));
       }
     })
-    .catch((err) => next(new AppError(`Error deleting image: ${err}`, 400)));
+    .catch((err: Error) => next(new AppError(`Error deleting image: ${err}`, 400)));
 }
 
-module.exports = { addImage, getFotographs, getWoodworks, getAllDetails, deleteImage };
+export default { addImage, getFotographs, getWoodworks, getAllDetails, deleteImage };

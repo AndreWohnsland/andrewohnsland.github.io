@@ -1,9 +1,10 @@
-const sizeOf = require('buffer-image-size');
-const sharp = require('sharp');
-const { Readable } = require('stream');
+import sizeOf from 'buffer-image-size';
+import sharp from 'sharp';
+import { Readable } from 'stream';
+// There are not type supports currently here
 const dropboxV2Api = require('dropbox-v2-api');
-const util = require('util');
-const pino = require('pino');
+import util from 'util';
+import pino from 'pino';
 
 const SIZE_LONG_SIDE = 800;
 const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
@@ -14,16 +15,20 @@ const dropbox = dropboxV2Api.authenticate({
 });
 const dbSync = util.promisify(dropbox);
 
-async function resizeImage(buffer) {
+async function resizeImage(buffer: Buffer) {
   const { height, width } = sizeOf(buffer);
-  let resizeOptions = { height: SIZE_LONG_SIDE };
-  if (width > height) resizeOptions = { width: SIZE_LONG_SIDE };
+  let resizeOptions;
+  if (width > height) {
+    resizeOptions = { width: SIZE_LONG_SIDE };
+  } else {
+    resizeOptions = { height: SIZE_LONG_SIDE };
+  }
   const returnBuffer = await sharp(buffer).resize(resizeOptions).toBuffer();
   const { height: newHeight, width: newWidth } = sizeOf(returnBuffer);
   return [returnBuffer, newHeight, newWidth];
 }
 
-function bufferToStream(binary) {
+function bufferToStream(binary: Buffer) {
   const readableInstanceStream = new Readable({
     read() {
       this.push(binary);
@@ -34,7 +39,7 @@ function bufferToStream(binary) {
   return readableInstanceStream;
 }
 
-async function postPictureToDropbox(dropboxPath, fileStream) {
+async function postPictureToDropbox(dropboxPath: string, fileStream: Readable) {
   const params = {
     resource: 'files/upload',
     parameters: {
@@ -49,7 +54,7 @@ async function postPictureToDropbox(dropboxPath, fileStream) {
   }
 }
 
-async function generateShareableLink(dropboxPath) {
+async function generateShareableLink(dropboxPath: string) {
   const params = {
     resource: 'sharing/create_shared_link_with_settings',
     parameters: {
@@ -68,7 +73,7 @@ async function generateShareableLink(dropboxPath) {
   }
 }
 
-async function deletePictureFromDropbox(dropboxPath) {
+async function deletePictureFromDropbox(dropboxPath: string) {
   const params = {
     resource: 'files/delete',
     parameters: {
@@ -82,4 +87,4 @@ async function deletePictureFromDropbox(dropboxPath) {
   }
 }
 
-module.exports = { resizeImage, bufferToStream, postPictureToDropbox, generateShareableLink, deletePictureFromDropbox };
+export { resizeImage, bufferToStream, postPictureToDropbox, generateShareableLink, deletePictureFromDropbox };

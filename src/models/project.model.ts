@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+import mongoose, { Model } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
+import { IProjectModel } from '../interfaces/project.interface';
 
 const { Schema } = mongoose;
 
@@ -15,6 +16,6 @@ const projectSchema = new Schema(
 );
 
 projectSchema.plugin(uniqueValidator);
-const Project = mongoose.model('Project', projectSchema);
+const Project: Model<IProjectModel> = mongoose.model('Project', projectSchema);
 
-module.exports = Project;
+export default Project;

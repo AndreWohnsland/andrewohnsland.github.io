@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const authorize = require('../middlewares/auth');
-const projectController = require('../controller/project.controller');
+import authorize from '../middlewares/auth';
+import projectController from '../controller/project.controller';
 
 // get
 router.route('/').get(projectController.getProjects);
@@ -12,4 +12,4 @@ router.route('/admin/:id').get(authorize, projectController.getProjectByIdAsAdmi
 router.route('/update/:id').post(authorize, projectController.updateProject);
 router.route('/add').post(authorize, projectController.addProject);
 
-module.exports = router;
+export default router;

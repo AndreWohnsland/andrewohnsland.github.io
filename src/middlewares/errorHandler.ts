@@ -1,4 +1,6 @@
-async function forwardError(err, req, res, next) {
+import { Request, Response, NextFunction } from 'express';
+
+async function forwardError(err: AppError, req: Request, res: Response, next: NextFunction) {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
@@ -9,7 +11,10 @@ async function forwardError(err, req, res, next) {
 }
 
 class AppError extends Error {
-  constructor(message, statusCode) {
+  statusCode: number;
+  status: string;
+  isOperational: boolean;
+  constructor(message: string, statusCode: number) {
     super(message);
 
     this.statusCode = statusCode;
@@ -20,8 +25,8 @@ class AppError extends Error {
   }
 }
 
-async function throwErrorOnInvalidRoute(req, res, next) {
+async function throwErrorOnInvalidRoute(req: Request, res: Response, next: NextFunction) {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 }
 
-module.exports = { forwardError, throwErrorOnInvalidRoute, AppError };
+export { forwardError, throwErrorOnInvalidRoute, AppError };

@@ -1,6 +1,7 @@
 /* eslint-disable func-names */
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+import mongoose, { model } from 'mongoose';
+import bcrypt from 'bcrypt';
+import { IUserModel, IUserDocument } from '../interfaces/user.interface';
 
 const { Schema } = mongoose;
 
@@ -23,13 +24,13 @@ const userSchema = new Schema(
 );
 
 // middleware to hash the PW
-userSchema.pre('save', async function (next) {
+userSchema.pre<IUserModel>('save', async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 
-userSchema.statics.login = async function (username, password) {
+userSchema.statics.login = async function (username: string, password: string): Promise<IUserModel> {
   const user = await this.findOne({ username });
   if (user) {
     const auth = await bcrypt.compare(password, user.password);
@@ -40,6 +41,6 @@ userSchema.statics.login = async function (username, password) {
   throw Error('Incorrect login data');
 };
 
-const User = mongoose.model('User', userSchema);
+const User: IUserDocument = model<IUserModel, IUserDocument>('User', userSchema);
 
-module.exports = User;
+export default User;

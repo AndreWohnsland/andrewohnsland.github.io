@@ -38,6 +38,7 @@ module.exports = {
     'no-return-assign': ['off'],
     'no-underscore-dangle': ['off'],
     'jsx-a11y/label-has-associated-control': ['off'],
+    'global-require': ['off'],
     'import/extensions': [
       'error',
       'ignorePackages',

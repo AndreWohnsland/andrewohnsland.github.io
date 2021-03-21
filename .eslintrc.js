@@ -5,8 +5,9 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ['prettier', 'airbnb-base'],
-  plugins: ['prettier'],
+  parser: '@typescript-eslint/parser',
+  extends: ['prettier', 'airbnb-base', 'plugin:@typescript-eslint/recommended'],
+  plugins: ['prettier', '@typescript-eslint'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',

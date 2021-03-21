@@ -1,0 +1,71 @@
+$bg-light: #ccc;
+$bg-dark: #3f3f3f;
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 7px;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  background-color: $bg-light;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 19.5px;
+  width: 19.5px;
+  left: 4px;
+  bottom: 3px;
+  background-color: $bg-dark;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: $bg-dark;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+  background-color: $bg-light;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.sliderholder {
+  align-content: flex-end;
+  display: flex;
+  flex-direction: row;
+}
+
+.themefont {
+  color: #ececec80;
+  margin-bottom: 0;
+  align-self: center;
+}

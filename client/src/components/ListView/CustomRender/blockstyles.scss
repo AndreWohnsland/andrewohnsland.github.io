@@ -10,9 +10,9 @@ $font-color-info: rgb(87, 87, 87);
 $bg-info: rgb(211, 211, 211);
 $border-info: rgb(87, 87, 87);
 
-$font-color-helpfull: rgb(0, 141, 47);
-$bg-helpfull: rgb(104, 241, 168);
-$border-helpfull: rgb(0, 141, 47);
+$font-color-helpful: rgb(0, 141, 47);
+$bg-helpful: rgb(104, 241, 168);
+$border-helpful: rgb(0, 141, 47);
 
 $border-width: 6px;
 
@@ -43,8 +43,8 @@ $border-width: 6px;
   border-left: $border-width solid $border-info;
 }
 
-.md-custom-block.helpfull {
-  background-color: $bg-helpfull;
-  color: $font-color-helpfull;
-  border-left: $border-width solid $border-helpfull;
+.md-custom-block.helpful {
+  background-color: $bg-helpful;
+  color: $font-color-helpful;
+  border-left: $border-width solid $border-helpful;
 }

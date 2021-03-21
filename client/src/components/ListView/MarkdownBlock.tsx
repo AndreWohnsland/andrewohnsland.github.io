@@ -6,6 +6,7 @@ import gfm from 'remark-gfm';
 import 'katex/dist/katex.min.css';
 import CodeBlock from './CodeBlock';
 import HeadingRenderer from './HeadingRenderer';
+import Shortcodes from './CustomRender/Shortcodes';
 
 type MarkdownBlockProps = {
   maxWidth: number | undefined;
@@ -39,7 +40,14 @@ const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
   return (
     <ReactMarkdown
       className="blog-md"
-      plugins={[math, gfm]}
+      plugins={[
+        math,
+        gfm,
+        [
+          require('remark-shortcodes'),
+          { startBlock: '[[', endBlock: ']]', inlineMode: true },
+        ],
+      ]}
       escapeHtml={false}
       source={sourcedata}
       renderers={{
@@ -48,6 +56,7 @@ const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
         image: PictureRenderer,
         inlineMath: ({ value }) => <Tex math={value} />,
         math: ({ value }) => <Tex block math={value} />,
+        shortcode: Shortcodes,
       }}
     />
   );

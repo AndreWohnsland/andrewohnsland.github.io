@@ -10,6 +10,7 @@ import userRouter from './routes/user';
 import projectRouter from './routes/project';
 import blogRouter from './routes/blog';
 import imageRouter from './routes/image';
+import categoryRouter from './routes/category';
 import { forwardError, throwErrorOnInvalidRoute } from './middlewares/errorHandler';
 import { createCorsOption } from './setUp/initCors';
 import { initMongodb } from './setUp/initMongodb';
@@ -32,6 +33,7 @@ app.use('/api/user', userRouter);
 app.use('/api/project', projectRouter);
 app.use('/api/blog', blogRouter);
 app.use('/api/image', imageRouter);
+app.use('/api/category', categoryRouter);
 
 // implement error middleware
 app.all('*', throwErrorOnInvalidRoute);

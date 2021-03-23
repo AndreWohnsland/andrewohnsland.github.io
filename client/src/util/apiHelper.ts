@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { IElement } from '../Interfaces/element.interface';
+import { IElement, IElementPost } from '../Interfaces/element.interface';
 import {
   IImageElement,
   IImageReducedDetails,
@@ -108,17 +108,8 @@ const getElementsAsAdmin = async (elementType: string): Promise<IElement[]> => {
   return data;
 };
 
-type SendElement = {
-  elementId: string | undefined;
-  title: string;
-  description: string;
-  text: string;
-  link: string | undefined;
-  draft: boolean;
-};
-
 const addElement = (
-  dataToSend: SendElement,
+  dataToSend: IElementPost,
   elementType: string
 ): Promise<AxiosResponse> => {
   return axios.post(`${api}/${elementType}/add`, dataToSend, {
@@ -128,7 +119,7 @@ const addElement = (
 };
 
 const updateElement = (
-  dataToSend: SendElement,
+  dataToSend: IElementPost,
   elementType: string,
   elementId: string
 ): Promise<AxiosResponse> => {

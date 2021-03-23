@@ -4,6 +4,7 @@ export interface IProject {
   title: String;
   description: String;
   text: String;
+  category: String[];
   draft: boolean;
   link: string;
   createdAt: Date;

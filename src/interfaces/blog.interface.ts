@@ -4,6 +4,7 @@ export interface IBlog {
   title: String;
   description: String;
   text: String;
+  category: String[];
   draft: boolean;
   createdAt: Date;
   modifiedAt: Date;

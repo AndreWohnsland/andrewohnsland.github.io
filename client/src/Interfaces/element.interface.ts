@@ -7,6 +7,7 @@ export interface IElement {
   draft: boolean;
   link?: string | undefined;
   text: string;
+  category: string[];
 }
 
 export interface IElementPost {
@@ -16,4 +17,5 @@ export interface IElementPost {
   text: string;
   link: string;
   draft: boolean;
+  category: string[];
 }

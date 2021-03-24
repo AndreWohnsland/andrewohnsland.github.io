@@ -146,6 +146,18 @@ const updatePassword = (
   );
 };
 
+const getAllCategories = async (elementType: string): Promise<string[]> => {
+  try {
+    const { data } = await axios.get(`${api}/category/${elementType}`);
+    if (data === undefined) {
+      return [];
+    }
+    return data;
+  } catch {
+    return [];
+  }
+};
+
 const getAuth = (): Promise<boolean> => {
   return axios
     .get(`${api}/user/auth`, {
@@ -173,4 +185,5 @@ export {
   updatePassword,
   postImage,
   getAuth,
+  getAllCategories,
 };

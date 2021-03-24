@@ -8,7 +8,7 @@ import Project from '../models/project.model';
 const filterCats = (categories: IBlogModel[]): String[] => {
   let allCats: String[] = [];
   categories.map((a) => allCats.push.apply(allCats, a.category));
-  return [...new Set(allCats)];
+  return [...new Set(allCats)].sort();
 };
 
 async function getAllBlogCategories(req: Request, res: Response, next: NextFunction) {

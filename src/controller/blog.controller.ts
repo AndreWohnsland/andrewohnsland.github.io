@@ -40,7 +40,7 @@ async function getBlogByIdAsAdmin(req: Request, res: Response, next: NextFunctio
 }
 
 async function updateBlog(req: Request, res: Response, next: NextFunction) {
-  const { title, description, text, draft } = req.body;
+  const { title, description, text, draft, category } = req.body;
   Blog.findById(req.params.id)
     .then((blog: IBlogModel | null) => {
       if (blog === null) return next(new AppError('Blog does not exist', 404));
@@ -48,11 +48,12 @@ async function updateBlog(req: Request, res: Response, next: NextFunction) {
       blog.description = description;
       blog.text = text;
       blog.draft = draft;
+      blog.category = category;
       blog
         .save()
         .then(() => {
           logger.info(`Blog ${title} was updated`);
-          res.json('Blog updated');
+          res.json(`Blog ${title} updated`);
         })
         .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
     })
@@ -60,14 +61,14 @@ async function updateBlog(req: Request, res: Response, next: NextFunction) {
 }
 
 async function addBlog(req: Request, res: Response, next: NextFunction) {
-  const { title, description, text, draft } = req.body;
+  const { title, description, text, draft, category } = req.body;
 
-  const newBlog = new Blog({ title, description, text, draft });
+  const newBlog = new Blog({ title, description, text, draft, category });
   newBlog
     .save()
     .then(() => {
       logger.info(`Blog ${title} was added`);
-      res.json('Blog added!');
+      res.json(`Blog ${title} added!`);
     })
     .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
 }

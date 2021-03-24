@@ -38,7 +38,7 @@ async function getProjectByIdAsAdmin(req: Request, res: Response, next: NextFunc
 }
 
 async function updateProject(req: Request, res: Response, next: NextFunction) {
-  const { title, description, text, link, draft } = req.body;
+  const { title, description, text, link, draft, category } = req.body;
   const { id } = req.params;
   Project.findById(id)
     .then((project: IProjectModel | null) => {
@@ -48,12 +48,13 @@ async function updateProject(req: Request, res: Response, next: NextFunction) {
       project.text = text;
       project.link = link;
       project.draft = draft;
+      project.category = category;
 
       project
         .save()
         .then(() => {
           logger.info(`Project ${title} was updated`);
-          res.json('Project updated');
+          res.json(`Project ${title} updated`);
         })
         .catch((err) => next(new AppError(`Error: ${err}`, 400)));
     })
@@ -61,14 +62,14 @@ async function updateProject(req: Request, res: Response, next: NextFunction) {
 }
 
 async function addProject(req: Request, res: Response, next: NextFunction) {
-  const { title, description, text, link, draft } = req.body;
+  const { title, description, text, link, draft, category } = req.body;
 
-  const newProject = new Project({ title, description, text, link, draft });
+  const newProject = new Project({ title, description, text, link, draft, category });
   newProject
     .save()
     .then(() => {
       logger.info(`Project ${title} was created`);
-      res.json('Project added!');
+      res.json(`Project ${title} added!`);
     })
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }

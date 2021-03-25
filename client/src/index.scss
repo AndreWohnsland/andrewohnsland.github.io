@@ -106,6 +106,37 @@ code {
   margin: 2px 0px 0px 0px;
 }
 
+.card-category {
+  text-align: left;
+  text-align: justify;
+  hyphens: auto;
+  margin: 2px 0px 0px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  span {
+    padding: 0px 5px 1px 5px;
+    margin: 8px 8px 0px 0px;
+    background-color: $font-color-light;
+    color: $form-color;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 3px;
+  }
+}
+
+.category-multi-select {
+  margin-bottom: 15px;
+  .select__multi-value,
+  .select__multi-value__label {
+    background-color: $form-color;
+    color: $font-color-light;
+  }
+  .select__menu {
+    color: $font-color-default;
+  }
+}
+
 .main-header {
   background-color: $primary-color;
   color: $font-color-light;
@@ -258,4 +289,10 @@ code {
   list-style-position: inside;
   text-align: left;
   padding-left: 12%;
+}
+
+.github {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }

@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import ThemeToggle from './ThemeToggle';
 import { AuthContext } from '../../contexts/AuthContext';
+import GithubLogo from './github-original.svg';
 
 const NavBar: React.FC = () => {
   const { isAuth } = useContext(AuthContext);
@@ -64,7 +65,15 @@ const NavBar: React.FC = () => {
               </NavDropdown>
             )}
             <Nav.Link href="https://github.com/AndreWohnsland">
-              My Github
+              <div className="github">
+                <img
+                  src={GithubLogo}
+                  alt="GitHub Logo"
+                  width="20px"
+                  height="20px"
+                />
+                &nbsp;GitHub
+              </div>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

@@ -28,6 +28,11 @@ const ElementCard: React.FC<ElementCardProps> = ({ element, elementType }) => {
         <h3 className="card-title">{element.title}</h3>
         <span className="card-info">{createDateTag()}</span>
         <p className="card-desc">{element.description}</p>
+        <p className="card-category">
+          {element.category.sort().map((cat) => {
+            return <span>#{cat}</span>;
+          })}
+        </p>
       </div>
     </Link>
   );

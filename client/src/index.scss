@@ -3,6 +3,7 @@ $font-color-default: #1a1a1a;
 $font-color-light: #ececec;
 $form-color: rgb(29, 29, 29);
 $primary-color: #004ea7;
+$primary-color-dark: #002958;
 $separator-color: rgb(77, 77, 77);
 $font-color-error: rgb(146, 0, 0);
 $bg-error: rgb(255, 141, 141);
@@ -76,15 +77,16 @@ code {
   text-decoration: none !important;
   padding: 10px 18px 12px 18px;
   margin-bottom: 20px;
-  transition: 1s;
+  transition: 0.4s;
   &:hover,
   &:focus,
   &:active {
-    transition: 0.5s;
-    transform: translate(5px, 0px);
+    background-color: $primary-color;
+    transition: 0.3s;
+    transform: translate(3px, 0px);
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3),
-      -2px 2px 3px rgba(0, 0, 0, 0.205), -30px 15px 20px rgba(0, 0, 0, 0.137),
-      1px 0px 1px rgba(0, 0, 0, 0.178);
+      -2px 2px 3px rgba(0, 0, 0, 0.2), -20px 10px 20px rgba(0, 0, 0, 0.1),
+      1px 0px 1px rgba(0, 0, 0, 0.18);
   }
 }
 

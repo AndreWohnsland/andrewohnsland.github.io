@@ -8,10 +8,12 @@ import InfoBox from './Forms/InfoBox';
 import Checkbox from './Forms/Checkbox';
 import { AuthContext } from '../../contexts/AuthContext';
 import CaptionBanner from '../CaptionBanner';
+import CategorySelect from './Forms/CategorySelect';
 import {
   getElementsAsAdmin,
   addElement,
   updateElement,
+  getAllCategories,
 } from '../../util/apiHelper';
 import { IElement, IElementPost } from '../../Interfaces/element.interface';
 
@@ -32,10 +34,25 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
   const [showMessage, setShowMessage] = useState(false);
   const [res, setRes] = useState<AxiosResponse | undefined>(undefined);
   const [messageTitle, setMessageTitle] = useState('');
+  const [category, setCategory] = useState<string[]>([]);
+  const [existingCats, setExistingCats] = useState<string[]>([]);
+
+  const clearState = () => {
+    setElementId('');
+    setTitle('');
+    setDescription('');
+    setText('');
+    setLink('');
+    setDraft(false);
+    setCategory([]);
+  };
 
   const loadElements = useCallback(async () => {
+    clearState();
     const elementData = await getElementsAsAdmin(elementType);
+    const existingCatData = await getAllCategories(elementType);
     setElements(elementData);
+    setExistingCats(existingCatData);
   }, [elementType]);
 
   useEffect(() => {
@@ -56,15 +73,6 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
     setShowMessage(!showMessage);
   };
 
-  const clearState = () => {
-    setElementId('');
-    setTitle('');
-    setDescription('');
-    setText('');
-    setLink('');
-    setDraft(false);
-  };
-
   const selectApiOption = (dataToSend: IElementPost) => {
     if (elementId) {
       return updateElement(dataToSend, elementType, elementId);
@@ -75,13 +83,22 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     let response = null;
-    const dataToSend = { elementId, title, description, text, link, draft };
+    const dataToSend = {
+      elementId,
+      title,
+      description,
+      text,
+      link,
+      draft,
+      category,
+    };
     response = await selectApiOption(dataToSend);
     setRes(response);
     setShowMessage(true);
     setMessageTitle(title);
     if (response.statusText === 'OK') {
       clearState();
+      setExistingCats([]);
       loadElements();
     }
   };
@@ -103,6 +120,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
       setText(selectedElement.text);
       setLink(selectedLink);
       setDraft(selectedElement.draft);
+      setCategory(selectedElement.category);
     }
   };
 
@@ -165,6 +183,12 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
                   name="draft"
                   value={draft}
                   onChange={(e) => setDraft(e.target.checked)}
+                />
+                <CategorySelect
+                  name="catselect"
+                  categories={category}
+                  existingCategories={existingCats}
+                  setCategories={setCategory}
                 />
                 <TextArea
                   label="Text"

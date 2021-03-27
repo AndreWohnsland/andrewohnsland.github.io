@@ -48,11 +48,11 @@ I planned on using `remark-shortcodes` for the custom elements. Sadly I could no
 
 You simply generate them using the code Markdown syntax with the language defined as the custom name:
 
-```md
-\`\`\`danger
+````md
+```danger
 This will be rendered into a div of the class danger. It has a red-ish background with dark red text color and a red left border. It is used to inform the user of any critical things to consider.
-\`\`\`
 ```
+````
 
 The body within will also be translated from Markdown to HTML code, all supported features can be used. The example above will be translated into the following element:
 

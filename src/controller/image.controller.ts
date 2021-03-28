@@ -43,17 +43,9 @@ async function addImage(req: Request, res: Response, next: NextFunction) {
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
-async function getFotographs(req: Request, res: Response, next: NextFunction) {
-  Image.find({ category: cat.foto })
-    .sort({ createdAt: -1 })
-    .then((img: IImageModel[]) => {
-      res.json(img);
-    })
-    .catch((err: Error) => next(new AppError(`Error getting pictures ${err}`, 400)));
-}
-
-async function getWoodworks(req: Request, res: Response, next: NextFunction) {
-  Image.find({ category: cat.wood })
+async function getPicturesByCategory(req: Request, res: Response, next: NextFunction) {
+  const { category } = req.params;
+  Image.find({ category })
     .sort({ createdAt: -1 })
     .then((img: IImageModel[]) => {
       res.json(img);
@@ -87,4 +79,4 @@ async function deleteImage(req: Request, res: Response, next: NextFunction) {
     .catch((err: Error) => next(new AppError(`Error deleting image: ${err}`, 400)));
 }
 
-export default { addImage, getFotographs, getWoodworks, getAllDetails, deleteImage };
+export default { addImage, getFotographs, getWoodworks, getAllDetails, deleteImage, getPicturesByCategory };

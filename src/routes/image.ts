@@ -3,8 +3,7 @@ import authorize from '../middlewares/auth';
 import imageController from '../controller/image.controller';
 
 // get
-router.route('/fotography').get(imageController.getFotographs);
-router.route('/woodwork').get(imageController.getWoodworks);
+router.route('/:category').get(imageController.getPicturesByCategory);
 router.route('/all/details').get(imageController.getAllDetails);
 
 // post

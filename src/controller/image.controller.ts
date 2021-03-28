@@ -79,4 +79,4 @@ async function deleteImage(req: Request, res: Response, next: NextFunction) {
     .catch((err: Error) => next(new AppError(`Error deleting image: ${err}`, 400)));
 }
 
-export default { addImage, getFotographs, getWoodworks, getAllDetails, deleteImage, getPicturesByCategory };
+export default { addImage, getAllDetails, deleteImage, getPicturesByCategory };

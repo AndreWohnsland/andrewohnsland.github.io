@@ -29,7 +29,7 @@ The Admin user can (while authenticated) edit and add everything over the admin 
 
 ## Markdown Support
 
-The blog text is writen in Markdown and is parsed into HTML with help of the [remark](https://github.com/remarkjs/remark) parser. In addition,...... some plugins and custom renders were defined to have even more possibilities.
+The blog text is writen in Markdown and is parsed into HTML with help of the [remark](https://github.com/remarkjs/remark) parser. In addition, some plugins and custom renders were defined to have even more possibilities.
 
 Features supported in Markdown:
 

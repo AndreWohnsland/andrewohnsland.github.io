@@ -146,9 +146,9 @@ const updatePassword = (
   );
 };
 
-const getAllCategories = async (elementType: string): Promise<string[]> => {
+const getAllCategories = async (category: string): Promise<string[]> => {
   try {
-    const { data } = await axios.get(`${api}/category/${elementType}`);
+    const { data } = await axios.get(`${api}/category/${category}`);
     if (data === undefined) {
       return [];
     }

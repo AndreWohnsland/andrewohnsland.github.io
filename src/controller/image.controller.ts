@@ -47,18 +47,14 @@ async function getPicturesByCategory(req: Request, res: Response, next: NextFunc
   const { category } = req.params;
   Image.find({ category })
     .sort({ createdAt: -1 })
-    .then((img: IImageModel[]) => {
-      res.json(img);
-    })
+    .then((img: IImageModel[]) => res.json(img))
     .catch((err: Error) => next(new AppError(`Error getting pictures ${err}`, 400)));
 }
 
 async function getAllDetails(req: Request, res: Response, next: NextFunction) {
   Image.find({}, { name: 1, category: 1 })
     .sort({ createdAt: -1 })
-    .then((img: IImageModel[]) => {
-      res.json(img);
-    })
+    .then((img: IImageModel[]) => res.json(img))
     .catch((err: Error) => next(new AppError(`Error getting pictures ${err}`, 400)));
 }
 

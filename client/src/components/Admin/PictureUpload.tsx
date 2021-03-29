@@ -3,28 +3,29 @@ import { Form, Button } from 'react-bootstrap';
 import { AxiosResponse } from 'axios';
 import TextInput from './Forms/TextInput';
 import InfoBox from './Forms/InfoBox';
-import Dropdown from './Forms/Dropdown';
 import CaptionBanner from '../CaptionBanner';
-import { postImage } from '../../util/apiHelper';
+import { postImage, getAllCategories } from '../../util/apiHelper';
 
 const jpegType = 'image/jpeg';
 
 const PictureUpload: React.FC = () => {
   const [name, setName] = useState('');
   const [image, setImage] = useState<File | null>(null);
-  const [category, setCategory] = useState('fotography');
+  const [category, setCategory] = useState('');
   const [showMessage, setShowMessage] = useState(false);
   const [res, setRes] = useState<AxiosResponse | undefined>(undefined);
   const [messageTitle, setmessageTitle] = useState('');
+  const [categoryOptions, setCategoryOptions] = useState<string[]>([]);
+
+  const loadCats = async () => {
+    const cats = await getAllCategories('image');
+    setCategoryOptions(cats);
+  };
 
   useEffect(() => {
     document.title = 'Admin | Andre Wohnsland';
+    loadCats();
   }, []);
-
-  const categoryOptions = [
-    { value: 'fotography', name: 'Fotography' },
-    { value: 'woodwork', name: 'Woodwork' },
-  ];
 
   const validateSubmit = () => {
     return name.length > 0 && image !== null;
@@ -50,6 +51,7 @@ const PictureUpload: React.FC = () => {
       setShowMessage(true);
       setmessageTitle(name);
       clearState();
+      loadCats();
     });
   };
 
@@ -68,16 +70,30 @@ const PictureUpload: React.FC = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <Dropdown
-              label="Select category"
+            <TextInput
+              label="Category"
+              name="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              options={categoryOptions}
             />
+            <div className="available-categories">
+              <p style={{ marginBottom: '6px' }}>Existing:&nbsp;&nbsp;</p>
+              {categoryOptions.map((c) => (
+                <Button
+                  onClick={() => setCategory(c)}
+                  className="available-categories"
+                  variant="primary"
+                  size="sm"
+                  key={c}
+                >
+                  {c}
+                </Button>
+              ))}
+            </div>
             <Form.Group>
               <Form.File
                 name="uploadImage"
-                label="Please select picture"
+                label="Picture"
                 required
                 accept={`${jpegType}`}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

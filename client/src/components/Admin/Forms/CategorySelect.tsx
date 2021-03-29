@@ -89,6 +89,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
             className="available-categories"
             variant="primary"
             size="sm"
+            key={c}
           >
             {c}
           </Button>

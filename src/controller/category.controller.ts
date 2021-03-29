@@ -1,28 +1,30 @@
 import { Request, Response, NextFunction } from 'express';
-import { IBlogModel } from '../interfaces/blog.interface';
-import { IProjectModel } from '../interfaces/project.interface';
 import { AppError } from '../middlewares/errorHandler';
 import Blog from '../models/blog.model';
 import Project from '../models/project.model';
+import Image from '../models/imageDB.model';
 
-const filterCats = (categories: IBlogModel[]): String[] => {
-  let allCats: String[] = [];
-  categories.map((a) => allCats.push.apply(allCats, a.category));
-  return [...new Set(allCats)].sort();
-};
-
-async function getAllBlogCategories(req: Request, res: Response, next: NextFunction) {
-  Blog.find()
-    .select({ category: 1, _id: 0 })
-    .then((cats: IBlogModel[]) => res.json(filterCats(cats)))
-    .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
+enum supportedModels {
+  project = 'project',
+  blog = 'blog',
+  image = 'image',
 }
 
-async function getAllProjectCategories(req: Request, res: Response, next: NextFunction) {
-  Project.find()
-    .select({ category: 1, _id: 0 })
-    .then((cats: IProjectModel[]) => res.json(filterCats(cats)))
-    .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
+async function getAllDistinctCategories(req: Request, res: Response, next: NextFunction) {
+  const { category } = req.params;
+  const mongoModel = selectModel(category);
+  if (mongoModel === undefined) return next(new AppError(`${category} not supported for categories`, 404));
+  mongoModel
+    .distinct('category')
+    .then((cats: string[]) => res.json(cats.sort()))
+    .catch((err: Error) => next(new AppError(`Error getting categories for ${category}: ${err}`, 400)));
 }
 
-export default { getAllBlogCategories, getAllProjectCategories };
+function selectModel(modeltype: string) {
+  if (modeltype === supportedModels.project) return Project;
+  if (modeltype === supportedModels.blog) return Blog;
+  if (modeltype === supportedModels.image) return Image;
+  return undefined;
+}
+
+export default { getAllDistinctCategories };

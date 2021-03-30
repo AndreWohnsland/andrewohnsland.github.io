@@ -37,12 +37,8 @@ const SwitchComponent: FunctionComponent = () => {
         <ElementView elementType="blog" />
       </Route>
 
-      <Route exact path="/pictures/fotography">
-        <PictureList title="Fotography" />
-      </Route>
-
-      <Route exact path="/pictures/woodwork">
-        <PictureList title="Woodwork" />
+      <Route exact path="/pictures/:_category">
+        <PictureList />
       </Route>
 
       <Route path="/admin/login" component={Login} />

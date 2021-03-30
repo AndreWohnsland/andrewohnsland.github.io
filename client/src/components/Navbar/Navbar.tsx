@@ -5,6 +5,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import ThemeToggle from './ThemeToggle';
 import { AuthContext } from '../../contexts/AuthContext';
 import GithubLogo from './github-original.svg';
+import PictureSelection from './PictureSelection';
 
 const NavBar: React.FC = () => {
   const { isAuth } = useContext(AuthContext);
@@ -31,14 +32,7 @@ const NavBar: React.FC = () => {
             <LinkContainer to="/blog">
               <Nav.Link>Blog</Nav.Link>
             </LinkContainer>
-            <NavDropdown title="Pictures" id="collasible-nav-dropdown">
-              <LinkContainer to="/pictures/fotography">
-                <NavDropdown.Item>Fotography</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/pictures/woodwork">
-                <NavDropdown.Item>Woodwork</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
+            <PictureSelection />
             <LinkContainer to="/about">
               <Nav.Link>About</Nav.Link>
             </LinkContainer>

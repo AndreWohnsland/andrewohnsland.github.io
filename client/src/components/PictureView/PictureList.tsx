@@ -1,35 +1,36 @@
-import React, { useEffect, FunctionComponent } from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Gallery from 'react-photo-gallery';
 import CaptionBanner from '../CaptionBanner';
 import { getAllImageData } from '../../util/apiHelper';
 import SkeletonPicture from '../../skeletons/SkeletonPicture';
 
-type ViewProps = {
-  title: string;
-};
-
 const queryOption = {
   staleTime: 600000,
   cacheTime: 3600000,
 };
 
-const PictureView: FunctionComponent<ViewProps> = ({ title }) => {
-  const pictureType = title.toLowerCase();
+type ParamTypes = {
+  _category: string;
+};
+
+const PictureList: React.FC = () => {
+  const params = useParams<ParamTypes>();
+  const category = params._category;
+  const upperCategory = category.charAt(0).toUpperCase() + category.slice(1);
 
   useEffect(() => {
-    document.title = `${title} | Andre Wohnsland`;
-  }, [title]);
+    document.title = `${upperCategory} | Andre Wohnsland`;
+  }, [upperCategory]);
 
-  const { data, status } = useQuery(
-    pictureType,
-    () => getAllImageData(pictureType),
-    { ...queryOption }
-  );
+  const { data, status } = useQuery(category, () => getAllImageData(category), {
+    ...queryOption,
+  });
 
   return (
     <>
-      <CaptionBanner text={title} />
+      <CaptionBanner text={upperCategory} />
       <div className="main-text-picture">
         {(status === 'loading' || status === 'idle') &&
           [1, 2, 3, 4, 5].map((n) => <SkeletonPicture key={n} theme="dark" />)}
@@ -51,4 +52,4 @@ const PictureView: FunctionComponent<ViewProps> = ({ title }) => {
   );
 };
 
-export default PictureView;
+export default PictureList;

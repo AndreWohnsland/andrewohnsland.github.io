@@ -2,6 +2,7 @@ import mongoose, { Model } from 'mongoose';
 // @ts-expect-error: types conflicting with latest mongoose
 import uniqueValidator from 'mongoose-unique-validator';
 import { IProjectModel } from '../interfaces/project.interface';
+import { slugify } from './utils';
 
 const { Schema } = mongoose;
 
@@ -13,9 +14,15 @@ const projectSchema = new Schema(
     category: { type: [String], default: [] },
     link: { type: String, required: [true, 'Please enter a link'] },
     draft: { type: Boolean, default: false },
+    slug: { type: String, unique: [true, 'Slug of title is not unique'] },
   },
   { timestamps: true },
 );
+
+projectSchema.pre<IProjectModel>('save', function (next) {
+  this.slug = slugify(this.title);
+  next();
+});
 
 projectSchema.plugin(uniqueValidator);
 const Project: Model<IProjectModel> = mongoose.model('Project', projectSchema);

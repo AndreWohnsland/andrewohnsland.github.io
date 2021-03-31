@@ -76,9 +76,9 @@ const loginUser = (
 
 const getElementData = async (
   elementType: string,
-  id: string
+  slug: string
 ): Promise<IElement> => {
-  const { data } = await axios.get(`${api}/${elementType}/${id}`);
+  const { data } = await axios.get(`${api}/${elementType}/${slug}`);
   return data;
 };
 
@@ -91,9 +91,9 @@ const getElements = async (elementType: string): Promise<IElement[]> => {
 // drafts are only for the admin available and got the draft = true state
 const getElementDataAsAdmin = async (
   elementType: string,
-  id: string
+  slug: string
 ): Promise<IElement> => {
-  const { data } = await axios.get(`${api}/${elementType}/admin/${id}`, {
+  const { data } = await axios.get(`${api}/${elementType}/admin/${slug}`, {
     withCredentials: true,
     validateStatus: () => true,
   });

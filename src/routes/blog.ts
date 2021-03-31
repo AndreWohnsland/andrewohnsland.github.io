@@ -5,8 +5,8 @@ import blogController from '../controller/blog.controller';
 // get
 router.route('/').get(blogController.getAllBlogs);
 router.route('/admin').get(authorize, blogController.getAllBlogsAsAdmin);
-router.route('/:id').get(blogController.getBlogById);
-router.route('/admin/:id').get(authorize, blogController.getBlogByIdAsAdmin);
+router.route('/:slug').get(blogController.getBlogBySlug);
+router.route('/admin/:slug').get(authorize, blogController.getBlogBySlugAsAdmin);
 
 // post
 router.route('/update/:id').post(authorize, blogController.updateBlog);

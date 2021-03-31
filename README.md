@@ -119,7 +119,6 @@ By default, at first bootup, the backend will look if any user is found. If ther
 - Create a more established style for the whole app
 - User Swagger or similar tool for API documentation
 - Find a fix for Safari always wrapping code blocks not matter the css
-- Update fotos in such way to dynamically be able to generate new categories and create the corresponding elements out of it
 
 # Known Issues
 

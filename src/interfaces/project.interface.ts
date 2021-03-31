@@ -6,7 +6,8 @@ export interface IProject {
   text: String;
   category: String[];
   draft: boolean;
-  link: string;
+  slug: String;
+  link: String;
   createdAt: Date;
   modifiedAt: Date;
 }

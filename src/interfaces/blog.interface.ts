@@ -5,6 +5,7 @@ export interface IBlog {
   description: String;
   text: String;
   category: String[];
+  slug: String;
   draft: boolean;
   createdAt: Date;
   modifiedAt: Date;

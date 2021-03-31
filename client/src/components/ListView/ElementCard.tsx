@@ -21,7 +21,7 @@ const ElementCard: React.FC<ElementCardProps> = ({ element, elementType }) => {
 
   return (
     <Link
-      to={`/${elementType}/${element._id}`}
+      to={`/${elementType}/${element.slug}`}
       style={{ textDecoration: 'none' }}
     >
       <div className="card-div">

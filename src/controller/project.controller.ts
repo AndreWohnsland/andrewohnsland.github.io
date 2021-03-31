@@ -20,8 +20,9 @@ async function getProjectsAsAdmin(req: Request, res: Response, next: NextFunctio
     .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
 }
 
-async function getProjectById(req: Request, res: Response, next: NextFunction) {
-  Project.findById(req.params.id)
+async function getProjectBySlug(req: Request, res: Response, next: NextFunction) {
+  const { slug } = req.params;
+  Project.findOne({ slug })
     .then((project: IProjectModel | null) => {
       if (project === null) return next(new AppError('Project does not exist', 404));
       if (project.draft) return next(new AppError('Element is still a draft', 403));
@@ -31,8 +32,9 @@ async function getProjectById(req: Request, res: Response, next: NextFunction) {
     .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
 }
 
-async function getProjectByIdAsAdmin(req: Request, res: Response, next: NextFunction) {
-  Project.findById(req.params.id)
+async function getProjectBySlugAsAdmin(req: Request, res: Response, next: NextFunction) {
+  const { slug } = req.params;
+  Project.findOne({ slug })
     .then((project: IProjectModel | null) => res.json(project))
     .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
 }
@@ -74,4 +76,11 @@ async function addProject(req: Request, res: Response, next: NextFunction) {
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
-export default { getProjects, getProjectsAsAdmin, getProjectById, getProjectByIdAsAdmin, updateProject, addProject };
+export default {
+  getProjects,
+  getProjectsAsAdmin,
+  getProjectBySlug,
+  getProjectBySlugAsAdmin,
+  updateProject,
+  addProject,
+};

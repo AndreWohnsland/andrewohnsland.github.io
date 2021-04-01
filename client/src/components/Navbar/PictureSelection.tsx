@@ -34,7 +34,7 @@ const PictureSelection: React.FC = () => {
               </LinkContainer>
             );
           })}
-        {status === 'success' && !data && (
+        {status === 'success' && data?.length === 0 && (
           <NavDropdown.Item>Nothing to see ...</NavDropdown.Item>
         )}
       </NavDropdown>

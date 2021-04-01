@@ -30,7 +30,9 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
   const maxWidth = useResize(divRef);
 
   useEffect(() => {
-    document.title = `${capFirst(elementType)} | Andre Wohnsland`;
+    document.title = `${capFirst(elementType)} | ${
+      process.env.REACT_APP_SHOWN_NAME
+    }`;
   }, [elementType]);
 
   const { data, status } = useQuery(

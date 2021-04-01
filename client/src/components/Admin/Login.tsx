@@ -14,7 +14,7 @@ const Login: React.FC = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    document.title = 'Login | Andre Wohnsland';
+    document.title = `Login | ${process.env.REACT_APP_SHOWN_NAME}`;
   }, []);
 
   if (isAuth === true) history.push('/admin/projects');

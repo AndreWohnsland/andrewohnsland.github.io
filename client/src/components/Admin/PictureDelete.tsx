@@ -21,7 +21,7 @@ const PictureDelete: React.FC = () => {
 
   useEffect(() => {
     loadElements();
-    document.title = 'Admin | Andre Wohnsland';
+    document.title = `Admin | ${process.env.REACT_APP_SHOWN_NAME}`;
   }, []);
 
   const validateSubmit = () => {

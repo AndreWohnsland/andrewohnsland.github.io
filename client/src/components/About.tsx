@@ -3,7 +3,7 @@ import CaptionBanner from './CaptionBanner';
 
 const About: FunctionComponent = () => {
   useEffect(() => {
-    document.title = 'About | Andre Wohnsland';
+    document.title = `About | ${process.env.REACT_APP_SHOWN_NAME}`;
   }, []);
   return (
     <>

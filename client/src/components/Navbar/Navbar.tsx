@@ -19,7 +19,7 @@ const NavBar: React.FC = () => {
         bg="primary"
         variant="dark"
       >
-        <Navbar.Brand>Andre Wohnsland</Navbar.Brand>
+        <Navbar.Brand>{process.env.REACT_APP_SHOWN_NAME}</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">

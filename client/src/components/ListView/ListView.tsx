@@ -27,7 +27,9 @@ const ListView: React.FC<ListViewProps> = ({ elementType, header }) => {
 
   useEffect(() => {
     setSelectedCats([]);
-    document.title = `${capFirst(elementType)} | Andre Wohnsland`;
+    document.title = `${capFirst(elementType)} | ${
+      process.env.REACT_APP_SHOWN_NAME
+    }`;
   }, [elementType]);
 
   const { data, status } = useQuery(

@@ -11,7 +11,8 @@ This is a React web app with the corresponding backend made with node.js, TypeSc
 - [Installation](#installation)
   - [Start the Application](#start-the-application)
   - [Access the Application](#access-the-application)
-  - [Generate a Admin User](#generate-a-admin-user)
+  - [Generate an Admin User](#generate-an-admin-user)
+  - [Use Dropbox to Store and Access Pictures](#use-dropbox-to-store-and-access-pictures)
 - [ToDo's](#todos)
 - [Known Issues](#known-issues)
 
@@ -108,11 +109,23 @@ This will run both the backend api, and the frontend on local port 5000 and 3000
 
 ## Access the Application
 
-The front end should be opened automatically when running it. Otherwise you can always access it on http://localhost:3000/ when the app is running. The backend API runs on port 5000 by defaul. You can use the `PORT` variable to change the default port. To make calls to the API, other tools like [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/) can be used. To make a call use the http://localhost:5000/api/ endpoint. Since cors will most probably block the call by default, use `"Origin": "http://localhost:3000"` as header.
+The front end should be opened automatically when running it. Otherwise you can always access it on http://localhost:3000/ when the app is running. The backend API runs on port 5000 by default. You can use the `PORT` variable to change the default port. To make requests to the API, other tools like [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/) can be used. To make a call use the http://localhost:5000/api/ endpoint. Since cors will most probably block the call by default, use `"Origin": "http://localhost:3000"` as header.
 
-## Generate a Admin User
+## Generate an Admin User
 
-By default, at first bootup, the backend will look if any user is found. If there is no existing user, it will create a default user with the name `admin` and the password `adminadmin`. It is strongly recommended to change the password directly after you first login over the admin interface. There is a graphical option for that. You could also use the environment variables `ADMIN_USER` and `ADMIN_PASSWORD` for other initial values than the default ones. Also, you can create additional user over the /api/user/add post enpoint. You will need to be authenticated for that and pass the `username` and `password` in the body.
+By default, at first bootup, the backend will look if any user is found. If there is no existing user, it will create a default user with the name `admin` and the password `adminadmin`. It is strongly recommended to change the password directly after your first login over the admin interface. There is a graphical option for that. You could also use the environment variables `ADMIN_USER` and `ADMIN_PASSWORD` for other initial values than the default ones. Also, you can create additional user over the _/api/user/add_ post enpoint. You will need to be authenticated for that and pass the `username` and `password` in the body.
+
+## Use Dropbox to Store and Access Pictures
+
+I am using [dropbox-v2-api](https://github.com/adasq/dropbox-v2-api) for easy interaction with the dropbox API. You need an dropbox account and a project with an according access token. The token is stored at the `.env` file under `DROPBOX_ACCESS_TOKEN`.
+Steps to create a project and get the access token:
+
+1. Go to [dropbox developer](https://www.dropbox.com/developers/apps) and create your app.
+2. Set the Permissions settings before generating the token as it remembers the settings.
+3. Go to the Permissions tab.
+4. Check `sharing.write` and `file_requests.write` as well as `files.content.read` and `files.content.write`.
+5. Generate and copy your token from the Settings tab. Change expiration to "No expiration". You can also re-generate for a new token here if it has been compromised.
+6. Paste the token into your `.env` file.
 
 # ToDo's
 

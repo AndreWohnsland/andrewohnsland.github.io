@@ -83,7 +83,7 @@ To start the application some variables need to be set fist. This concludes the 
 
 ```
 docker volume create --name=yourVolumeName
-docker run --name yourMongoDbName -v yourVolumeName:/data/db -p 27017:27017 yourContainerName
+docker run --name yourMongoDbName -v yourVolumeName:/data/db -p 27017:27017 -d mongo
 ```
 
 This will run mongodb on your local port 27017 in docker. In this case (if no credentials are set) the `.env` file would look similar to:

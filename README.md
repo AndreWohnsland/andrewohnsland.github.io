@@ -20,7 +20,7 @@ This is a React web app with the corresponding backend made with node.js, TypeSc
 
 # Features
 
-This project consists of the frontend (`client` folder) and the API (main / `src` folder). The exact architecture is explained in the section below. The site divides between project and blog post. Basically they are quite similar. Project posts are aimed to be more compact and have a link to the referred project, while blog posts go more into the depth and may not be specific to any project. The viewers can filter by category to limit the cards to only show relevant topics. The card will show the title, the description, the categories in alphabetical order and the creation date, or the update date, if updated. In addition, there is also the possibility to upload and display pictures for artworks or similar topics. Currently there are only two hardcoded topics supported (Fotography and Woodwork).
+This project consists of the frontend (`client` folder) and the API (main / `src` folder). The exact architecture is explained in the section below. The site divides between project and blog post. Basically they are quite similar. Project posts are aimed to be more compact and have a link to the referred project, while blog posts go more into the depth and may not be specific to any project. The viewers can filter by category to limit the cards to only show relevant topics. The card will show the title, the description, the categories in alphabetical order and the creation date, or the update date, if updated. In addition, there is also the possibility to upload and display pictures for artworks or similar topics, grouped by defined categories.
 
 ![User View](docs/pictures/blog_project_view.PNG)
 

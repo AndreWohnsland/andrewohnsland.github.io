@@ -20,22 +20,22 @@ This is a React web app with the corresponding backend made with node.js, TypeSc
 
 # Features
 
-This project consists of the frontend (`client` folder) and the API (main / `src` folder). The exact architecture is explained in the section below. The site divides between project and blog post. Basically they are quite similar. Project posts are aimed to be more compact and have a link to the refered project, while blog posts go more into the depth and may not be specific to any project. The viewers can filter by category to limit the cards to only show relevant topics. The card will show the title, the description, the categories in alphabetical order and the creation date, or the update date, if updated. In addition, there is also the possibilty to upload and display pictures for artworks or similar topics. Currently there are only two hardcoded topics supported (Fotography and Woodwork).
+This project consists of the frontend (`client` folder) and the API (main / `src` folder). The exact architecture is explained in the section below. The site divides between project and blog post. Basically they are quite similar. Project posts are aimed to be more compact and have a link to the referred project, while blog posts go more into the depth and may not be specific to any project. The viewers can filter by category to limit the cards to only show relevant topics. The card will show the title, the description, the categories in alphabetical order and the creation date, or the update date, if updated. In addition, there is also the possibility to upload and display pictures for artworks or similar topics. Currently there are only two hardcoded topics supported (Fotography and Woodwork).
 
 ![User View](docs/pictures/blog_project_view.PNG)
 
-The Admin user can (while authenticated) edit and add everything over the admin UI. Besides defining the title, the description and the link (only for project posts), there is also the option to define categories. You can either select existing categories or add new ones into your pool. In addition there is the possibility to flag your post as a draft. That will save the posts into the database for later editing but the post will not be available to the user (neither over the website nor over the API, exept for authenticated user).
+The Admin user can (while authenticated) edit and add everything over the admin UI. Besides defining the title, the description and the link (only for project posts), there is also the option to define categories. You can either select existing categories or add new ones into your pool. In addition there is the possibility to flag your post as a draft. That will save the posts into the database for later editing but the post will not be available to the user (neither over the website nor over the API, except for authenticated user).
 
 ![Admin Edit](docs/pictures/admin_edit.PNG)
 
 ## Markdown Support
 
-The blog text is writen in Markdown and is parsed into HTML with help of the [remark](https://github.com/remarkjs/remark) parser. In addition, some plugins and custom renders were defined to have even more possibilities.
+The blog text is written in Markdown and is parsed into HTML with help of the [remark](https://github.com/remarkjs/remark) parser. In addition, some plugins and custom renders were defined to have even more possibilities.
 
 Features supported in Markdown:
 
 - All native ("vanilla") Markdown features
-- Strikethrough, tables, tasklists and direct URLs
+- Strike through, tables, task lists and direct URLs
 - Code syntax highlighting and custom language header
 - Latex math expressions (inline and block math)
 - Custom colored container (blocks for informative / warning text)
@@ -79,7 +79,7 @@ npm install
 
 ## Start the Application
 
-To start the application some variables need to be set fist. This concludes the variables `ATLAS_URI` and `JWT_SECRET` in the `.env` file. Also if you are running everything locally, be sure to set the `ENVIRONMENT_TYPE` to 'dev. The first is the connection string to the database, the second is the 'password' for your token encryption. To get the mongodb running eiter create an instance at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or create a local instance with [docker](https://hub.docker.com/_/mongo). The fastes way is to create a volume and image locally with docker (required docker installed):
+To start the application some variables need to be set fist. This concludes the variables `ATLAS_URI` and `JWT_SECRET` in the `.env` file. Also if you are running everything locally, be sure to set the `ENVIRONMENT_TYPE` to 'dev'. The first is the connection string to the database, the second is the 'password' for your token encryption. To get the mongodb running either create an instance at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or create a local instance with [docker](https://hub.docker.com/_/mongo). The fastest way is to create a volume and image locally with docker (required docker installed):
 
 ```
 docker volume create --name=yourVolumeName
@@ -95,9 +95,9 @@ ENVIRONMENT_TYPE=dev
 WHITELIST=yourwebdomainadress
 ```
 
-You can use the `.env.default` as starting point for your .env file. Yust create a copy and rename it to `.env`. The whitelist can also be a list of domains, separated by a single whitespace (" ").
+You can use the `.env.default` as starting point for your .env file. Create a copy and rename it to `.env`. The whitelist can also be a list of domains, separated by a single whitespace (" ").
 
-The same applies to your `.env` files for the frontend / client. The default `.env.development` file contains the adress of the api, this will probably be different in your `.env.production` file, later when running on different servers.
+The same applies to your `.env` files for the frontend / client. The default `.env.development` file contains the address of the api, this will probably be different in your `.env.production` file, later when running on different servers.
 
 After that you can run both (be sure to be in the main folder), server and backend with:
 
@@ -113,7 +113,7 @@ The front end should be opened automatically when running it. Otherwise you can 
 
 ## Generate an Admin User
 
-By default, at first bootup, the backend will look if any user is found. If there is no existing user, it will create a default user with the name `admin` and the password `adminadmin`. It is strongly recommended to change the password directly after your first login over the admin interface. There is a graphical option for that. You could also use the environment variables `ADMIN_USER` and `ADMIN_PASSWORD` for other initial values than the default ones. Also, you can create additional user over the _/api/user/add_ post enpoint. You will need to be authenticated for that and pass the `username` and `password` in the body.
+By default, at first boot up, the backend will look if any user is found. If there is no existing user, it will create a default user with the name `admin` and the password `adminadmin`. It is strongly recommended to change the password directly after your first login over the admin interface. There is a graphical option for that. You could also use the environment variables `ADMIN_USER` and `ADMIN_PASSWORD` for other initial values than the default ones. Also, you can create additional user over the _/api/user/add_ post endpoint. You will need to be authenticated for that and pass the `username` and `password` in the body.
 
 ## Use Dropbox to Store and Access Pictures
 

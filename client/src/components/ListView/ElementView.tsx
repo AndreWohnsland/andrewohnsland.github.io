@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import { HashLoader } from 'react-spinners';
+import { css } from '@emotion/react';
 import MarkdownBlock from './MarkdownBlock';
 import useResize from './resize';
 import dateFormatter from './dateFormatter';
@@ -14,6 +16,12 @@ const queryOption = {
   cacheTime: 3600000,
   retry: 1,
 };
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 type ElementViewProps = {
   elementType: string;
@@ -63,6 +71,15 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
     <>
       <CaptionBanner text={chooseHeader(status, data)} />
       <div className="main-text-page" ref={divRef}>
+        <div className="spinner-container">
+          {status === 'loading' && <p>&nbsp;</p>}
+          <HashLoader
+            loading={status === 'loading'}
+            color="#004ea7"
+            css={override}
+            size={(maxWidth as number) / 2}
+          />
+        </div>
         {status === 'error' &&
           'Probably not a valid id :( If you get here from blog or project try getting back and forth again.'}
         {status === 'success' && data && (

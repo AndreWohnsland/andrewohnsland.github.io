@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { HashLoader } from 'react-spinners';
@@ -7,9 +7,10 @@ import MarkdownBlock from './MarkdownBlock';
 import useResize from './resize';
 import dateFormatter from './dateFormatter';
 import CaptionBanner from '../CaptionBanner';
-import { getElementData } from '../../util/apiHelper';
+import { getElementData, getElementDataAsAdmin } from '../../util/apiHelper';
 import capFirst from '../../util/stringHelper';
 import { IElement } from '../../Interfaces/element.interface';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const queryOption = {
   staleTime: 300000,
@@ -36,6 +37,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
   const id = params._id;
   const divRef = useRef(null);
   const maxWidth = useResize(divRef);
+  const { isAuth } = useContext(AuthContext);
 
   useEffect(() => {
     document.title = `${capFirst(elementType)} | ${
@@ -43,9 +45,16 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
     }`;
   }, [elementType]);
 
+  const getElementDataFunction = (auth: boolean | null) => {
+    if (auth) {
+      return getElementDataAsAdmin;
+    }
+    return getElementData;
+  };
+
   const { data, status } = useQuery(
     `${elementType}?id=${id}`,
-    () => getElementData(elementType, id),
+    () => getElementDataFunction(isAuth)(elementType, id),
     queryOption
   );
 
@@ -58,7 +67,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
   const chooseHeader = (s: string, d: IElement | undefined) => {
     if (s === 'loading') return 'Loading ....';
     if (s === 'error') return 'Error getting data!';
-    if (s === 'success' && d) return d.title;
+    if (s === 'success' && d) return `${d.title}${d.draft && ' (Draft)'}`;
     return 'Error getting data!';
   };
 

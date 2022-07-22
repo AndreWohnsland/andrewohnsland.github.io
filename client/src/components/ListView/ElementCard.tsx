@@ -25,7 +25,10 @@ const ElementCard: React.FC<ElementCardProps> = ({ element, elementType }) => {
       style={{ textDecoration: 'none' }}
     >
       <div className="card-div">
-        <h3 className="card-title">{element.title}</h3>
+        <h3 className="card-title">
+          {element.title}
+          <i>{element.draft && ' (draft)'}</i>
+        </h3>
         <span className="card-info">{createDateTag()}</span>
         <p className="card-desc">{element.description}</p>
         <p className="card-category">

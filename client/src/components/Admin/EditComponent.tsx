@@ -69,6 +69,10 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
     );
   };
 
+  const validateDelete = () => {
+    return elementId !== '';
+  };
+
   const handleMessage = () => {
     setShowMessage(!showMessage);
   };
@@ -198,6 +202,13 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
                 />
                 <Button type="submit" disabled={!validateSubmit()}>
                   {elementId === '' ? 'Create' : 'Change'}
+                </Button>
+                <Button
+                  variant="danger"
+                  className="align-right"
+                  disabled={!validateDelete()}
+                >
+                  Delete
                 </Button>
               </form>
             </div>

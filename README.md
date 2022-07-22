@@ -131,7 +131,7 @@ Steps to create a project and get the access token:
 
 - Create a more established style for the whole app
 - User Swagger or similar tool for API documentation
-- Find a fix for Safari always wrapping code blocks not matter the css
+- Implementing delete functionality for the API
 
 # Known Issues
 

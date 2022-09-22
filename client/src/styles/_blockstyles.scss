@@ -16,35 +16,50 @@ $border-helpful: rgb(0, 141, 47);
 
 $border-width: 6px;
 
-.md-custom-block {
+.md-block {
   border-radius: 5px;
   padding: 7px 15px 7px 10px;
   margin-bottom: 15px;
+  background-color: $bg-helpful;
   p {
     margin-bottom: 0px;
   }
 }
 
-.md-custom-block.danger {
-  background-color: $bg-danger;
-  color: $font-color-danger;
-  border-left: $border-width solid $border-danger;
-}
+.blog-md {
+  .danger,
+  .warning,
+  .info,
+  .helpful {
+    border-radius: 5px;
+    padding: 7px 15px 7px 10px;
+    margin-bottom: 15px;
+    p {
+      margin-bottom: 0px;
+    }
+  }
 
-.md-custom-block.warning {
-  background-color: $bg-warning;
-  color: $font-color-warning;
-  border-left: $border-width solid $border-warning;
-}
+  .danger {
+    background-color: $bg-danger;
+    color: $font-color-danger;
+    border-left: $border-width solid $border-danger;
+  }
 
-.md-custom-block.info {
-  background-color: $bg-info;
-  color: $font-color-info;
-  border-left: $border-width solid $border-info;
-}
+  .warning {
+    background-color: $bg-warning;
+    color: $font-color-warning;
+    border-left: $border-width solid $border-warning;
+  }
 
-.md-custom-block.helpful {
-  background-color: $bg-helpful;
-  color: $font-color-helpful;
-  border-left: $border-width solid $border-helpful;
+  .info {
+    background-color: $bg-info;
+    color: $font-color-info;
+    border-left: $border-width solid $border-info;
+  }
+
+  .helpful {
+    background-color: $bg-helpful;
+    color: $font-color-helpful;
+    border-left: $border-width solid $border-helpful;
+  }
 }

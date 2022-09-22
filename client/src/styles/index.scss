@@ -1,4 +1,5 @@
 $bg-light: rgb(240, 241, 255);
+$bg-dark: rgb(63, 63, 63);
 $font-color-default: #1a1a1a;
 $font-color-light: #ececec;
 $form-color: rgb(29, 29, 29);
@@ -9,14 +10,15 @@ $font-color-error: rgb(146, 0, 0);
 $bg-error: rgb(255, 141, 141);
 $font-color-success: rgb(0, 160, 53);
 $bg-success: rgb(119, 255, 183);
-
+$font-default: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 $container-radius: 8px;
+
+@import 'blockstyles';
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: $font-default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,6 +34,21 @@ body {
 
 .content-container {
   flex: 1;
+}
+
+.container-light {
+  background-color: $bg-light;
+  color: $font-color-default;
+}
+
+.container-dark {
+  background-color: $bg-dark;
+  color: $font-color-light;
+}
+
+.custom-navbar {
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 code {
@@ -92,7 +109,7 @@ code {
 
 .card-title {
   text-align: left;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 5px 0px 0px;
 }
 
 .card-info {
@@ -173,8 +190,21 @@ code {
       overflow-x: scroll !important;
     }
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: left;
+    padding: 15px 0px 2px 0px;
+  }
+  li p {
+    margin-bottom: 0;
+  }
 
   .header-code {
+    font-family: $font-default;
     text-align: left;
     padding: 1px 0px 3px 15px;
     font-size: 0.9rem;

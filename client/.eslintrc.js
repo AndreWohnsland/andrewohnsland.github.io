@@ -4,13 +4,10 @@ module.exports = {
     'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
-    'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
   root: true,
-  plugins: ['react', '@typescript-eslint', 'jest'],
+  plugins: ['react', '@typescript-eslint', 'jest', 'import'],
   env: {
     browser: true,
     es6: true,
@@ -37,6 +34,7 @@ module.exports = {
     'react/prop-types': ['off'],
     'no-return-assign': ['off'],
     'no-underscore-dangle': ['off'],
+    '@typescript-eslint/no-non-null-assertion': 'off',
     'jsx-a11y/label-has-associated-control': ['off'],
     'global-require': ['off'],
     'import/extensions': [

@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Tex from '@matejmazur/react-katex';
-import math from 'remark-math';
-import gfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
+import remarkToc from 'remark-toc';
+import remarkDirective from 'remark-directive';
+import remarkDirectiveRehype from 'remark-directive-rehype';
+import rehypeKatex from 'rehype-katex';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
 import 'katex/dist/katex.min.css';
 import CodeBlock from './CodeBlock';
-import HeadingRenderer from './HeadingRenderer';
-import Shortcodes from './CustomRender/Shortcodes';
 
 type MarkdownBlockProps = {
   maxWidth: number | undefined;
@@ -14,16 +17,16 @@ type MarkdownBlockProps = {
 };
 
 type PictureRendererProps = {
-  alt: string;
-  src: string;
-  title: string;
+  alt?: string | undefined;
+  src?: string | undefined;
+  title?: string | undefined;
 };
 
 const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
   maxWidth,
   sourcedata,
 }) => {
-  const PictureRenderer = ({ alt, src, title }: PictureRendererProps) => (
+  const PictureRenderer = ({ src, alt, title }: PictureRendererProps) => (
     <>
       <img
         alt={alt}
@@ -40,25 +43,21 @@ const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
   return (
     <ReactMarkdown
       className="blog-md"
-      plugins={[
-        math,
-        gfm,
-        [
-          require('remark-shortcodes'),
-          { startBlock: '[[', endBlock: ']]', inlineMode: true },
-        ],
+      remarkPlugins={[
+        remarkMath,
+        remarkGfm,
+        remarkToc,
+        remarkDirective,
+        remarkDirectiveRehype,
       ]}
-      escapeHtml={false}
-      source={sourcedata}
-      renderers={{
+      rehypePlugins={[rehypeKatex, rehypeSlug, rehypeAutolinkHeadings]}
+      components={{
         code: CodeBlock,
-        heading: HeadingRenderer,
-        image: PictureRenderer,
-        inlineMath: ({ value }) => <Tex math={value} />,
-        math: ({ value }) => <Tex block math={value} />,
-        shortcode: Shortcodes,
+        img: PictureRenderer,
       }}
-    />
+    >
+      {sourcedata}
+    </ReactMarkdown>
   );
 };
 

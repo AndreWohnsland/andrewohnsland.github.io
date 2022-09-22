@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="810px" preserveAspectRatio="none" style="width:841px;height:810px;" version="1.1" viewBox="0 0 841 810" width="841px" zoomAndPan="magnify"><defs/><g><!--MD5=[a7d08569755d27db7d73341e10a19ec9]
-entity reactapp--><rect fill="#438DD5" height="156.0469" style="stroke:#3C7FC0;stroke-width:1.5;" width="219" x="122.5" y="7"/><image height="48" width="48" x="208" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAADHUlEQVR4Xu2YT4oVMRDG5245gBd4B5gLzAE8gK5ciTsXs3D5dq7EneDGhcgThAEZGBhQVFAEof3oH68oq5J0Rtt/0OHj0Z1UJV/qX9LvpNx5+U/hJHf9XWyElrARWsJ/Tuju48vzZ9f6PX34Jo96SMCE82gHo4R2D15//PJtcu1w9blKS50a8pKX77/euvcqS1YxSog17j+9ErOzRxf7F+9YTDbwYtavB4lJWCp6fX7xKc9ZxRAhzZsn1aZhSb+96lfyXvLJ4YP6B400ROj2/q1mrEaDLIRTBAyTZVCXwfJQxhAhUenMCKcpuc8gxdZ+MlYgZCGshzxa5jBfmRA2128eIj7kKcK5Grwd9YwhQmxR+RL6QwbpoSNWrREZQ4QEzShj8Ezm40f6sRDWgpOWt7RaP8sEqmKoeItNWlLRr5DnrGKBkCyBI6xpARmDJFdayVqCdi/wbIVAYtK1+q4H9YQSldEkJCo+fYhZEps6qSWzFoAuQUMASd1mE8tOPNUJWWnxe9IWIYHNbFLZRuwFixKSgCogFfOXprKzJcc+qBBCJ58AZqTJBbh4eKdYrSKQEQ7lW9NirWohjYT85gLwFA2uMkm4AugVO2VhDzv48lAkxJ5aRRln2Y45E0Iz3U6pNN3suJsRYls3IlQ1tulmr0VCHZcxRPORbp3T7DL6+y4rx73ldIuEirtRBOmfCGrLeT+PBXXoBxVC5Vg8WNhoWcElkrxbSXv/Oh2jJ6S9HS/ZWaBOqMwOshqtSS2NmZfOrAUojHiKvUndl9lWjJYOIUAp84ESjg7x3s0nBtCredyToGmHHSpggZABf/mzabAd1j1cgerY5AK5HD+7WFIGk1UEOxb4cAvXjzxtFUOEWkUMTuGClq+q61/QOnfQcIX1VhxRzxgi9IuXfAycLVfFCoTsrtIqLesT6syIp/ofiv39BAwRIsvCuW0nAP2SIagP6SJFf/VEyxgiVNwnzm7+5GidAOa+/Y9/NrTCK2OUkAyAU6y1rsan6e8YVcVB85RxQuBs/hxTAi8uQOU8/31/WP0xbISWsBFawkZoCd8BxQnrYvxstngAAAAASUVORK5CYII=" y="17"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="79" x="192.5" y="81.6094">React App</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="33" x="215.5" y="97.582">[react]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="234" y="114.752"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="191" x="136.5" y="132.3613">Creates web app for the users</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="91" x="186.5" y="149.9707">to interact with</text><!--MD5=[e2307af040e3f87d22824e7603ca28ec]
-entity api--><rect fill="#438DD5" height="156.0469" style="stroke:#3C7FC0;stroke-width:1.5;" width="203" x="14.5" y="255"/><image height="48" width="48" x="92" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAABrklEQVR4Xu2VQUpDMRCG3916AC/gAbyAB/AAunIl7ly4cNmdK3EnuHEhUkEoSKFQUFRQBCF+9K/TkPR1sijqYsJPSTLJzDcvk7Qb7N/+K3X11N8qgDwFkKcA8hRAngLIUwB5CiBPAeRpk0Cj6fvw5mnr8K42tWvDQCmli9FLbWpXAHlaAnH2e8PHeoW0fXy/c/JQz5uV7X1AbFxTWAfnE7bbcAF0dDlN84bTOvDp1UzW6/FbvrmwquVALGaL5glRbCR/LgHh8IA02bHn9eMr90hjncy7Z+Paaq7xWFsNyJK0Nnn+tGwJgXODA0NwHV9Mq/k2ea5aV2Svhl9ZLXs61jcgY8WJTjP9JMMJqsMvVlAQTMAsgXTMRtAORDANixoSkGgUxV4pAxIKYlgCFQTtQAwJgERQALFGZZsXXw5ECJUa57UCyA5+DZB9EjumvJIMCFCzEsVoBKQyVd0QlHpCC6DiZmHGhQ3rS2R3mA7DPmt+xVKWhkREaPTQiE/QTQ+jAq98EQZz15j6rOQ96v+P080nZ7M2Af2mAshTAHkKIE8B5CmAPAWQpwDyFECevgEQhdI9tPO0MwAAAABJRU5ErkJggg==" y="265"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="26" x="103" y="329.6094">API</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="46" x="93" y="345.582">[node.js]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="118" y="362.752"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="175" x="28.5" y="380.3613">Backend logic to serve data</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="130" x="51" y="397.9707">and handle requests</text><!--MD5=[5f2f9dbbee692058d60489180693f774]
-entity users--><rect fill="#686868" height="140.9531" style="stroke:#8A8A8A;stroke-width:1.5;" width="204" x="377" y="14.5"/><image height="48" width="48" x="455" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACRklEQVR4Xu2WK3PDMBCE+3ONg4ONg4ODjYONg4ODg83dHV0qn1c6nax02k7HH7Req72H9dH9MT74w2+zC/LYBXnsgjy+QdDxeDydTn3fHw4HHttOuyAcf71ep2maFY/HA+J46hYaBcEPkqIZx5EXVNMiCDEqqBGaNbUIQlz4/BxtscsIulwuz+cTO8IGZAmN4hg+2QC607X3+30OO99uNzhNE7pUEKwu75tOKKDr7nw+0yhkpZpWgpCqtEbQPskVK8GGsgrKeCyQurgSZN0eEYxzKhNIiGmU2hOh7rUShLjy9AC8dedkiRFBXvLYFxS1laBhGHh6QBtb2JrQ1yiUQpwjrARZkYbh7pwUqlCpXCJtV1xl6VXSyreM1MAeSg6EhjShPvQEgQV1wQMcCe2QEsuEcDPJWoiIjwGrbWYEVWL5hIRLu0s9LAj2YLteUXhUYAg3hlsQAf8L9xZo56zuRRB2t5oeYt8bIagE0edNA0g1XEnPXARlq0DAsvLVXco5pzW9BFkJMQd7YtSwEi7K20N+vTqmCAEaRLQZCxHEmt44q270EmT9EGL1pkVbT2wchWvHCLwEWYdJ6kAND2wEIZODrDSNvbckKDYu931YgyRKbzwoWFA2ZGJjwedNxF9b4axFUDbjZChrXhtiQ9oC9PNmKXuYOSjE4fpfaQ3yK0VG0kG693KnJt5PZ032b0o4gqwcbOM/CgK86xukT6sUX5D18m8g+3snfEFdaEWozOkNEKwaNV2loJ9kF+SxC/LYBXnsgjw+AUvXCHwjywsMAAAAAElFTkSuQmCC" y="24.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="45" x="456.5" y="89.1094">Users</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="481" y="107.1582"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="176" x="391" y="124.7676">People who visit the website</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="144" x="407" y="142.377">and want a nice UI / UX</text><!--MD5=[79a439086b036a57b90a01d7b2f8bbd1]
-entity admin--><rect fill="#08427B" height="140.9531" style="stroke:#073B6F;stroke-width:1.5;" width="219" x="616.5" y="14.5"/><image height="48" width="48" x="702" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACD0lEQVR4Xu2YoU4EMRCGT+4j8Ai8AhaH4QHgAUjQuFMECUgMIUgwJAgMhgQsAYUiJCiQIBBY+EITsjfTdme6V24v4c8vyGbb+ZjOtN0bNcvjQXmkH83WvYBWto6PLm6v7p7uH1/w2fXD+PBycX1Pv2l3IdDm/vn7x+dXQiAubRzoURa7gRZWd0iGRIiJbOnhnfYBQZNJjNbuyY2eJG8fkDE3bbG4ep6MHUAsgYxmE3nVs6VsBWJSGccsOlFPmLIViMzLOB7pCVO2AtHJMohH7Fh6zqitQK7m0rJvAVYgGcEpe//PLdDz65sM4pF9N7ICcXDKIB5Nv6j7tD0NoSdM2QrU9Gg0ewE1LqBhHR3BBdvj2vapnidjHxD/q6vd7Pvhr31AwcY8eXMTXAKECZZJFXuEq27aLgQK5uLMohCenGGuGewOxSjBvYBqeG6B+Nqiblggdjnc+ZXDy+FNFpFzw76O3UBAROuXh6FoiAcf5g9eTvUgzy0nWg6I8cXHRUpg5bOVBCo+KDpFajOf23GgPme7RSQ+lacIENUgJ6gg1k6HjgOlqnLqip4tEuhv0hNEMXUD0clyXE3p6pZA0S2nnvTlXwLJEZWlb7cTQH1+USgTN4VhAenm/wea1OCAOmqo6fE1WCb9WSKBah+rbUWPWAmE2Rvk0ApiB45eOyNAzU8xcTvj8KvkKEoOaIYeHNA3ZuygAvFMUO0AAAAASUVORK5CYII=" y="24.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="49" x="701.5" y="89.1094">Admin</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="728" y="107.1582"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="191" x="630.5" y="124.7676">Person who edits content over</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="82" x="685" y="142.377">the Web App</text><!--MD5=[93c709146f93ed26a8c4a4622e873365]
-entity githubpages--><rect fill="#1168BD" height="123.3438" style="stroke:#3C7FC0;stroke-width:1.5;" width="220" x="369" y="271.5"/><image height="48" width="48" x="455" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACa0lEQVR4Xu2WsS5FQRCGvcK+gUfwCB7BIyiVolaotNQajZpWI0KiEaGQUCjcQkMiIhGFZv05m2zW/DOzu/cSJGfzF+fumZ39zuzM7J0LK0d/SnM89bsagWoagWoagWqaEmh+7WR553r39OFq8vry9hGHgQf8xCRewYBXtagbaHHz/ODiMRH4A2YwZg++OoDw0Y0o5cCSrmi1Ai1tX+aj6R1YiOXsU1UT0Orerdykf8AJe2bVgb6FJo0WpgoQQi29zjaqZ+cBIRlF3mByYf1sY/+umk8wgFlKZzHv57gHhI5S+kKPya/gdOtwkloOPhqUEB5wKJjEq3JXLCz9wID3yjKBsEHpJQ4FzGYtOr55Fq7gnM2STCARnvg1Ql0SEYpukEwgzpL7p3c2axEWCldwzmZJOhBavnCBMcU9kNTlTQdCgYj1yAM2axenEbZgs2AB8Z3V0tMc8RdaJaIDcRpWG5ovbrBWifxboBmPjC/EPiDOQTRfNmsXlguHVpXoQN/YFZO4FVm9UQfiCMcZ0ogTCAOXIFsGC4gvsjh0av+iVoUlHJ5oX2c6UNCCHIeDsxypgjHXR3RvIRMonxoWo62VfnH8VuPPggEnYh5OzZpAobhf03reQC09LigxnJs1+EBlaqccFPFXj0/Nv3JY6ZzkAYWCIH8W4oRnyKrboP11ycNqP1kVoPJvtXpAqtSCiG11WgEKwxFkJkQlH5PjWq0sOFGPWKgOFAYm/mind7MxZlpoQiNQGOIhLjinlwggLHTCKdQKlIQCyZu1AOGh98LpA0oCFj7ayXG8goFf3pamAfpRjUA1jUA1jUA1fQI/EkVSuh1L4gAAAABJRU5ErkJggg==" y="281.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="103" x="427.5" y="346.1094">Github Pages</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="481" y="364.1582"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="196" x="383" y="381.7676">Service to host website content</text><!--MD5=[920f55dacc69cbaf43b0aa823f7e1721]
-entity mongodb--><rect fill="#1168BD" height="140.9531" style="stroke:#3C7FC0;stroke-width:1.5;" width="190" x="327" y="503"/><image height="48" width="48" x="398" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAB+ElEQVR4XtWZsS5FQRCG7yvMG3gEj+ARPIJSKWqFSkut0ahpNSIkGhEKCYXCLTQkIhJRaJjcCTmZubtn/n+34M9frXNmvrs7O7vXncjq8Z/yJA4RXlg/jYOc+wCt7d8t71zFccIdgBY3zl/fP6+nb/FPhFuBlObh+eNrJp2n+ADqJiCbG6MxtS8cD6SF7GhMS1sX8eG8eaCT2xfPMpNS6szF55MmgbRcPMhAWlXxlaQZoNJiDbV9NI0vZswAHV4++fzzxBUTDKT14TMXxHUmGKhUy3O1snsTI9SNAeWnx0RUNwakpepzjgmtJAxodHNF6Q6IcSoGgPSz+mw5xVAVA0CbB/c+VU7QAQcAQftrqL2zxxitZADo95qBCtprAJDPgyhGKzkLpOeXT4Iof/5ngdCW6JTvRv8WiG5Cpv5AjTPUv4YaizoGLDkLJNRBZtIXY7SSASC6U+uLMVrJAFD9Yl+RHoIxWskAEF1G+S0mEJBQqwYVkKBAepHwCccErZegQIJPEvqvIxgIatnQTcgMA6k1jc88T1o96PQIByS5yxrxpUxooNGjjVgsMwkk1R0HtWZnHkgKTC000ggkgQn9WhjdCiSzRmAXAbpuhu4AJD+NIH8Lq7gPkF0E4jjhPkBWSXGccB8gO0/iOOE+QNYn4zjhPkDS7wehb3Vx1sXX7JpFAAAAAElFTkSuQmCC" y="513"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="73" x="385.5" y="577.6094">Mongodb</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="424" y="595.6582"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="162" x="341" y="613.2676">Database to hold views of</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="382.5" y="630.877">website data</text><!--MD5=[fb96cda1e54d33aeb4c1270b4462e657]
-entity dropbox--><rect fill="#1168BD" height="140.9531" style="stroke:#3C7FC0;stroke-width:1.5;" width="220" x="552" y="503"/><image height="48" width="48" x="638" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACXklEQVR4Xu1WPUpDQRDOFfYGHsEjeASPYGkp1hZWtlrb2FhrayOiYCOihRALC1PYKEgQxMImfmTIsJnZmdl9BozwPr4ieW929tvZ+XmDtHm+VBzoR3/LXlDEXlDEXlDEfy5odef6fvTx/Pa1sn2p3+aEAVmu7d3otw4bBO2ePE1mGH9+OzvhFQzYeP9spG0sVgnCBjgrb8DYOHzQxngo7SYTLF8/uNPGmrEgnE+6zyBOn0dR4+jqRfsX9ARZgRE4vX0le/yQ7xRwlX6oyoKQkjiNdGYDUmrUMODcKouyoK3jR+nDBt+af7kC2ELvawoCEVjpQwGFjUaQr8Lfi+G7tFMoVgPRFJSm3q0cQio4TnGYvOxzwKE4g6AniKiTA0+sDMipsxDBCxfGglJWzLgjpx9qwhhLaG1le6wSlKbtrtKjJhY69ytYJYgGE9LCKg2HkIKFYeowY0FiMOnKsigqLmyJxECQ1ZDCIWD1JKSjNs7pCdL1lcOal3hoNQsCj5oiy4IoaaSnEvJKxg//DAwnpcqCip8QDnCz1uVasOquLChNj1szBAjwXjNqCH57NAURqWilywx4i+AjVUH8CI2twDADQcnNDORZ/qFCI8VKPj8wzFgQUc/L4vbUpcQBagLDrBWU5kPlXBB9//P4q5zEzAZBcA0RCBVxXoYEpTlI/Vp7s9ggiOJB+Sv3LwHNmiyxUHuz2CAorLgimhIoNQkiWkOqiNYESh0EJTXGi2j9lGN2EUTUjYAw7vTZxOwuiChusMMdCf5WUJrdYOc7ElyAoMWyFxSxFxSxFxRx6QT9AH1Takf9sOJwAAAAAElFTkSuQmCC" y="513"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="67" x="628.5" y="577.6094">Dropbox</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="664" y="595.6582"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="192" x="566" y="613.2676">Service to upload pictures and</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="197" x="563.5" y="630.877">serve over URL for blog/project</text><!--MD5=[b857487ca09c835515e6d8b5217ea019]
-entity heroku--><rect fill="#1168BD" height="140.9531" style="stroke:#3C7FC0;stroke-width:1.5;" width="218" x="7" y="503"/><image height="48" width="48" x="92" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAABzUlEQVR4Xu2YP0rEQBSH9wq5gUfwCB7BI1hairWFla3WNjbW2tqIKNiIaCGshYVb2CiICGJhEz82EOL7bWbebjLZVTN8xTJ5M/ORefMnO8jWTxeKgVbNl14oxi8U2ji8f/v4qvL48qlhhqXNc9MKVvduNNLgEsp/FrrWMMPuyci0omCpkYYkQstbl6YJZfvoQSOVJELH18+miWeWC9oXmvh6PNlT0L7Q2fDVxB9cPGlYHS0L8SY02JPLJS0LEcwbuh29l6zt32lYgJaFmvOnhcgVlthUGaM0ElrZuWK7I2moMTFkD49mkIsLkZVmMApbn0pocZ5fVWYUmqrwIrXbOroQYk612zq6EKJot3XEhXTzLQtHJscCxkwK6wv4AWS0ieSR9jyRuBADmN4Zj6UXWEF62vvTKC5Unt6kQtijRIX8ay0ulI1nTSsDJBeaFhXyH7H/Q4il1wsF6YVi6Fdim0LshOyHWh8grVBxljGGPqojrVB52vs/rzoSyscXRQ1Q0gqZO7XHqVOh3DF3XQtFLzdphao5lDtsgA+gapM8kRDfNB6bLLVQsQ9h478XpxXCg8u83yZLLZSNTw+tDMDw1X9kYM5X2Cb0QjEWTugbKIDC9RKGqRYAAAAASUVORK5CYII=" y="513"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="56" x="88" y="577.6094">Heroku</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="118" y="595.6582"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="194" x="21" y="613.2676">Serice to host the API backend</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="81" x="75.5" y="630.877">server / logic</text><!--MD5=[4c42a3aa510e8f9838da82158a4358b3]
-link users to githubpages--><path d="M479,155.507 C479,189.169 479,229.47 479,263.057 " fill="none" id="users-to-githubpages" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="479,271.443,482,263.443,476,263.443,479,271.443" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="28" x="482" y="206.457">uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="32" x="480" y="221.5508">[https]</text><!--MD5=[97f7df892904bd81dc7ac94a7921b1c9]
-link admin to githubpages--><path d="M656.21,155.507 C621.552,190.025 579.885,231.523 545.665,265.605 " fill="none" id="admin-to-githubpages" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="539.803,271.443,547.5887,267.9242,543.3552,263.6724,539.803,271.443" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="28" x="636" y="206.457">uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="62" x="619" y="221.5508">[https, auth]</text><!--MD5=[e24912bb040aee399d002f326bbd2f6b]
-link reactapp to githubpages--><path d="M309.475,163.161 C342.505,196.058 380.662,234.06 412.402,265.671 " fill="none" id="reactapp-to-githubpages" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="418.251,271.497,414.6988,263.7264,410.4653,267.9782,418.251,271.497" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="93" x="372" y="206.457">gets deployed to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="89" x="374" y="221.5508">[node gh-pages]</text><!--MD5=[37101c3b049428e0eda76e732a4cc678]
-link githubpages to dropbox--><path d="M525.652,394.801 C549.379,425.724 578.452,463.613 603.647,496.45 " fill="none" id="githubpages-to-dropbox" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="608.632,502.946,606.1422,494.7728,601.382,498.4252,608.632,502.946" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="75" x="583" y="454.457">gets pictures</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="28" x="606.5" y="469.5508">[URI]</text><!--MD5=[bebb5c0162e51362c745283b5ef1ea44]
-link heroku to mongodb--><path d="M225.177,573.5 C255.456,573.5 288.237,573.5 318.2,573.5 " fill="none" id="heroku-to-mongodb" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="326.572,573.5,318.572,570.5,318.572,576.5,326.572,573.5" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="53" x="249.5" y="551.957">gets data</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="243.5" y="567.0508">[mongoose]</text><!--MD5=[54a8950caf3e54778621a7ff38e58247]
-link api to heroku--><path d="M116,411.105 C116,437.869 116,467.884 116,494.703 " fill="none" id="api-to-heroku" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="116,502.917,119,494.917,113,494.917,116,502.917" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="93" x="117" y="454.457">gets deployed to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="68" x="129.5" y="469.5508">[heroku CLI]</text><!--MD5=[030b0aa2e60afdd3f0acdea58d49c7fb]
-link githubpages to heroku--><path d="M386.461,394.801 C338.415,426.368 279.319,465.195 228.636,498.495 " fill="none" id="githubpages-to-heroku" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="221.862,502.946,230.1953,501.0602,226.9006,496.0458,221.862,502.946" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="93" x="310" y="454.457">makes requests</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="32" x="340.5" y="469.5508">[https]</text><rect fill="#FFFFFF" height="137.2656" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="133" x="686.5" y="656.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="53" x="692.5" y="678.4863">Legend</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="749.5" y="678.4863"/><rect fill="#08427B" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="692.5" y="681.5625"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="696.5" y="696.0957">person</text><rect fill="#1168BD" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="692.5" y="699.1719"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="696.5" y="713.7051">system</text><rect fill="#438DD5" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="692.5" y="716.7813"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="59" x="696.5" y="731.3145">container</text><rect fill="#686868" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="692.5" y="734.3906"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="98" x="696.5" y="748.9238">external person</text><rect fill="#999999" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="692.5" y="752"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="98" x="696.5" y="766.5332">external system</text><rect fill="#B3B3B3" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="692.5" y="769.6094"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="113" x="696.5" y="784.1426">external container</text><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="692.5" x2="813.5" y1="663.9531" y2="663.9531"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="692.5" x2="813.5" y1="681.5625" y2="681.5625"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="692.5" x2="813.5" y1="699.1719" y2="699.1719"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="692.5" x2="813.5" y1="716.7813" y2="716.7813"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="692.5" x2="813.5" y1="734.3906" y2="734.3906"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="692.5" x2="813.5" y1="752" y2="752"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="692.5" x2="813.5" y1="769.6094" y2="769.6094"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="692.5" x2="813.5" y1="787.2188" y2="787.2188"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="692.5" x2="692.5" y1="663.9531" y2="787.2188"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="813.5" x2="813.5" y1="663.9531" y2="787.2188"/><!--MD5=[ca6e2e2db895f13472d6d0a381ac6eeb]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="812px" preserveAspectRatio="none" style="width:819px;height:812px;background:#FFFFFF;" version="1.1" viewBox="0 0 819 812" width="819px" zoomAndPan="magnify"><defs/><g><!--MD5=[a7d08569755d27db7d73341e10a19ec9]
+entity reactapp--><g id="elem_reactapp"><rect fill="#438DD5" height="156.0469" rx="2.5" ry="2.5" style="stroke:#3C7FC0;stroke-width:0.5;" width="215" x="104" y="7"/><image height="48" width="48" x="187.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACwklEQVR42u2YTUodQRSFe28uwA24ADeQBbgAHWUkzjLIIMM3cyTOAplkEEQhIARBEBQVFCGgHxw4XOqvu1/qJRK6KZru6rpVp+7Pubd62Nr/8a7asABaAC2A3hWgg+Orz19vuO9++tkeyQAP3gignaOLh+ffr+E6v34qwqKTT3Hk1d3L9sezzoC0xuHpNcg+fLlcfb/VYuggDnM/DwxjMCK8frt87AmIefNJ2bRQqt+v3BkfR56c39M/UUmTAO2tfjFj0RvQkIxCk2Jq4iisGyCgNGYUptx8bgjW9rMRQHZhHmoR1xmQdM49/yT/wFJy56LzNsTXBKQtEi9JfxJBPDSGjVLXvLBnRpThoMN8sqP6pSFpS5hY3mHVP8poYsWE8UYvpBDhTuvDQ2hChogEjTIU5IQV2qKxe5qeTQQMQ9b8zgM9CUXNAASUGD7yWQW2eJIla7KCK6eRAyHu2UDZ8KehTS1xT2xRIKQzT4puQE+zlygIxAKI2F5M5dyS+34VkGTyDGAlRQcHRzSKuUqOrMEJfTOttFUk0qEY4UWKk6V0CSsqSUoAXqWnfHAxD+afhqKxaqQsY3nHygnJZdkGVVo2N9w8QNrWLEC1fCLZ3GozTKZPiRVyk9XsW9xbHm5Do6JIRq/h1I75olMXa5Vy2GsiLWxYJlx5UjSrwj4xh7wnCXunl1qtMjQSqjmaSR3G04lRltLeEI802yjWhtHiFcVGR0lSB7iVMdR4tcUjCHP0aN04I7nSYm6aeHVOruax6Mg+djm9oBWa04IObkn50RNQjcSEKSnQ8lK1f4E2vYSNWtxgCfuHRf7fPnX8g2NQY0ZZqn1QbO9n/ShL8rYzgI/Scuq8kFL/aPE6j4d8xNGRo5YBYqkZfzbU3Gt9QChARom0O/F3DKw4UT2zf1jpOEYAjy6w8R9Wyz/GBdAC6L8B9AbFCetiU5P5qQAAAABJRU5ErkJggg==" y="17"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="79" x="172" y="81.6094">React App</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="33" x="195" y="97.582">[react]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="209.5" y="114.752"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="114" y="132.3613">Creates web app for the users</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="166" y="149.9707">to interact with</text></g><!--MD5=[e2307af040e3f87d22824e7603ca28ec]
+entity api--><g id="elem_api"><rect fill="#438DD5" height="156.0469" rx="2.5" ry="2.5" style="stroke:#3C7FC0;stroke-width:0.5;" width="199" x="7" y="255"/><image height="48" width="48" x="82.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAABg0lEQVR42u2WQUoDQRBF524ewAt4AC/gATyArlyJOxcuXGaXlbgT3LgQiSAEJBAIKFFQBKF9+MO37ZlpZiWDVNOEnvyuqldT1Z00Wwe3o5pNAAVQAAVQAAVQAAVQAP1foNnybXLztH10NyKglNLFbB1AfwNE7fcnj337dk7ud08fKirmfUAYVhrrcLrAvAQ6vlym74HTduCzq5XU6/lrblyoGjkQmzHR94QoDMmfQ0A4PDA3QNi8vH+m34N9kvfO523VrvHYVg3kJD0Wzx/OlhA4z9EF1/DG/G7yXDuzt1+pzp6F1wYyK05UTSdDBbXgExUUJkzA/ACpzCYYDkSwzqYWkGgUxbeUgYTC5LEEKgiGA/FIAKYICiD2qG3z5suBCKFWo14dQC58BcivxGXKO8lAgFolSt7OAKlN1TcEpZ+YG6DiZCHjonKIfIZZ8Nin5kcsT8N3ATS6aMQn6EEXowJ33ghyjdSnknflN04nn5ytxt+PAAqgAAqgAAqgAAqgkQF9ARCF0j1kxVCQAAAAAElFTkSuQmCC" y="265"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="26" x="93.5" y="329.6094">API</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="46" x="83.5" y="345.582">[node.js]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="104.5" y="362.752"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="175" x="17" y="380.3613">Backend logic to serve data</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="41.5" y="397.9707">and handle requests</text></g><!--MD5=[5f2f9dbbee692058d60489180693f774]
+entity users--><g id="elem_users"><rect fill="#686868" height="140.9531" rx="2.5" ry="2.5" style="stroke:#8A8A8A;stroke-width:0.5;" width="204" x="354.5" y="14.5"/><image height="48" width="48" x="432.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAB+UlEQVR42u2YoZLDMAxE/bmHi4uDi4uDg4uDi4uLi8Nzb84zPo1sy0rSuR7w0sTyeleSlYSvf4bQCXVCnVAntBnn8/lyuQzDcDqdPkmI7W+327Isq8Dz+YTcBwihh6IiMc/znxLCI4PNQU57COHL6sA+7wqExnF8vV5ERAayRD1lm9UHeOdrH49HjHy/31G6TQip7bj5CwZk3V2vV/UUWjmnoFK1GFfqFI/oBAFTSTpVDJ7T4+DWBFJplMtTVFETwtfiGrRtvlNEcoS8bL5TIDRNU1NYI7RxDKMULMtqTiN48x0780Cs3Ga7Cs2qziu/JqSSRyUH1ihO1IerDxGILeEOlVQmCs1Mqi3E8fkHtba5/3I1Eq7Y8XZ2auQh3CBgDBU84sSoBQn0N86dXJORG52a6LWmh/c1C5zA/VqqcaQyoWIVpGUHpxw75ySn0CwciCbXWImKcfaIV6/0FAtoEElmFmKipzfKbhTsCyFVb160fqTGYRw7ORBsv2LqwGY9Biyz7+bUey1CqXE150MPYqLUBgpNqGhZlNHTlzddbcZev4SKGdesvq2IMuQtQI43QU5nk0BU2H+VehCvUjJSbSR7b2h+YLyRUPE23XaX1XKwExJ4I6F8tNpDaNN3j3PEPvrlSi1QmcsBYJZzSOo/rDqhTqgT6oQUvgFL1wh8yb9bnQAAAABJRU5ErkJggg==" y="24.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="45" x="434" y="89.1094">Users</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="454.5" y="107.1582"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="176" x="368.5" y="124.7676">People who visit the website</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144" x="384.5" y="142.377">and want a nice UI / UX</text></g><!--MD5=[79a439086b036a57b90a01d7b2f8bbd1]
+entity admin--><g id="elem_admin"><rect fill="#08427B" height="140.9531" rx="2.5" ry="2.5" style="stroke:#073B6F;stroke-width:0.5;" width="219" x="594" y="14.5"/><image height="48" width="48" x="679.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAABuUlEQVR42u2Yv0oEMRDGp/QRfIR7BVs7Gx9AH0CwtrtKLNXSRsRSG8HCxkbQVrSykoOrzlILC9v4gwMRNptMMsnu3nHDFMcSLh/f/PsmsrY5HpTLUgHaOri8uHt+eJm8vs/wm8e38fn9aPekB0D7p7df3z+uxYC4sXfWEaD17SPIcAqDreqAQBMgpmnHV091ASm5+W8EtxYgQuCyDF7LA+JPXa5RieUBwbwzWHlAVLIFEB2rMKCk4rK0AC0gZzN9/S8soOnHpwWQvhtpATE4h5XUlrKnIKp06uxCS5poCzs6stvjzuF1XfmRVG4ZkihHMSp5SuXGJGG5LEAVPSIpb4qJfIQzQeF6OMORGXSHbCjLuAb1CYhti7whQHQ5PLrlcHh+kiAyN/RxFE0/9OYvH+dJw33gw/nB4bYa5Ltmokl4MTXqMi+sMFtSfFBEDWoD67bUkPSa+d/Gk3i7i6tvxE4LyLhgGOeu9ELPXzLFAVHJrkNrZreUFfN28S9l1x27upVSLwp5hlIYFqBm8a8ADRxQJIfszy72ZxrpeKxGR6xnltEbupkbXtkpbQsh6ozhV8kDCni1dcT8F2bsoAKLcdt7AAAAAElFTkSuQmCC" y="24.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="49" x="679" y="89.1094">Admin</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="701.5" y="107.1582"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="608" y="124.7676">Person who edits content over</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="662.5" y="142.377">the Web App</text></g><!--MD5=[93c709146f93ed26a8c4a4622e873365]
+entity githubpages--><g id="elem_githubpages"><rect fill="#1168BD" height="123.3438" rx="2.5" ry="2.5" style="stroke:#3C7FC0;stroke-width:0.5;" width="220" x="346.5" y="271.5"/><image height="48" width="48" x="432.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACGklEQVR42u2YMUoGMRCFcwVv4BE8gkfwCJaWYm1hZau1jY21tjYiCjYiWghaWPgXNgoigljYrB+uhCWTTCbZVRQSUuxmM5OXybw3Yd3cytGf6q4BaoAaoAbI1OfXTpZ3rndPH65mry9vH91X44FXBvnEhF8CtLh5fnDx2Bka05j8g4DYtBFKAKsoWlZAS9uX/mhKG4aYTwlode+2G91wMg2gSdDYMbnsSXWTtuzZOT2Lg7xhcGH9bGP/LptPTGBan87BuJ7jGiAUZegLjRli3Tqc9ZLDpkFJ54FDYZBPw1UxHPphQg0gFpAErtO645vnwBXOiwEF4QkiVNSDCOlBSgKSWXL/9F4HCEOZYWWAkHyZpxV1oMJbHBAECezJgzE1XKYRSxQAkjXLqLOpLneYoogzpqG9GBkFNkWRfwto5JHJglgGSOYg4jsGEOZGlrifVsWUFKW00dmvHNVpFL0yUAQLAMlC1it1xdUdExkepZw5e5D7g1PqYnRjkh96FXJZXmCMrA39cvzZMsIEmYgWzmr3IV9fe3u5QJR6klD2ypoBNEztPgeD+EePL5p/lnQ23ak9Ar8t4sQzXbnTKBfcbJF2WY5473ZtjBLCyFNnYYrHRFT8MSmuo8zCiYWhzsheuWlFu+VkRox64ez6FhQ4RUsCQBjaFbXs7wcE8YtZAPFQWnBq/g8Bi00rOc4nJuj0br/0GqAGqAH67p8/EkVSrYjGTgAAAABJRU5ErkJggg==" y="281.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="103" x="405" y="346.1094">Github Pages</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="454.5" y="364.1582"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="196" x="360.5" y="381.7676">Service to host website content</text></g><!--MD5=[920f55dacc69cbaf43b0aa823f7e1721]
+entity mongodb--><g id="elem_mongodb"><rect fill="#1168BD" height="140.9531" rx="2.5" ry="2.5" style="stroke:#3C7FC0;stroke-width:0.5;" width="190" x="293.5" y="503"/><image height="48" width="48" x="364.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAABl0lEQVR42tWZPUoDURSF3xbcgUvIElyCS7C0FGsLK1utbWysTWsjomAjooUQCwtT2CiEIIiFzfXigzDEyeSd8+6dXA/TJvPlvXN/k9a2L0I9yeRb1nevYgHtnD5tHt1HARrs3Uw/vx/GHyGAlObl/Ut+pee0YqB8NtJQ/cWlGiPP0WRtHNyuBuhyNJE2KaWeXN9AahdZLHVVr0CLLqupw/Nxf0DDuzcpEGemRESWlInLTMnKy63aOn70BSo/HtrdGJBaVUChTsKAlgbXX2kEeAHpbxVKXkD7Z88cEFTgklN8NXVy/eoCNGszUEGxBgBJheyBtH7VAJXX/+SUEuls9G+B6CQU9ITsPVRpapewJwrZrMuOlan1gy5A3Y19h7QIugDRNoJaouTXvxIGgoG0kXC9L/cmX4WujmAgKGVDnRA/KOprCt1DbNbI2b6kWSOGMh5oaWkjLqt2HdMRcVBqttygtTLV0BjsGOeY0LHQZQuriSA3ArRv7PfUORHUbPLsF+foyOwLlJ0UCCjXk0BAOU8GAjL8Q+gHdXHWxbmG3wEAAAAASUVORK5CYII=" y="513"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="73" x="352" y="577.6094">Mongodb</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="386.5" y="595.6582"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="307.5" y="613.2676">Database to hold views of</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="349" y="630.877">website data</text></g><!--MD5=[fb96cda1e54d33aeb4c1270b4462e657]
+entity dropbox--><g id="elem_dropbox"><rect fill="#1168BD" height="140.9531" rx="2.5" ry="2.5" style="stroke:#3C7FC0;stroke-width:0.5;" width="220" x="518.5" y="503"/><image height="48" width="48" x="604.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACCElEQVR42u1YPUoFMRDOFbyBR/AIHsEjWFqKtYWVrdY2Ntba2ogo2IhoIWhh4StsFEQEsbCJHwyGkOz85e3CExJSLPsmyZeZb76Zt2Fp42yhZuiAOqAOqAP6V4BWtq/uZp/Pb9/LWxeyJQzIcnX3eipAO8dP8W98fP0IJ+EnGCTjvdPZyIBwAO4aq7F+cF8b42VtieVr+7fjAML9Ij+K2+derMfh5ctcgDjHFOPk5pXs8aAaI5SyqwJHSdwmmgegWNDkruLSYhjQ5tGjffcUNTm4xcARvpDBseqmSGwIQaEL5w/v6sLBbNA5hN05DoEKwqa4TJ72RboVd3BnWU0OvFGFEbNmIZynLgwuSUSMXMoLYyxxyaNVqREgl+AWSibEtwUQFSbQgksN+SZYqFLHAagoTHVmCTmRZ5wqiSZAnCCpRYDTJNCxHZAsvly9xEu54KRS4ysdKTvkkWcyHowFRKBU4JgYPQORdVUbQayDkFmWIpB2t5QaizwGS9LK7QScD6pi4kE1VgUpWESIYwZ4ljcqVFI48lnqhkOp63o5eDypVHEBi2NamvzcVUKAqP9P5c9YiVsAYWuAgKtoWmiOSXo9CSDyB/HX2EmSJRZOAkjNuObMmuuvtKtx9hKo8b+9pXH2tnIjfGzgGue2tmm0rx9FBBtiNP7nGIpgc4z6B6sOqAPqgBYM0C99U2pHvVNTrAAAAABJRU5ErkJggg==" y="513"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="67" x="595" y="577.6094">Dropbox</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="626.5" y="595.6582"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="532.5" y="613.2676">Service to upload pictures and</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="197" x="530" y="630.877">serve over URL for blog/project</text></g><!--MD5=[445cfa41227a61a4289e86eeedbe0656]
+entity deta--><g id="elem_deta"><rect fill="#1168BD" height="140.9531" rx="2.5" ry="2.5" style="stroke:#3C7FC0;stroke-width:0.5;" width="171" x="21" y="503"/><image height="48" width="48" x="82.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACFklEQVR42u2ZPUoEQRCF5wrewCN4BI/gEQwNxdjAyFRjExNjTU1EFExENBDWwMANTBREBDEwGT8YGNbu2qr+mbYH3KKDxe2dfl393quatlnaOBvVaBaA/hug5a2LnePHk5sXxvrBfX1Ad9OPdiYOL59rAlrZvmq9qAmIMxoXoL3TqQ+ItBUEtHn0AEvOJ2+ru9cmgbqA4/5M/vj0+sX8tf3bdEBOApxnienpwpEbTJ/9lk2mACIl/kqkir0C5f3zu1WDfICDwQf/W8wiGhALt8VCJEBKhgYJsjsMh4YKndeGyiBNyI4hisgVP3RG24DYjfJ0Uui4DgftaCr8sIIAicWhk5uiFH4lWhRZzAUkFgcKe0LdNQWfyCGWCe9MfLsy2wENkGhFioUEJlisLXMBoQI2waGIqglPTz/meTrP73xfAwQOXbT65sShiE5k5C9AposkNKkhJSgdUBSBeg4UBFQiQ4451ecQdm+ojBnwX1THUCpj56zC8AttdLXP9yH9CYZT+4eY6dTmoRuAxDYtsJaJrUtuLZsnvbRqH/LWlth+pPVDAwAyRRvbMWZxSNRIzZ7afPlKDuV1u0nrpsslqYmiM9qByBDLTB4zoQu+Hyv+iI7RKTpKGXeY68zMei+D1+yVfIjqEGuLg7sngHKLUvYGzfTigoBYe1w3aGJhqQzIsfLAulv24hzid93WKO6pF/9a+PPxAzl9xRwkeOXhAAAAAElFTkSuQmCC" y="513"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="35" x="89" y="577.6094">Deta</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="104.5" y="595.6582"> </text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="143" x="35" y="613.2676">Service to host the API</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="37" y="630.877">backend server / logic</text></g><!--MD5=[4c42a3aa510e8f9838da82158a4358b3]
+link users to githubpages--><g id="link_users_githubpages"><path d="M456.5,155.51 C456.5,189.17 456.5,229.47 456.5,263.06 " fill="none" id="users-to-githubpages" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="456.5,271.44,459.5,263.44,453.5,263.44,456.5,271.44" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="28" x="459.5" y="206.457">uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="32" x="457.5" y="221.5508">[https]</text></g><!--MD5=[97f7df892904bd81dc7ac94a7921b1c9]
+link admin to githubpages--><g id="link_admin_githubpages"><path d="M633.71,155.51 C599.05,190.03 557.39,231.52 523.16,265.61 " fill="none" id="admin-to-githubpages" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="517.3,271.44,525.0871,267.9241,520.8552,263.6708,517.3,271.44" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="28" x="612.5" y="206.457">uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="62" x="595.5" y="221.5508">[https, auth]</text></g><!--MD5=[e24912bb040aee399d002f326bbd2f6b]
+link reactapp to githubpages--><g id="link_reactapp_githubpages"><path d="M288.35,163.16 C321.11,196.06 358.96,234.06 390.44,265.67 " fill="none" id="reactapp-to-githubpages" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="396.24,271.5,392.7241,263.7129,388.4708,267.9448,396.24,271.5" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="93" x="350.5" y="206.457">gets deployed to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="89" x="352.5" y="221.5508">[node gh-pages]</text></g><!--MD5=[37101c3b049428e0eda76e732a4cc678]
+link githubpages to dropbox--><g id="link_githubpages_dropbox"><path d="M500.35,394.8 C522.65,425.72 549.97,463.61 573.65,496.45 " fill="none" id="githubpages-to-dropbox" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="578.34,502.95,576.0868,494.7085,571.2233,498.2222,578.34,502.95" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="75" x="553.5" y="454.457">gets pictures</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="28" x="577" y="469.5508">[URI]</text></g><!--MD5=[777381e2370812674bb2bb4ab32362dd]
+link deta to mongodb--><g id="link_deta_mongodb"><path d="M192.26,573.5 C221.56,573.5 254.65,573.5 285.19,573.5 " fill="none" id="deta-to-mongodb" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="293.31,573.5,285.31,570.5,285.31,576.5,293.31,573.5" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="53" x="216.25" y="551.957">gets data</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="65" x="210.25" y="567.0508">[mongoose]</text></g><!--MD5=[90a9681e0292b15bab0f6a749c0ca081]
+link api to deta--><g id="link_api_deta"><path d="M106.5,411.1 C106.5,437.87 106.5,467.88 106.5,494.7 " fill="none" id="api-to-deta" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="106.5,502.92,109.5,494.92,103.5,494.92,106.5,502.92" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="93" x="107.5" y="454.457">gets deployed to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="53" x="127.5" y="469.5508">[deta CLI]</text></g><!--MD5=[97291174c3311c29521583611d20b4a2]
+link githubpages to deta--><g id="link_githubpages_deta"><path d="M367.27,394.8 C315.71,429.94 250.94,474.07 198.85,509.57 " fill="none" id="githubpages-to-deta" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="192.24,514.07,200.5419,512.0503,197.1668,507.0896,192.24,514.07" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="93" x="293.5" y="454.457">makes requests</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="32" x="324" y="469.5508">[https]</text></g><rect fill="#FFFFFF" height="139.2656" id="_legend" rx="7.5" ry="7.5" style="stroke:none;stroke-width:1.0;" width="133" x="664" y="656.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="53" x="670" y="679.4863">Legend</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="723" y="679.4863"> </text><rect fill="#08427B" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="670" y="682.5625"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="674" y="697.0957">person</text><rect fill="#1168BD" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="670" y="700.1719"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="674" y="714.7051">system</text><rect fill="#438DD5" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="670" y="717.7813"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="674" y="732.3145">container</text><rect fill="#686868" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="670" y="735.3906"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="674" y="749.9238">external person</text><rect fill="#999999" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="670" y="753"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="674" y="767.5332">external system</text><rect fill="#B3B3B3" height="17.6094" style="stroke:none;stroke-width:1.0;" width="121" x="670" y="770.6094"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="674" y="785.1426">external container</text><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="670" x2="791" y1="664.9531" y2="664.9531"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="670" x2="791" y1="682.5625" y2="682.5625"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="670" x2="791" y1="700.1719" y2="700.1719"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="670" x2="791" y1="717.7813" y2="717.7813"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="670" x2="791" y1="735.3906" y2="735.3906"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="670" x2="791" y1="753" y2="753"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="670" x2="791" y1="770.6094" y2="770.6094"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="670" x2="791" y1="788.2188" y2="788.2188"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="670" x2="670" y1="664.9531" y2="788.2188"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="791" x2="791" y1="664.9531" y2="788.2188"/><!--MD5=[2b3b549264f48e78dedbc7c509ce164d]
 @startuml Architecture
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
@@ -25,7 +25,7 @@ link githubpages to heroku--><path d="M386.461,394.801 C338.415,426.368 279.319,
 !include DEVICONS/react.puml
 !include DEVICONS/mongodb.puml
 !include DEVICONS/dropbox.puml
-!include DEVICONS/heroku.puml
+!include DEVICONS/aptana.puml
 !include DEVICONS/github_badge.puml
 !include FONTAWESOME/users.puml
 !include FONTAWESOME/user.puml
@@ -43,7 +43,7 @@ LAYOUT_WITH_LEGEND()
   System(githubpages, "Github Pages", "Service to host website content", "github_badge")
   System(mongodb, "Mongodb", "Database to hold views of website data", "mongodb")
   System(dropbox, "Dropbox", "Service to upload pictures and serve over URL for blog/project", "dropbox")
-  System(heroku, "Heroku", "Serice to host the API backend server / logic", "heroku")
+  System(deta, "Deta", "Service to host the API backend server / logic", "aptana")
 
 
 Rel(users, githubpages, "uses", "https")
@@ -51,14 +51,25 @@ Rel(admin, githubpages, "uses", "https, auth")
 Rel(reactapp, githubpages, "gets deployed to", "node gh-pages")
 Rel(githubpages, dropbox, "gets pictures", "URI")
 
-Rel_R(heroku, mongodb, "gets data", "mongoose")
-Rel(api, heroku, "gets deployed to", "heroku CLI")
-Rel(githubpages, heroku, "makes requests", "https")
+Rel_R(deta, mongodb, "gets data", "mongoose")
+Rel(api, deta, "gets deployed to", "deta CLI")
+Rel(githubpages, deta, "makes requests", "https")
 
 
 @enduml
 
 @startuml Architecture
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -72,6 +83,12 @@ skinparam maxMessageSize 150
 skinparam LegendBorderColor transparent
 skinparam LegendBackgroundColor transparent
 skinparam LegendFontColor #FFFFFF
+
+skinparam shadowing<<legendArea>> false
+skinparam rectangle<<legendArea>> {
+    backgroundcolor #00000000
+    bordercolor #00000000
+}
 
 skinparam rectangle {
     StereotypeFontSize 12
@@ -88,19 +105,235 @@ skinparam queue {
     shadowing false
 }
 
-skinparam Arrow {
+skinparam arrow {
     Color #666666
     FontColor #666666
     FontSize 12
 }
 
+skinparam actor {
+    StereotypeFontSize 12
+    shadowing false
+    style awesome
+}
+
+skinparam person {
+    StereotypeFontSize 12
+    shadowing false
+}
+
 skinparam rectangle<<boundary>> {
     Shadowing false
-    StereotypeFontSize 0
-    FontColor #444444
-    BorderColor #444444
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
     BorderStyle dashed
 }
+
+skinparam package {
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
+    FontStyle plain
+    BackgroundColor transparent
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<boundary>>StereotypeFontColor transparent
+skinparam rectangle<<boundary>>StereotypeFontColor transparent
+
+
+skinparam rectangle<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<enterprise_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<enterprise_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<enterprise_boundary>>StereotypeFontColor transparent
+
+
+
+skinparam rectangle<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<system_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<system_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<system_boundary>>StereotypeFontColor transparent
+
+
+
+skinparam rectangle<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<container_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<container_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<container_boundary>>StereotypeFontColor transparent
+
+
+
 
 
 
@@ -136,6 +369,31 @@ skinparam rectangle<<person>> {
     BackgroundColor #08427B
     BorderColor #073B6F
 }
+skinparam database<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam queue<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam actor<<person>> {
+    StereotypeFontColor #08427B
+    FontColor #08427B
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam person<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
 
 skinparam rectangle<<external_person>> {
     StereotypeFontColor #FFFFFF
@@ -143,6 +401,31 @@ skinparam rectangle<<external_person>> {
     BackgroundColor #686868
     BorderColor #8A8A8A
 }
+skinparam database<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_person>> {
+    StereotypeFontColor #686868
+    FontColor #686868
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam person<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
 
 skinparam rectangle<<system>> {
     StereotypeFontColor #FFFFFF
@@ -150,6 +433,31 @@ skinparam rectangle<<system>> {
     BackgroundColor #1168BD
     BorderColor #3C7FC0
 }
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam queue<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam actor<<system>> {
+    StereotypeFontColor #1168BD
+    FontColor #1168BD
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam person<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
 
 skinparam rectangle<<external_system>> {
     StereotypeFontColor #FFFFFF
@@ -157,6 +465,96 @@ skinparam rectangle<<external_system>> {
     BackgroundColor #999999
     BorderColor #8A8A8A
 }
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_system>> {
+    StereotypeFontColor #999999
+    FontColor #999999
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam person<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+skinparam rectangle<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<enterprise_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<enterprise_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<enterprise_boundary>>StereotypeFontColor transparent
+
+
+
+skinparam rectangle<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<system_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<system_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<system_boundary>>StereotypeFontColor transparent
+
+
+
+
+
+
 
 sprite $person [48x48/16] {
 000000000000000000000000000000000000000000000000
@@ -209,6 +607,67 @@ sprite $person [48x48/16] {
 000000000000000000000000000000000000000000000000
 }
 
+sprite $person2 [48x48/16] {
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000002578888300000000005888864100000000000
+0000000007DFFFFFFFFD9643347BFFFFFFFFFB4000000000
+00000004EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB10000000
+0000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD2000000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+00003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+0000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF50000
+0003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD0000
+0009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+0009FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF2000
+0003FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFD0000
+0000BFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFF50000
+00003FFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFB00000
+000006FFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFE100000
+0000007FFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFD2000000
+00000004EFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFB10000000
+0000000007DF8FFFFFFFFFFFFFFFFFFFFFF8FB4000000000
+000000000002578888888888888888888864100000000000
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -230,20 +689,31 @@ skinparam rectangle<<container>> {
     BackgroundColor #438DD5
     BorderColor #3C7FC0
 }
-
 skinparam database<<container>> {
     StereotypeFontColor #FFFFFF
     FontColor #FFFFFF
     BackgroundColor #438DD5
     BorderColor #3C7FC0
 }
-
 skinparam queue<<container>> {
     StereotypeFontColor #FFFFFF
     FontColor #FFFFFF
     BackgroundColor #438DD5
     BorderColor #3C7FC0
 }
+skinparam actor<<container>> {
+    StereotypeFontColor #438DD5
+    FontColor #438DD5
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam person<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
 
 skinparam rectangle<<external_container>> {
     StereotypeFontColor #FFFFFF
@@ -251,20 +721,66 @@ skinparam rectangle<<external_container>> {
     BackgroundColor #B3B3B3
     BorderColor #A6A6A6
 }
-
 skinparam database<<external_container>> {
     StereotypeFontColor #FFFFFF
     FontColor #FFFFFF
     BackgroundColor #B3B3B3
     BorderColor #A6A6A6
 }
-
 skinparam queue<<external_container>> {
     StereotypeFontColor #FFFFFF
     FontColor #FFFFFF
     BackgroundColor #B3B3B3
     BorderColor #A6A6A6
 }
+skinparam actor<<external_container>> {
+    StereotypeFontColor #B3B3B3
+    FontColor #B3B3B3
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam person<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+
+
+
+skinparam rectangle<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<container_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<container_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<container_boundary>>StereotypeFontColor transparent
+
+
+
+
+
+
 
 
 
@@ -491,59 +1007,59 @@ sprite $dropbox [48x48/16] {
 
 
 skinparam folderBackgroundColor<<DEV DROPBOX>> White
-sprite $heroku [48x48/16] {
+sprite $aptana [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
-000000000000000000000000000000000000000000000000
-000000000006EEEEED000000000001EEEEEE400000000000
-000000000006FFFFFE000000000008FFFFFF100000000000
-000000000006FFFFFE00000000002FFFFFF7000000000000
-000000000006FFFFFE0000000000AFFFFFD0000000000000
-000000000006FFFFFE0000000002FFFFFF40000000000000
-000000000006FFFFFE000000000BFFFFF900000000000000
-000000000006FFFFFE000000004FFFFFE100000000000000
-000000000006FFFFFE000000006BCCCC5000000000000000
-000000000006FFFFFE000000000000000000000000000000
-000000000006FFFFFE000000000000000000000000000000
-000000000006FFFFFE000000012100000000000000000000
-000000000006FFFFFE0037BEFFFFFC710000000000000000
-000000000005FFFFFFAEFFFFFFFFFFFE4000000000000000
-000000000005FFFFFFFFFFFFFFFFFFFFF300000000000000
-000000000005FFFFFFFFFFFFFFFFFFFFFB00000000000000
-000000000005FFFFFFFFFFFFFFFFFFFFFF00000000000000
-000000000004FFFFFFFFD9532233CFFFFF20000000000000
-000000000003FFFFFC6100000000AFFFFF30000000000000
-000000000002FFB6100000000000AFFFFF40000000000000
-0000000000004000000000000000AFFFFF40000000000000
-0000000000000000000000000000AFFFFF50000000000000
-0000000000000000000000000000AFFFFF50000000000000
-00000000000000000000000000009FFFFF50000000000000
-00000000000000000000000000009FFFFF50000000000000
-00000000000000000000000000009FFFFF50000000000000
-00000000000000000000000000009FFFFF50000000000000
-00000000000000000000000000008FFFFF50000000000000
-00000000000160000000000000008FFFFF50000000000000
-000000000004F8000000000000008FFFFF50000000000000
-000000000005FF900000000000008FFFFF50000000000000
-000000000005FFFA0000000000008FFFFF50000000000000
-000000000006FFFFA000000000008FFFFF50000000000000
-000000000006FFFFF900000000008FFFFF50000000000000
-000000000006FFFFF300000000008FFFFF50000000000000
-000000000005FFFF3000000000007FFFFF50000000000000
-000000000005FFE30000000000007FFFFF50000000000000
-000000000004FE200000000000007FFFFF50000000000000
-000000000002D2000000000000007FFFFF50000000000000
-00000000000010000000000000005CCCCC40000000000000
-000000000000000000000000000000000000000000000000
+00000000000000000000017AA50000000000000000000000
+000000000000000000000CFFFF9000000000000000000000
+000000000000000000002FFFFFF000000000000000000000
+000000000000000000005FFFFFF000000000000000000000
+000000000000000000008FFFFFF200000000000000000000
+00000000006CB3000000CFFFFFF70000007DC40000000000
+0000000008FFFF400008FFFFFFFF500009FFFF6000000000
+000000003FFFFFFB78EFFFFFFFFFFD99DFFFFFF100000000
+000000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF300000000
+000000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFE000000000
+0000000008FFFFFFFFFFFFFFFFFFFFFFFFFFFF4000000000
+0000000000BFFFFFFFFFFFEDDFFFFFFFFFFFF60000000000
+00000000004FFFFFFFFF82000039FFFFFFFFE00000000000
+00000000002FFFFFFFB1000000002CFFFFFFD00000000000
+00000000005FFFFFFA000000000000CFFFFFF10000000000
+0000000000BFFFFFC00000000000001EFFFFF90000000000
+0000000007FFFFFF3000000000000005FFFFFF7000000000
+0000069ADFFFFFFC0000000000000000EFFFFFFFDB700000
+0000AFFFFFFFFFF700000000000000009FFFFFFFFFFA0000
+0000FFFFFFFFFFF500000000000000007FFFFFFFFFFF0000
+0000FFFFFFFFFFF300000000000000006FFFFFFFFFFF0000
+0000FFFFFFFFFFF500000000000000007FFFFFFFFFFD0000
+0000AFFFFFFFFFF700000000000000009FFFFFFFFFF80000
+0000068BEFFFFFFC0000000000000000EFFFFFFA88400000
+0000000008FFFFFF3000000000000005FFFFFF3000000000
+0000000000AFFFFFC00000000000001EFFFFF70000000000
+00000000003FFFFFFA000000000000BFFFFFF10000000000
+00000000000FFFFFFFB1000000002CFFFFFFF00000000000
+00000000002FFFFFFFFF82000039FFFFFFFFF00000000000
+00000000009FFFFFFFFFFFEDDFFFFFFFFFFFF70000000000
+0000000005FFFFFFFFFFFFFFFFFFFFFFFFFFFF4000000000
+000000000EFFFFFFFFFFFFFFFFFFFFFFFFFFFFF200000000
+000000004FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000000
+000000002FFFFFFC89EFFFFFFFFFFC76BFFFFFF100000000
+0000000007FFFF800006FFFFFFFF700006FFFF4000000000
+00000000005CE70000008FFFFFF80000004CB30000000000
+000000000000000000002FFFFFF100000000000000000000
+000000000000000000001FFFFFF000000000000000000000
+000000000000000000000FFFFFF000000000000000000000
+0000000000000000000009FFFFA000000000000000000000
+000000000000000000000058850000000000000000000000
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
 }
 
 
-skinparam folderBackgroundColor<<DEV HEROKU>> White
+skinparam folderBackgroundColor<<DEV APTANA>> White
 sprite $github_badge [48x48/16] {
 000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000
@@ -717,16 +1233,16 @@ legend right
 |<#B3B3B3> external container |
 endlegend
 
-  rectangle "<$react>\n==React App\n//<size:12>[react]</size>//\n\n Creates web app for the users to interact with" <<container>> as reactapp
-  rectangle "<$nodejs>\n==API\n//<size:12>[node.js]</size>//\n\n Backend logic to serve data and handle requests" <<container>> as api
+  rectangle "<$react>\n==React App\n//<size:12>[react]</size>//\n\nCreates web app for the users to interact with" <<container>> as reactapp 
+  rectangle "<$nodejs>\n==API\n//<size:12>[node.js]</size>//\n\nBackend logic to serve data and handle requests" <<container>> as api 
 
-  rectangle "<$users>\n==Users\n\n People who visit the website and want a nice UI / UX" <<external_person>> as users
-  rectangle "<$user>\n==Admin\n\n Person who edits content over the Web App" <<person>> as admin
+  rectangle "<$users>\n==Users\n\n People who visit the website and want a nice UI / UX" <<external_person>> as users 
+  rectangle "<$user>\n==Admin\n\n Person who edits content over the Web App" <<person>> as admin 
  
-  rectangle "<$github_badge>\n==Github Pages\n\n Service to host website content" <<system>> as githubpages
-  rectangle "<$mongodb>\n==Mongodb\n\n Database to hold views of website data" <<system>> as mongodb
-  rectangle "<$dropbox>\n==Dropbox\n\n Service to upload pictures and serve over URL for blog/project" <<system>> as dropbox
-  rectangle "<$heroku>\n==Heroku\n\n Serice to host the API backend server / logic" <<system>> as heroku
+  rectangle "<$github_badge>\n==Github Pages\n\n Service to host website content" <<system>> as githubpages 
+  rectangle "<$mongodb>\n==Mongodb\n\n Database to hold views of website data" <<system>> as mongodb 
+  rectangle "<$dropbox>\n==Dropbox\n\n Service to upload pictures and serve over URL for blog/project" <<system>> as dropbox 
+  rectangle "<$aptana>\n==Deta\n\n Service to host the API backend server / logic" <<system>> as deta 
 
 
 users - ->> githubpages : **uses**\n//<size:12>[https]</size>//
@@ -734,17 +1250,17 @@ admin - ->> githubpages : **uses**\n//<size:12>[https, auth]</size>//
 reactapp - ->> githubpages : **gets deployed to**\n//<size:12>[node gh-pages]</size>//
 githubpages - ->> dropbox : **gets pictures**\n//<size:12>[URI]</size>//
 
-heroku -RIGHT->> mongodb : **gets data**\n//<size:12>[mongoose]</size>//
-api - ->> heroku : **gets deployed to**\n//<size:12>[heroku CLI]</size>//
-githubpages - ->> heroku : **makes requests**\n//<size:12>[https]</size>//
+deta -RIGHT->> mongodb : **gets data**\n//<size:12>[mongoose]</size>//
+api - ->> deta : **gets deployed to**\n//<size:12>[deta CLI]</size>//
+githubpages - ->> deta : **makes requests**\n//<size:12>[https]</size>//
 
 
 @enduml
 
-PlantUML version 1.2020.22(Sun Dec 06 10:36:27 CET 2020)
+PlantUML version 1.2022.7(Mon Aug 22 19:01:30 CEST 2022)
 (GPL source distribution)
-Java Runtime: OpenJDK Runtime Environment
-JVM: OpenJDK 64-Bit Server VM
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
 Default Encoding: Cp1252
 Language: de
 Country: DE

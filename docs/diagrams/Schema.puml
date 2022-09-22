@@ -9,7 +9,7 @@
 !include DEVICONS/react.puml
 !include DEVICONS/mongodb.puml
 !include DEVICONS/dropbox.puml
-!include DEVICONS/heroku.puml
+!include DEVICONS/aptana.puml
 !include DEVICONS/github_badge.puml
 !include FONTAWESOME/users.puml
 !include FONTAWESOME/user.puml
@@ -27,7 +27,7 @@ LAYOUT_WITH_LEGEND()
   System(githubpages, "Github Pages", "Service to host website content", "github_badge")
   System(mongodb, "Mongodb", "Database to hold views of website data", "mongodb")
   System(dropbox, "Dropbox", "Service to upload pictures and serve over URL for blog/project", "dropbox")
-  System(heroku, "Heroku", "Serice to host the API backend server / logic", "heroku")
+  System(deta, "Deta", "Service to host the API backend server / logic", "aptana")
 
 
 Rel(users, githubpages, "uses", "https")
@@ -35,9 +35,9 @@ Rel(admin, githubpages, "uses", "https, auth")
 Rel(reactapp, githubpages, "gets deployed to", "node gh-pages")
 Rel(githubpages, dropbox, "gets pictures", "URI")
 
-Rel_R(heroku, mongodb, "gets data", "mongoose")
-Rel(api, heroku, "gets deployed to", "heroku CLI")
-Rel(githubpages, heroku, "makes requests", "https")
+Rel_R(deta, mongodb, "gets data", "mongoose")
+Rel(api, deta, "gets deployed to", "deta CLI")
+Rel(githubpages, deta, "makes requests", "https")
 
 
 @enduml

@@ -47,8 +47,8 @@ body {
 }
 
 .custom-navbar {
-  padding-right: 2rem;
-  padding-left: 2rem;
+  padding-right: 0.5rem !important;
+  padding-left: 1rem !important;
 }
 
 code {
@@ -107,25 +107,26 @@ code {
   }
 }
 
-.card-title {
+.element-card-title {
   text-align: left;
   padding: 0px 5px 0px 0px;
+  margin-bottom: 0.7rem;
 }
 
-.card-info {
+.element-card-info {
   text-align: left;
   font-size: 0.9rem;
   font-weight: lighter;
 }
 
-.card-desc {
+.element-card-desc {
   text-align: left;
   text-align: justify;
   hyphens: auto;
   margin: 2px 0px 0px 0px;
 }
 
-.card-category {
+.element-card-category {
   text-align: left;
   text-align: justify;
   hyphens: auto;
@@ -246,6 +247,10 @@ code {
   border-color: inherit;
   border-top: 1px solid;
   margin-bottom: 1.2rem;
+}
+
+.element-form-group {
+  margin-bottom: 1rem;
 }
 
 .user-input-container {

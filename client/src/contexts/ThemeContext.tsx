@@ -1,15 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-type StyleProps = {
-  syntax: string;
-  ui: string;
-  bg: string;
-};
-
 type ContextType = {
   isLightTheme: boolean;
-  light: StyleProps;
-  dark: StyleProps;
   toggleTheme: () => void;
   setTheme: (theme: boolean) => void;
   cacheTheme: (lightTheme: boolean) => void;
@@ -18,7 +10,9 @@ type ContextType = {
 
 export const ThemeContext = createContext<ContextType>({} as ContextType);
 
-export const ThemeContextProvider: React.FC = ({ children }) => {
+export const ThemeContextProvider: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
   const [lighttheme, setLighttheme] = useState<boolean>(true);
 
   const getCachedTheme = (): boolean => {
@@ -52,8 +46,6 @@ export const ThemeContextProvider: React.FC = ({ children }) => {
     <ThemeContext.Provider
       value={{
         isLightTheme: lighttheme,
-        light: { syntax: '#1a1a1a', ui: 'none', bg: 'rgb(240, 241, 255)' },
-        dark: { syntax: '#ececec', ui: 'none', bg: 'rgb(63, 63, 63)' },
         toggleTheme,
         setTheme,
         cacheTheme,

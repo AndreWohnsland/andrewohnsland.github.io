@@ -1,14 +1,21 @@
 import React, { useContext } from 'react';
-import { withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { AuthContext } from '../../contexts/AuthContext';
-import GithubLogo from './github-original.svg';
+import { ReactComponent as GithubLogo } from './github-original.svg';
 import PictureSelection from './PictureSelection';
 
+// TODO: cookies are http only, need to have logout route, i guess
 const NavBar: React.FC = () => {
   const { isAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const logout = () => {
+    //  TODO: Implement some cookie removal here
+    return navigate('/');
+  };
 
   return (
     <>
@@ -18,12 +25,13 @@ const NavBar: React.FC = () => {
         expand="lg"
         bg="primary"
         variant="dark"
+        className="custom-navbar"
       >
         <Navbar.Brand>{process.env.REACT_APP_SHOWN_NAME}</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <LinkContainer exact to="/">
+            <LinkContainer to="/">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/projects">
@@ -47,25 +55,21 @@ const NavBar: React.FC = () => {
                 <LinkContainer to="/admin/blog">
                   <NavDropdown.Item>Edit Blog Article</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer exact to="/admin/image">
+                <LinkContainer to="/admin/image">
                   <NavDropdown.Item>Add Images</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer exact to="/admin/image/delete">
+                <LinkContainer to="/admin/image/delete">
                   <NavDropdown.Item>Delete Images</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to="/admin/changepassword">
                   <NavDropdown.Item>Change Password</NavDropdown.Item>
                 </LinkContainer>
+                <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
               </NavDropdown>
             )}
             <Nav.Link href="https://github.com/AndreWohnsland">
               <div className="github">
-                <img
-                  src={GithubLogo}
-                  alt="GitHub Logo"
-                  width="20px"
-                  height="20px"
-                />
+                <GithubLogo width="20px" height="20px" />
                 &nbsp;GitHub
               </div>
             </Nav.Link>
@@ -76,4 +80,4 @@ const NavBar: React.FC = () => {
   );
 };
 
-export default withRouter(NavBar);
+export default NavBar;

@@ -27,7 +27,7 @@ const PictureSelection: React.FC = () => {
           data &&
           data.map((category) => {
             return (
-              <LinkContainer to={`/pictures/${category}`}>
+              <LinkContainer to={`/pictures/${category}`} key={category}>
                 <NavDropdown.Item>
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </NavDropdown.Item>

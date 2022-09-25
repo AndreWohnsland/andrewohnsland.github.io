@@ -90,10 +90,11 @@ const PictureUpload: React.FC = () => {
                 </Button>
               ))}
             </div>
-            <Form.Group>
-              <Form.File
+            <Form.Group className="element-form-group">
+              <Form.Label>Picture</Form.Label>
+              <Form.Control
+                type="file"
                 name="uploadImage"
-                label="Picture"
                 required
                 accept={`${jpegType}`}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

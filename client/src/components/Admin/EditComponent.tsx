@@ -16,6 +16,7 @@ import {
   getAllCategories,
 } from '../../util/apiHelper';
 import { IElement, IElementPost } from '../../Interfaces/element.interface';
+import confirmAlert from './Forms/ConfirmAlert';
 
 type EditComponentProps = {
   elementType: string;
@@ -82,6 +83,11 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
       return updateElement(dataToSend, elementType, elementId);
     }
     return addElement(dataToSend, elementType);
+  };
+
+  const runDelete = () => {
+    const prompt = `Do you want to delete '${title}'?`;
+    confirmAlert(prompt, () => console.log(`TODO: Delete ID: ${elementId}!`));
   };
 
   const onSubmit = async (e: React.SyntheticEvent) => {
@@ -207,6 +213,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
                   variant="danger"
                   className="align-right"
                   disabled={!validateDelete()}
+                  onClick={runDelete}
                 >
                   Delete
                 </Button>

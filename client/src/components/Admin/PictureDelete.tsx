@@ -6,6 +6,7 @@ import Dropdown from './Forms/Dropdown';
 import { getAndGenerateImageDetails, deleteImage } from '../../util/apiHelper';
 import CaptionBanner from '../CaptionBanner';
 import { IImageReducedDetails } from '../../Interfaces/image.interface';
+import confirmAlert from './Forms/ConfirmAlert';
 
 const PictureDelete: React.FC = () => {
   const [showMessage, setShowMessage] = useState(false);
@@ -28,8 +29,7 @@ const PictureDelete: React.FC = () => {
     return imageId !== 'noId';
   };
 
-  const onSubmit = async (e: React.SyntheticEvent): Promise<void> => {
-    e.preventDefault();
+  const handleDeleteImage = () => {
     deleteImage(imageId).then((response) => {
       setRes(response);
       setmessageTitle(`Image with id: ${imageId}`);
@@ -39,6 +39,12 @@ const PictureDelete: React.FC = () => {
         loadElements();
       }
     });
+  };
+
+  const onSubmit = async (e: React.SyntheticEvent): Promise<void> => {
+    e.preventDefault();
+    const prompt = `Do you want to delete the image?`;
+    confirmAlert(prompt, handleDeleteImage);
   };
 
   const handleMessage = (): void => {

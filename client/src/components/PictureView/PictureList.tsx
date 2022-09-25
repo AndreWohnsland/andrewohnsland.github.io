@@ -17,7 +17,7 @@ type ParamTypes = {
 
 const PictureList: React.FC = () => {
   const params = useParams<ParamTypes>();
-  const category = params._category;
+  const category = params._category!;
   const upperCategory = category.charAt(0).toUpperCase() + category.slice(1);
 
   useEffect(() => {

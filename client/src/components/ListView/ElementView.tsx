@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { HashLoader } from 'react-spinners';
-import { css } from '@emotion/react';
 import MarkdownBlock from './MarkdownBlock';
 import useResize from './resize';
 import dateFormatter from './dateFormatter';
@@ -18,11 +17,11 @@ const queryOption = {
   retry: 1,
 };
 
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
+const override = {
+  display: 'block',
+  margin: '0 auto',
+  borderColor: 'red',
+};
 
 type ElementViewProps = {
   elementType: string;
@@ -34,7 +33,7 @@ type ParamTypes = {
 
 const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
   const params = useParams<ParamTypes>();
-  const id = params._id;
+  const id = params._id!;
   const divRef = useRef(null);
   const maxWidth = useResize(divRef);
   const { isAuth } = useContext(AuthContext);
@@ -67,7 +66,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
   const chooseHeader = (s: string, d: IElement | undefined) => {
     if (s === 'loading') return 'Loading ....';
     if (s === 'error') return 'Error getting data!';
-    if (s === 'success' && d) return `${d.title}${d.draft && ' (Draft)'}`;
+    if (s === 'success' && d) return `${d.title}${d.draft ? ' (Draft)' : ''}`;
     return 'Error getting data!';
   };
 
@@ -85,7 +84,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
           <HashLoader
             loading={status === 'loading'}
             color="#004ea7"
-            css={override}
+            cssOverride={override}
             size={(maxWidth as number) / 2}
           />
         </div>

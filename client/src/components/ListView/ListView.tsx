@@ -121,6 +121,7 @@ const ListView: React.FC<ListViewProps> = ({ elementType, header }) => {
                   key={element._id}
                   element={element}
                   elementType={elementType}
+                  uid={element._id}
                 />
               );
             })}

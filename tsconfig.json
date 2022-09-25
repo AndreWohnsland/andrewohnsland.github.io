@@ -5,9 +5,11 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "strict": true
   },
   "exclude": [
-    "client"
+    "./client",
+    "./node_modules"
   ]
 }

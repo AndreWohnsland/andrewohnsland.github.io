@@ -6,17 +6,22 @@ import { IElement } from '../../Interfaces/element.interface';
 type ElementCardProps = {
   element: IElement;
   elementType: string;
+  uid: string;
 };
 
-const ElementCard: React.FC<ElementCardProps> = ({ element, elementType }) => {
+const ElementCard: React.FC<ElementCardProps> = ({
+  element,
+  elementType,
+  uid,
+}) => {
   const createdAt = dateFormatter(element.createdAt);
   const updatedAt = dateFormatter(element.updatedAt);
 
   const createDateTag = () => {
     if (createdAt === updatedAt) {
-      return `Created ${dateFormatter(element.createdAt)}`;
+      return `Created ${createdAt}`;
     }
-    return `Updated ${dateFormatter(element.updatedAt)}`;
+    return `Updated ${updatedAt}`;
   };
 
   return (
@@ -25,15 +30,15 @@ const ElementCard: React.FC<ElementCardProps> = ({ element, elementType }) => {
       style={{ textDecoration: 'none' }}
     >
       <div className="card-div">
-        <h3 className="card-title">
+        <h3 className="element-card-title">
           {element.title}
           <i>{element.draft && ' (draft)'}</i>
         </h3>
-        <span className="card-info">{createDateTag()}</span>
-        <p className="card-desc">{element.description}</p>
-        <p className="card-category">
+        <span className="element-card-info">{createDateTag()}</span>
+        <p className="element-card-desc">{element.description}</p>
+        <p className="element-card-category">
           {element.category.sort().map((cat) => {
-            return <span>#{cat}</span>;
+            return <span key={`${uid}-${cat}`}>{`#${cat}`}</span>;
           })}
         </p>
       </div>

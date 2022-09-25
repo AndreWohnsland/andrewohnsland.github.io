@@ -15,7 +15,7 @@ const Checkbox: React.FC<CheckBoxProps> = ({
   onChange,
 }) => {
   return (
-    <Form.Group controlId={name}>
+    <Form.Group controlId={name} className="element-form-group">
       <Form.Check
         name={name}
         type="checkbox"

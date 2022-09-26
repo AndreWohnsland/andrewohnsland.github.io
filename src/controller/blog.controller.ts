@@ -1,10 +1,8 @@
-import pino from 'pino';
 import { Request, Response, NextFunction } from 'express';
 import Blog from '../models/blog.model';
 import { AppError } from '../middlewares/errorHandler';
 import { IBlogModel } from '../interfaces/blog.interface';
-
-const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
+import logger from '../setUp/initLogger';
 
 async function getAllBlogs(req: Request, res: Response, next: NextFunction) {
   Blog.find({ draft: false }, { text: 0 })

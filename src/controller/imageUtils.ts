@@ -4,10 +4,9 @@ import { Readable } from 'stream';
 // There are not type supports currently here
 const dropboxV2Api = require('dropbox-v2-api');
 import util from 'util';
-import pino from 'pino';
+import logger from '../setUp/initLogger';
 
 const SIZE_LONG_SIDE = 800;
-const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
 
 const dropboxKey = process.env.DROPBOX_ACCESS_TOKEN;
 const dropbox = dropboxV2Api.authenticate({
@@ -49,7 +48,7 @@ async function postPictureToDropbox(dropboxPath: string, fileStream: Readable) {
   };
   try {
     return await dbSync(params);
-  } catch (err) {
+  } catch (err: any) {
     logger.error(err);
   }
 }
@@ -68,7 +67,7 @@ async function generateShareableLink(dropboxPath: string) {
   };
   try {
     return await dbSync(params);
-  } catch (err) {
+  } catch (err: any) {
     logger.error(err);
   }
 }
@@ -82,7 +81,7 @@ async function deletePictureFromDropbox(dropboxPath: string) {
   };
   try {
     return await dbSync(params);
-  } catch (err) {
+  } catch (err: any) {
     logger.error(err);
   }
 }

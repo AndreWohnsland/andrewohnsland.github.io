@@ -4,7 +4,6 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
-import pino from 'pino';
 import cors from 'cors';
 import userRouter from './routes/user';
 import projectRouter from './routes/project';
@@ -14,8 +13,7 @@ import categoryRouter from './routes/category';
 import { forwardError, throwErrorOnInvalidRoute } from './middlewares/errorHandler';
 import { createCorsOption } from './setUp/initCors';
 import { initMongodb } from './setUp/initMongodb';
-
-const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
+import logger from './setUp/initLogger';
 
 const app = express();
 const port = process.env.PORT || 5000;

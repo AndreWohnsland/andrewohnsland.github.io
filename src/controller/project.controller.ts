@@ -1,10 +1,8 @@
-import pino from 'pino';
 import { Request, Response, NextFunction } from 'express';
 import Project from '../models/project.model';
 import { AppError } from '../middlewares/errorHandler';
 import { IProjectModel } from '../interfaces/project.interface';
-
-const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
+import logger from '../setUp/initLogger';
 
 async function getProjects(req: Request, res: Response, next: NextFunction) {
   Project.find({ draft: false }, { text: 0 })

@@ -1,12 +1,10 @@
 import jwt from 'jsonwebtoken';
-import pino from 'pino';
 import { Request, Response, NextFunction } from 'express';
 import User from '../models/user.model';
 import { AppError } from '../middlewares/errorHandler';
 import { IUserModel } from '../interfaces/user.interface';
 import { siteTypes } from '../interfaces/cookiePolicy.types';
-
-const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
+import logger from '../setUp/initLogger';
 
 const maxAgeInSeconds = 24 * 60 * 60 * 7;
 

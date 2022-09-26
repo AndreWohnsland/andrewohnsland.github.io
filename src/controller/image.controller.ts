@@ -1,4 +1,3 @@
-import pino from 'pino';
 import { Request, Response, NextFunction } from 'express';
 import { UploadedFile } from 'express-fileupload';
 import Image from '../models/imageDB.model';
@@ -11,8 +10,7 @@ import {
   deletePictureFromDropbox,
 } from './imageUtils';
 import { IImageModel } from '../interfaces/image.interface';
-
-const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
+import logger from '../setUp/initLogger';
 
 const cat = { foto: 'fotography', wood: 'woodwork' };
 
@@ -39,7 +37,10 @@ async function addImage(req: Request, res: Response, next: NextFunction) {
   const newImage = new Image({ name, height, width, img: sharedUrl, category });
   newImage
     .save()
-    .then(() => res.json('Picture added'))
+    .then(() => {
+      res.json('Picture added');
+      logger.info(`Uploaded picture '${name}'`);
+    })
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
@@ -62,7 +63,7 @@ async function deleteImage(req: Request, res: Response, next: NextFunction) {
   Image.findByIdAndDelete(req.params.id)
     .then((img: IImageModel | null) => {
       if (img) {
-        const msg = `Image with name: ${img.name} was deleted.`;
+        const msg = `Image with name: '${img.name}' was deleted.`;
         const dropboxName = img.name.replace(/\s/g, '');
         const dropboxPath = `/${img.category}/${dropboxName}.jpg`;
         deletePictureFromDropbox(dropboxPath);

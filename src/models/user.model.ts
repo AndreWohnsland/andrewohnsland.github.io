@@ -1,16 +1,16 @@
 /* eslint-disable func-names */
 import mongoose, { model } from 'mongoose';
 import bcrypt from 'bcrypt';
-import { IUserModel, IUserDocument } from '../interfaces/user.interface';
+import { IUser, IUserModel, IUserDocument } from '../interfaces/user.interface';
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema(
+const userSchema = new Schema<IUser>(
   {
     username: {
       type: String,
       required: [true, 'Please enter a username'],
-      unique: [true, 'This name already exists'],
+      unique: true,
       trim: true,
       minlength: [3, 'Must be at least 3 characters'],
     },

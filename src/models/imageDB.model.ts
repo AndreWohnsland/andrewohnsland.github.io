@@ -3,7 +3,7 @@ import { IImageModel } from '../interfaces/image.interface';
 
 const { Schema } = mongoose;
 
-const imageSchema = new Schema(
+const imageSchema = new Schema<IImageModel>(
   {
     name: { type: String, required: [true, 'Please enter a name'] },
     width: Number,

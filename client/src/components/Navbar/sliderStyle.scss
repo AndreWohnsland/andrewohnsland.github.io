@@ -17,10 +17,10 @@ $bg-dark: #3f3f3f;
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 5px;
+  top: 3px;
   left: 0;
   right: 0;
-  bottom: -7px;
+  bottom: -6px;
   background-color: $bg-light;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -29,10 +29,10 @@ $bg-dark: #3f3f3f;
 .slider:before {
   position: absolute;
   content: '';
-  height: 20.5px;
-  width: 20.5px;
-  left: 4px;
-  bottom: 3px;
+  height: 21.5px;
+  width: 21.5px;
+  left: 3.5px;
+  bottom: 3.5px;
   background-color: $bg-dark;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -43,9 +43,9 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(16.5px);
-  -ms-transform: translateX(16.5px);
-  transform: translateX(16.5px);
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
   background-color: $bg-light;
 }
 

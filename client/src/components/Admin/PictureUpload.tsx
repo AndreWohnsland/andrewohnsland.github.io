@@ -43,6 +43,7 @@ const PictureUpload: React.FC = () => {
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     const data = new FormData();
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     data.append('file', image as any);
     data.append('name', name);
     data.append('category', category);

@@ -6,6 +6,7 @@ type CodeBlockProps = {
   node: import('hast').Element;
   inline?: boolean | undefined;
   className?: string | undefined;
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   children: any;
 };
 

@@ -5,14 +5,11 @@ import { IBlogModel } from '../interfaces/blog.interface';
 import logger from '../setUp/initLogger';
 
 async function getAllBlogs(req: Request, res: Response, next: NextFunction) {
-  Blog.find({ draft: false }, { text: 0 })
-    .sort({ createdAt: -1 })
-    .then((blog: IBlogModel[]) => res.json(blog))
-    .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
-}
-
-async function getAllBlogsAsAdmin(req: Request, res: Response, next: NextFunction) {
-  Blog.find()
+  const { authenticated } = req.body;
+  const { text } = req.query;
+  const draftOptions = authenticated ? {} : { draft: false };
+  const textOptions = text ? {} : { text: 0 };
+  Blog.find(draftOptions, textOptions)
     .sort({ createdAt: -1 })
     .then((blog: IBlogModel[]) => res.json(blog))
     .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
@@ -20,20 +17,14 @@ async function getAllBlogsAsAdmin(req: Request, res: Response, next: NextFunctio
 
 async function getBlogBySlug(req: Request, res: Response, next: NextFunction) {
   const { slug } = req.params;
+  const { authenticated } = req.body;
   Blog.findOne({ slug })
     .then((blog: IBlogModel | null) => {
       if (blog === null) return next(new AppError('Blog does not exist', 404));
-      if (blog.draft) return next(new AppError('Element is still a draft', 403));
+      if (blog.draft && !authenticated) return next(new AppError('Element is still a draft', 403));
       return blog;
     })
     .then((blog: IBlogModel | void) => res.json(blog))
-    .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
-}
-
-async function getBlogBySlugAsAdmin(req: Request, res: Response, next: NextFunction) {
-  const { slug } = req.params;
-  Blog.findOne({ slug })
-    .then((blog: IBlogModel | null) => res.json(blog))
     .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
 }
 
@@ -71,4 +62,4 @@ async function addBlog(req: Request, res: Response, next: NextFunction) {
     .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
 }
 
-export default { getAllBlogs, getAllBlogsAsAdmin, getBlogBySlug, getBlogBySlugAsAdmin, updateBlog, addBlog };
+export default { getAllBlogs, getBlogBySlug, updateBlog, addBlog };

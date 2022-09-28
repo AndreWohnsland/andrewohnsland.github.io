@@ -17,8 +17,6 @@ const CodeBlock = ({
   children,
   ...props
 }: CodeBlockProps) => {
-  // This is currently a hack to also use codeblock for custom elements
-  // I'd love to use shortcodes, but they dont seem to work here
   const match = /language-(\w+)/.exec(className || '')!;
   if (!match) return <></>;
   const language = match[1];

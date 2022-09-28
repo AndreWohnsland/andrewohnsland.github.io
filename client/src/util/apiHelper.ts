@@ -8,6 +8,16 @@ import {
 const apiAddress = process.env.REACT_APP_API_ADDRESS;
 const api = `${apiAddress}/api`;
 
+const credentialsOptions = {
+  withCredentials: true,
+  headers: { 'Content-Type': 'application/json' },
+};
+
+const credentialsOptionsNoValidate = {
+  ...credentialsOptions,
+  validateStatus: () => true,
+};
+
 const getAndGenerateImageDetails = async (): Promise<
   IImageReducedDetails[]
 > => {
@@ -46,17 +56,14 @@ const getAllImageData = async (
 };
 
 const postImage = (data: FormData): Promise<AxiosResponse> => {
-  return axios.post(`${api}/image/add`, data, {
-    withCredentials: true,
-    validateStatus: () => true,
-  });
+  return axios.post(`${api}/image/add`, data, credentialsOptionsNoValidate);
 };
 
 const deleteImage = (imageId: string): Promise<AxiosResponse> => {
-  return axios.delete(`${api}/image/delete/${imageId}`, {
-    withCredentials: true,
-    validateStatus: () => true,
-  });
+  return axios.delete(
+    `${api}/image/delete/${imageId}`,
+    credentialsOptionsNoValidate
+  );
 };
 
 const loginUser = (
@@ -66,11 +73,7 @@ const loginUser = (
   return axios.post(
     `${api}/user/login`,
     { username, password },
-    {
-      withCredentials: true,
-      headers: { 'Content-Type': 'application/json' },
-      validateStatus: () => true,
-    }
+    credentialsOptionsNoValidate
   );
 };
 
@@ -78,33 +81,22 @@ const getElementData = async (
   elementType: string,
   slug: string
 ): Promise<IElement> => {
-  const { data } = await axios.get(`${api}/${elementType}/${slug}`);
+  const { data } = await axios.get(
+    `${api}/${elementType}/${slug}`,
+    credentialsOptions
+  );
   return data;
 };
 
-const getElements = async (elementType: string): Promise<IElement[]> => {
-  const { data } = await axios.get(`${api}/${elementType}`);
-  return data;
-};
-
-// For the new feature to differentiate between drafts and released posts
-// drafts are only for the admin available and got the draft = true state
-const getElementDataAsAdmin = async (
+const getElements = async (
   elementType: string,
-  slug: string
-): Promise<IElement> => {
-  const { data } = await axios.get(`${api}/${elementType}/admin/${slug}`, {
-    withCredentials: true,
-    validateStatus: () => true,
-  });
-  return data;
-};
-
-const getElementsAsAdmin = async (elementType: string): Promise<IElement[]> => {
-  const { data } = await axios.get(`${api}/${elementType}/admin`, {
-    withCredentials: true,
-    validateStatus: () => true,
-  });
+  getText = false
+): Promise<IElement[]> => {
+  const textQuery = getText ? '?text=1' : '';
+  const { data } = await axios.get(
+    `${api}/${elementType}${textQuery}`,
+    credentialsOptions
+  );
   return data;
 };
 
@@ -112,10 +104,11 @@ const addElement = (
   dataToSend: IElementPost,
   elementType: string
 ): Promise<AxiosResponse> => {
-  return axios.post(`${api}/${elementType}/add`, dataToSend, {
-    withCredentials: true,
-    validateStatus: () => true,
-  });
+  return axios.post(
+    `${api}/${elementType}/add`,
+    dataToSend,
+    credentialsOptions
+  );
 };
 
 const updateElement = (
@@ -123,10 +116,11 @@ const updateElement = (
   elementType: string,
   elementId: string
 ): Promise<AxiosResponse> => {
-  return axios.post(`${api}/${elementType}/update/${elementId}`, dataToSend, {
-    withCredentials: true,
-    validateStatus: () => true,
-  });
+  return axios.post(
+    `${api}/${elementType}/update/${elementId}`,
+    dataToSend,
+    credentialsOptionsNoValidate
+  );
 };
 
 const updatePassword = (
@@ -138,11 +132,7 @@ const updatePassword = (
   return axios.post(
     `${api}/user/change`,
     { username, password, newPassword, repeatedPassword },
-    {
-      withCredentials: true,
-      headers: { 'Content-Type': 'application/json' },
-      validateStatus: () => true,
-    }
+    credentialsOptionsNoValidate
   );
 };
 
@@ -177,9 +167,7 @@ export {
   getAllImageData,
   loginUser,
   getElementData,
-  getElementDataAsAdmin,
   getElements,
-  getElementsAsAdmin,
   addElement,
   updateElement,
   updatePassword,

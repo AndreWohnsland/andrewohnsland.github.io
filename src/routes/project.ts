@@ -3,13 +3,11 @@ import authorize from '../middlewares/auth';
 import projectController from '../controller/project.controller';
 
 // get
-router.route('/').get(projectController.getProjects);
-router.route('/admin').get(authorize, projectController.getProjectsAsAdmin);
-router.route('/:slug').get(projectController.getProjectBySlug);
-router.route('/admin/:slug').get(authorize, projectController.getProjectBySlugAsAdmin);
+router.route('/').get(authorize(false), projectController.getProjects);
+router.route('/:slug').get(authorize(false), projectController.getProjectBySlug);
 
 // post
-router.route('/update/:id').post(authorize, projectController.updateProject);
-router.route('/add').post(authorize, projectController.addProject);
+router.route('/update/:id').post(authorize(true), projectController.updateProject);
+router.route('/add').post(authorize(true), projectController.addProject);
 
 export default router;

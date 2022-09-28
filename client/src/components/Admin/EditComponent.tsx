@@ -10,7 +10,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import CaptionBanner from '../CaptionBanner';
 import CategorySelect from './Forms/CategorySelect';
 import {
-  getElementsAsAdmin,
+  getElements,
   addElement,
   updateElement,
   getAllCategories,
@@ -50,7 +50,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
 
   const loadElements = useCallback(async () => {
     clearState();
-    const elementData = await getElementsAsAdmin(elementType);
+    const elementData = await getElements(elementType, true);
     const existingCatData = await getAllCategories(elementType);
     setElements(elementData);
     setExistingCats(existingCatData);

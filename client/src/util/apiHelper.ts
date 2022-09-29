@@ -150,9 +150,18 @@ const getAllCategories = async (category: string): Promise<string[]> => {
 
 const getAuth = (): Promise<boolean> => {
   return axios
-    .get(`${api}/user/auth`, {
-      withCredentials: true,
+    .get(`${api}/user/auth`, credentialsOptions)
+    .then(() => {
+      return true;
     })
+    .catch(() => {
+      return false;
+    });
+};
+
+const logoutUser = (): Promise<boolean> => {
+  return axios
+    .post(`${api}/user/logout`, {}, credentialsOptions)
     .then(() => {
       return true;
     })
@@ -166,6 +175,7 @@ export {
   deleteImage,
   getAllImageData,
   loginUser,
+  logoutUser,
   getElementData,
   getElements,
   addElement,

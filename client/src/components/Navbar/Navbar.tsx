@@ -5,16 +5,20 @@ import { useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ReactComponent as GithubLogo } from './github-original.svg';
+import { logoutUser } from '../../util/apiHelper';
 import PictureSelection from './PictureSelection';
 
 // TODO: cookies are http only, need to have logout route, i guess
 const NavBar: React.FC = () => {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, setIsAuth } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const logout = () => {
-    //  TODO: Implement some cookie removal here
-    return navigate('/');
+  const logout = async () => {
+    const success = await logoutUser();
+    if (success) {
+      setIsAuth(false);
+      return navigate('/');
+    }
   };
 
   return (

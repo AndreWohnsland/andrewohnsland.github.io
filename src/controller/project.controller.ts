@@ -65,9 +65,23 @@ async function addProject(req: Request, res: Response, next: NextFunction) {
     .catch((err) => next(new AppError(`Error: ${err}`, 400)));
 }
 
+async function deleteProject(req: Request, res: Response, next: NextFunction) {
+  const { id } = req.params;
+  Project.findById(req.params.id)
+    .then((project: IProjectModel | null) => {
+      if (project === null) return next(new AppError('Project does not exist', 404));
+      Project.deleteOne({ _id: id }).then(() => {
+        logger.info(`Project with id: ${id} (${project.title}) was deleted`);
+        res.json(`Project ${id} (${project.title}) deleted`);
+      });
+    })
+    .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
+}
+
 export default {
   getProjects,
   getProjectBySlug,
   updateProject,
   addProject,
+  deleteProject,
 };

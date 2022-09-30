@@ -62,4 +62,17 @@ async function addBlog(req: Request, res: Response, next: NextFunction) {
     .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
 }
 
-export default { getAllBlogs, getBlogBySlug, updateBlog, addBlog };
+async function deleteBlog(req: Request, res: Response, next: NextFunction) {
+  const { id } = req.params;
+  Blog.findById(req.params.id)
+    .then((blog: IBlogModel | null) => {
+      if (blog === null) return next(new AppError('Blog does not exist', 404));
+      Blog.deleteOne({ _id: id }).then(() => {
+        logger.info(`Blog with id: ${id} (${blog.title}) was deleted`);
+        res.json(`Blog ${id} (${blog.title}) deleted`);
+      });
+    })
+    .catch((err: Error) => next(new AppError(`Error: ${err}`, 400)));
+}
+
+export default { getAllBlogs, getBlogBySlug, updateBlog, addBlog, deleteBlog };

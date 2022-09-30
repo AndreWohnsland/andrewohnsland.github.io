@@ -10,4 +10,7 @@ router.route('/:slug').get(authorize(false), blogController.getBlogBySlug);
 router.route('/update/:id').post(authorize(true), blogController.updateBlog);
 router.route('/add').post(authorize(true), blogController.addBlog);
 
+// delete
+router.route('/:id').delete(authorize(true), blogController.deleteBlog);
+
 export default router;

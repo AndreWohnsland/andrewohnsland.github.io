@@ -13,6 +13,7 @@ import {
   getElements,
   addElement,
   updateElement,
+  deleteElement,
   getAllCategories,
 } from '../../util/apiHelper';
 import { IElement, IElementPost } from '../../Interfaces/element.interface';
@@ -85,9 +86,25 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
     return addElement(dataToSend, elementType);
   };
 
+  const setNotification = (response: AxiosResponse) => {
+    setRes(response);
+    setShowMessage(true);
+    setMessageTitle(title);
+    if (response.statusText === 'OK') {
+      clearState();
+      setExistingCats([]);
+      loadElements();
+    }
+  };
+
+  const handelDelete = async () => {
+    const response = await deleteElement(elementType, elementId);
+    setNotification(response);
+  };
+
   const runDelete = () => {
     const prompt = `Do you want to delete '${title}'?`;
-    confirmAlert(prompt, () => console.log(`TODO: Delete ID: ${elementId}!`));
+    confirmAlert(prompt, handelDelete);
   };
 
   const onSubmit = async (e: React.SyntheticEvent) => {
@@ -103,14 +120,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
       category,
     };
     response = await selectApiOption(dataToSend);
-    setRes(response);
-    setShowMessage(true);
-    setMessageTitle(title);
-    if (response.statusText === 'OK') {
-      clearState();
-      setExistingCats([]);
-      loadElements();
-    }
+    setNotification(response);
   };
 
   const selectElement = (e: React.ChangeEvent<HTMLInputElement>) => {

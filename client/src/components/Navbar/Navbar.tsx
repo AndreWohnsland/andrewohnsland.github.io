@@ -8,7 +8,6 @@ import { ReactComponent as GithubLogo } from './github-original.svg';
 import { logoutUser } from '../../util/apiHelper';
 import PictureSelection from './PictureSelection';
 
-// TODO: cookies are http only, need to have logout route, i guess
 const NavBar: React.FC = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const navigate = useNavigate();

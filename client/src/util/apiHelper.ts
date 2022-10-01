@@ -123,6 +123,16 @@ const updateElement = (
   );
 };
 
+const deleteElement = (
+  elementType: string,
+  elementId: string
+): Promise<AxiosResponse> => {
+  return axios.delete(
+    `${api}/${elementType}/${elementId}`,
+    credentialsOptionsNoValidate
+  );
+};
+
 const updatePassword = (
   username: string,
   password: string,
@@ -180,6 +190,7 @@ export {
   getElements,
   addElement,
   updateElement,
+  deleteElement,
   updatePassword,
   postImage,
   getAuth,

@@ -18,6 +18,7 @@ import {
 } from '../../util/apiHelper';
 import { IElement, IElementPost } from '../../Interfaces/element.interface';
 import confirmAlert from './Forms/ConfirmAlert';
+import BlogResources from './BlogResources';
 
 type EditComponentProps = {
   elementType: string;
@@ -229,6 +230,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
                 </Button>
               </form>
             </div>
+            {elementType === 'blog' && <BlogResources blogId={elementId} />}
           </>
         ) : (
           <p>Not authentificated!</p>

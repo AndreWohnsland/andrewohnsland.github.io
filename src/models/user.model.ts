@@ -1,5 +1,5 @@
 /* eslint-disable func-names */
-import mongoose, { model } from 'mongoose';
+import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import { IUser, IUserModel, IUserDocument } from '../interfaces/user.interface';
 
@@ -41,6 +41,6 @@ userSchema.statics.login = async function (username: string, password: string): 
   throw Error('Incorrect login data');
 };
 
-const User: IUserDocument = model<IUserModel, IUserDocument>('User', userSchema);
+const User: IUserDocument = mongoose.model<IUserModel, IUserDocument>('User', userSchema);
 
 export default User;

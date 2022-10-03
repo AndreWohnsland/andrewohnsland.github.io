@@ -1,4 +1,4 @@
-import mongoose, { Model } from 'mongoose';
+import mongoose from 'mongoose';
 // @ts-expect-error: types conflicting with latest mongoose
 import uniqueValidator from 'mongoose-unique-validator';
 import { IBlogModel } from '../interfaces/blog.interface';

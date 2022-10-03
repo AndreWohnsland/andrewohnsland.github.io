@@ -12,8 +12,6 @@ import {
 import { IImageModel } from '../interfaces/image.interface';
 import logger from '../setUp/initLogger';
 
-const cat = { foto: 'fotography', wood: 'woodwork' };
-
 async function addImage(req: Request, res: Response, next: NextFunction) {
   const { name, category } = req.body;
   const reqFile = req.files;

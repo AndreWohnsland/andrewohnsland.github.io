@@ -1,4 +1,4 @@
-import mongoose, { Model } from 'mongoose';
+import mongoose from 'mongoose';
 import { IImageModel } from '../interfaces/image.interface';
 
 const { Schema } = mongoose;
@@ -14,6 +14,6 @@ const imageSchema = new Schema<IImageModel>(
   { timestamps: true },
 );
 
-const Image: Model<IImageModel> = mongoose.model<IImageModel>('ImageDB', imageSchema);
+const Image = mongoose.model<IImageModel>('ImageDB', imageSchema);
 
 export default Image;

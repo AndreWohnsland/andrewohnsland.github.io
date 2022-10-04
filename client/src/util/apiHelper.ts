@@ -4,6 +4,7 @@ import {
   IImageElement,
   IImageReducedDetails,
 } from '../Interfaces/image.interface';
+import { IResource } from '../Interfaces/resource.interface';
 
 const apiAddress = process.env.REACT_APP_API_ADDRESS;
 const api = `${apiAddress}/api`;
@@ -146,9 +147,9 @@ const updatePassword = (
   );
 };
 
-const getAllCategories = async (category: string): Promise<string[]> => {
+const getAllCategories = async (categorySection: string): Promise<string[]> => {
   try {
-    const { data } = await axios.get(`${api}/category/${category}`);
+    const { data } = await axios.get(`${api}/category/${categorySection}`);
     if (data === undefined) {
       return [];
     }
@@ -180,6 +181,19 @@ const logoutUser = (): Promise<boolean> => {
     });
 };
 
+const postResource = async (data: FormData): Promise<AxiosResponse> => {
+  return axios.post(`${api}/resource`, data, credentialsOptions);
+};
+
+const getResources = async (): Promise<IResource[]> => {
+  const { data } = await axios.get(`${api}/resource`, credentialsOptions);
+  return data;
+};
+
+const deleteResource = async (resourceId: string): Promise<AxiosResponse> => {
+  return axios.delete(`${api}/resource/${resourceId}`, credentialsOptions);
+};
+
 export {
   getAndGenerateImageDetails,
   deleteImage,
@@ -195,4 +209,7 @@ export {
   postImage,
   getAuth,
   getAllCategories,
+  postResource,
+  getResources,
+  deleteResource,
 };

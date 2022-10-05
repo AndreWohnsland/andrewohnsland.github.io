@@ -59,10 +59,7 @@ const NavBar: React.FC = () => {
                   <NavDropdown.Item>Edit Blog Article</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to="/admin/image">
-                  <NavDropdown.Item>Add Images</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/admin/image/delete">
-                  <NavDropdown.Item>Delete Images</NavDropdown.Item>
+                  <NavDropdown.Item>Manage Images</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to="/admin/changepassword">
                   <NavDropdown.Item>Change Password</NavDropdown.Item>

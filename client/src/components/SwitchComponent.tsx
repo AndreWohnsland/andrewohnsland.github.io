@@ -8,9 +8,8 @@ import Login from './Admin/Login';
 import EditComponent from './Admin/EditComponent';
 import PrivateRoute from './Admin/PrivateRoute';
 import ChangePassword from './Admin/ChangePassword';
-import PictureUpload from './Admin/PictureUpload';
-import PictureDelete from './Admin/PictureDelete';
 import PictureList from './PictureView/PictureList';
+import PictureComponent from './Admin/PictureComponent';
 
 const SwitchComponent: FunctionComponent = () => {
   return (
@@ -47,18 +46,10 @@ const SwitchComponent: FunctionComponent = () => {
         }
       />
       <Route
-        path="/admin/image/delete"
-        element={
-          <PrivateRoute>
-            <PictureDelete />
-          </PrivateRoute>
-        }
-      />
-      <Route
         path="/admin/image"
         element={
           <PrivateRoute>
-            <PictureUpload />
+            <PictureComponent />
           </PrivateRoute>
         }
       />

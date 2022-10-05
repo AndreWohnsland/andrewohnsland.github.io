@@ -56,7 +56,8 @@ const ChangePassword: React.FC = () => {
           />
         )}
         <div className="Login user-form-container">
-          <p>Change your password</p>
+          <h3 className="user-form-header">Change your password</h3>
+          <br />
           <form onSubmit={handleSubmit}>
             <Form.Group controlId="name" className="element-form-group">
               <Form.Control

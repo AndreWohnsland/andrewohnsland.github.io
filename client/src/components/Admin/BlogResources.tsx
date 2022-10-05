@@ -20,7 +20,7 @@ type OptionsProps = {
 
 const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
   const [name, setName] = useState('');
-  const [resource, setRessource] = useState<File | null>(null);
+  const [upload, setUpload] = useState<File | null | undefined>(null);
   const [selectedResource, setSelectedResource] = useState('');
   const [resources, setResources] = useState<IResource[]>([]);
   const [options, setOptions] = useState<OptionsProps[]>([]);
@@ -47,19 +47,19 @@ const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
   }, [loadResources]);
 
   const validateSubmit = () => {
-    return name.length > 0 && resource !== null;
+    return name.length > 0 && upload !== null;
   };
 
   const clearState = () => {
     setName('');
-    setRessource(null);
+    setUpload(undefined);
   };
 
-  const onSubmit = async (e: React.SyntheticEvent) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData();
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-    data.append('file', resource as any);
+    data.append('file', upload as any);
     data.append('name', name);
     data.append('blogId', blogId);
     postResource(data)
@@ -96,7 +96,7 @@ const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
   return (
     <div className="user-form-container">
       <div>
-        <h3>Manage Blog Resources</h3>
+        <h3 className="user-form-header">Manage Blog Resources</h3>
         <Dropdown
           label="Resource to insert"
           value={selectedResource}
@@ -133,7 +133,7 @@ const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
               required
               accept={`${resourceTypes}`}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setRessource(e.target.files === null ? null : e.target.files[0])
+                setUpload(e.target.files === null ? null : e.target.files[0])
               }
             />
           </Form.Group>

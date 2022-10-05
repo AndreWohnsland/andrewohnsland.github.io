@@ -172,6 +172,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
               />
             )}
             <div className="user-form-container">
+              <h3 className="user-form-header">{`Manage ${capitalizeElement()} Content`}</h3>
               <form onSubmit={onSubmit}>
                 <Dropdown
                   label={`Select your ${elementType}`}

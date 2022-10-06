@@ -37,29 +37,44 @@ $border-width: 6px;
     p {
       margin-bottom: 0px;
     }
+    &::before {
+      font-weight: 600;
+    }
   }
 
   .danger {
     background-color: $bg-danger;
     color: $font-color-danger;
     border-left: $border-width solid $border-danger;
+    &::before {
+      content: '❗ Take Care';
+    }
   }
 
   .warning {
     background-color: $bg-warning;
     color: $font-color-warning;
     border-left: $border-width solid $border-warning;
+    &::before {
+      content: '⚠️ Warning';
+    }
   }
 
   .info {
     background-color: $bg-info;
     color: $font-color-info;
     border-left: $border-width solid $border-info;
+    &::before {
+      content: '❔ Info';
+    }
   }
 
   .helpful {
     background-color: $bg-helpful;
     color: $font-color-helpful;
     border-left: $border-width solid $border-helpful;
+    &::before {
+      content: '✅ Tip';
+    }
   }
 }

@@ -31,7 +31,7 @@ const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
     setResources(resourceData);
     if (resourceData) {
       setOptions([
-        { name: '', value: '' },
+        { name: 'Select Resource', value: '' },
         ...resourceData
           .filter((element) => element.blogId === blogId)
           .map((element) => ({

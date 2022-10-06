@@ -23,7 +23,7 @@ const getAndGenerateImageDetails = async (): Promise<
   IImageReducedDetails[]
 > => {
   const res = await axios.get(`${api}/image/all/details`);
-  const start = [{ name: 'Select image', value: '' }];
+  const start = [{ name: 'Select Image', value: '' }];
   const imgList = res.data.map((img: IImageElement) => {
     const suff = img.category !== undefined ? ` (${img.category})` : '';
     return {

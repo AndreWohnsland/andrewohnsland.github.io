@@ -3,13 +3,14 @@ import authorize from '../middlewares/auth';
 import blogController from '../controller/blog.controller';
 
 // get
-router.route('/').get(blogController.getAllBlogs);
-router.route('/admin').get(authorize, blogController.getAllBlogsAsAdmin);
-router.route('/:slug').get(blogController.getBlogBySlug);
-router.route('/admin/:slug').get(authorize, blogController.getBlogBySlugAsAdmin);
+router.route('/').get(authorize(false), blogController.getAllBlogs);
+router.route('/:slug').get(authorize(false), blogController.getBlogBySlug);
 
 // post
-router.route('/update/:id').post(authorize, blogController.updateBlog);
-router.route('/add').post(authorize, blogController.addBlog);
+router.route('/update/:id').post(authorize(true), blogController.updateBlog);
+router.route('/add').post(authorize(true), blogController.addBlog);
+
+// delete
+router.route('/:id').delete(authorize(true), blogController.deleteBlog);
 
 export default router;

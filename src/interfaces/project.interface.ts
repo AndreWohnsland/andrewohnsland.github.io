@@ -1,13 +1,13 @@
 import { Document } from 'mongoose';
 
 export interface IProject {
-  title: String;
-  description: String;
-  text: String;
-  category: String[];
+  title: string;
+  description: string;
+  text: string;
+  category: string[];
   draft: boolean;
-  slug: String;
-  link: String;
+  slug: string;
+  link: string;
   createdAt: Date;
   modifiedAt: Date;
 }

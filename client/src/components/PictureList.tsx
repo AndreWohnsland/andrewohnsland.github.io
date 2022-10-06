@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Gallery from 'react-photo-gallery';
-import CaptionBanner from '../CaptionBanner';
-import { getAllImageData } from '../../util/apiHelper';
-import SkeletonPicture from '../../skeletons/SkeletonPicture';
+import CaptionBanner from './CaptionBanner';
+import { getAllImageData } from '../util/apiHelper';
+import SkeletonPicture from '../skeletons/SkeletonPicture';
 
 const queryOption = {
   staleTime: 600000,
@@ -17,7 +17,7 @@ type ParamTypes = {
 
 const PictureList: React.FC = () => {
   const params = useParams<ParamTypes>();
-  const category = params._category;
+  const category = params._category!;
   const upperCategory = category.charAt(0).toUpperCase() + category.slice(1);
 
   useEffect(() => {

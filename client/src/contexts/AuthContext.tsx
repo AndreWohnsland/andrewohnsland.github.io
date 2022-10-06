@@ -9,7 +9,9 @@ type ContextType = {
 
 export const AuthContext = createContext<ContextType>({} as ContextType);
 
-export const AuthContextProvider: React.FC = ({ children }) => {
+export const AuthContextProvider: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
   const [auth, setAuth] = useState<boolean | null>(null);
 
   const getAuthStatus = async (): Promise<void> => {

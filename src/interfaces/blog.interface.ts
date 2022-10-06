@@ -1,11 +1,11 @@
 import { Document } from 'mongoose';
 
 export interface IBlog {
-  title: String;
-  description: String;
-  text: String;
-  category: String[];
-  slug: String;
+  title: string;
+  description: string;
+  text: string;
+  category: string[];
+  slug: string;
   draft: boolean;
   createdAt: Date;
   modifiedAt: Date;

@@ -3,46 +3,71 @@ import { Form, Button } from 'react-bootstrap';
 import { AxiosResponse } from 'axios';
 import TextInput from './Forms/TextInput';
 import InfoBox from './Forms/InfoBox';
+import Dropdown from './Forms/Dropdown';
+import {
+  getAndGenerateImageDetails,
+  deleteImage,
+  postImage,
+  getAllCategories,
+} from '../../util/apiHelper';
 import CaptionBanner from '../CaptionBanner';
-import { postImage, getAllCategories } from '../../util/apiHelper';
+import { IImageReducedDetails } from '../../Interfaces/image.interface';
+import confirmAlert from './Forms/ConfirmAlert';
 
 const jpegType = 'image/jpeg';
 
-const PictureUpload: React.FC = () => {
+const PictureComponent: React.FC = () => {
+  // for upload
   const [name, setName] = useState('');
   const [image, setImage] = useState<File | null>(null);
   const [category, setCategory] = useState('');
+  const [categoryOptions, setCategoryOptions] = useState<string[]>([]);
+  // for delete
+  const [imageId, setImageId] = useState('');
+  const [imageList, setImageList] = useState<IImageReducedDetails[]>([]);
+  // For the popup
   const [showMessage, setShowMessage] = useState(false);
   const [res, setRes] = useState<AxiosResponse | undefined>(undefined);
   const [messageTitle, setmessageTitle] = useState('');
-  const [categoryOptions, setCategoryOptions] = useState<string[]>([]);
 
   const loadCats = async () => {
     const cats = await getAllCategories('image');
     setCategoryOptions(cats);
   };
 
+  const loadElements = async (): Promise<void> => {
+    const imageData = await getAndGenerateImageDetails();
+    setImageList(imageData);
+  };
+
   useEffect(() => {
     document.title = `Admin | ${process.env.REACT_APP_SHOWN_NAME}`;
     loadCats();
+    loadElements();
   }, []);
 
-  const validateSubmit = () => {
+  const validateUpload = () => {
     return name.length > 0 && image !== null;
+  };
+
+  const validateDelete = () => {
+    return imageId !== '';
   };
 
   const handleMessage = () => {
     setShowMessage(!showMessage);
   };
 
-  const clearState = () => {
+  const clearUpload = () => {
     setName('');
     setImage(null);
+    setCategory('');
   };
 
-  const onSubmit = async (e: React.SyntheticEvent) => {
+  const submitUpload = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     const data = new FormData();
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     data.append('file', image as any);
     data.append('name', name);
     data.append('category', category);
@@ -50,20 +75,42 @@ const PictureUpload: React.FC = () => {
       setRes(response);
       setShowMessage(true);
       setmessageTitle(name);
-      clearState();
-      loadCats();
+      if (response.statusText === 'OK') {
+        clearUpload();
+        loadCats();
+        loadElements();
+      }
     });
+  };
+
+  const handleDeleteImage = () => {
+    deleteImage(imageId).then((response) => {
+      setRes(response);
+      setmessageTitle(`Image with id: ${imageId}`);
+      setShowMessage(true);
+      if (response.statusText === 'OK') {
+        setImageId('');
+        loadElements();
+      }
+    });
+  };
+
+  const submitDelete = async (e: React.SyntheticEvent): Promise<void> => {
+    e.preventDefault();
+    const prompt = `Do you want to delete the image?`;
+    confirmAlert(prompt, handleDeleteImage);
   };
 
   return (
     <div>
-      <CaptionBanner text="Add Image" />
+      <CaptionBanner text="Manage Images" />
       <div className="main-text">
         {showMessage && (
           <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />
         )}
         <div className="user-form-container">
-          <form onSubmit={onSubmit}>
+          <h3 className="user-form-header">Upload Image</h3>
+          <form onSubmit={submitUpload}>
             <TextInput
               label="Name"
               name="name"
@@ -90,10 +137,11 @@ const PictureUpload: React.FC = () => {
                 </Button>
               ))}
             </div>
-            <Form.Group>
-              <Form.File
+            <Form.Group className="element-form-group">
+              <Form.Label>Picture</Form.Label>
+              <Form.Control
+                type="file"
                 name="uploadImage"
-                label="Picture"
                 required
                 accept={`${jpegType}`}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -101,8 +149,22 @@ const PictureUpload: React.FC = () => {
                 }
               />
             </Form.Group>
-            <Button type="submit" disabled={!validateSubmit()}>
+            <Button type="submit" disabled={!validateUpload()}>
               Upload
+            </Button>
+          </form>
+        </div>
+        <div className="user-form-container">
+          <h3 className="user-form-header">Delete Image</h3>
+          <form onSubmit={submitDelete}>
+            <Dropdown
+              label="Select image to delete"
+              value={imageId}
+              onChange={(e) => setImageId(e.target.value)}
+              options={imageList}
+            />
+            <Button type="submit" variant="danger" disabled={!validateDelete()}>
+              Delete
             </Button>
           </form>
         </div>
@@ -111,4 +173,4 @@ const PictureUpload: React.FC = () => {
   );
 };
 
-export default PictureUpload;
+export default PictureComponent;

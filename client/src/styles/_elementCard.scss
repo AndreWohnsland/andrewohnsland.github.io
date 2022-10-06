@@ -1,0 +1,59 @@
+.card-div {
+  color: $font-color-light;
+  background-color: $form-color;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.205),
+    -1px 0px 1px rgba(0, 0, 0, 0.178);
+  text-decoration: none !important;
+  padding: 10px 18px 12px 18px;
+  margin-bottom: 20px;
+  transition: 0.4s;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $primary-color;
+    transition: 0.3s;
+    transform: translate(3px, 0px);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3),
+      -2px 2px 3px rgba(0, 0, 0, 0.2), -20px 10px 20px rgba(0, 0, 0, 0.1),
+      1px 0px 1px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.element-card-title {
+  text-align: left;
+  padding: 0px 5px 0px 0px;
+  margin-bottom: 0.7rem;
+}
+
+.element-card-info {
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: lighter;
+}
+
+.element-card-desc {
+  text-align: left;
+  text-align: justify;
+  hyphens: auto;
+  margin: 2px 0px 0px 0px;
+}
+
+.element-card-category {
+  text-align: left;
+  text-align: justify;
+  hyphens: auto;
+  margin: 2px 0px 0px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  span {
+    padding: 0px 5px 1px 5px;
+    margin: 8px 8px 0px 0px;
+    background-color: $font-color-light;
+    color: $form-color;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 3px;
+  }
+}

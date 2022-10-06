@@ -20,7 +20,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   options,
 }) => {
   return (
-    <Form.Group controlId={label}>
+    <Form.Group controlId={label} className="element-form-group">
       <Form.Label>{label}</Form.Label>
       <Form.Control as="select" value={value} onChange={onChange}>
         {options.map((option) => {

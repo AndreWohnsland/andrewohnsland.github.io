@@ -1,0 +1,145 @@
+$bg-light: rgb(240, 241, 255);
+$bg-dark: rgb(63, 63, 63);
+$font-color-default: #1a1a1a;
+$font-color-light: #ececec;
+$form-color: rgb(29, 29, 29);
+$primary-color: #004ea7;
+$primary-color-dark: #002958;
+$separator-color: rgb(77, 77, 77);
+$font-color-error: rgb(146, 0, 0);
+$bg-error: rgb(255, 141, 141);
+$font-color-success: rgb(0, 160, 53);
+$bg-success: rgb(119, 255, 183);
+$font-default: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$container-radius: 8px;
+
+@import 'blockstyles';
+@import 'elementCard';
+@import 'listView';
+@import 'blog';
+@import 'forms';
+@import 'customAlert';
+@import 'categorybox';
+@import 'Skeleton';
+
+body {
+  margin: 0;
+  font-family: $font-default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  padding-top: 55px;
+  min-height: 100vh;
+  background-color: $bg-light !important;
+  color: $font-color-default;
+}
+
+.content-container {
+  flex: 1;
+}
+
+.container-light {
+  background-color: $bg-light;
+  color: $font-color-default;
+}
+
+.container-dark {
+  background-color: $bg-dark;
+  color: $font-color-light;
+}
+
+.custom-navbar {
+  padding-right: 0.5rem !important;
+  padding-left: 1rem !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.main-text,
+.main-text-page,
+.main-text-picture {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  max-width: 900px;
+  padding: 20px 20px 0px 20px;
+}
+
+.main-text-page {
+  max-width: 900px;
+  padding: 20px 20px 10px 20px;
+}
+
+.main-text-picture {
+  max-width: 1800px;
+  padding: 20px;
+}
+
+.dropdown-menu {
+  background-color: $bg-light !important;
+}
+
+.main-header {
+  background-color: $primary-color;
+  color: $font-color-light;
+  padding: 7px 0px 3px 0px;
+  box-shadow: 0px 2px 3px $separator-color;
+}
+
+.footer {
+  background-color: $primary-color;
+  color: $font-color-light;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 2px 5px 2px 5px;
+  box-shadow: 0px -1px 3px $separator-color;
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+}
+
+.list-header {
+  text-align: left;
+  padding-left: 12%;
+  margin-bottom: 0px;
+}
+
+.list-elements {
+  list-style-position: inside;
+  text-align: left;
+  padding-left: 12%;
+}
+
+.github {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.spinner-container {
+  align-items: center;
+  p {
+    margin-top: 20px;
+  }
+}
+
+.align-right {
+  float: right;
+}

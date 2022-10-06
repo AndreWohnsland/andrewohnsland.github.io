@@ -1,0 +1,11 @@
+.category-multi-select {
+  margin-bottom: 15px;
+  .select__multi-value,
+  .select__multi-value__label {
+    background-color: $form-color;
+    color: $font-color-light;
+  }
+  .select__menu {
+    color: $font-color-default;
+  }
+}

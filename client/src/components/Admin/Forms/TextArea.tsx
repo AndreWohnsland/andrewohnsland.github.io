@@ -15,7 +15,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   onChange,
 }) => {
   return (
-    <Form.Group controlId={name}>
+    <Form.Group controlId={name} className="element-form-group">
       <Form.Label>{label}</Form.Label>
       <Form.Control
         name={name}

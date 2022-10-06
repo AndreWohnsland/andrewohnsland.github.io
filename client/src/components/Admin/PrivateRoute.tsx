@@ -1,31 +1,15 @@
-import React from 'react';
-
-import { Route, Redirect } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 
 type PrivateRouterProps = {
-  isAuth: boolean | null;
-  path: string;
+  children?: React.ReactNode;
 };
 
-const PrivateRoute: React.FC<PrivateRouterProps> = ({
-  isAuth,
-  path,
-  children,
-}) => {
+const PrivateRoute: React.FC<PrivateRouterProps> = ({ children }) => {
+  const { isAuth } = useContext(AuthContext);
   return (
-    <>
-      {isAuth !== null && (
-        <>
-          {isAuth ? (
-            <Route exact path={path}>
-              {children}
-            </Route>
-          ) : (
-            <Redirect to="/" />
-          )}
-        </>
-      )}
-    </>
+    <>{isAuth !== null && <>{isAuth ? children : <Navigate to="/" />}</>}</>
   );
 };
 export default PrivateRoute;

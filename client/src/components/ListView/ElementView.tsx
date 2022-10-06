@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { HashLoader } from 'react-spinners';
-import { css } from '@emotion/react';
 import MarkdownBlock from './MarkdownBlock';
 import useResize from './resize';
 import dateFormatter from './dateFormatter';
 import CaptionBanner from '../CaptionBanner';
-import { getElementData, getElementDataAsAdmin } from '../../util/apiHelper';
+import { getElementData } from '../../util/apiHelper';
 import capFirst from '../../util/stringHelper';
 import { IElement } from '../../Interfaces/element.interface';
-import { AuthContext } from '../../contexts/AuthContext';
 
 const queryOption = {
   staleTime: 300000,
@@ -18,11 +16,11 @@ const queryOption = {
   retry: 1,
 };
 
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
+const override = {
+  display: 'block',
+  margin: '0 auto',
+  borderColor: 'red',
+};
 
 type ElementViewProps = {
   elementType: string;
@@ -34,10 +32,9 @@ type ParamTypes = {
 
 const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
   const params = useParams<ParamTypes>();
-  const id = params._id;
+  const id = params._id!;
   const divRef = useRef(null);
   const maxWidth = useResize(divRef);
-  const { isAuth } = useContext(AuthContext);
 
   useEffect(() => {
     document.title = `${capFirst(elementType)} | ${
@@ -45,16 +42,9 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
     }`;
   }, [elementType]);
 
-  const getElementDataFunction = (auth: boolean | null) => {
-    if (auth) {
-      return getElementDataAsAdmin;
-    }
-    return getElementData;
-  };
-
   const { data, status } = useQuery(
     `${elementType}?id=${id}`,
-    () => getElementDataFunction(isAuth)(elementType, id),
+    () => getElementData(elementType, id),
     queryOption
   );
 
@@ -67,7 +57,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
   const chooseHeader = (s: string, d: IElement | undefined) => {
     if (s === 'loading') return 'Loading ....';
     if (s === 'error') return 'Error getting data!';
-    if (s === 'success' && d) return `${d.title}${d.draft && ' (Draft)'}`;
+    if (s === 'success' && d) return `${d.title}${d.draft ? ' (Draft)' : ''}`;
     return 'Error getting data!';
   };
 
@@ -85,7 +75,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
           <HashLoader
             loading={status === 'loading'}
             color="#004ea7"
-            css={override}
+            cssOverride={override}
             size={(maxWidth as number) / 2}
           />
         </div>

@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface IImage {
-  name: String;
+  name: string;
   width: number;
   height: number;
   img: string;

@@ -1,4 +1,4 @@
-import { ValueType, ActionMeta } from 'react-select';
+import { OnChangeValue, ActionMeta } from 'react-select';
 
 export interface SelectProps {
   value: string;
@@ -6,5 +6,5 @@ export interface SelectProps {
 }
 
 type IsMulti = true;
-export type OnSelectChangeValue = ValueType<SelectProps, IsMulti>;
+export type OnSelectChangeValue = OnChangeValue<SelectProps, IsMulti>;
 export type OnSelectChangeActionMeta = ActionMeta<SelectProps>;

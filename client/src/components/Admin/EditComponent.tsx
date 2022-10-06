@@ -10,12 +10,15 @@ import { AuthContext } from '../../contexts/AuthContext';
 import CaptionBanner from '../CaptionBanner';
 import CategorySelect from './Forms/CategorySelect';
 import {
-  getElementsAsAdmin,
+  getElements,
   addElement,
   updateElement,
+  deleteElement,
   getAllCategories,
 } from '../../util/apiHelper';
 import { IElement, IElementPost } from '../../Interfaces/element.interface';
+import confirmAlert from './Forms/ConfirmAlert';
+import BlogResources from './BlogResources';
 
 type EditComponentProps = {
   elementType: string;
@@ -49,7 +52,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
 
   const loadElements = useCallback(async () => {
     clearState();
-    const elementData = await getElementsAsAdmin(elementType);
+    const elementData = await getElements(elementType, true);
     const existingCatData = await getAllCategories(elementType);
     setElements(elementData);
     setExistingCats(existingCatData);
@@ -84,6 +87,27 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
     return addElement(dataToSend, elementType);
   };
 
+  const setNotification = (response: AxiosResponse) => {
+    setRes(response);
+    setShowMessage(true);
+    setMessageTitle(title);
+    if (response.statusText === 'OK') {
+      clearState();
+      setExistingCats([]);
+      loadElements();
+    }
+  };
+
+  const handelDelete = async () => {
+    const response = await deleteElement(elementType, elementId);
+    setNotification(response);
+  };
+
+  const runDelete = () => {
+    const prompt = `Do you want to delete '${title}'?`;
+    confirmAlert(prompt, handelDelete);
+  };
+
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     let response = null;
@@ -97,14 +121,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
       category,
     };
     response = await selectApiOption(dataToSend);
-    setRes(response);
-    setShowMessage(true);
-    setMessageTitle(title);
-    if (response.statusText === 'OK') {
-      clearState();
-      setExistingCats([]);
-      loadElements();
-    }
+    setNotification(response);
   };
 
   const selectElement = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -155,6 +172,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
               />
             )}
             <div className="user-form-container">
+              <h3 className="user-form-header">{`Manage ${capitalizeElement()} Content`}</h3>
               <form onSubmit={onSubmit}>
                 <Dropdown
                   label={`Select your ${elementType}`}
@@ -207,11 +225,13 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
                   variant="danger"
                   className="align-right"
                   disabled={!validateDelete()}
+                  onClick={runDelete}
                 >
                   Delete
                 </Button>
               </form>
             </div>
+            {elementType === 'blog' && <BlogResources blogId={elementId} />}
           </>
         ) : (
           <p>Not authentificated!</p>

@@ -1,0 +1,66 @@
+.element-form-group {
+  margin-bottom: 1rem;
+}
+
+.user-input-container {
+  margin: auto;
+  max-width: 400px !important;
+}
+
+.user-form-container {
+  padding: 10px 20px 20px 20px;
+  background-color: $form-color;
+  color: $font-color-light;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.res-error {
+  background-color: $bg-error;
+  color: $font-color-error;
+  border-radius: 5px;
+  padding: 2px 5px 2px 5px;
+  margin: 5px 0px 15px 0px;
+}
+
+.error-div,
+.success-div {
+  border-radius: 5px;
+  padding: 7px 15px 2px 15px;
+  margin-bottom: 20px;
+  .button-info {
+    float: right;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    display: inline-flex;
+    align-items: flex-start;
+    font-size: 2rem;
+    line-height: 25px;
+  }
+  h3 {
+    display: flex;
+  }
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.error-div {
+  background-color: $bg-error;
+  color: $font-color-error;
+  .button-info {
+    color: $font-color-error;
+  }
+}
+
+.success-div {
+  background-color: $bg-success;
+  color: $font-color-success;
+  .button-info {
+    color: $font-color-success;
+  }
+}

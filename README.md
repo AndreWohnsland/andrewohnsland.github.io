@@ -40,19 +40,19 @@ Features supported in Markdown:
 - Latex math expressions (inline and block math)
 - Custom colored container (blocks for informative / warning text)
 
-I planned on using `remark-shortcodes` for the custom elements. Sadly I could not get them working. The plugin ran without errors but was not rendering any of my components. So I went another way. I added custom "language" elements to my code blocks. They are currently limited to:
+You can use custom blocks, rendered by `remark-directive-rehype`. The classes are currently:
 
 - `danger`: Red themed block element
 - `warning`: Yellow themed block element
 - `info`: Grey themed block element
 - `helpful`: Green themed block element
 
-You simply generate them using the code Markdown syntax with the language defined as the custom name:
+You simply generate them using the code syntax with the language defined as the class and the type as a div:
 
 ````md
-```danger
+:::div{.danger}
 This will be rendered into a div of the class danger. It has a red-ish background with dark red text color and a red left border. It is used to inform the user of any critical things to consider.
-```
+:::
 ````
 
 The body within will also be translated from Markdown to HTML code, all supported features can be used. The example above will be translated into the following element:
@@ -63,7 +63,7 @@ One critical aspect is to check the right spelling, otherwise the element will r
 
 # Architecture
 
-The following schema shows the architecture of the Web App, API and corresponding services. React is used to build the frontend and gets hosted on github pages. The node.js with express is used for the API and is hosted on heroku. The data is stored in a MongoDB. The blog pages either get the pictures from dropbox or from github. The user and the Admin interacts with the Web App to update data or just view the content:
+The following schema shows the architecture of the Web App, API and corresponding services. React is used to build the frontend and gets hosted on github pages. The node.js with express is used for the API and is hosted on deta. The data is stored in a MongoDB. The blog pages either get the pictures from dropbox or from github. The user and the Admin interacts with the Web App to update data or just view the content:
 
 ![Architecture](docs/diagrams/out/Architecture.svg)
 

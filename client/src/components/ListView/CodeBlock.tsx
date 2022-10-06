@@ -1,20 +1,25 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import CustomRender from './CustomRender/CustomRender';
-import checkCustomType from './CustomRender/customhelper';
 
 type CodeBlockProps = {
-  language: string | undefined;
-  value: string;
+  node: import('hast').Element;
+  inline?: boolean;
+  className?: string;
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  children: any;
 };
 
-const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
-  // This is currently a hack to also use codeblock for custom elements
-  // I'd love to use shortcodes, but they dont seem to work here
-  if (checkCustomType(language)) {
-    return <CustomRender identifier={language} text={value} />;
-  }
+const CodeBlock = ({
+  node,
+  inline,
+  className,
+  children,
+  ...props
+}: CodeBlockProps) => {
+  const match = /language-(\w+)/.exec(className || '')!;
+  if (!match) return <></>;
+  const language = match[1];
   return (
     <>
       <p className="header-code">{language}</p>
@@ -22,8 +27,9 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
         language={language}
         style={vscDarkPlus}
         wrapLongLines={false}
+        {...props}
       >
-        {value}
+        {children}
       </SyntaxHighlighter>
     </>
   );

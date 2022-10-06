@@ -56,9 +56,10 @@ const ChangePassword: React.FC = () => {
           />
         )}
         <div className="Login user-form-container">
-          <p>Change your password</p>
+          <h3 className="user-form-header">Change your password</h3>
+          <br />
           <form onSubmit={handleSubmit}>
-            <Form.Group controlId="name">
+            <Form.Group controlId="name" className="element-form-group">
               <Form.Control
                 autoFocus
                 type="text"
@@ -67,7 +68,7 @@ const ChangePassword: React.FC = () => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="password">
+            <Form.Group controlId="password" className="element-form-group">
               <Form.Control
                 value={password}
                 placeholder="Password"
@@ -75,7 +76,7 @@ const ChangePassword: React.FC = () => {
                 type="password"
               />
             </Form.Group>
-            <Form.Group controlId="newPassword">
+            <Form.Group controlId="newPassword" className="element-form-group">
               <Form.Control
                 value={newPassword}
                 placeholder="New Password"
@@ -83,7 +84,10 @@ const ChangePassword: React.FC = () => {
                 type="password"
               />
             </Form.Group>
-            <Form.Group controlId="repeatedPassword">
+            <Form.Group
+              controlId="repeatedPassword"
+              className="element-form-group"
+            >
               <Form.Control
                 value={repeatedPassword}
                 placeholder="Repeat New Password"
@@ -91,7 +95,7 @@ const ChangePassword: React.FC = () => {
                 type="password"
               />
             </Form.Group>
-            <Button block disabled={!validateForm()} type="submit">
+            <Button disabled={!validateForm()} type="submit">
               Change Password
             </Button>
           </form>

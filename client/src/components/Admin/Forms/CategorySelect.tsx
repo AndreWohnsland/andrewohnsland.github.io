@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, ButtonToolbar, Form, InputGroup } from 'react-bootstrap';
-import './categorybox.scss';
 
 const minCatLen = 3;
 
@@ -50,7 +49,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
           Categories:&nbsp;&nbsp;
         </p>
         {categories.sort().map((c) => (
-          <span className="selected-categories">
+          <span className="selected-categories" key={`close-${c}`}>
             <button
               type="button"
               className="category-close-button"
@@ -58,7 +57,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
             >
               x
             </button>
-            {c}
+            <span className="selected-categories-text">{c}</span>
           </span>
         ))}
       </div>

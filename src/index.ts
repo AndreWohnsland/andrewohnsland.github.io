@@ -4,18 +4,17 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
-import pino from 'pino';
 import cors from 'cors';
 import userRouter from './routes/user';
 import projectRouter from './routes/project';
 import blogRouter from './routes/blog';
 import imageRouter from './routes/image';
 import categoryRouter from './routes/category';
+import resourceRouter from './routes/resource';
 import { forwardError, throwErrorOnInvalidRoute } from './middlewares/errorHandler';
 import { createCorsOption } from './setUp/initCors';
 import { initMongodb } from './setUp/initMongodb';
-
-const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
+import logger from './setUp/initLogger';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -34,6 +33,7 @@ app.use('/api/project', projectRouter);
 app.use('/api/blog', blogRouter);
 app.use('/api/image', imageRouter);
 app.use('/api/category', categoryRouter);
+app.use('/api/resource', resourceRouter);
 
 // implement error middleware
 app.all('*', throwErrorOnInvalidRoute);

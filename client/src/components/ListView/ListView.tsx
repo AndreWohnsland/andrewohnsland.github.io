@@ -1,12 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { QueryStatus, useQuery } from 'react-query';
 import ElementCard from './ElementCard';
 import CaptionBanner from '../CaptionBanner';
-import {
-  getAllCategories,
-  getElements,
-  getElementsAsAdmin,
-} from '../../util/apiHelper';
+import { getAllCategories, getElements } from '../../util/apiHelper';
 import capFirst from '../../util/stringHelper';
 import SkeletonArticle from '../../skeletons/SkeletonArticle';
 import CategorySelect from './CategorySelect';
@@ -15,7 +11,6 @@ import {
   OnSelectChangeValue,
 } from '../../Interfaces/categorySelect.interface';
 import { IElement } from '../../Interfaces/element.interface';
-import { AuthContext } from '../../contexts/AuthContext';
 
 const queryOption = {
   staleTime: 60000,
@@ -29,7 +24,6 @@ type ListViewProps = {
 
 const ListView: React.FC<ListViewProps> = ({ elementType, header }) => {
   const [selectedCats, setSelectedCats] = useState<SelectProps[]>([]);
-  const { isAuth } = useContext(AuthContext);
 
   useEffect(() => {
     setSelectedCats([]);
@@ -38,16 +32,9 @@ const ListView: React.FC<ListViewProps> = ({ elementType, header }) => {
     }`;
   }, [elementType]);
 
-  const getElementFunction = (auth: boolean | null) => {
-    if (auth) {
-      return getElementsAsAdmin;
-    }
-    return getElements;
-  };
-
   const { data, status } = useQuery(
     `${elementType}s`,
-    () => getElementFunction(isAuth)(elementType),
+    () => getElements(elementType),
     { ...queryOption }
   );
 
@@ -121,6 +108,7 @@ const ListView: React.FC<ListViewProps> = ({ elementType, header }) => {
                   key={element._id}
                   element={element}
                   elementType={elementType}
+                  uid={element._id}
                 />
               );
             })}

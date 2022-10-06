@@ -1,8 +1,8 @@
 import { Document, Model } from 'mongoose';
 
 export interface IUser {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
   createdAt: Date;
   modifiedAt: Date;
 }

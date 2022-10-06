@@ -5,10 +5,8 @@ import './sliderStyle.scss';
 const ThemeToggle: React.FC = () => {
   const { getCachedTheme, isLightTheme, setTheme } = useContext(ThemeContext);
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const inactiveFont = { color: '#ececec80' };
-  const activeFont = { color: 'rgb(245, 245, 245)' };
-  const darkfont = isLightTheme ? inactiveFont : activeFont;
-  const lightfont = isLightTheme ? activeFont : inactiveFont;
+  const lightfont = isLightTheme ? 'active' : 'inactive';
+  const darkfont = isLightTheme ? 'inactive' : 'active';
 
   useEffect(() => {
     setIsChecked(!getCachedTheme());
@@ -22,8 +20,8 @@ const ThemeToggle: React.FC = () => {
   return (
     <>
       <div className="sliderholder">
-        <p className="themefont" style={lightfont}>
-          Light&nbsp;
+        <p className={`themefont lightmode ${lightfont}`} aria-label="sun">
+          ☀️
         </p>
         <label className="switch">
           <input
@@ -33,8 +31,11 @@ const ThemeToggle: React.FC = () => {
           />
           <span className="slider round" />
         </label>
-        <p className="themefont" style={darkfont}>
-          &nbsp;Dark&nbsp;&nbsp;&nbsp;
+        <p
+          className={`themefont darkmode ${darkfont}`}
+          arial-label="Crescent Moon"
+        >
+          🌙
         </p>
       </div>
     </>

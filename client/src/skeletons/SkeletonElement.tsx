@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import './Skeleton.scss';
 
 type SkeletopProps = {
   type: string;

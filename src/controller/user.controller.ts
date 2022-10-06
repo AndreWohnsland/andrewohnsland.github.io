@@ -1,12 +1,10 @@
 import jwt from 'jsonwebtoken';
-import pino from 'pino';
 import { Request, Response, NextFunction } from 'express';
 import User from '../models/user.model';
 import { AppError } from '../middlewares/errorHandler';
 import { IUserModel } from '../interfaces/user.interface';
-import { siteTypes } from '../interfaces/cookiePolicy.types';
-
-const logger = pino({ level: process.env.LOG_LEVEL || 'info', prettyPrint: true });
+import logger from '../setUp/initLogger';
+import cookiePolicy from '../setUp/cookieSetting';
 
 const maxAgeInSeconds = 24 * 60 * 60 * 7;
 
@@ -50,14 +48,15 @@ const createToken = (id: string) =>
 
 async function login(req: Request, res: Response, next: NextFunction) {
   const { username, password } = req.body;
-  const isDev = process.env.ENVIRONMENT_TYPE === 'dev';
-  const cookiePolicy = isDev ? { sameSite: siteTypes.lax } : { sameSite: siteTypes.none, secure: true };
 
   User.login(username, password)
     .then((user: IUserModel) => {
       logger.info(`Login by user ${username}`);
       const token = createToken(user._id);
-      res.cookie('jwt', token, { httpOnly: true, maxAge: maxAgeInSeconds * 1000, ...cookiePolicy });
+      res.cookie('jwt', token, {
+        expires: new Date(Date.now() + maxAgeInSeconds * 1000),
+        ...cookiePolicy,
+      });
       res.status(200).json('Login successful!');
     })
     .catch((err: Error) => {
@@ -66,8 +65,13 @@ async function login(req: Request, res: Response, next: NextFunction) {
     });
 }
 
+async function logout(req: Request, res: Response, next: NextFunction) {
+  res.clearCookie('jwt', { ...cookiePolicy });
+  res.status(200).json('Logout successful!');
+}
+
 async function getAuth(req: Request, res: Response) {
   res.status(200).json('Authentication suceeded');
 }
 
-export default { addUser, login, getAuth, changePassword };
+export default { addUser, login, logout, getAuth, changePassword };

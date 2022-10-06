@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, ButtonToolbar, Form, InputGroup } from 'react-bootstrap';
-import './categorybox.scss';
 
 const minCatLen = 3;
 

@@ -8,7 +8,7 @@ import Login from './Admin/Login';
 import EditComponent from './Admin/EditComponent';
 import PrivateRoute from './Admin/PrivateRoute';
 import ChangePassword from './Admin/ChangePassword';
-import PictureList from './PictureView/PictureList';
+import PictureList from './PictureList';
 import PictureComponent from './Admin/PictureComponent';
 
 const SwitchComponent: FunctionComponent = () => {

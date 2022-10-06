@@ -6,7 +6,7 @@ const dropboxV2Api = require('dropbox-v2-api');
 import util from 'util';
 import logger from '../setUp/initLogger';
 
-const SIZE_LONG_SIDE = 800;
+const SIZE_LONG_SIDE = parseInt(process.env.PICTURE_SIZE || '800');
 
 const dropboxKey = process.env.DROPBOX_ACCESS_TOKEN;
 const dropbox = dropboxV2Api.authenticate({

@@ -4,8 +4,11 @@ import { Form, Button } from 'react-bootstrap';
 import Dropdown from './Forms/Dropdown';
 import confirmAlert from './Forms/ConfirmAlert';
 import { IResource } from '../../Interfaces/resource.interface';
-import { getResources, deleteResource } from '../../util/apiHelper';
-import { postResource } from '../../util/apiHelper';
+import {
+  getResources,
+  deleteResource,
+  postResource,
+} from '../../util/apiHelper';
 
 const resourceTypes = 'image/*,video/*';
 

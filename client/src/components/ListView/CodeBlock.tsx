@@ -4,8 +4,8 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 type CodeBlockProps = {
   node: import('hast').Element;
-  inline?: boolean | undefined;
-  className?: string | undefined;
+  inline?: boolean;
+  className?: string;
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   children: any;
 };

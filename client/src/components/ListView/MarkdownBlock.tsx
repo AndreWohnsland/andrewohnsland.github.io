@@ -17,9 +17,9 @@ type MarkdownBlockProps = {
 };
 
 type PictureRendererProps = {
-  alt?: string | undefined;
-  src?: string | undefined;
-  title?: string | undefined;
+  alt?: string;
+  src?: string;
+  title?: string;
 };
 
 const MarkdownBlock: React.FC<MarkdownBlockProps> = ({

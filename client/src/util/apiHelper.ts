@@ -57,7 +57,10 @@ const getAllImageData = async (
 };
 
 const postImage = (data: FormData): Promise<AxiosResponse> => {
-  return axios.post(`${api}/image/add`, data, credentialsOptionsNoValidate);
+  return axios.post(`${api}/image/add`, data, {
+    ...credentialsOptionsNoValidate,
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
 };
 
 const deleteImage = (imageId: string): Promise<AxiosResponse> => {

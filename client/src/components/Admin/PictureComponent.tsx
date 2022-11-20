@@ -14,7 +14,7 @@ import CaptionBanner from '../CaptionBanner';
 import { IImageReducedDetails } from '../../Interfaces/image.interface';
 import confirmAlert from './Forms/ConfirmAlert';
 
-const jpegType = 'image/jpeg';
+const jpegType = 'image/png, image/jpeg';
 
 const PictureComponent: React.FC = () => {
   // for upload
@@ -47,7 +47,7 @@ const PictureComponent: React.FC = () => {
   }, []);
 
   const validateUpload = () => {
-    return name.length > 0 && image !== null;
+    return name.length > 0 && image !== null && category !== '';
   };
 
   const validateDelete = () => {

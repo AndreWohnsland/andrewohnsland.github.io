@@ -16,6 +16,8 @@ async function addImage(req: Request, res: Response, next: NextFunction) {
   const { name, category } = req.body;
   const reqFile = req.files;
   if (reqFile === undefined || reqFile === null) return next(new AppError('No file given', 400));
+  if (category === undefined || category === null || category === '')
+    return next(new AppError('Please provide category', 400));
   const receivedFile = reqFile.file as UploadedFile;
 
   const sameName = await Image.findOne({ name });

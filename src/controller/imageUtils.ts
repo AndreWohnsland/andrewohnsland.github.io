@@ -22,7 +22,7 @@ async function resizeImage(buffer: Buffer) {
   } else {
     resizeOptions = { height: SIZE_LONG_SIDE };
   }
-  const returnBuffer = await sharp(buffer).resize(resizeOptions).toBuffer();
+  const returnBuffer = await sharp(buffer).resize(resizeOptions).jpeg({ quality: 80 }).toBuffer();
   const { height: newHeight, width: newWidth } = sizeOf(returnBuffer);
   return [returnBuffer, newHeight, newWidth];
 }

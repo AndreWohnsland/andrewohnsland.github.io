@@ -22,13 +22,17 @@ const PictureComponent: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
   const [category, setCategory] = useState('');
   const [categoryOptions, setCategoryOptions] = useState<string[]>([]);
+  const [filterCategory, setFilterCategory] = useState<string>('All');
   // for delete
   const [imageId, setImageId] = useState('');
   const [imageList, setImageList] = useState<IImageReducedDetails[]>([]);
+  const [filteredImageList, setFilteredImageList] = useState<
+    IImageReducedDetails[]
+  >([]);
   // For the popup
   const [showMessage, setShowMessage] = useState(false);
   const [res, setRes] = useState<AxiosResponse | undefined>(undefined);
-  const [messageTitle, setmessageTitle] = useState('');
+  const [messageTitle, setMessageTitle] = useState('');
 
   const loadCats = async () => {
     const cats = await getAllCategories('image');
@@ -38,6 +42,25 @@ const PictureComponent: React.FC = () => {
   const loadElements = async (): Promise<void> => {
     const imageData = await getAndGenerateImageDetails();
     setImageList(imageData);
+    setFilteredImageList(imageData);
+  };
+
+  const filterImageDisplayed = (
+    selectedCat: string,
+    imageListProvide: IImageReducedDetails[] | null = null
+  ) => {
+    setFilterCategory(selectedCat);
+    if (imageListProvide === null) {
+      imageListProvide = imageList;
+    }
+    if (selectedCat === 'All') {
+      setFilteredImageList(imageListProvide);
+    } else {
+      setFilteredImageList([
+        { name: 'Select Image', value: '' },
+        ...imageListProvide.filter((i) => i.name.includes(selectedCat)),
+      ]);
+    }
   };
 
   useEffect(() => {
@@ -71,26 +94,28 @@ const PictureComponent: React.FC = () => {
     data.append('file', image as any);
     data.append('name', name);
     data.append('category', category);
-    postImage(data).then((response) => {
+    postImage(data).then(async (response) => {
       setRes(response);
       setShowMessage(true);
-      setmessageTitle(name);
+      setMessageTitle(name);
       if (response.statusText === 'OK') {
         clearUpload();
         loadCats();
-        loadElements();
+        await loadElements();
+        filterImageDisplayed(filterCategory);
       }
     });
   };
 
   const handleDeleteImage = () => {
-    deleteImage(imageId).then((response) => {
+    deleteImage(imageId).then(async (response) => {
       setRes(response);
-      setmessageTitle(`Image with id: ${imageId}`);
+      setMessageTitle(`Image with id: ${imageId}`);
       setShowMessage(true);
       if (response.statusText === 'OK') {
         setImageId('');
-        loadElements();
+        await loadElements();
+        filterImageDisplayed(filterCategory);
       }
     });
   };
@@ -158,10 +183,19 @@ const PictureComponent: React.FC = () => {
           <h3 className="user-form-header">Delete Image</h3>
           <form onSubmit={submitDelete}>
             <Dropdown
+              label="Select category to filter"
+              value={filterCategory}
+              onChange={(e) => filterImageDisplayed(e.target.value)}
+              options={[
+                { name: 'All', value: 'All' },
+                ...categoryOptions.map((e) => ({ name: e, value: e })),
+              ]}
+            />
+            <Dropdown
               label="Select image to delete"
               value={imageId}
               onChange={(e) => setImageId(e.target.value)}
-              options={imageList}
+              options={filteredImageList}
             />
             <Button type="submit" variant="danger" disabled={!validateDelete()}>
               Delete

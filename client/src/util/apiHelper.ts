@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { IElement, IElementPost } from '../Interfaces/element.interface';
 import {
+  CompleteImageData,
   IImageElement,
   IImageReducedDetails,
 } from '../Interfaces/image.interface';
@@ -34,18 +35,11 @@ const getAndGenerateImageDetails = async (): Promise<
   return [...start, ...imgList];
 };
 
-type CompleteImageData = {
-  width: number;
-  height: number;
-  src: string;
-  title: string;
-};
-
 const getAllImageData = async (
   pictype: string
 ): Promise<CompleteImageData[]> => {
   const { data } = await axios.get(`${api}/image/${pictype}`);
-  const returnData = await data.map((obj: IImageElement) => {
+  let returnData = await data.map((obj: IImageElement) => {
     return {
       width: obj.width,
       height: obj.height,
@@ -53,6 +47,7 @@ const getAllImageData = async (
       title: obj.name,
     };
   });
+  returnData = returnData.sort(() => Math.random() - 0.5);
   return returnData;
 };
 

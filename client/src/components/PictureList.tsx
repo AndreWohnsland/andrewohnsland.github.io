@@ -38,10 +38,7 @@ const PictureList: React.FC = () => {
         {status === 'success' && (
           <>
             {data && data.length > 0 ? (
-              <Gallery
-                photos={data.sort(() => Math.random() - 0.5)}
-                direction="column"
-              />
+              <Gallery photos={data} direction="column" />
             ) : (
               <p>Currently no Pictures here</p>
             )}

@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { HashLoader } from 'react-spinners';
 import MarkdownBlock from './MarkdownBlock';
 import useResize from './resize';
 import dateFormatter from './dateFormatter';
 import CaptionBanner from '../CaptionBanner';
-import { getElementData, getElements } from '../../util/apiHelper';
+import { getElementData } from '../../util/apiHelper';
 import capFirst from '../../util/stringHelper';
 import { IElement } from '../../Interfaces/element.interface';
+import Recommender from './Recommender';
 
 const queryOption = {
   staleTime: 300000,
@@ -46,12 +47,6 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
     `${elementType}?id=${id}`,
     () => getElementData(elementType, id),
     queryOption
-  );
-
-  const { data: similarData, status: similarStatus } = useQuery(
-    `${elementType}s`,
-    () => getElements(elementType),
-    { ...queryOption }
   );
 
   const createDateTag = (d: IElement): string => {
@@ -94,7 +89,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
             <p className="blog-categories">
               Categories: {data.category.sort().join(', ')}
             </p>
-            <hr className="blog-dividor" />
+            <hr className="blog-divider" />
             <MarkdownBlock sourcedata={data.text} maxWidth={maxWidth} />
             {elementType === 'project' && (
               <p>
@@ -102,38 +97,10 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
                 <a href={data.link}>{linkDescription}</a>
               </p>
             )}
-            <hr className="blog-dividor" />
-            <div className="similar-projects">
-              <h6>You may also like:</h6>
-              <div className="spinner-container">
-                {similarStatus === 'loading' && <p>&nbsp;</p>}
-                <HashLoader
-                  loading={similarStatus === 'loading'}
-                  color="#004ea7"
-                  cssOverride={override}
-                  size={(maxWidth as number) / 2}
-                />
-              </div>
-              {similarStatus === 'success' && similarData && (
-                <ul>
-                  {similarData
-                    .filter((dat) => {
-                      return dat.category.some((cat) =>
-                        data.category.includes(cat)
-                      );
-                    })
-                    .map((element) => {
-                      return (
-                        <li key={element._id}>
-                          <Link to={`/${elementType}/${element.slug}`}>
-                            {element.title}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                </ul>
-              )}
-            </div>
+            <Recommender
+              elementType={elementType}
+              elementData={data}
+            ></Recommender>
           </>
         )}
       </div>

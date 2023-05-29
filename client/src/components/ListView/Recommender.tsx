@@ -1,0 +1,59 @@
+import React from 'react';
+import { useQuery } from 'react-query';
+import { getElements } from '../../util/apiHelper';
+import { Link } from 'react-router-dom';
+import { IElement } from '../../Interfaces/element.interface';
+
+const queryOption = {
+  staleTime: 300000,
+  cacheTime: 3600000,
+  retry: 1,
+};
+
+type ElementViewProps = {
+  elementType: string;
+  elementData: IElement;
+};
+
+const Recommender: React.FC<ElementViewProps> = ({
+  elementType,
+  elementData,
+}) => {
+  const { data: similarData, status: similarStatus } = useQuery(
+    `${elementType}s`,
+    () => getElements(elementType),
+    { ...queryOption }
+  );
+
+  const recommended = similarData
+    ?.filter((dat) => {
+      return dat.category.some((cat) => elementData.category.includes(cat));
+    })
+    .filter((dat) => dat.title != elementData.title);
+
+  return (
+    <div className="similar-projects">
+      {similarStatus === 'success' &&
+        recommended &&
+        recommended.length != 0 && (
+          <>
+            <hr className="blog-divider" />
+            <h6>You may also like:</h6>
+            <ul>
+              {recommended.map((element) => {
+                return (
+                  <li key={element._id}>
+                    <Link to={`/${elementType}/${element.slug}`}>
+                      {element.title}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        )}
+    </div>
+  );
+};
+
+export default Recommender;

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { HashLoader } from 'react-spinners';
 import MarkdownBlock from './MarkdownBlock';
 import useResize from './resize';
 import dateFormatter from './dateFormatter';
 import CaptionBanner from '../CaptionBanner';
-import { getElementData } from '../../util/apiHelper';
+import { getElementData, getElements } from '../../util/apiHelper';
 import capFirst from '../../util/stringHelper';
 import { IElement } from '../../Interfaces/element.interface';
 
@@ -48,6 +48,12 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
     queryOption
   );
 
+  const { data: similarData, status: similarStatus } = useQuery(
+    `${elementType}s`,
+    () => getElements(elementType),
+    { ...queryOption }
+  );
+
   const createDateTag = (d: IElement): string => {
     return `Created: ${dateFormatter(
       d.createdAt
@@ -63,7 +69,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
 
   let linkDescription = 'here for more impressions';
   if (data?.link?.includes('github')) {
-    linkDescription = 'at Github';
+    linkDescription = 'at GitHub';
   }
 
   return (
@@ -85,6 +91,9 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
           <>
             <p className="blog-date">{createDateTag(data)}</p>
             <p className="blog-description">{data.description}</p>
+            <p className="blog-categories">
+              Categories: {data.category.sort().join(', ')}
+            </p>
             <hr className="blog-dividor" />
             <MarkdownBlock sourcedata={data.text} maxWidth={maxWidth} />
             {elementType === 'project' && (
@@ -93,6 +102,38 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
                 <a href={data.link}>{linkDescription}</a>
               </p>
             )}
+            <hr className="blog-dividor" />
+            <div className="similar-projects">
+              <h6>You may also like:</h6>
+              <div className="spinner-container">
+                {similarStatus === 'loading' && <p>&nbsp;</p>}
+                <HashLoader
+                  loading={similarStatus === 'loading'}
+                  color="#004ea7"
+                  cssOverride={override}
+                  size={(maxWidth as number) / 2}
+                />
+              </div>
+              {similarStatus === 'success' && similarData && (
+                <ul>
+                  {similarData
+                    .filter((dat) => {
+                      return dat.category.some((cat) =>
+                        data.category.includes(cat)
+                      );
+                    })
+                    .map((element) => {
+                      return (
+                        <li key={element._id}>
+                          <Link to={`/${elementType}/${element.slug}`}>
+                            {element.title}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                </ul>
+              )}
+            </div>
           </>
         )}
       </div>

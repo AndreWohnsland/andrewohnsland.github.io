@@ -39,17 +39,20 @@ const Recommender: React.FC<ElementViewProps> = ({
           <>
             <hr className="blog-divider" />
             <h6>You may also like:</h6>
-            <ul>
+            <div className="blog-recommendation-holder">
               {recommended.map((element) => {
                 return (
-                  <li key={element._id}>
-                    <Link to={`/${elementType}/${element.slug}`}>
-                      {element.title}
+                  <p>
+                    <Link
+                      to={`/${elementType}/${element.slug}`}
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <span className="blog-recommended">{element.title}</span>
                     </Link>
-                  </li>
+                  </p>
                 );
               })}
-            </ul>
+            </div>
           </>
         )}
     </div>

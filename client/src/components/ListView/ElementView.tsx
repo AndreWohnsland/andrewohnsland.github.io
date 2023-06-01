@@ -10,6 +10,7 @@ import { getElementData } from '../../util/apiHelper';
 import capFirst from '../../util/stringHelper';
 import { IElement } from '../../Interfaces/element.interface';
 import Recommender from './Recommender';
+import NotFoundElement from './NotFoundElement';
 
 const queryOption = {
   staleTime: 300000,
@@ -80,8 +81,6 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
             size={(maxWidth as number) / 2}
           />
         </div>
-        {status === 'error' &&
-          'Probably not a valid id :( If you get here from blog or project try getting back and forth again.'}
         {status === 'success' && data && (
           <>
             <p className="blog-date">{createDateTag(data)}</p>
@@ -104,6 +103,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
           </>
         )}
       </div>
+      {status === 'error' && <NotFoundElement elementType={elementType} />}
     </>
   );
 };

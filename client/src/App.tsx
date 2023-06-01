@@ -16,13 +16,11 @@ const App: React.FC = () => {
     <>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <div className="App">
+          <div className="App h-100">
             <NavBar />
-            <div className={`content-container container-${theme}`}>
-              <div className="main">
-                <SwitchComponent />
-              </div>
-            </div>
+            <main className={`content-container container-${theme} h-100`}>
+              <SwitchComponent />
+            </main>
             <Footer />
           </div>
           {process.env.REACT_APP_DEV === 'true' && (

@@ -6,7 +6,7 @@ type BannerProps = {
 
 const CaptionBanner: FunctionComponent<BannerProps> = ({ text }) => {
   return (
-    <div className="main-header text-center">
+    <div className="main-header text-center w-100">
       <h2>{text}</h2>
     </div>
   );

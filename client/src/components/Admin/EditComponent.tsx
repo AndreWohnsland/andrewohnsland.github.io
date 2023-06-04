@@ -159,85 +159,87 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
     );
   }
   return (
-    <div>
+    <>
       <CaptionBanner text={`Edit ${capitalizeElement()} Entries`} />
-      <div className="main-text">
-        {isAuth ? (
-          <>
-            {showMessage && (
-              <InfoBox
-                res={res}
-                name={messageTitle}
-                handleShow={handleMessage}
-              />
-            )}
-            <div className="user-form-container">
-              <h3 className="user-form-header">{`Manage ${capitalizeElement()} Content`}</h3>
-              <form onSubmit={onSubmit}>
-                <Dropdown
-                  label={`Select your ${elementType}`}
-                  value={elementId}
-                  onChange={selectElement}
-                  options={options}
+      <main className="content-container h-100">
+        <div className="main-text">
+          {isAuth ? (
+            <>
+              {showMessage && (
+                <InfoBox
+                  res={res}
+                  name={messageTitle}
+                  handleShow={handleMessage}
                 />
-                <TextInput
-                  label="Title"
-                  name="title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-                <TextInput
-                  label="Description"
-                  name="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-                {elementType === 'project' && (
-                  <TextInput
-                    label="Link"
-                    name="link"
-                    value={link}
-                    onChange={(e) => setLink(e.target.value)}
+              )}
+              <div className="user-form-container">
+                <h3 className="user-form-header">{`Manage ${capitalizeElement()} Content`}</h3>
+                <form onSubmit={onSubmit}>
+                  <Dropdown
+                    label={`Select your ${elementType}`}
+                    value={elementId}
+                    onChange={selectElement}
+                    options={options}
                   />
-                )}
-                <Checkbox
-                  label="This is currently a draft (will not be shown public)"
-                  name="draft"
-                  value={draft}
-                  onChange={(e) => setDraft(e.target.checked)}
-                />
-                <CategorySelect
-                  name="catselect"
-                  categories={category}
-                  existingCategories={existingCats}
-                  setCategories={setCategory}
-                />
-                <TextArea
-                  label="Text"
-                  name="text"
-                  value={text}
-                  onChange={(e) => setText(e.target.value)}
-                />
-                <Button type="submit" disabled={!validateSubmit()}>
-                  {elementId === '' ? 'Create' : 'Change'}
-                </Button>
-                <Button
-                  variant="danger"
-                  className="align-right"
-                  disabled={!validateDelete()}
-                  onClick={runDelete}
-                >
-                  Delete
-                </Button>
-              </form>
-            </div>
-            {elementType === 'blog' && <BlogResources blogId={elementId} />}
-          </>
-        ) : (
-          <p>Not authentificated!</p>
-        )}
-      </div>
-    </div>
+                  <TextInput
+                    label="Title"
+                    name="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                  <TextInput
+                    label="Description"
+                    name="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                  {elementType === 'project' && (
+                    <TextInput
+                      label="Link"
+                      name="link"
+                      value={link}
+                      onChange={(e) => setLink(e.target.value)}
+                    />
+                  )}
+                  <Checkbox
+                    label="This is currently a draft (will not be shown public)"
+                    name="draft"
+                    value={draft}
+                    onChange={(e) => setDraft(e.target.checked)}
+                  />
+                  <CategorySelect
+                    name="catselect"
+                    categories={category}
+                    existingCategories={existingCats}
+                    setCategories={setCategory}
+                  />
+                  <TextArea
+                    label="Text"
+                    name="text"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                  />
+                  <Button type="submit" disabled={!validateSubmit()}>
+                    {elementId === '' ? 'Create' : 'Change'}
+                  </Button>
+                  <Button
+                    variant="danger"
+                    className="align-right"
+                    disabled={!validateDelete()}
+                    onClick={runDelete}
+                  >
+                    Delete
+                  </Button>
+                </form>
+              </div>
+              {elementType === 'blog' && <BlogResources blogId={elementId} />}
+            </>
+          ) : (
+            <p>Not authenticated!</p>
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 

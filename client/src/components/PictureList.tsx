@@ -31,20 +31,24 @@ const PictureList: React.FC = () => {
   return (
     <>
       <CaptionBanner text={upperCategory} />
-      <div className="main-text-picture">
-        {(status === 'loading' || status === 'idle') &&
-          [1, 2, 3, 4, 5].map((n) => <SkeletonPicture key={n} theme="dark" />)}
-        {status === 'error' && <p>Error fetching data!</p>}
-        {status === 'success' && (
-          <>
-            {data && data.length > 0 ? (
-              <Gallery photos={data} direction="column" />
-            ) : (
-              <p>Currently no Pictures here</p>
-            )}
-          </>
-        )}
-      </div>
+      <main className="content-container h-100">
+        <div className="main-text-picture">
+          {(status === 'loading' || status === 'idle') &&
+            [1, 2, 3, 4, 5].map((n) => (
+              <SkeletonPicture key={n} theme="dark" />
+            ))}
+          {status === 'error' && <p>Error fetching data!</p>}
+          {status === 'success' && (
+            <>
+              {data && data.length > 0 ? (
+                <Gallery photos={data} direction="column" />
+              ) : (
+                <p>Currently no Pictures here</p>
+              )}
+            </>
+          )}
+        </div>
+      </main>
     </>
   );
 };

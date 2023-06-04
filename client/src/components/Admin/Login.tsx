@@ -41,36 +41,38 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div>
+    <>
       <CaptionBanner text="Welcome Boss" />
-      <div className="main-text user-input-container">
-        <div className="Login user-form-container">
-          <form onSubmit={handleSubmit}>
-            <Form.Group controlId="email" className="element-form-group">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                autoFocus
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="password" className="element-form-group">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-              />
-            </Form.Group>
-            {!valid && <div className="res-error">{message}</div>}
-            <Button disabled={!validateForm()} type="submit">
-              Login
-            </Button>
-          </form>
+      <main className="content-container h-100">
+        <div className="main-text user-input-container">
+          <div className="Login user-form-container">
+            <form onSubmit={handleSubmit}>
+              <Form.Group controlId="email" className="element-form-group">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  autoFocus
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group controlId="password" className="element-form-group">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                />
+              </Form.Group>
+              {!valid && <div className="res-error">{message}</div>}
+              <Button disabled={!validateForm()} type="submit">
+                Login
+              </Button>
+            </form>
+          </div>
         </div>
-      </div>
-    </div>
+      </main>
+    </>
   );
 };
 

@@ -71,39 +71,46 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
   return (
     <>
       <CaptionBanner text={chooseHeader(status, data)} />
-      <div className="main-text-page" ref={divRef}>
-        <div className="spinner-container">
-          {status === 'loading' && <p>&nbsp;</p>}
-          <HashLoader
-            loading={status === 'loading'}
-            color="#004ea7"
-            cssOverride={override}
-            size={(maxWidth as number) / 2}
-          />
-        </div>
-        {status === 'success' && data && (
-          <>
-            <p className="blog-date">{createDateTag(data)}</p>
-            <p className="blog-description">{data.description}</p>
-            <p className="blog-categories">
-              Categories: {data.category.sort().join(', ')}
-            </p>
-            <hr className="blog-divider" />
-            <MarkdownBlock sourcedata={data.text} maxWidth={maxWidth} />
-            {elementType === 'project' && (
-              <p>
-                {'Interested? Look into the project '}
-                <a href={data.link}>{linkDescription}</a>
-              </p>
-            )}
-            <Recommender
-              elementType={elementType}
-              elementData={data}
-            ></Recommender>
-          </>
-        )}
-      </div>
-      {status === 'error' && <NotFoundElement elementType={elementType} />}
+      {status === 'error' ? (
+        <NotFoundElement elementType={elementType} />
+      ) : (
+        <>
+          <main className="content-container h-100">
+            <div className="main-text-page" ref={divRef}>
+              <div className="spinner-container">
+                {status === 'loading' && <p>&nbsp;</p>}
+                <HashLoader
+                  loading={status === 'loading'}
+                  color="#004ea7"
+                  cssOverride={override}
+                  size={(maxWidth as number) / 2}
+                />
+              </div>
+              {status === 'success' && data && (
+                <>
+                  <p className="blog-date">{createDateTag(data)}</p>
+                  <p className="blog-description">{data.description}</p>
+                  <p className="blog-categories">
+                    Categories: {data.category.sort().join(', ')}
+                  </p>
+                  <hr className="blog-divider" />
+                  <MarkdownBlock sourcedata={data.text} maxWidth={maxWidth} />
+                  {elementType === 'project' && (
+                    <p>
+                      {'Interested? Look into the project '}
+                      <a href={data.link}>{linkDescription}</a>
+                    </p>
+                  )}
+                  <Recommender
+                    elementType={elementType}
+                    elementData={data}
+                  ></Recommender>
+                </>
+              )}
+            </div>
+          </main>
+        </>
+      )}
     </>
   );
 };

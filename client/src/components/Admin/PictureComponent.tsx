@@ -127,83 +127,89 @@ const PictureComponent: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <CaptionBanner text="Manage Images" />
-      <div className="main-text">
-        {showMessage && (
-          <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />
-        )}
-        <div className="user-form-container">
-          <h3 className="user-form-header">Upload Image</h3>
-          <form onSubmit={submitUpload}>
-            <TextInput
-              label="Name"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <TextInput
-              label="Category"
-              name="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            <div className="available-categories">
-              <p style={{ marginBottom: '6px' }}>Existing:&nbsp;&nbsp;</p>
-              {categoryOptions.map((c) => (
-                <Button
-                  onClick={() => setCategory(c)}
-                  className="available-categories"
-                  variant="primary"
-                  size="sm"
-                  key={c}
-                >
-                  {c}
-                </Button>
-              ))}
-            </div>
-            <Form.Group className="element-form-group">
-              <Form.Label>Picture</Form.Label>
-              <Form.Control
-                type="file"
-                name="uploadImage"
-                required
-                accept={`${jpegType}`}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setImage(e.target.files === null ? null : e.target.files[0])
-                }
+      <main className="content-container h-100">
+        <div className="main-text">
+          {showMessage && (
+            <InfoBox res={res} name={messageTitle} handleShow={handleMessage} />
+          )}
+          <div className="user-form-container">
+            <h3 className="user-form-header">Upload Image</h3>
+            <form onSubmit={submitUpload}>
+              <TextInput
+                label="Name"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
-            </Form.Group>
-            <Button type="submit" disabled={!validateUpload()}>
-              Upload
-            </Button>
-          </form>
+              <TextInput
+                label="Category"
+                name="category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <div className="available-categories">
+                <p style={{ marginBottom: '6px' }}>Existing:&nbsp;&nbsp;</p>
+                {categoryOptions.map((c) => (
+                  <Button
+                    onClick={() => setCategory(c)}
+                    className="available-categories"
+                    variant="primary"
+                    size="sm"
+                    key={c}
+                  >
+                    {c}
+                  </Button>
+                ))}
+              </div>
+              <Form.Group className="element-form-group">
+                <Form.Label>Picture</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="uploadImage"
+                  required
+                  accept={`${jpegType}`}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setImage(e.target.files === null ? null : e.target.files[0])
+                  }
+                />
+              </Form.Group>
+              <Button type="submit" disabled={!validateUpload()}>
+                Upload
+              </Button>
+            </form>
+          </div>
+          <div className="user-form-container">
+            <h3 className="user-form-header">Delete Image</h3>
+            <form onSubmit={submitDelete}>
+              <Dropdown
+                label="Select category to filter"
+                value={filterCategory}
+                onChange={(e) => filterImageDisplayed(e.target.value)}
+                options={[
+                  { name: 'All', value: 'All' },
+                  ...categoryOptions.map((e) => ({ name: e, value: e })),
+                ]}
+              />
+              <Dropdown
+                label="Select image to delete"
+                value={imageId}
+                onChange={(e) => setImageId(e.target.value)}
+                options={filteredImageList}
+              />
+              <Button
+                type="submit"
+                variant="danger"
+                disabled={!validateDelete()}
+              >
+                Delete
+              </Button>
+            </form>
+          </div>
         </div>
-        <div className="user-form-container">
-          <h3 className="user-form-header">Delete Image</h3>
-          <form onSubmit={submitDelete}>
-            <Dropdown
-              label="Select category to filter"
-              value={filterCategory}
-              onChange={(e) => filterImageDisplayed(e.target.value)}
-              options={[
-                { name: 'All', value: 'All' },
-                ...categoryOptions.map((e) => ({ name: e, value: e })),
-              ]}
-            />
-            <Dropdown
-              label="Select image to delete"
-              value={imageId}
-              onChange={(e) => setImageId(e.target.value)}
-              options={filteredImageList}
-            />
-            <Button type="submit" variant="danger" disabled={!validateDelete()}>
-              Delete
-            </Button>
-          </form>
-        </div>
-      </div>
-    </div>
+      </main>
+    </>
   );
 };
 

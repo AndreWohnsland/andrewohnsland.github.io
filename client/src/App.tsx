@@ -16,11 +16,9 @@ const App: React.FC = () => {
     <>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <div className="App h-100">
+          <div className={`App min-vh-100 container-${theme}`}>
             <NavBar />
-            <main className={`content-container container-${theme} h-100`}>
-              <SwitchComponent />
-            </main>
+            <SwitchComponent />
             <Footer />
           </div>
           {process.env.REACT_APP_DEV === 'true' && (

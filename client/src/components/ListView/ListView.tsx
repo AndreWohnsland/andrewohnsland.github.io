@@ -91,30 +91,34 @@ const ListView: React.FC<ListViewProps> = ({ elementType, header }) => {
   return (
     <>
       <CaptionBanner text={header} />
-      <div className="main-text">
-        {status === 'loading' &&
-          [1, 2, 3, 4, 5].map((n) => <SkeletonArticle key={n} theme="dark" />)}
-        {status === 'error' && <p>Error fetching data!</p>}
-        {status === 'success' && data && (
-          <>
-            <CategorySelect
-              categoryInfo={categoryInfo}
-              categoryValue={selectedCats}
-              onChange={handleChange}
-            />
-            {filterElementsByCategory(data).map((element) => {
-              return (
-                <ElementCard
-                  key={element._id}
-                  element={element}
-                  elementType={elementType}
-                  uid={element._id}
-                />
-              );
-            })}
-          </>
-        )}
-      </div>
+      <main className="content-container h-100">
+        <div className="main-text">
+          {status === 'loading' &&
+            [1, 2, 3, 4, 5].map((n) => (
+              <SkeletonArticle key={n} theme="dark" />
+            ))}
+          {status === 'error' && <p>Error fetching data!</p>}
+          {status === 'success' && data && (
+            <>
+              <CategorySelect
+                categoryInfo={categoryInfo}
+                categoryValue={selectedCats}
+                onChange={handleChange}
+              />
+              {filterElementsByCategory(data).map((element) => {
+                return (
+                  <ElementCard
+                    key={element._id}
+                    element={element}
+                    elementType={elementType}
+                    uid={element._id}
+                  />
+                );
+              })}
+            </>
+          )}
+        </div>
+      </main>
     </>
   );
 };

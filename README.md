@@ -5,20 +5,20 @@ This is a React web app with the corresponding backend made with node.js, TypeSc
 <!-- TOC -->
 
 - [React Web App with Node.js Backend](#react-web-app-with-nodejs-backend)
-- [Features](#features)
+  - [Features](#features)
   - [Markdown Support](#markdown-support)
-- [Architecture](#architecture)
-- [Installation](#installation)
+  - [Architecture](#architecture)
+  - [Installation](#installation)
   - [Start the Application](#start-the-application)
   - [Access the Application](#access-the-application)
   - [Generate an Admin User](#generate-an-admin-user)
   - [Use Dropbox to Store and Access Pictures](#use-dropbox-to-store-and-access-pictures)
-- [ToDo's](#todos)
-- [Known Issues](#known-issues)
+  - [ToDo's](#todos)
+  - [Known Issues](#known-issues)
 
 <!-- /TOC -->
 
-# Features
+## Features
 
 This project consists of the frontend (`client` folder) and the API (main / `src` folder). The exact architecture is explained in the section below. The site divides between project and blog post. Basically they are quite similar. Project posts are aimed to be more compact and have a link to the referred project, while blog posts go more into the depth and may not be specific to any project. The viewers can filter by category to limit the cards to only show relevant topics. The card will show the title, the description, the categories in alphabetical order and the creation date, or the update date, if updated. In addition, there is also the possibility to upload and display pictures for artworks or similar topics, grouped by defined categories.
 
@@ -61,17 +61,17 @@ The body within will also be translated from Markdown to HTML code, all supporte
 
 One critical aspect is to check the right spelling, otherwise the element will rendered into a code block of the misspelled tag.
 
-# Architecture
+## Architecture
 
 The following schema shows the architecture of the Web App, API and corresponding services. React is used to build the frontend and gets hosted on github pages. The node.js with express is used for the API and is hosted on deta. The data is stored in a MongoDB. The blog pages either get the pictures from dropbox or from github. The user and the Admin interacts with the Web App to update data or just view the content:
 
 ![Architecture](docs/diagrams/out/Architecture.svg)
 
-# Installation
+## Installation
 
 Over npm the server and the client can be installed separately:
 
-```
+```bash
 npm install
 cd ./client
 npm install
@@ -81,14 +81,14 @@ npm install
 
 To start the application some variables need to be set fist. This concludes the variables `ATLAS_URI` and `JWT_SECRET` in the `.env` file. Also if you are running everything locally, be sure to set the `ENVIRONMENT_TYPE` to 'dev'. The first is the connection string to the database, the second is the 'password' for your token encryption. To get the mongodb running either create an instance at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or create a local instance with [docker](https://hub.docker.com/_/mongo). The fastest way is to create a volume and image locally with docker (required docker installed):
 
-```
+```bash
 docker volume create --name=yourVolumeName
 docker run --name yourMongoDbName -v yourVolumeName:/data/db -p 27017:27017 -d mongo
 ```
 
 This will run mongodb on your local port 27017 in docker. In this case (if no credentials are set) the `.env` file would look similar to:
 
-```
+```bash
 ATLAS_URI=mongodb://127.0.0.1:27017
 JWT_SECRET=YourSecretForJWT
 ENVIRONMENT_TYPE=dev
@@ -101,7 +101,7 @@ The same applies to your `.env` files for the frontend / client. The default `.e
 
 After that you can run both (be sure to be in the main folder), server and backend with:
 
-```
+```bash
 npm run dev
 ```
 
@@ -127,12 +127,12 @@ Steps to create a project and get the access token:
 5. Generate and copy your token from the Settings tab. Change expiration to "No expiration". You can also re-generate for a new token here if it has been compromised.
 6. Paste the token into your `.env` file.
 
-# ToDo's
+## ToDo's
 
 - Create a more established style for the whole app
 - User Swagger or similar tool for API documentation
 - Implementing delete functionality for the API
 
-# Known Issues
+## Known Issues
 
 - iOS based browsers do not respect the code cell formatting and break long code lines into multiple ones even if it's defined not to do so.

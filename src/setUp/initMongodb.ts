@@ -13,7 +13,9 @@ function initMongodb() {
       logger.info('No user exists, generating default user ...');
       const newUser = new User({ username, password });
       await newUser.save().then(() => {
-        logger.info('User "admin" with password "adminadmin" was generated. Please keep in mind changing creds.');
+        logger.info(
+          `User "${username}" with password "${password}" was generated. Please keep in mind changing creds.`,
+        );
       });
     }
   });

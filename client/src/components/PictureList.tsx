@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import Gallery from 'react-photo-gallery';
+import PhotoAlbum from 'react-photo-album';
 import CaptionBanner from './CaptionBanner';
 import { getAllImageData } from '../util/apiHelper';
 import SkeletonPicture from '../skeletons/SkeletonPicture';
@@ -41,7 +41,17 @@ const PictureList: React.FC = () => {
           {status === 'success' && (
             <>
               {data && data.length > 0 ? (
-                <Gallery photos={data} direction="column" />
+                <PhotoAlbum
+                  layout="masonry"
+                  photos={data}
+                  spacing={3}
+                  columns={(containerWidth) => {
+                    if (containerWidth < 550) return 1;
+                    if (containerWidth < 950) return 2;
+                    if (containerWidth < 1550) return 3;
+                    return 4;
+                  }}
+                />
               ) : (
                 <p>Currently no Pictures here</p>
               )}

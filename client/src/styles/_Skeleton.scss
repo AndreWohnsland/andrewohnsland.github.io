@@ -37,12 +37,16 @@
 /* themes */
 .skeleton-wrapper.light {
   background: #f2f2f2;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.205),
+  box-shadow:
+    5px 5px 10px rgba(0, 0, 0, 0.3),
+    2px 2px 3px rgba(0, 0, 0, 0.205),
     -1px 0px 1px rgba(0, 0, 0, 0.178);
 }
 .skeleton-wrapper.dark {
   background: rgb(29, 29, 29);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.205),
+  box-shadow:
+    5px 5px 10px rgba(0, 0, 0, 0.3),
+    2px 2px 3px rgba(0, 0, 0, 0.205),
     -1px 0px 1px rgba(0, 0, 0, 0.178);
 }
 .skeleton-wrapper.dark .skeleton {

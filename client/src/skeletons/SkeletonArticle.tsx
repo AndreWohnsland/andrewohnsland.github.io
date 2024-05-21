@@ -1,13 +1,13 @@
-import React, { FunctionComponent } from 'react';
-import Shimmer from './Shimmer';
-import SkeletonElement from './SkeletonElement';
+import React, { FunctionComponent } from 'react'
+import Shimmer from './Shimmer'
+import SkeletonElement from './SkeletonElement'
 
 type SkeletonProps = {
-  theme: string;
-};
+  theme: string
+}
 
 const SkeletonArticle: FunctionComponent<SkeletonProps> = ({ theme }) => {
-  const themeClass: string = theme || 'dark';
+  const themeClass: string = theme || 'dark'
 
   return (
     <div className={`skeleton-wrapper ${themeClass}`}>
@@ -19,7 +19,7 @@ const SkeletonArticle: FunctionComponent<SkeletonProps> = ({ theme }) => {
       </div>
       <Shimmer />
     </div>
-  );
-};
+  )
+}
 
-export default SkeletonArticle;
+export default SkeletonArticle

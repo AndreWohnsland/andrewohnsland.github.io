@@ -1,12 +1,12 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import React from 'react'
+import { Form } from 'react-bootstrap'
 
 type TextAreaProps = {
-  label: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+  label: string
+  name: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
 
 const TextArea: React.FC<TextAreaProps> = ({
   label,
@@ -25,7 +25,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         onChange={onChange}
       />
     </Form.Group>
-  );
-};
+  )
+}
 
-export default TextArea;
+export default TextArea

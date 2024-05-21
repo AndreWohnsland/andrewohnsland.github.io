@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 type NotFoundProps = {
-  elementType: string;
-};
+  elementType: string
+}
 
 const NotFoundElement: React.FC<NotFoundProps> = ({ elementType }) => {
-  const path = elementType === 'project' ? '/projects' : '/blog';
-  const label = elementType === 'project' ? 'Find at Projects' : 'Find at Blog';
+  const path = elementType === 'project' ? '/projects' : '/blog'
+  const label = elementType === 'project' ? 'Find at Projects' : 'Find at Blog'
   return (
     <main
       className="container text-center h-100 d-flex flex-column 
@@ -27,7 +27,7 @@ const NotFoundElement: React.FC<NotFoundProps> = ({ elementType }) => {
         </Link>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default NotFoundElement;
+export default NotFoundElement

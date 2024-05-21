@@ -1,75 +1,75 @@
-import React, { useEffect, useState } from 'react';
-import { QueryStatus, useQuery } from 'react-query';
-import ElementCard from './ElementCard';
-import CaptionBanner from '../CaptionBanner';
-import { getAllCategories, getElements } from '../../util/apiHelper';
-import capFirst from '../../util/stringHelper';
-import SkeletonArticle from '../../skeletons/SkeletonArticle';
-import CategorySelect from './CategorySelect';
+import React, { useEffect, useState } from 'react'
+import { QueryStatus, useQuery } from 'react-query'
+import ElementCard from './ElementCard'
+import CaptionBanner from '../CaptionBanner'
+import { getAllCategories, getElements } from '../../util/apiHelper'
+import capFirst from '../../util/stringHelper'
+import SkeletonArticle from '../../skeletons/SkeletonArticle'
+import CategorySelect from './CategorySelect'
 import {
   SelectProps,
   OnSelectChangeValue,
-} from '../../Interfaces/categorySelect.interface';
-import { IElement } from '../../Interfaces/element.interface';
+} from '../../Interfaces/categorySelect.interface'
+import { IElement } from '../../Interfaces/element.interface'
 
 const queryOption = {
   staleTime: 60000,
   cacheTime: 3600000,
-};
+}
 
 type ListViewProps = {
-  elementType: string;
-  header: string;
-};
+  elementType: string
+  header: string
+}
 
 const ListView: React.FC<ListViewProps> = ({ elementType, header }) => {
-  const [selectedCats, setSelectedCats] = useState<SelectProps[]>([]);
+  const [selectedCats, setSelectedCats] = useState<SelectProps[]>([])
 
   useEffect(() => {
-    setSelectedCats([]);
+    setSelectedCats([])
     document.title = `${capFirst(elementType)} | ${
       process.env.REACT_APP_SHOWN_NAME
-    }`;
-  }, [elementType]);
+    }`
+  }, [elementType])
 
   const { data, status } = useQuery(
     `${elementType}s`,
     () => getElements(elementType),
-    { ...queryOption }
-  );
+    { ...queryOption },
+  )
 
   const { data: catdata, status: catstauts } = useQuery(
     `${elementType}s_cats`,
     () => getAllCategories(elementType),
-    { ...queryOption }
-  );
+    { ...queryOption },
+  )
 
   const generateCategories = (
     categories: string[] | undefined,
-    categoryStatus: QueryStatus
+    categoryStatus: QueryStatus,
   ): SelectProps[] => {
     if (
       categories === undefined ||
       categoryStatus === 'loading' ||
       categoryStatus === 'error'
     )
-      return [];
+      return []
     return categories.map((cat) => {
-      return { value: cat, label: cat };
-    });
-  };
+      return { value: cat, label: cat }
+    })
+  }
 
   const handleChange = (e: OnSelectChangeValue) => {
     if (e.length === 0) {
-      setSelectedCats([]);
+      setSelectedCats([])
     } else {
       setSelectedCats(
         e.map((element) => {
-          return element;
-        })
-      );
+          return element
+        }),
+      )
     }
-  };
+  }
 
   const filterElementsByCategory = (dataToFilter: IElement[]): IElement[] => {
     return dataToFilter.filter((dat) => {
@@ -78,15 +78,15 @@ const ListView: React.FC<ListViewProps> = ({ elementType, header }) => {
         dat.category.some((cat1) =>
           selectedCats
             .map((v) => {
-              return v.value;
+              return v.value
             })
-            .includes(cat1)
+            .includes(cat1),
         )
-      );
-    });
-  };
+      )
+    })
+  }
 
-  const categoryInfo = generateCategories(catdata, catstauts);
+  const categoryInfo = generateCategories(catdata, catstauts)
 
   return (
     <>
@@ -113,14 +113,14 @@ const ListView: React.FC<ListViewProps> = ({ elementType, header }) => {
                     elementType={elementType}
                     uid={element._id}
                   />
-                );
+                )
               })}
             </>
           )}
         </div>
       </main>
     </>
-  );
-};
+  )
+}
 
-export default ListView;
+export default ListView

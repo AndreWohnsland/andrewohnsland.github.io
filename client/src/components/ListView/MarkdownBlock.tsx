@@ -1,26 +1,26 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkMath from 'remark-math';
-import remarkGfm from 'remark-gfm';
-import remarkToc from 'remark-toc';
-import remarkDirective from 'remark-directive';
-import remarkDirectiveRehype from 'remark-directive-rehype';
-import rehypeKatex from 'rehype-katex';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeSlug from 'rehype-slug';
-import 'katex/dist/katex.min.css';
-import CodeBlock from './CodeBlock';
+import React from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkMath from 'remark-math'
+import remarkGfm from 'remark-gfm'
+import remarkToc from 'remark-toc'
+import remarkDirective from 'remark-directive'
+import remarkDirectiveRehype from 'remark-directive-rehype'
+import rehypeKatex from 'rehype-katex'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSlug from 'rehype-slug'
+import 'katex/dist/katex.min.css'
+import CodeBlock from './CodeBlock'
 
 type MarkdownBlockProps = {
-  maxWidth: number | undefined;
-  sourcedata: string;
-};
+  maxWidth: number | undefined
+  sourcedata: string
+}
 
 type PictureRendererProps = {
-  alt?: string;
-  src?: string;
-  title?: string;
-};
+  alt?: string
+  src?: string
+  title?: string
+}
 
 const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
   maxWidth,
@@ -39,7 +39,7 @@ const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
       />
       <span className="picture-caption">{`${alt}`}</span>
     </>
-  );
+  )
   return (
     <ReactMarkdown
       className="blog-md"
@@ -58,7 +58,7 @@ const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
     >
       {sourcedata}
     </ReactMarkdown>
-  );
-};
+  )
+}
 
-export default MarkdownBlock;
+export default MarkdownBlock

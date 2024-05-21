@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Button, ButtonToolbar, Form, InputGroup } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Button, ButtonToolbar, Form, InputGroup } from 'react-bootstrap'
 
-const minCatLen = 3;
+const minCatLen = 3
 
 type CategorySelectProps = {
-  name: string;
-  categories: string[];
-  existingCategories: string[];
-  setCategories: (l: string[]) => void;
-};
+  name: string
+  categories: string[]
+  existingCategories: string[]
+  setCategories: (l: string[]) => void
+}
 
 const CategorySelect: React.FC<CategorySelectProps> = ({
   name,
@@ -16,31 +16,31 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
   existingCategories,
   setCategories,
 }) => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState('')
 
   const validateAdd = () => {
-    return input.length >= minCatLen;
-  };
+    return input.length >= minCatLen
+  }
 
   const addCategory = (catToAdd: string): void => {
     if (!categories.includes(catToAdd)) {
-      setCategories([...categories, catToAdd]);
+      setCategories([...categories, catToAdd])
     }
-    setInput('');
-  };
+    setInput('')
+  }
 
   const onKeyUp = (event: React.KeyboardEvent) => {
     if (event.charCode === 13) {
-      addCategory(input);
+      addCategory(input)
     }
-  };
+  }
 
   const delteCategory = (catToRemove: string): void => {
     const newCategories = categories.filter((item) => {
-      return item !== catToRemove;
-    });
-    setCategories(newCategories);
-  };
+      return item !== catToRemove
+    })
+    setCategories(newCategories)
+  }
 
   return (
     <div className="category-box">
@@ -95,7 +95,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CategorySelect;
+export default CategorySelect

@@ -1,19 +1,19 @@
-import React from 'react';
-import { useQuery } from 'react-query';
-import { getElements } from '../../util/apiHelper';
-import { Link } from 'react-router-dom';
-import { IElement } from '../../Interfaces/element.interface';
+import React from 'react'
+import { useQuery } from 'react-query'
+import { getElements } from '../../util/apiHelper'
+import { Link } from 'react-router-dom'
+import { IElement } from '../../Interfaces/element.interface'
 
 const queryOption = {
   staleTime: 300000,
   cacheTime: 3600000,
   retry: 1,
-};
+}
 
 type ElementViewProps = {
-  elementType: string;
-  elementData: IElement;
-};
+  elementType: string
+  elementData: IElement
+}
 
 const Recommender: React.FC<ElementViewProps> = ({
   elementType,
@@ -22,14 +22,14 @@ const Recommender: React.FC<ElementViewProps> = ({
   const { data: similarData, status: similarStatus } = useQuery(
     `${elementType}s`,
     () => getElements(elementType),
-    { ...queryOption }
-  );
+    { ...queryOption },
+  )
 
   const recommended = similarData
     ?.filter((dat) => {
-      return dat.category.some((cat) => elementData.category.includes(cat));
+      return dat.category.some((cat) => elementData.category.includes(cat))
     })
-    .filter((dat) => dat.title != elementData.title);
+    .filter((dat) => dat.title != elementData.title)
 
   return (
     <div className="similar-projects">
@@ -50,13 +50,13 @@ const Recommender: React.FC<ElementViewProps> = ({
                       <span className="blog-recommended">{element.title}</span>
                     </Link>
                   </p>
-                );
+                )
               })}
             </div>
           </>
         )}
     </div>
-  );
-};
+  )
+}
 
-export default Recommender;
+export default Recommender

@@ -1,12 +1,12 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import React from 'react'
+import { Form } from 'react-bootstrap'
 
 type CheckBoxProps = {
-  label: string;
-  name: string;
-  value: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+  label: string
+  name: string
+  value: boolean
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
 
 const Checkbox: React.FC<CheckBoxProps> = ({
   label,
@@ -24,7 +24,7 @@ const Checkbox: React.FC<CheckBoxProps> = ({
         label={label}
       />
     </Form.Group>
-  );
-};
+  )
+}
 
-export default Checkbox;
+export default Checkbox

@@ -1,17 +1,17 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import React from 'react'
+import { Form } from 'react-bootstrap'
 
 type OptionProps = {
-  name: string;
-  value: string;
-};
+  name: string
+  value: string
+}
 
 type DropdownProps = {
-  label: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  options: OptionProps[];
-};
+  label: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  options: OptionProps[]
+}
 
 const Dropdown: React.FC<DropdownProps> = ({
   label,
@@ -28,11 +28,11 @@ const Dropdown: React.FC<DropdownProps> = ({
             <option key={option.value} value={option.value}>
               {option.name}
             </option>
-          );
+          )
         })}
       </Form.Control>
     </Form.Group>
-  );
-};
+  )
+}
 
-export default Dropdown;
+export default Dropdown

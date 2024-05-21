@@ -1,21 +1,21 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import './sliderStyle.scss';
+import React, { useContext, useState, useEffect } from 'react'
+import { ThemeContext } from '../../contexts/ThemeContext'
+import './sliderStyle.scss'
 
 const ThemeToggle: React.FC = () => {
-  const { getCachedTheme, isLightTheme, setTheme } = useContext(ThemeContext);
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  const lightfont = isLightTheme ? 'active' : 'inactive';
-  const darkfont = isLightTheme ? 'inactive' : 'active';
+  const { getCachedTheme, isLightTheme, setTheme } = useContext(ThemeContext)
+  const [isChecked, setIsChecked] = useState<boolean>(false)
+  const lightfont = isLightTheme ? 'active' : 'inactive'
+  const darkfont = isLightTheme ? 'inactive' : 'active'
 
   useEffect(() => {
-    setIsChecked(!getCachedTheme());
-  }, [getCachedTheme]);
+    setIsChecked(!getCachedTheme())
+  }, [getCachedTheme])
 
   const toggleCheckboxChange = (): void => {
-    setTheme(isChecked);
-    setIsChecked(!isChecked);
-  };
+    setTheme(isChecked)
+    setIsChecked(!isChecked)
+  }
 
   return (
     <>
@@ -39,7 +39,7 @@ const ThemeToggle: React.FC = () => {
         </p>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ThemeToggle;
+export default ThemeToggle

@@ -1,43 +1,43 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
-import { loginUser } from '../../util/apiHelper';
-import CaptionBanner from '../CaptionBanner';
+import React, { useState, useContext, useEffect } from 'react'
+import { Button, Form } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../contexts/AuthContext'
+import { loginUser } from '../../util/apiHelper'
+import CaptionBanner from '../CaptionBanner'
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [valid, setValid] = useState(true);
-  const { setIsAuth, isAuth } = useContext(AuthContext);
-  const [message, setMessage] = useState('');
-  const navigate = useNavigate();
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [valid, setValid] = useState(true)
+  const { setIsAuth, isAuth } = useContext(AuthContext)
+  const [message, setMessage] = useState('')
+  const navigate = useNavigate()
 
   useEffect(() => {
-    document.title = `Login | ${process.env.REACT_APP_SHOWN_NAME}`;
-  }, []);
+    document.title = `Login | ${process.env.REACT_APP_SHOWN_NAME}`
+  }, [])
 
-  if (isAuth === true) navigate('/admin/projects');
+  if (isAuth === true) navigate('/admin/projects')
 
   function validateForm(): boolean {
-    return username.length > 0 && password.length > 0;
+    return username.length > 0 && password.length > 0
   }
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
-    event.preventDefault();
+    event.preventDefault()
     loginUser(username, password)
       .then((res) => {
         if (res.statusText === 'OK') {
-          setIsAuth(true);
-          return navigate('/admin/projects');
+          setIsAuth(true)
+          return navigate('/admin/projects')
         }
-        setValid(false);
-        setMessage(res.data.message);
+        setValid(false)
+        setMessage(res.data.message)
       })
       .catch((err) => {
-        setValid(false);
-        setMessage(err.data);
-      });
+        setValid(false)
+        setMessage(err.data)
+      })
   }
 
   return (
@@ -73,7 +73,7 @@ const Login: React.FC = () => {
         </div>
       </main>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

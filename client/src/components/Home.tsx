@@ -1,10 +1,10 @@
-import React, { useEffect, FunctionComponent } from 'react';
-import CaptionBanner from './CaptionBanner';
+import React, { useEffect, FunctionComponent } from 'react'
+import CaptionBanner from './CaptionBanner'
 
 const Home: FunctionComponent = () => {
   useEffect(() => {
-    document.title = `Home | ${process.env.REACT_APP_SHOWN_NAME}`;
-  }, []);
+    document.title = `Home | ${process.env.REACT_APP_SHOWN_NAME}`
+  }, [])
   return (
     <>
       <CaptionBanner text="Hi there!" />
@@ -40,7 +40,7 @@ const Home: FunctionComponent = () => {
         </div>
       </main>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

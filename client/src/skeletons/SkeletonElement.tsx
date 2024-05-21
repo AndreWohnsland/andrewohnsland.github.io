@@ -1,13 +1,13 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react'
 
 type SkeletopProps = {
-  type: string;
-};
+  type: string
+}
 
 const SkeletonElement: FunctionComponent<SkeletopProps> = ({ type }) => {
-  const classes = `skeleton ${type}`;
+  const classes = `skeleton ${type}`
 
-  return <div className={classes} />;
-};
+  return <div className={classes} />
+}
 
-export default SkeletonElement;
+export default SkeletonElement

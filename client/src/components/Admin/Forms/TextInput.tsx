@@ -1,12 +1,12 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import React from 'react'
+import { Form } from 'react-bootstrap'
 
 type TextInputProps = {
-  label: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+  label: string
+  name: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
 
 const TextInput: React.FC<TextInputProps> = ({
   label,
@@ -19,7 +19,7 @@ const TextInput: React.FC<TextInputProps> = ({
       <Form.Label>{label}</Form.Label>
       <Form.Control name={name} type="text" value={value} onChange={onChange} />
     </Form.Group>
-  );
-};
+  )
+}
 
-export default TextInput;
+export default TextInput

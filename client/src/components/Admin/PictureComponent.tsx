@@ -1,130 +1,130 @@
-import React, { useEffect, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { AxiosResponse } from 'axios';
-import TextInput from './Forms/TextInput';
-import InfoBox from './Forms/InfoBox';
-import Dropdown from './Forms/Dropdown';
+import React, { useEffect, useState } from 'react'
+import { Form, Button } from 'react-bootstrap'
+import { AxiosResponse } from 'axios'
+import TextInput from './Forms/TextInput'
+import InfoBox from './Forms/InfoBox'
+import Dropdown from './Forms/Dropdown'
 import {
   getAndGenerateImageDetails,
   deleteImage,
   postImage,
   getAllCategories,
-} from '../../util/apiHelper';
-import CaptionBanner from '../CaptionBanner';
-import { IImageReducedDetails } from '../../Interfaces/image.interface';
-import confirmAlert from './Forms/ConfirmAlert';
+} from '../../util/apiHelper'
+import CaptionBanner from '../CaptionBanner'
+import { IImageReducedDetails } from '../../Interfaces/image.interface'
+import confirmAlert from './Forms/ConfirmAlert'
 
-const jpegType = 'image/png, image/jpeg';
+const jpegType = 'image/png, image/jpeg'
 
 const PictureComponent: React.FC = () => {
   // for upload
-  const [name, setName] = useState('');
-  const [image, setImage] = useState<File | null>(null);
-  const [category, setCategory] = useState('');
-  const [categoryOptions, setCategoryOptions] = useState<string[]>([]);
-  const [filterCategory, setFilterCategory] = useState<string>('All');
+  const [name, setName] = useState('')
+  const [image, setImage] = useState<File | null>(null)
+  const [category, setCategory] = useState('')
+  const [categoryOptions, setCategoryOptions] = useState<string[]>([])
+  const [filterCategory, setFilterCategory] = useState<string>('All')
   // for delete
-  const [imageId, setImageId] = useState('');
-  const [imageList, setImageList] = useState<IImageReducedDetails[]>([]);
+  const [imageId, setImageId] = useState('')
+  const [imageList, setImageList] = useState<IImageReducedDetails[]>([])
   const [filteredImageList, setFilteredImageList] = useState<
     IImageReducedDetails[]
-  >([]);
+  >([])
   // For the popup
-  const [showMessage, setShowMessage] = useState(false);
-  const [res, setRes] = useState<AxiosResponse | undefined>(undefined);
-  const [messageTitle, setMessageTitle] = useState('');
+  const [showMessage, setShowMessage] = useState(false)
+  const [res, setRes] = useState<AxiosResponse | undefined>(undefined)
+  const [messageTitle, setMessageTitle] = useState('')
 
   const loadCats = async () => {
-    const cats = await getAllCategories('image');
-    setCategoryOptions(cats);
-  };
+    const cats = await getAllCategories('image')
+    setCategoryOptions(cats)
+  }
 
   const loadElements = async (): Promise<void> => {
-    const imageData = await getAndGenerateImageDetails();
-    setImageList(imageData);
-    setFilteredImageList(imageData);
-  };
+    const imageData = await getAndGenerateImageDetails()
+    setImageList(imageData)
+    setFilteredImageList(imageData)
+  }
 
   const filterImageDisplayed = (
     selectedCat: string,
-    imageListProvide: IImageReducedDetails[] | null = null
+    imageListProvide: IImageReducedDetails[] | null = null,
   ) => {
-    setFilterCategory(selectedCat);
+    setFilterCategory(selectedCat)
     if (imageListProvide === null) {
-      imageListProvide = imageList;
+      imageListProvide = imageList
     }
     if (selectedCat === 'All') {
-      setFilteredImageList(imageListProvide);
+      setFilteredImageList(imageListProvide)
     } else {
       setFilteredImageList([
         { name: 'Select Image', value: '' },
         ...imageListProvide.filter((i) => i.name.includes(selectedCat)),
-      ]);
+      ])
     }
-  };
+  }
 
   useEffect(() => {
-    document.title = `Admin | ${process.env.REACT_APP_SHOWN_NAME}`;
-    loadCats();
-    loadElements();
-  }, []);
+    document.title = `Admin | ${process.env.REACT_APP_SHOWN_NAME}`
+    loadCats()
+    loadElements()
+  }, [])
 
   const validateUpload = () => {
-    return name.length > 0 && image !== null && category !== '';
-  };
+    return name.length > 0 && image !== null && category !== ''
+  }
 
   const validateDelete = () => {
-    return imageId !== '';
-  };
+    return imageId !== ''
+  }
 
   const handleMessage = () => {
-    setShowMessage(!showMessage);
-  };
+    setShowMessage(!showMessage)
+  }
 
   const clearUpload = () => {
-    setName('');
-    setImage(null);
-    setCategory('');
-  };
+    setName('')
+    setImage(null)
+    setCategory('')
+  }
 
   const submitUpload = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    const data = new FormData();
+    e.preventDefault()
+    const data = new FormData()
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-    data.append('file', image as any);
-    data.append('name', name);
-    data.append('category', category);
+    data.append('file', image as any)
+    data.append('name', name)
+    data.append('category', category)
     postImage(data).then(async (response) => {
-      setRes(response);
-      setShowMessage(true);
-      setMessageTitle(name);
+      setRes(response)
+      setShowMessage(true)
+      setMessageTitle(name)
       if (response.statusText === 'OK') {
-        clearUpload();
-        loadCats();
-        await loadElements();
-        filterImageDisplayed(filterCategory);
+        clearUpload()
+        loadCats()
+        await loadElements()
+        filterImageDisplayed(filterCategory)
       }
-    });
-  };
+    })
+  }
 
   const handleDeleteImage = () => {
     deleteImage(imageId).then(async (response) => {
-      setRes(response);
-      setMessageTitle(`Image with id: ${imageId}`);
-      setShowMessage(true);
+      setRes(response)
+      setMessageTitle(`Image with id: ${imageId}`)
+      setShowMessage(true)
       if (response.statusText === 'OK') {
-        setImageId('');
-        await loadElements();
-        filterImageDisplayed(filterCategory);
+        setImageId('')
+        await loadElements()
+        filterImageDisplayed(filterCategory)
       }
-    });
-  };
+    })
+  }
 
   const submitDelete = async (e: React.SyntheticEvent): Promise<void> => {
-    e.preventDefault();
-    const prompt = `Do you want to delete the image?`;
-    confirmAlert(prompt, handleDeleteImage);
-  };
+    e.preventDefault()
+    const prompt = `Do you want to delete the image?`
+    confirmAlert(prompt, handleDeleteImage)
+  }
 
   return (
     <>
@@ -210,7 +210,7 @@ const PictureComponent: React.FC = () => {
         </div>
       </main>
     </>
-  );
-};
+  )
+}
 
-export default PictureComponent;
+export default PictureComponent

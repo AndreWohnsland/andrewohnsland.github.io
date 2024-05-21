@@ -1,13 +1,13 @@
-import React from 'react';
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import React from 'react'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 const submitAlert = (
   prompt: string,
   executionFunction: () => void,
   yesButtonText = 'Yes',
   noButtonText = 'No',
-  headerText = 'Are you sure?'
+  headerText = 'Are you sure?',
 ) => {
   confirmAlert({
     customUI: ({ onClose }) => {
@@ -18,8 +18,8 @@ const submitAlert = (
           <button
             className="btn-yes"
             onClick={() => {
-              executionFunction();
-              onClose();
+              executionFunction()
+              onClose()
             }}
           >
             {yesButtonText}
@@ -28,9 +28,9 @@ const submitAlert = (
             {noButtonText}
           </button>
         </div>
-      );
+      )
     },
-  });
-};
+  })
+}
 
-export default submitAlert;
+export default submitAlert

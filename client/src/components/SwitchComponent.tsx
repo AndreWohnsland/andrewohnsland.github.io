@@ -1,15 +1,15 @@
-import React, { FunctionComponent } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
-import ListView from './ListView/ListView';
-import Home from './Home';
-import About from './About';
-import ElementView from './ListView/ElementView';
-import Login from './Admin/Login';
-import EditComponent from './Admin/EditComponent';
-import PrivateRoute from './Admin/PrivateRoute';
-import ChangePassword from './Admin/ChangePassword';
-import PictureList from './PictureList';
-import PictureComponent from './Admin/PictureComponent';
+import React, { FunctionComponent } from 'react'
+import { Route, Routes, Navigate } from 'react-router-dom'
+import ListView from './ListView/ListView'
+import Home from './Home'
+import About from './About'
+import ElementView from './ListView/ElementView'
+import Login from './Admin/Login'
+import EditComponent from './Admin/EditComponent'
+import PrivateRoute from './Admin/PrivateRoute'
+import ChangePassword from './Admin/ChangePassword'
+import PictureList from './PictureList'
+import PictureComponent from './Admin/PictureComponent'
 
 const SwitchComponent: FunctionComponent = () => {
   return (
@@ -63,7 +63,7 @@ const SwitchComponent: FunctionComponent = () => {
       />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
-  );
-};
+  )
+}
 
-export default SwitchComponent;
+export default SwitchComponent

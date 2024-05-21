@@ -1,24 +1,24 @@
-import React, { useContext } from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import ThemeToggle from './ThemeToggle';
-import { AuthContext } from '../../contexts/AuthContext';
-import { ReactComponent as GithubLogo } from './github-original.svg';
-import { logoutUser } from '../../util/apiHelper';
-import PictureSelection from './PictureSelection';
+import React, { useContext } from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import ThemeToggle from './ThemeToggle'
+import { AuthContext } from '../../contexts/AuthContext'
+import { ReactComponent as GithubLogo } from './github-original.svg'
+import { logoutUser } from '../../util/apiHelper'
+import PictureSelection from './PictureSelection'
 
 const NavBar: React.FC = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { isAuth, setIsAuth } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const logout = async () => {
-    const success = await logoutUser();
+    const success = await logoutUser()
     if (success) {
-      setIsAuth(false);
-      return navigate('/');
+      setIsAuth(false)
+      return navigate('/')
     }
-  };
+  }
 
   return (
     <>
@@ -77,7 +77,7 @@ const NavBar: React.FC = () => {
         </Navbar.Collapse>
       </Navbar>
     </>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { AxiosResponse } from 'axios';
-import InfoBox from './Forms/InfoBox';
-import CaptionBanner from '../CaptionBanner';
-import { updatePassword } from '../../util/apiHelper';
+import React, { useEffect, useState } from 'react'
+import { Button, Form } from 'react-bootstrap'
+import { AxiosResponse } from 'axios'
+import InfoBox from './Forms/InfoBox'
+import CaptionBanner from '../CaptionBanner'
+import { updatePassword } from '../../util/apiHelper'
 
 const ChangePassword: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [repeatedPassword, setRepeatedPassword] = useState('');
-  const [showMessage, setShowMessage] = useState(false);
-  const [message, setMessage] = useState<AxiosResponse | undefined>(undefined);
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [repeatedPassword, setRepeatedPassword] = useState('')
+  const [showMessage, setShowMessage] = useState(false)
+  const [message, setMessage] = useState<AxiosResponse | undefined>(undefined)
 
   useEffect(() => {
-    document.title = `Admin | ${process.env.REACT_APP_SHOWN_NAME}`;
-  }, []);
+    document.title = `Admin | ${process.env.REACT_APP_SHOWN_NAME}`
+  }, [])
 
   const validateForm = () => {
     return (
@@ -23,26 +23,26 @@ const ChangePassword: React.FC = () => {
       password.length > 0 &&
       newPassword.length >= 8 &&
       newPassword === repeatedPassword
-    );
-  };
+    )
+  }
 
   const isLongEnough = () => {
-    return newPassword.length >= 8;
-  };
+    return newPassword.length >= 8
+  }
 
   const bothNewPasswordsAreSame = () => {
-    return newPassword === repeatedPassword;
-  };
+    return newPassword === repeatedPassword
+  }
 
   const handleSubmit = async (event: React.SyntheticEvent): Promise<void> => {
-    event.preventDefault();
+    event.preventDefault()
     updatePassword(username, password, newPassword, repeatedPassword).then(
       (res) => {
-        setMessage(res);
-        setShowMessage(true);
-      }
-    );
-  };
+        setMessage(res)
+        setShowMessage(true)
+      },
+    )
+  }
 
   return (
     <>
@@ -113,7 +113,7 @@ const ChangePassword: React.FC = () => {
         </div>
       </main>
     </>
-  );
-};
+  )
+}
 
-export default ChangePassword;
+export default ChangePassword

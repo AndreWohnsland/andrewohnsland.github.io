@@ -1,28 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import dateFormatter from './dateFormatter';
-import { IElement } from '../../Interfaces/element.interface';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import dateFormatter from './dateFormatter'
+import { IElement } from '../../Interfaces/element.interface'
 
 type ElementCardProps = {
-  element: IElement;
-  elementType: string;
-  uid: string;
-};
+  element: IElement
+  elementType: string
+  uid: string
+}
 
 const ElementCard: React.FC<ElementCardProps> = ({
   element,
   elementType,
   uid,
 }) => {
-  const createdAt = dateFormatter(element.createdAt);
-  const updatedAt = dateFormatter(element.updatedAt);
+  const createdAt = dateFormatter(element.createdAt)
+  const updatedAt = dateFormatter(element.updatedAt)
 
   const createDateTag = () => {
     if (createdAt === updatedAt) {
-      return `Created ${createdAt}`;
+      return `Created ${createdAt}`
     }
-    return `Updated ${updatedAt}`;
-  };
+    return `Updated ${updatedAt}`
+  }
 
   return (
     <Link
@@ -38,12 +38,12 @@ const ElementCard: React.FC<ElementCardProps> = ({
         <p className="element-card-desc">{element.description}</p>
         <p className="element-card-category">
           {element.category.sort().map((cat) => {
-            return <span key={`${uid}-${cat}`}>{`#${cat}`}</span>;
+            return <span key={`${uid}-${cat}`}>{`#${cat}`}</span>
           })}
         </p>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default ElementCard;
+export default ElementCard

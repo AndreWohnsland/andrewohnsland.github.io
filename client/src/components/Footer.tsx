@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react'
 
 const Footer: FunctionComponent = () => {
   return (
@@ -16,7 +16,7 @@ const Footer: FunctionComponent = () => {
         </div>
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

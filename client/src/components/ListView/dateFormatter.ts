@@ -5,9 +5,9 @@ const dateFormatter = (dateString: string): string => {
     month: 'short',
     day: 'numeric',
     timeZone: 'UTC',
-  });
+  })
 
-  const dateToConvert = new Date(dateString);
-  return formatter.format(dateToConvert);
-};
-export default dateFormatter;
+  const dateToConvert = new Date(dateString)
+  return formatter.format(dateToConvert)
+}
+export default dateFormatter

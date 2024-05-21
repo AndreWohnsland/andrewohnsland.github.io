@@ -1,16 +1,16 @@
-import React from 'react';
-import Select from 'react-select';
+import React from 'react'
+import Select from 'react-select'
 import {
   SelectProps,
   OnSelectChangeValue,
   OnSelectChangeActionMeta,
-} from '../../Interfaces/categorySelect.interface';
+} from '../../Interfaces/categorySelect.interface'
 
 type CategorySelectProps = {
-  categoryInfo: SelectProps[];
-  categoryValue: SelectProps[];
-  onChange: (e: OnSelectChangeValue, a?: OnSelectChangeActionMeta) => void;
-};
+  categoryInfo: SelectProps[]
+  categoryValue: SelectProps[]
+  onChange: (e: OnSelectChangeValue, a?: OnSelectChangeActionMeta) => void
+}
 
 const CategorySelect: React.FC<CategorySelectProps> = ({
   categoryInfo,
@@ -29,7 +29,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
       value={categoryValue}
       onChange={onChange}
     />
-  );
-};
+  )
+}
 
-export default CategorySelect;
+export default CategorySelect

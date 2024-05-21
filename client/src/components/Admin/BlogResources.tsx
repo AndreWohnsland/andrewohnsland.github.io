@@ -1,37 +1,37 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import TextInput from './Forms/TextInput';
-import { Form, Button } from 'react-bootstrap';
-import Dropdown from './Forms/Dropdown';
-import confirmAlert from './Forms/ConfirmAlert';
-import { IResource } from '../../Interfaces/resource.interface';
+import React, { useState, useCallback, useEffect } from 'react'
+import TextInput from './Forms/TextInput'
+import { Form, Button } from 'react-bootstrap'
+import Dropdown from './Forms/Dropdown'
+import confirmAlert from './Forms/ConfirmAlert'
+import { IResource } from '../../Interfaces/resource.interface'
 import {
   getResources,
   deleteResource,
   postResource,
-} from '../../util/apiHelper';
+} from '../../util/apiHelper'
 
-const resourceTypes = 'image/*,video/*';
+const resourceTypes = 'image/*,video/*'
 
 type BlogResourcesProps = {
-  blogId: string;
-};
+  blogId: string
+}
 
 type OptionsProps = {
-  name: string;
-  value: string;
-};
+  name: string
+  value: string
+}
 
 const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
-  const [name, setName] = useState('');
-  const [upload, setUpload] = useState<File | null | undefined>(null);
-  const [selectedResource, setSelectedResource] = useState('');
-  const [resources, setResources] = useState<IResource[]>([]);
-  const [options, setOptions] = useState<OptionsProps[]>([]);
+  const [name, setName] = useState('')
+  const [upload, setUpload] = useState<File | null | undefined>(null)
+  const [selectedResource, setSelectedResource] = useState('')
+  const [resources, setResources] = useState<IResource[]>([])
+  const [options, setOptions] = useState<OptionsProps[]>([])
 
   const loadResources = useCallback(async () => {
-    setSelectedResource('');
-    const resourceData = await getResources();
-    setResources(resourceData);
+    setSelectedResource('')
+    const resourceData = await getResources()
+    setResources(resourceData)
     if (resourceData) {
       setOptions([
         { name: 'Select Resource', value: '' },
@@ -41,60 +41,60 @@ const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
             name: `${element.name} (${element.filename})`,
             value: element._id,
           })),
-      ]);
+      ])
     }
-  }, [blogId]);
+  }, [blogId])
 
   useEffect(() => {
-    loadResources();
-  }, [loadResources]);
+    loadResources()
+  }, [loadResources])
 
   const validateSubmit = () => {
-    return name.length > 0 && upload !== null;
-  };
+    return name.length > 0 && upload !== null
+  }
 
   const clearState = () => {
-    setName('');
-    setUpload(undefined);
-  };
+    setName('')
+    setUpload(undefined)
+  }
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData();
+    e.preventDefault()
+    const data = new FormData()
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-    data.append('file', upload as any);
-    data.append('name', name);
-    data.append('blogId', blogId);
+    data.append('file', upload as any)
+    data.append('name', name)
+    data.append('blogId', blogId)
     postResource(data)
       .then(() => {
-        clearState();
-        loadResources();
+        clearState()
+        loadResources()
       })
-      .catch((err) => alert(err.response.data.message));
-  };
+      .catch((err) => alert(err.response.data.message))
+  }
 
   const handelDelete = async () => {
     deleteResource(selectedResource).then((response) => {
       if (response.statusText === 'OK') {
-        setSelectedResource('');
-        loadResources();
+        setSelectedResource('')
+        loadResources()
       }
-    });
-  };
+    })
+  }
 
   const runDelete = () => {
-    const prompt = 'Do you want to delete the resource?';
-    confirmAlert(prompt, handelDelete);
-  };
+    const prompt = 'Do you want to delete the resource?'
+    confirmAlert(prompt, handelDelete)
+  }
 
   const copyToClipboard = () => {
-    if (selectedResource === '') return;
+    if (selectedResource === '') return
     const currentResource = resources.filter(
-      (r) => r._id === selectedResource
-    )[0];
-    const text = `![${currentResource.name}](${currentResource.link})`;
-    navigator.clipboard.writeText(text);
-  };
+      (r) => r._id === selectedResource,
+    )[0]
+    const text = `![${currentResource.name}](${currentResource.link})`
+    navigator.clipboard.writeText(text)
+  }
 
   return (
     <div className="user-form-container">
@@ -146,7 +146,7 @@ const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BlogRessources;
+export default BlogRessources

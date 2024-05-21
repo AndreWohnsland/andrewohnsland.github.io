@@ -1,32 +1,32 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { getAuth } from '../util/apiHelper';
+import React, { createContext, useState, useEffect } from 'react'
+import { getAuth } from '../util/apiHelper'
 
 type ContextType = {
-  isAuth: boolean | null;
-  setIsAuth: (state: boolean) => void;
-  getAuthStatus: () => Promise<void>;
-};
+  isAuth: boolean | null
+  setIsAuth: (state: boolean) => void
+  getAuthStatus: () => Promise<void>
+}
 
-export const AuthContext = createContext<ContextType>({} as ContextType);
+export const AuthContext = createContext<ContextType>({} as ContextType)
 
 export const AuthContextProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const [auth, setAuth] = useState<boolean | null>(null);
+  const [auth, setAuth] = useState<boolean | null>(null)
 
   const getAuthStatus = async (): Promise<void> => {
     return getAuth().then((retauth) => {
-      setAuth(retauth);
-    });
-  };
+      setAuth(retauth)
+    })
+  }
 
   useEffect(() => {
-    getAuthStatus();
-  }, []);
+    getAuthStatus()
+  }, [])
 
   const setIsAuth = (state: boolean): void => {
-    setAuth(state);
-  };
+    setAuth(state)
+  }
 
   return (
     <AuthContext.Provider
@@ -38,5 +38,5 @@ export const AuthContextProvider: React.FC<React.PropsWithChildren> = ({
     >
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}

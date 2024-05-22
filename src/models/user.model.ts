@@ -20,29 +20,29 @@ const userSchema = new Schema<IUser>(
       minlength: [8, 'Must be at least 8 characters'],
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    statics: {
+      async login(username: string, password: string): Promise<IUserModel> {
+        const user = await this.findOne({ username })
+        if (user) {
+          const auth = await bcrypt.compare(password, user.password)
+          if (auth) {
+            return user
+          }
+        }
+        throw Error('Incorrect login data')
+      },
+    },
+  },
 )
 
 // middleware to hash the PW
-userSchema.pre<IUserModel>('save', async function (next) {
+userSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt()
   this.password = await bcrypt.hash(this.password, salt)
   next()
 })
-
-userSchema.statics.login = async function (
-  username: string,
-  password: string,
-): Promise<IUserModel> {
-  const user = await this.findOne({ username })
-  if (user) {
-    const auth = await bcrypt.compare(password, user.password)
-    if (auth) {
-      return user
-    }
-  }
-  throw Error('Incorrect login data')
-}
 
 const User: IUserDocument = mongoose.model<IUserModel, IUserDocument>(
   'User',

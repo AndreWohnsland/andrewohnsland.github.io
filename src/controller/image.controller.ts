@@ -12,6 +12,10 @@ import {
 import { IImageModel } from '../interfaces/image.interface'
 import logger from '../setUp/initLogger'
 
+function sanitizeName(name: string): string {
+  return name.replace(/\s/g, '')
+}
+
 async function addImage(req: Request, res: Response, next: NextFunction) {
   const { name, category } = req.body
   const reqFile = req.files
@@ -26,14 +30,14 @@ async function addImage(req: Request, res: Response, next: NextFunction) {
 
   const [resizedFile, height, width] = await resizeImage(receivedFile.data)
 
-  const formattedName = name.replace(/\s/g, '')
+  const formattedName = sanitizeName(name)
   const dropboxPath = `/${category}/${formattedName}.jpg`
   const fileStream = bufferToStream(resizedFile as Buffer)
 
   await postPictureToDropbox(dropboxPath, fileStream)
   const sharedLinkResponse = await generateShareableLink(dropboxPath)
   let sharedUrl = sharedLinkResponse.url
-  sharedUrl = sharedUrl.replace(/\?dl=0/, '?raw=1')
+  sharedUrl = sharedUrl.replace(/\?dl=0/, '?raw=1').replace(/\&dl=0/, '&raw=1')
 
   const newImage = new Image({ name, height, width, img: sharedUrl, category })
   newImage
@@ -73,7 +77,7 @@ async function deleteImage(req: Request, res: Response, next: NextFunction) {
     .then((img: IImageModel | null) => {
       if (img) {
         const msg = `Image with name: '${img.name}' was deleted.`
-        const dropboxName = img.name.replace(/\s/g, '')
+        const dropboxName = sanitizeName(img.name)
         const dropboxPath = `/${img.category}/${dropboxName}.jpg`
         deletePictureFromDropbox(dropboxPath)
         logger.info(msg)

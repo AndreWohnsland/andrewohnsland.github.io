@@ -75,7 +75,7 @@ async function logout(req: Request, res: Response, next: NextFunction) {
 }
 
 async function getAuth(req: Request, res: Response) {
-  res.status(200).json('Authentication suceeded')
+  res.status(200).json('Authentication succeeded')
 }
 
 export default { addUser, login, logout, getAuth, changePassword }

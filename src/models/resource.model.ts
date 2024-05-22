@@ -5,8 +5,8 @@ const { Schema } = mongoose
 
 const resourceSchema = new Schema<IResourceModel>(
   {
-    name: { type: String, required: [true, 'Please enter a titel'] },
-    filename: { type: String, required: [true, 'Please enter a titel'] },
+    name: { type: String, required: [true, 'Please enter a title'] },
+    filename: { type: String, required: [true, 'Please enter a filename'] },
     blogId: { type: String, required: [true, 'Please reference a blog'] },
     link: { type: String, required: [true, 'Please enter a link'] },
   },

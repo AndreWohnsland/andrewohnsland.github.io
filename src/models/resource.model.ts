@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import { IResourceModel } from '../interfaces/resource.interface';
+import mongoose from 'mongoose'
+import { IResourceModel } from '../interfaces/resource.interface'
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const resourceSchema = new Schema<IResourceModel>(
   {
@@ -11,8 +11,8 @@ const resourceSchema = new Schema<IResourceModel>(
     link: { type: String, required: [true, 'Please enter a link'] },
   },
   { timestamps: true },
-);
+)
 
-const Resource = mongoose.model<IResourceModel>('Resource', resourceSchema);
+const Resource = mongoose.model<IResourceModel>('Resource', resourceSchema)
 
-export default Resource;
+export default Resource

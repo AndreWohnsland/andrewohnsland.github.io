@@ -1,16 +1,16 @@
-const router = require('express').Router();
-import authorize from '../middlewares/auth';
-import blogController from '../controller/blog.controller';
+const router = require('express').Router()
+import authorize from '../middlewares/auth'
+import blogController from '../controller/blog.controller'
 
 // get
-router.route('/').get(authorize(false), blogController.getAllBlogs);
-router.route('/:slug').get(authorize(false), blogController.getBlogBySlug);
+router.route('/').get(authorize(false), blogController.getAllBlogs)
+router.route('/:slug').get(authorize(false), blogController.getBlogBySlug)
 
 // post
-router.route('/update/:id').post(authorize(true), blogController.updateBlog);
-router.route('/add').post(authorize(true), blogController.addBlog);
+router.route('/update/:id').post(authorize(true), blogController.updateBlog)
+router.route('/add').post(authorize(true), blogController.addBlog)
 
 // delete
-router.route('/:id').delete(authorize(true), blogController.deleteBlog);
+router.route('/:id').delete(authorize(true), blogController.deleteBlog)
 
-export default router;
+export default router

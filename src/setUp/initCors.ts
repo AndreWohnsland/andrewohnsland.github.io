@@ -1,32 +1,35 @@
-import cors from 'cors';
-import logger from '../setUp/initLogger';
+import cors from 'cors'
+import logger from '../setUp/initLogger'
 
-let whitelist: string[] = [];
+let whitelist: string[] = []
 if (process.env.WHITELIST !== undefined) {
-  whitelist = process.env.WHITELIST.split(' ');
+  whitelist = process.env.WHITELIST.split(' ')
 }
-const isDev = process.env.ENVIRONMENT_TYPE === 'dev';
+const isDev = process.env.ENVIRONMENT_TYPE === 'dev'
 if (isDev) {
-  whitelist.push('http://localhost:3000');
+  whitelist.push('http://localhost:3000')
 }
 
 function createCorsOption(): cors.CorsOptions {
   const corsOptions = {
     // type CustomOrigin = (requestOrigin: string | undefined, callback: (err: Error | null, origin?: StaticOrigin | undefined) => void) => void
-    origin: function (origin: string | undefined, callback: (err: Error | null, origin?: boolean | undefined) => void) {
+    origin: function (
+      origin: string | undefined,
+      callback: (err: Error | null, origin?: boolean | undefined) => void,
+    ) {
       if (whitelist && whitelist.indexOf(origin as string) !== -1) {
-        callback(null, true);
+        callback(null, true)
       } else {
-        logger.warn(`Not authorized acces from: ${origin}`);
-        callback(new Error(`${origin}: Not allowed by CORS`));
+        logger.warn(`Not authorized acces from: ${origin}`)
+        callback(new Error(`${origin}: Not allowed by CORS`))
       }
     },
     methods: 'GET,HEAD,POST,PATCH,DELETE,OPTIONS',
     credentials: true, // required to pass
     allowedHeaders: 'Content-Type,Authorization,X-Requested-With',
     exposedHeaders: ['set-cookie'],
-  };
-  return corsOptions;
+  }
+  return corsOptions
 }
 
-export { createCorsOption };
+export { createCorsOption }

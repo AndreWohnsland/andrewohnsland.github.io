@@ -23,4 +23,4 @@ module.exports = {
     'no-param-reassign': 0,
     'object-curly-newline': 0,
   },
-};
+}

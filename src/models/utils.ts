@@ -5,5 +5,5 @@ export const slugify = (title: String): string => {
     .replace(/[^\w\-]/g, '')
     .replace(/\-{2,}/g, '-')
     .replace(/^-+/g, '')
-    .replace(/-+$/g, '');
-};
+    .replace(/-+$/g, '')
+}

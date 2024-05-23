@@ -56,7 +56,7 @@ async function login(req: Request, res: Response, next: NextFunction) {
   User.login(username, password)
     .then((user: IUserModel) => {
       logger.info(`Login by user ${username}`)
-      const token = createToken(user._id)
+      const token = createToken(user.id)
       res.cookie('jwt', token, {
         expires: new Date(Date.now() + maxAgeInSeconds * 1000),
         ...cookiePolicy,

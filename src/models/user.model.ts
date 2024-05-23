@@ -44,7 +44,7 @@ userSchema.pre('save', async function (next) {
   next()
 })
 
-const User: IUserDocument = mongoose.model<IUserModel, IUserDocument>(
+const User: IUserDocument = mongoose.model<IUser, IUserDocument>(
   'User',
   userSchema,
 )

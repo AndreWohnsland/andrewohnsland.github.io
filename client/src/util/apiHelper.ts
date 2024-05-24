@@ -20,6 +20,16 @@ const credentialsOptionsNoValidate = {
   validateStatus: () => true,
 }
 
+const credentialsOptionsFormData = {
+  withCredentials: true,
+  headers: { 'Content-Type': 'multipart/form-data' },
+}
+
+const credentialsOptionsNoValidateFormData = {
+  ...credentialsOptionsFormData,
+  validateStatus: () => true,
+}
+
 const getAndGenerateImageDetails = async (): Promise<
   IImageReducedDetails[]
 > => {
@@ -52,10 +62,11 @@ const getAllImageData = async (
 }
 
 const postImage = (data: FormData): Promise<AxiosResponse> => {
-  return axios.post(`${api}/image/add`, data, {
-    ...credentialsOptionsNoValidate,
-    headers: { 'Content-Type': 'multipart/form-data' },
-  })
+  return axios.post(
+    `${api}/image/add`,
+    data,
+    credentialsOptionsNoValidateFormData,
+  )
 }
 
 const deleteImage = (imageId: string): Promise<AxiosResponse> => {
@@ -176,7 +187,7 @@ const logoutUser = (): Promise<boolean> => {
 }
 
 const postResource = async (data: FormData): Promise<AxiosResponse> => {
-  return axios.post(`${api}/resource`, data, credentialsOptions)
+  return axios.post(`${api}/resource`, data, credentialsOptionsFormData)
 }
 
 const getResources = async (): Promise<IResource[]> => {

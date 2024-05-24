@@ -39,7 +39,13 @@ jobs:
         uses: borales/actions-yarn@v5
         with:
           cmd: build
-
+        env:
+          REACT_APP_API_ADDRESS: https://homepagebackend-1-g7620643.deta.app
+          PUBLIC_URL: https://andrewohnsland.github.io/
+          REACT_APP_SHOWN_NAME: Andre Wohnsland
+          REACT_APP_COPYRIGHT: A. Wohnsland
+          OLD_API: https://awblog.deta.dev
+          
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:

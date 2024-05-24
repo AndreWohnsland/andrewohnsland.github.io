@@ -17,28 +17,23 @@ const PictureSelection: React.FC = () => {
   )
 
   return (
-    <>
-      <NavDropdown title="Pictures" id="collasible-nav-dropdown">
-        {status === 'loading' && (
-          <NavDropdown.Item>Loading...</NavDropdown.Item>
-        )}
-        {status === 'error' && <NavDropdown.Item>Error O.o</NavDropdown.Item>}
-        {status === 'success' &&
-          data &&
-          data.map((category) => {
-            return (
-              <LinkContainer to={`/pictures/${category}`} key={category}>
-                <NavDropdown.Item>
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </NavDropdown.Item>
-              </LinkContainer>
-            )
-          })}
-        {status === 'success' && data?.length === 0 && (
-          <NavDropdown.Item>Nothing to see ...</NavDropdown.Item>
-        )}
-      </NavDropdown>
-    </>
+    <NavDropdown title="Pictures" id="collasible-nav-dropdown">
+      {status === 'loading' && <NavDropdown.Item>Loading...</NavDropdown.Item>}
+      {status === 'error' && <NavDropdown.Item>Error O.o</NavDropdown.Item>}
+      {status === 'success' &&
+        data?.map((category) => {
+          return (
+            <LinkContainer to={`/pictures/${category}`} key={category}>
+              <NavDropdown.Item>
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </NavDropdown.Item>
+            </LinkContainer>
+          )
+        })}
+      {status === 'success' && data?.length === 0 && (
+        <NavDropdown.Item>Nothing to see ...</NavDropdown.Item>
+      )}
+    </NavDropdown>
   )
 }
 

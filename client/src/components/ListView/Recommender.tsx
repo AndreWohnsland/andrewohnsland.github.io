@@ -46,6 +46,7 @@ const Recommender: React.FC<ElementViewProps> = ({
                     <Link
                       to={`/${elementType}/${element.slug}`}
                       style={{ textDecoration: 'none' }}
+                      key={element._id}
                     >
                       <span className="blog-recommended">{element.title}</span>
                     </Link>

@@ -13,20 +13,18 @@ const App: React.FC = () => {
   const queryClient = new QueryClient()
 
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <div className={`App min-vh-100 container-${theme}`}>
-            <NavBar />
-            <SwitchComponent />
-            <Footer />
-          </div>
-          {process.env.REACT_APP_DEV === 'true' && (
-            <ReactQueryDevtools initialIsOpen={false} />
-          )}
-        </BrowserRouter>
-      </QueryClientProvider>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <div className={`App min-vh-100 container-${theme}`}>
+          <NavBar />
+          <SwitchComponent />
+          <Footer />
+        </div>
+        {process.env.REACT_APP_DEV === 'true' && (
+          <ReactQueryDevtools initialIsOpen={false} />
+        )}
+      </BrowserRouter>
+    </QueryClientProvider>
   )
 }
 

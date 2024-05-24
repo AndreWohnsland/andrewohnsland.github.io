@@ -18,27 +18,25 @@ const ThemeToggle: React.FC = () => {
   }
 
   return (
-    <>
-      <div className="sliderholder">
-        <p className={`themefont lightmode ${lightfont}`} aria-label="sun">
-          ☀️
-        </p>
-        <label className="switch">
-          <input
-            type="checkbox"
-            checked={!isLightTheme}
-            onChange={toggleCheckboxChange}
-          />
-          <span className="slider round" />
-        </label>
-        <p
-          className={`themefont darkmode ${darkfont}`}
-          arial-label="Crescent Moon"
-        >
-          🌙
-        </p>
-      </div>
-    </>
+    <div className="sliderholder">
+      <p className={`themefont lightmode ${lightfont}`} aria-label="sun">
+        ☀️
+      </p>
+      <label className="switch">
+        <input
+          type="checkbox"
+          checked={!isLightTheme}
+          onChange={toggleCheckboxChange}
+        />
+        <span className="slider round" />
+      </label>
+      <p
+        className={`themefont darkmode ${darkfont}`}
+        aria-label="Crescent Moon"
+      >
+        🌙
+      </p>
+    </div>
   )
 }
 

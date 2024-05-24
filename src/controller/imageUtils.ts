@@ -56,7 +56,7 @@ async function postPictureToDropbox(dropboxPath: string, fileStream: Readable) {
   }
 }
 
-async function generateShareableLink(dropboxPath: string) {
+async function generateShareableLink(dropboxPath: string): Promise<string> {
   const params = {
     resource: 'sharing/create_shared_link_with_settings',
     parameters: {
@@ -69,9 +69,13 @@ async function generateShareableLink(dropboxPath: string) {
     },
   }
   try {
-    return await dbSync(params)
+    const sharedLinkResponse = await dbSync(params)
+    let sharedUrl = sharedLinkResponse.url
+    sharedUrl = sharedUrl.replace(/\?dl=0/, '?raw=1').replace(/&dl=0/, '&raw=1')
+    return sharedUrl
   } catch (err: any) {
     logger.error(err)
+    return ''
   }
 }
 

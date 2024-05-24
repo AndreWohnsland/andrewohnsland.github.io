@@ -35,9 +35,7 @@ async function addImage(req: Request, res: Response, next: NextFunction) {
   const fileStream = bufferToStream(resizedFile as Buffer)
 
   await postPictureToDropbox(dropboxPath, fileStream)
-  const sharedLinkResponse = await generateShareableLink(dropboxPath)
-  let sharedUrl = sharedLinkResponse.url
-  sharedUrl = sharedUrl.replace(/\?dl=0/, '?raw=1').replace(/\&dl=0/, '&raw=1')
+  const sharedUrl = await generateShareableLink(dropboxPath)
 
   const newImage = new Image({ name, height, width, img: sharedUrl, category })
   newImage

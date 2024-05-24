@@ -31,9 +31,7 @@ async function addResource(req: Request, res: Response, next: NextFunction) {
   const fileStream = bufferToStream(receivedFile.data as Buffer)
 
   await postPictureToDropbox(dropboxPath, fileStream)
-  const sharedLinkResponse = await generateShareableLink(dropboxPath)
-  let sharedUrl = sharedLinkResponse.url
-  sharedUrl = sharedUrl.replace(/\?dl=0/, '?raw=1')
+  const sharedUrl = await generateShareableLink(dropboxPath)
 
   const resource = new Resource({ name, filename, blogId, link: sharedUrl })
   resource

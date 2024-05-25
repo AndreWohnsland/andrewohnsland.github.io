@@ -22,12 +22,8 @@ const Home: FunctionComponent = () => {
           <p>
             It&#39;s nothing big, but it gets better over time as I get better
             with React and other frameworks. Have a look around, get a glimpse
-            what I do and maybe have a look in some of my projects
-            <span role="img" aria-label="smile">
-              😃
-            </span>
-            . If you want to dive deeper, you can also have a look into my
-            Github!
+            what I do and maybe have a look in some of my projects 😃. If you
+            want to dive deeper, you can also have a look into my Github!
           </p>
           <p>
             In the meantime explore the different section. You can find them in

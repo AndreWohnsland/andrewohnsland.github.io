@@ -8,12 +8,7 @@ const Footer: FunctionComponent = () => {
           &copy;&nbsp;
           {`${new Date().getFullYear()} ${process.env.REACT_APP_COPYRIGHT}`}
         </div>
-        <div className="right">
-          Made with React&nbsp;
-          <span role="img" aria-label="heart">
-            ❤️
-          </span>
-        </div>
+        <div className="right">Made with React ❤️</div>
       </footer>
     </div>
   )

@@ -6,7 +6,7 @@ export interface IElement {
   description: string
   slug: string
   draft: boolean
-  link?: string | undefined
+  link?: string
   text: string
   category: string[]
 }

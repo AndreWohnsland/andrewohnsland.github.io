@@ -17,7 +17,7 @@ const CodeBlock = ({
   children,
   ...props
 }: CodeBlockProps) => {
-  const match = /language-(\w+)/.exec(className || '')!
+  const match = /language-(\w+)/.exec(className ?? '')!
   if (!match) return <></>
   const language = match[1]
   return (

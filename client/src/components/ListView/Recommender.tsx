@@ -42,11 +42,10 @@ const Recommender: React.FC<ElementViewProps> = ({
             <div className="blog-recommendation-holder">
               {recommended.map((element) => {
                 return (
-                  <p>
+                  <p key={element._id}>
                     <Link
                       to={`/${elementType}/${element.slug}`}
                       style={{ textDecoration: 'none' }}
-                      key={element._id}
                     >
                       <span className="blog-recommended">{element.title}</span>
                     </Link>

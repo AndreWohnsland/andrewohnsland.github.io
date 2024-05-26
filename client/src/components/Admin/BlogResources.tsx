@@ -60,6 +60,10 @@ const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!upload) {
+      alert('Please select an file to upload')
+      return
+    }
     const data = new FormData()
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     data.append('file', upload as any)
@@ -69,6 +73,7 @@ const BlogRessources: React.FC<BlogResourcesProps> = ({ blogId }) => {
       .then(() => {
         clearState()
         loadResources()
+        alert('Resource uploaded successfully')
       })
       .catch((err) => alert(err.response.data.message))
   }

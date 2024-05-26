@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { AxiosResponse } from 'axios'
+import { resizeImage } from '../../util/images'
 import TextInput from './Forms/TextInput'
 import InfoBox from './Forms/InfoBox'
 import Dropdown from './Forms/Dropdown'
@@ -89,9 +90,13 @@ const PictureComponent: React.FC = () => {
 
   const submitUpload = async (e: React.SyntheticEvent) => {
     e.preventDefault()
+    if (!image) {
+      alert('Please select an image to upload')
+      return
+    }
+    const resizedImage = await resizeImage(image)
     const data = new FormData()
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-    data.append('file', image as any)
+    data.append('file', resizedImage)
     data.append('name', name)
     data.append('category', category)
     postImage(data).then(async (response) => {

@@ -13,6 +13,7 @@
     "@types/node": "^20.1.4",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "browser-image-resizer": "^2.4.1",
     "gh-pages": "^6.1.1",
     "hastscript": "^9.0.0",
     "katex": "^0.16.10",

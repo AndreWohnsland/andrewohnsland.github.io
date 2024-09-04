@@ -7,8 +7,6 @@ COPY package.json yarn.lock tsconfig.json .eslintrc.js .prettierrc ./
 
 COPY src ./src
 
-RUN ls -l
-
 RUN yarn install
 
 RUN yarn tsc

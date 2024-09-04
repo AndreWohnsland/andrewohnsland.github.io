@@ -1,5 +1,6 @@
 services:
   website-backend:
+    container_name: website-backend
     restart: always
     build: .
     ports:
@@ -12,4 +13,3 @@ services:
       WHITELIST: ${WHITELIST}
       DROPBOX_ACCESS_TOKEN: ${DROPBOX_ACCESS_TOKEN}
       PICTURE_SIZE: ${PICTURE_SIZE}
-    container_name: website-backend

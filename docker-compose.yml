@@ -1,0 +1,15 @@
+services:
+  website-backend:
+    restart: always
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      # NODE_ENV: production
+      ATLAS_URI: ${ATLAS_URI}
+      JWT_SECRET: ${JWT_SECRET}
+      ENVIRONMENT_TYPE: ${ENVIRONMENT_TYPE}
+      WHITELIST: ${WHITELIST}
+      DROPBOX_ACCESS_TOKEN: ${DROPBOX_ACCESS_TOKEN}
+      PICTURE_SIZE: ${PICTURE_SIZE}
+    container_name: website-backend

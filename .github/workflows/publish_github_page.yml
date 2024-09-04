@@ -40,7 +40,7 @@ jobs:
         with:
           cmd: build
         env:
-          REACT_APP_API_ADDRESS: https://homepagebackend-1-g7620643.deta.app
+          REACT_APP_API_ADDRESS: https://creator.cocktailberry.org
           PUBLIC_URL: https://andrewohnsland.github.io/
           REACT_APP_SHOWN_NAME: Andre Wohnsland
           REACT_APP_COPYRIGHT: A. Wohnsland

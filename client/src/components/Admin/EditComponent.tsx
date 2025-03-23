@@ -60,7 +60,7 @@ const EditComponent: React.FC<EditComponentProps> = ({ elementType }) => {
 
   useEffect(() => {
     loadElements()
-    document.title = `Admin | ${process.env.REACT_APP_SHOWN_NAME}`
+    document.title = `Admin | ${import.meta.env.VITE_APP_SHOWN_NAME}`
   }, [loadElements])
 
   const validateSubmit = () => {

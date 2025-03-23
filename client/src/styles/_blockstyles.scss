@@ -15,6 +15,7 @@ $bg-helpful: rgb(104, 241, 168);
 $border-helpful: rgb(0, 141, 47);
 
 $border-width: 6px;
+@use 'variables' as *;
 
 .md-block {
   border-radius: 5px;

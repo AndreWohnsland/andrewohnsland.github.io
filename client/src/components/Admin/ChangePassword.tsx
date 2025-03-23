@@ -14,7 +14,7 @@ const ChangePassword: React.FC = () => {
   const [message, setMessage] = useState<AxiosResponse | undefined>(undefined)
 
   useEffect(() => {
-    document.title = `Admin | ${process.env.REACT_APP_SHOWN_NAME}`
+    document.title = `Admin | ${import.meta.env.VITE_APP_SHOWN_NAME}`
   }, [])
 
   const validateForm = () => {

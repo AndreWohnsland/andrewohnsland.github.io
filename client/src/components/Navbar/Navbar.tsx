@@ -1,10 +1,12 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import React, { useContext } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle'
 import { AuthContext } from '../../contexts/AuthContext'
-import { ReactComponent as GithubLogo } from './github-original.svg'
+import GithubLogo from './github-original.svg?react'
 import { logoutUser } from '../../util/apiHelper'
 import PictureSelection from './PictureSelection'
 
@@ -29,7 +31,7 @@ const NavBar: React.FC = () => {
       variant="dark"
       className="custom-navbar"
     >
-      <Navbar.Brand>{process.env.REACT_APP_SHOWN_NAME}</Navbar.Brand>
+      <Navbar.Brand>{import.meta.env.VITE_APP_SHOWN_NAME}</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">

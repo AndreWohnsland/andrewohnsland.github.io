@@ -6,8 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { ThemeContextProvider } from './contexts/ThemeContext'
 import { AuthContextProvider } from './contexts/AuthContext'
 
-const root = createRoot(document.getElementById('root') as HTMLElement)
-root.render(
+createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeContextProvider>
       <AuthContextProvider>

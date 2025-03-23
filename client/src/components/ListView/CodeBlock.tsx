@@ -1,5 +1,5 @@
 import React from 'react'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { Prism, SyntaxHighlighterProps } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 type CodeBlockProps = {
@@ -9,6 +9,9 @@ type CodeBlockProps = {
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   children?: any
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const SyntaxHighlighter = Prism as any as React.FC<SyntaxHighlighterProps>
 
 const CodeBlock = ({
   node,

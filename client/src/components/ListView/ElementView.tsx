@@ -40,7 +40,7 @@ const ElementView: React.FC<ElementViewProps> = ({ elementType }) => {
 
   useEffect(() => {
     document.title = `${capFirst(elementType)} | ${
-      process.env.REACT_APP_SHOWN_NAME
+      import.meta.env.VITE_APP_SHOWN_NAME
     }`
   }, [elementType])
 

@@ -1,4 +1,5 @@
 $primary-color-light: #007bff;
+@use 'variables' as *;
 
 div {
   .selected-categories,

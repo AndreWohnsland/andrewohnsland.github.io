@@ -1,6 +1,6 @@
 import { readAndCompressImage } from 'browser-image-resizer'
 
-const maxPixelSize = parseInt(process.env.maxPixelSize || '800')
+const maxPixelSize = parseInt(import.meta.env.maxPixelSize || '800')
 const resizeConfig = {
   quality: 0.7,
   maxWidth: maxPixelSize,

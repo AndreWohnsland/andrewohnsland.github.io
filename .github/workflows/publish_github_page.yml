@@ -40,11 +40,10 @@ jobs:
         with:
           cmd: build
         env:
-          REACT_APP_API_ADDRESS: https://creator.cocktailberry.org
+          VITE_APP_API_ADDRESS: https://creator.cocktailberry.org
           PUBLIC_URL: https://andrewohnsland.github.io/
-          REACT_APP_SHOWN_NAME: Andre Wohnsland
-          REACT_APP_COPYRIGHT: A. Wohnsland
-          OLD_API: https://awblog.deta.dev
+          VITE_APP_SHOWN_NAME: Andre Wohnsland
+          VITE_APP_COPYRIGHT: A. Wohnsland
           
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4

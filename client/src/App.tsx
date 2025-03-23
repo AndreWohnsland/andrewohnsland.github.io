@@ -20,7 +20,7 @@ const App: React.FC = () => {
           <SwitchComponent />
           <Footer />
         </div>
-        {process.env.REACT_APP_DEV === 'true' && (
+        {import.meta.env.VITE_APP_DEV === 'true' && (
           <ReactQueryDevtools initialIsOpen={false} />
         )}
       </BrowserRouter>

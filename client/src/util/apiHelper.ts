@@ -7,7 +7,7 @@ import {
 } from '../Interfaces/image.interface'
 import { IResource } from '../Interfaces/resource.interface'
 
-const apiAddress = process.env.REACT_APP_API_ADDRESS
+const apiAddress = import.meta.env.VITE_APP_API_ADDRESS
 const api = `${apiAddress}/api`
 
 const credentialsOptions = {

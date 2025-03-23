@@ -14,7 +14,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    document.title = `Login | ${process.env.REACT_APP_SHOWN_NAME}`
+    document.title = `Login | ${import.meta.env.VITE_APP_SHOWN_NAME}`
   }, [])
 
   if (isAuth === true) navigate('/admin/projects')

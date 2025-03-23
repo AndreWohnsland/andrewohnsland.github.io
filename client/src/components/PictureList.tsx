@@ -21,7 +21,7 @@ const PictureList: React.FC = () => {
   const upperCategory = category.charAt(0).toUpperCase() + category.slice(1)
 
   useEffect(() => {
-    document.title = `${upperCategory} | ${process.env.REACT_APP_SHOWN_NAME}`
+    document.title = `${upperCategory} | ${import.meta.env.VITE_APP_SHOWN_NAME}`
   }, [upperCategory])
 
   const { data, status } = useQuery(category, () => getAllImageData(category), {

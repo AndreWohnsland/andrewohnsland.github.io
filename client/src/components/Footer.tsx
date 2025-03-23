@@ -6,7 +6,7 @@ const Footer: FunctionComponent = () => {
       <footer>
         <div className="left">
           &copy;&nbsp;
-          {`${new Date().getFullYear()} ${process.env.REACT_APP_COPYRIGHT}`}
+          {`${new Date().getFullYear()} ${import.meta.env.VITE_APP_COPYRIGHT}`}
         </div>
         <div className="right">Made with React ❤️</div>
       </footer>

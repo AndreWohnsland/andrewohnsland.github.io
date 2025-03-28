@@ -41,23 +41,24 @@ const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
     </>
   )
   return (
-    <ReactMarkdown
-      className="blog-md"
-      remarkPlugins={[
-        remarkMath,
-        remarkGfm,
-        remarkToc,
-        remarkDirective,
-        remarkDirectiveRehype,
-      ]}
-      rehypePlugins={[rehypeKatex, rehypeSlug, rehypeAutolinkHeadings]}
-      components={{
-        code: CodeBlock,
-        img: PictureRenderer,
-      }}
-    >
-      {sourcedata}
-    </ReactMarkdown>
+    <div className="blog-md">
+      <ReactMarkdown
+        remarkPlugins={[
+          remarkMath,
+          remarkGfm,
+          remarkToc,
+          remarkDirective,
+          remarkDirectiveRehype,
+        ]}
+        rehypePlugins={[rehypeKatex, rehypeSlug, rehypeAutolinkHeadings]}
+        components={{
+          code: CodeBlock,
+          img: PictureRenderer,
+        }}
+      >
+        {sourcedata}
+      </ReactMarkdown>
+    </div>
   )
 }
 

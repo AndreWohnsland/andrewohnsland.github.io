@@ -5,6 +5,7 @@ import PhotoAlbum from 'react-photo-album'
 import CaptionBanner from './CaptionBanner'
 import { getAllImageData } from '../util/apiHelper'
 import SkeletonPicture from '../skeletons/SkeletonPicture'
+import 'react-photo-album/masonry.css'
 
 const queryOption = {
   staleTime: 600000,

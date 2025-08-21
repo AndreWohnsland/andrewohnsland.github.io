@@ -44,8 +44,8 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .main-text,
@@ -116,6 +116,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 6px;
 }
 
 .spinner-container {

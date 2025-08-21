@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle'
 import { AuthContext } from '../../contexts/AuthContext'
 import GithubLogo from './github-original.svg?react'
+import { FaGithub } from 'react-icons/fa6'
 import { logoutUser } from '../../util/apiHelper'
 import PictureSelection from './PictureSelection'
 
@@ -70,8 +71,8 @@ const NavBar: React.FC = () => {
           )}
           <Nav.Link href="https://github.com/AndreWohnsland">
             <div className="github">
-              <GithubLogo width="20px" height="20px" />
-              &nbsp;GitHub
+              <FaGithub size={24} />
+              GitHub
             </div>
           </Nav.Link>
         </Nav>

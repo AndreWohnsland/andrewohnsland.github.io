@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { ThemeContext } from '../../contexts/ThemeContext'
+import { FaMoon, FaSun } from 'react-icons/fa'
+
 import './sliderStyle.scss'
 
 const ThemeToggle: React.FC = () => {
@@ -19,9 +21,12 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <div className="sliderholder">
-      <p className={`themefont lightmode ${lightfont}`} aria-label="sun">
-        ☀️
-      </p>
+      <span
+        className={`themefont lightmode ${lightfont} icon-center`}
+        aria-label="sun"
+      >
+        <FaSun size={24} />
+      </span>
       <label className="switch">
         <input
           type="checkbox"
@@ -30,12 +35,12 @@ const ThemeToggle: React.FC = () => {
         />
         <span className="slider round" />
       </label>
-      <p
-        className={`themefont darkmode ${darkfont}`}
+      <span
+        className={`themefont darkmode ${darkfont} icon-center`}
         aria-label="Crescent Moon"
       >
-        🌙
-      </p>
+        <FaMoon size={22} />
+      </span>
     </div>
   )
 }

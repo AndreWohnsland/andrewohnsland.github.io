@@ -1,3 +1,9 @@
+.icon-center {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
 $bg-light: #ccc;
 $bg-dark: #3f3f3f;
 
@@ -62,12 +68,14 @@ input:checked + .slider:before {
   align-content: flex-end;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .themefont {
   color: #ececec80;
   margin-bottom: 0;
   align-self: center;
+  align-items: center;
   font-size: 1.3rem;
   &.lightmode {
     padding-right: 5px;
